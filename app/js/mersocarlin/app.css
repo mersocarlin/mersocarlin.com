@@ -1,0 +1,174 @@
+
+/*------------------------------
+	MAIN
+------------------------------*/
+html,
+body {
+    background-color:#c1b6a5;
+    height:100%;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    overflow-x:hidden;
+}
+
+h1 {
+    display:none;
+}
+
+a,
+a:focus,
+a:hover {
+    outline:0 none;
+    text-decoration:none;
+}
+
+p {
+    margin: 0 0 20px;
+    font-size:16px;
+    line-height:28px;
+}
+
+h2 {
+    margin:0 0 20px;
+    color:#FFFFFF;
+    font-family:'Montserrat';
+    font-size:56px;
+}
+
+h3 {
+    color:#FFFFFF;
+    font-family:'Alegreya Sans SC';
+}
+
+h4 {
+    color:#FFFFFF;
+    font-family:'Alegreya Sans SC';
+    margin-top:0;
+}
+
+/*------------------------------
+	BUTTONS
+------------------------------*/
+
+.btn,
+.btn:hover,
+.btn:focus {
+    font-family:'Montserrat';
+    border-bottom:4px solid #FFFFFF;
+    color:#FFFFFF;
+    transition-duration:0.4s;
+}
+
+.btn-primary {
+    background-color:#ED5A64;
+    border-color:#DB4F58;
+}
+
+.btn-footer {
+    background-color:#FFFFFF;
+    color:#2C3E50;
+    margin-left:5px;
+}
+
+.btn-footer:hover {
+    background-color:#2C3E50;
+}
+
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color:#DB4F58;
+    color:#ffffff;
+    border-color:#DB4F58;
+}
+
+.btn-reference {
+    border:1px solid #FFFFFF;
+    border-bottom:3px solid #FFFFFF;
+    background-color:transparent;
+}
+
+.btn-reference:hover,
+.btn-reference.btn-active {
+    border:1px solid #fff;
+    border-bottom:3px solid #fff;
+    color:#fff;
+}
+
+/*------------------------------
+	ALERTS
+------------------------------*/
+
+.alert {
+    border:0;
+    color:#ffffff;
+}
+
+.alert-success {
+    background-color:#c1b6a5;
+}
+
+.alert-danger {
+    background-color:#ED5A64;
+}
+
+/*------------------------------
+	HEADER
+------------------------------*/
+/*
+header {
+  text-align:center;
+  background-color:#c1b6a5;
+}*/
+
+.jumbotron {
+    background-color:#c1b6a5;
+    margin:0;
+    text-align:center;
+}
+
+.jumbotron img {
+    margin:0 auto 0 auto;
+    max-height:350px;
+    margin-bottom:15px;
+}
+
+.social-wrapper h2 {
+    display:inline;
+    padding:0 15px 0 15px;
+    font-size:78px;
+}
+
+.brands {
+    display:inline;
+}
+
+.brands > li > a {
+    background-color:transparent;
+    color:#FFFFFF;
+    border-top:3px solid #f95551;
+    transition-duration:0.2s;
+}
+
+.brands > li > a:hover {
+    color:#dd4844;
+    border-top:3px solid #dd4844;
+}
+
+#slideshow .icon-first {
+    color:#ED5A64;
+}
+
+#slideshow i {
+    color:#c1b6a5;
+}
+
+.carousel-inner {
+    margin-bottom:15px;
+}
+
+.jumbotron .btn {
+    margin-right:15px;
+}
