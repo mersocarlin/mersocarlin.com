@@ -12,15 +12,17 @@ module.exports = function(grunt) {
                 files: [
                     //index.html file
                     {
-                        expand: true,
-                        src: ['./app/index.html'],
+                        cwd: 'app/',
+                        src: 'index.html',
                         dest: 'app/dist/',
-                        filter: 'isFile'
+                        filter: 'isFile',
+                        expand: true
                     },
 
                     //img folder
                     {
-                        src: ['app/img/**'],
+                        cwd: 'app/',
+                        src: 'img/**',
                         dest: 'app/dist/',
                         expand: true
                     },
@@ -56,7 +58,7 @@ module.exports = function(grunt) {
                 ],
                 dest: './app/dist/assets/mersocarlin.js'
             }
-        } ,
+        },
         /*less: {
          //...
          },*/
@@ -66,21 +68,37 @@ module.exports = function(grunt) {
             },
             js: {
                 files: {
-                    './dist/assets/mersocarlin.js': './dist/assets/mersocarlin.js'
+                    './app/dist/assets/mersocarlin.js': './app/dist/assets/mersocarlin.js'
+                    //'./app/dist/assets/mersocarlin.js': [
+                    //    './bower_components/jquery/dist/jquery.js',
+                    //    './bower_components/bootstrap/dist/js/bootstrap.js',
+                    //    './app/js/creative-brands/js/creative-brands.js',
+                    //    './app/js/mersocarlin/app.js'
+                    //]
                 }
             }
         },
         cssmin: {
             build: {
                 files: {
-                    './dist/assets/mersocarlin.css': [
+                    './app/dist/assets/mersocarlin.css': [
                         './bower_components/html5-boilerplate/dist/css/normalize.css',
                         './bower_components/html5-boilerplate/dist/css/main.css',
                         './bower_components/bootstrap/dist/css/bootstrap.css',
                         './bower_components/font-awesome/css/font-awesome.css',
-                        './js/creative-brands/css/animate.css',
-                        './js/creative-brands/css/creative-brands.css',
-                        './js/mersocarlin/app.css' ]
+                        './app/js/creative-brands/css/animate.css',
+                        './app/js/creative-brands/css/creative-brands.css',
+                        './app/js/mersocarlin/app.css' ]
+                }
+            }
+        },
+        processhtml: {
+            options: {
+                // Task-specific options go here.
+            },
+            dist: {
+                files: {
+                    'app/dist/index.html': ['app/dist/index.html']
                 }
             }
         }
@@ -93,9 +111,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-processhtml');
+    grunt.loadNpmTasks('grunt-stripcomments');
 
 
     // Task definition
-    grunt.registerTask('mersocarlin', ['clean', 'copy', 'concat', 'uglify', 'cssmin']);
+    grunt.registerTask('mersocarlin', ['clean', 'copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
 
 };

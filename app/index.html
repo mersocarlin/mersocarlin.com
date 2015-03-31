@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="mersocarlinApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="mersocarlinApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="mersocarlinApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="mersocarlinApp" class="no-js"> <!--<![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
     <meta name="keywords"    content="web, webdesign, freelancer, freelance, web designer, desenvolvedor, logo, cascavel, paran&aacute;, Brasil" />
     <meta name="author"      content="freelancer em webdesign, desenvolvedor e m&uacute;sico Hemerson Carlin" />
     <meta name="robots"      content="index, follow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"    content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="img/favicon/favicon-16.png" sizes="16x16">
     <link rel="icon" href="img/favicon/favicon-32.png" sizes="32x32">
@@ -41,10 +41,7 @@
     <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
-    <!-- mersocarlin.com css files
-    <link rel="stylesheet" href="assets/mersocarlin.css"/>
-    <script src="assets/modernizr-2.8.3.min.js"></script>
-    -->
+    <!-- build:css assets/mersocarlin.css -->
     <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css"/>
@@ -52,13 +49,13 @@
     <link rel="stylesheet" href="js/creative-brands/css/animate.css"/>
     <link rel="stylesheet" href="js/creative-brands/css/creative-brands.css"/>
     <link rel="stylesheet" href="js/mersocarlin/app.css">
+    <!-- /build -->
+
+    <!-- build:css assets/modernizr-2.8.3.min.js -->
     <script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- /build -->
 </head>
 <body>
-<!--<ul class="menu">
-  <li><a href="#/view1">view1</a></li>
-  <li><a href="#/view2">view2</a></li>
-</ul>-->
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browsser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -66,8 +63,8 @@
 
 <!--<header>-->
 <div class="jumbotron">
-    <img src="img/avatar_300.png" class="img-responsive sp-effect3" alt="" />
-    <div class="social-wrapper">
+    <img src="img/avatar_300.png" class="img-responsive bounceInDown animated" alt="" />
+    <div class="social-wrapper bounceInUp animated">
         <ul class="brands brands-inline hidden-xs sp-effect1">
             <li><a target="_blank" href="https://www.linkedin.com/in/mersocarlin/en"><i class="fa fa-linkedin"></i></a></li>
             <li><a target="_blank" href="mailto:mersocarlin@mersocarlin.com"><i class="fa fa-envelope-o"></i></a></li>
@@ -79,7 +76,7 @@
         </ul>
     </div>
     <!-- Slideshow start -->
-    <div id="slideshow" class="carousel slide vertical scrollpoint sp-effect3" data-ride="carousel">
+    <div id="slideshow" class="carousel slide vertical scrollpoint rubberBand animated" data-ride="carousel">
         <div class="carousel-inner">
             <!-- Slideshow item 1 active -->
             <div class="item active"><h3>Software Engineer <i class="fa fa-code icon-first"></i></h3></div>
@@ -95,22 +92,11 @@
 </div>
 <!--</header>-->
 
-<div ng-view></div>
-
-<!-- mersocarlin.com js files
-<script src="assets/mersocarlin.js"></script>
--->
-
+<!-- build:js assets/mersocarlin.js -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
-<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
--->
-<!--<script src="../bower_components/angular/angular.js"></script>
-<script src="../bower_components/angular-route/angular-route.js"></script>-->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/creative-brands/js/creative-brands.js"></script>
 <script src="js/mersocarlin/app.js"></script>
-<!--<script src="home/home.js"></script>
-<script src="view2/view2.js"></script>-->
+<!-- /build -->
 </body>
 </html>
