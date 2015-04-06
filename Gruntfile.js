@@ -68,13 +68,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: {
-                    './app/dist/assets/mersocarlin.js': './app/dist/assets/mersocarlin.js'
-                    //'./app/dist/assets/mersocarlin.js': [
-                    //    './bower_components/jquery/dist/jquery.js',
-                    //    './bower_components/bootstrap/dist/js/bootstrap.js',
-                    //    './app/js/creative-brands/js/creative-brands.js',
-                    //    './app/js/mersocarlin/app.js'
-                    //]
+                    //'./app/dist/assets/mersocarlin.js': './app/dist/assets/mersocarlin.js'
                 }
             }
         },
