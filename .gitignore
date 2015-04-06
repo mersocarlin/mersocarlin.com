@@ -1,5 +1,4 @@
-app/dist
 node_modules
-
-# Mac desktop service store files
+bower_components
 .DS_Store
+*.log
