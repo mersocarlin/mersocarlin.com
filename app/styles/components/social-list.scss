@@ -1,0 +1,21 @@
+@import '../variables';
+
+.social-list {
+  ul {
+
+    li {
+
+      a {
+        background-color: transparent;
+        color: $white;
+        border-top: 3px solid $red;
+        transition-duration: 0.2s;
+
+        /*&:hover {
+          color: #redHover;
+          border-top: 3px solid $redHover;
+        }*/
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+body {
+  background-color: $mainBackground;
+  color: $white;
+  font-family: 'Source Sans Pro', sans-serif;
+  /*font-family: Raleway;
+  color: $textColor;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;*/
+}
+
+.app-mersocarlin {
+  padding-top: 50px;
+
+  * {
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  .img-avatar {
+    @include border-radius(50%);
+
+    /*margin:0 auto 0 auto;
+    max-height:350px;
+    margin-bottom:15px;*/
+    border: 5px solid $white;
+    margin-bottom: 50px;
+  }
+
+  h2 {
+    &.myName {
+      color: $white;
+      /*font-family: 'Source Sans Pro', sans-serif;*/
+      padding: 0 15px;
+      font-size: 78px;
+    }
+  }
+
+  h3 {
+    &.myTitle {
+      color: $white;
+      /*font-family: 'Source Sans Pro', sans-serif;*/
+    }
+  }
+
+}
