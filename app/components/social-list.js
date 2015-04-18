@@ -1,9 +1,9 @@
-var React = require('react');
-require("../styles/components/social-list.scss");
+import React from 'react';
+//var React = require('react');
 
-module.exports = React.createClass({
+export default React.createClass({
 
-  propTypes: {
+  /*propTypes: {
     socialList: React.PropTypes.array
   },
 
@@ -11,7 +11,7 @@ module.exports = React.createClass({
     return {
       socialList: []
     };
-  },
+  },*/
 
   render () {
     /*
@@ -24,7 +24,7 @@ module.exports = React.createClass({
      <li><a target="_blank" href="http://www.facebook.com/mersocarlin"><i class="fa fa-facebook  hi-icon-effect-8"></i></a></li>
      <li><a target="_blank" href="http://www.twitter.com/mersocarlin"><i class="fa fa-twitter"></i></a></li>
      </ul>
-    * */
+     * */
 
     return (
       <div className="social-list">
@@ -32,11 +32,10 @@ module.exports = React.createClass({
           {
             this.props.socialList.map((social) => {
               return <li>
-                      <a target='_blank' href={social.url}>
-                        {social.name}
-                        <i className={`fa fa-${social.icon}`}></i>
-                      </a>
-                     </li>
+                <a target='_blank' href={social.url}>
+                  <i className={`fa fa-${social.icon}`}></i>
+                </a>
+              </li>
             })
           }
         </ul>

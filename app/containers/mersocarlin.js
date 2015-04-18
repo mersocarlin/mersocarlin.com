@@ -1,10 +1,7 @@
-var React = require("react");
-var SocialList = require('../app/components/social-list.jsx');
+import React from 'react';
+import SocialList from '../components/social-list';
 
-require("../app/main.scss");
-
-
-module.exports = React.createClass({
+export default React.createClass({
 
   propTypes: {
     socialList: React.PropTypes.array,
@@ -15,25 +12,25 @@ module.exports = React.createClass({
     return {
       socialList: [
         {
-          name: '00',
+          name: 'LinkedIn',
           url: 'https://www.linkedin.com/in/mersocarlin/en',
           icon: 'linkedin',
           side: 0
         },
         {
-          name: '00',
+          name: 'Email',
           url: 'mailto:mersocarlin@mersocarlin.com',
           icon: 'envelope-o',
           side: 0
         },
         {
-          name: '00',
-          url: 'http://www.facebook.com/mersocarlin',
-          icon: 'facebook',
+          name: 'Github',
+          url: 'https://github.com/mersocarlin',
+          icon: 'github',
           side: 1
         },
         {
-          name: '00',
+          name: 'Twitter',
           url: 'http://www.twitter.com/mersocarlin',
           icon: 'twitter',
           side: 1
@@ -48,7 +45,7 @@ module.exports = React.createClass({
   renderMyImage () {
     return (
       <div className="row text-center">
-        <div className="small-8 medium-8 large-8 small-offset-2 medium-offset-2 large-offset-2 columns">
+        <div className="small-8 medium-4 large-4 small-offset-2 medium-offset-4 large-offset-4 columns">
           <img src={this.props.imgUrl} className="img-avatar bounceInDown animated" alt="" />
         </div>
       </div>
@@ -57,28 +54,33 @@ module.exports = React.createClass({
 
   renderSocialListBySide (side) {
     var socialList = this.props.socialList.filter((social) => {
-      return social.side === side;
+      return social.side === side || side === -1;
     });
     return <SocialList socialList={socialList}/>;
   },
 
   renderSayMyName () {
-    return <h2 className="myName">{this.props.sayMyName}</h2>;
+    return <h2 className="myName text-center">{this.props.sayMyName}</h2>;
   },
 
   renderMySocialStuff () {
     return (
-      <div className="row bounceInUp animated">
-        <div className="small-8 medium-8 large-8 small-offset-2 medium-offset-2 large-offset-2 columns">
+      <div className="row bounceInUp animated mySocial">
+        <div className="small-10 medium-8 large-8 small-offset-1 medium-offset-2 large-offset-2 columns">
           <div className="row">
-            <div className="small-4 medium-4 large-4 columns">
+            <div className="hide-for-small-only medium-3 large-3 columns columns-social">
               {this.renderSocialListBySide(0)}
             </div>
-            <div className="small-4 medium-4 large-4 columns">
+            <div className="small-12 medium-6 large-6 columns columns-social">
               {this.renderSayMyName()}
             </div>
-            <div className="small-4 medium-4 large-4 columns">
+            <div className="hide-for-small-only medium-3 large-3 columns columns-social">
               {this.renderSocialListBySide(1)}
+            </div>
+          </div>
+          <div className="row show-for-small-only">
+            <div className="small-12">
+              {this.renderSocialListBySide(-1)}
             </div>
           </div>
         </div>
@@ -88,9 +90,9 @@ module.exports = React.createClass({
 
   renderSayMyTitle () {
     return (
-      <div className="row text-center rubberBand animated">
-        <div className="small-8 medium-8 large-8 small-offset-2 medium-offset-2 large-offset-2 columns">
-          <h3 className="myTitle">
+      <div className="row text-center rubberBand animated myTitle">
+        <div className="small-12 medium-8 large-8 medium-offset-2 large-offset-2 columns">
+          <h3>
             {this.props.sayMyTitle}
             <i className="fa fa-code"></i>
           </h3>
