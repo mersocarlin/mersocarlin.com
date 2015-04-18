@@ -27,10 +27,10 @@
 
         }
 
-        /*&:hover {
-          color: #redHover;
+        &:hover {
+          color: $redHover;
           border-top: 3px solid $redHover;
-        }*/
+        }
       }
     }
   }

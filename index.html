@@ -44,13 +44,14 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-17163651-1', 'auto');
+    ga('send', 'pageview');
   </script>
 
 </head>
 <body>
   <div id="main"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.js"></script>
-  <script src="mersocarlin.js"></script>
+  <script src="./build/mersocarlin.js"></script>
   <script>
     /* jshint undef:false */
     React.render(React.createElement(Mersocarlin), document.getElementById('main'));

@@ -1,5 +1,8 @@
 import React from 'react';
+
+
 import SocialList from '../components/social-list';
+
 
 export default React.createClass({
 
@@ -40,6 +43,10 @@ export default React.createClass({
       sayMyName: 'mersocarlin',
       sayMyTitle: 'Software Enginner'
     }
+  },
+
+  componentDidMount() {
+    
   },
 
   renderMyImage () {
@@ -96,6 +103,7 @@ export default React.createClass({
             {this.props.sayMyTitle}
             <i className="fa fa-code"></i>
           </h3>
+          <span role="tooltip" data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
         </div>
       </div>
     );

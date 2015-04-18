@@ -8,12 +8,12 @@ module.exports = {
   entry: {
     poll: ['./lib/index.js']
   },
-  /*entry: './lib/index.js',*/
 
   output: {
     path: 'build',
+    publicPath: '/build/',
     filename: 'mersocarlin.js',
-    libraryTarget: 'umd',
+    //libraryTarget: 'umd',
     library: 'Mersocarlin'
   },
 
