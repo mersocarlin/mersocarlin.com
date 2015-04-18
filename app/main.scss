@@ -2,16 +2,12 @@
 $fa-font-path: '~font-awesome/fonts';
 
 @import "font-awesome/scss/font-awesome";
-/*@import 'fonts/CustomFonts/styles';*/
 
 @import 'zurb-foundation-5/scss/foundation';
 @import './styles/animate.css';
-/*@import '../node_modules/font-awesome/scss/font-awesome';*/
 
 @import 'styles/variables';
-/*@import 'styles/fonts';*/
 @import 'styles/mixins';
 @import 'styles/general';
-/*@import 'styles/animations';*/
 
 @import 'styles/components/social-list';

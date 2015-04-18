@@ -2,11 +2,6 @@ body {
   background-color: $mainBackground;
   color: $white;
   font-family: $mainFont;
-  /*font-family: Raleway;
-  color: $textColor;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: none;*/
 }
 
 .app-mersocarlin {
@@ -15,9 +10,6 @@ body {
   .img-avatar {
     @include border-radius(50%);
 
-    /*margin:0 auto 0 auto;
-    max-height:350px;
-    margin-bottom:15px;*/
     border: 5px solid $white;
     margin-bottom: 3em;
     width: 100%;
@@ -43,14 +35,6 @@ body {
       @media (min-width: 900px) {
         font-size: 3.8em;
       }
-    }
-  }
-
-  .mySocial {
-
-
-    @media(max-width: 643px) {
-
     }
   }
 
