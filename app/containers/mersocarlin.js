@@ -45,8 +45,14 @@ export default React.createClass({
     }
   },
 
+  getInitialState () {
+    return {
+      loaded: false
+    };
+  },
+
   componentDidMount() {
-    
+
   },
 
   renderMyImage () {
@@ -103,19 +109,42 @@ export default React.createClass({
             {this.props.sayMyTitle}
             <i className="fa fa-code"></i>
           </h3>
-          <span role="tooltip" data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
+        </div>
+      </div>
+    );
+  },
+
+  renderLoader() {
+    let loaderCssArray = [ "line-scale-pulse-out", "line-scale-pulse-out-rapid", "pacman" ];
+    let loaderCss = loaderCssArray[Math.floor(Math.random() * loaderCssArray.length)];
+
+    setTimeout(function () {
+      this.setState({loaded: true});
+    }.bind(this), 3000);
+
+    return (
+      <div className="loader fadeIn animated">
+        <div className={`loader-inner ${loaderCss}`}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
     );
   },
 
   render () {
-    return (
-      <div className="app-mersocarlin">
-        {this.renderMyImage()}
-        {this.renderMySocialStuff()}
-        {this.renderSayMyTitle()}
-      </div>
-    );
+    if(this.state.loaded)
+      return (
+        <div className="app-mersocarlin">
+          {this.renderMyImage()}
+          {this.renderMySocialStuff()}
+          {this.renderSayMyTitle()}
+        </div>
+      );
+    else
+      return this.renderLoader();
   }
 });

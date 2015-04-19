@@ -4,15 +4,26 @@ body {
   font-family: $mainFont;
 }
 
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 .app-mersocarlin {
   padding-top: 50px;
 
   .img-avatar {
     @include border-radius(50%);
 
+    background-color: $red;
     border: 5px solid $white;
     margin-bottom: 3em;
     width: 100%;
+
+    &:hover {
+      background-color: $redHover;
+    }
   }
 
   h2 {
