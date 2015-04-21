@@ -4,6 +4,10 @@ import React from 'react';
 import SocialList from '../components/social-list';
 
 
+import '../main.scss';
+
+
+
 export default React.createClass({
 
   propTypes: {
@@ -43,16 +47,6 @@ export default React.createClass({
       sayMyName: 'mersocarlin',
       sayMyTitle: 'Software Enginner'
     }
-  },
-
-  getInitialState () {
-    return {
-      loaded: false
-    };
-  },
-
-  componentDidMount() {
-
   },
 
   renderMyImage () {
@@ -114,37 +108,13 @@ export default React.createClass({
     );
   },
 
-  renderLoader() {
-    let loaderCssArray = [ "line-scale-pulse-out", "line-scale-pulse-out-rapid", "pacman" ];
-    let loaderCss = loaderCssArray[Math.floor(Math.random() * loaderCssArray.length)];
-
-    setTimeout(function () {
-      this.setState({loaded: true});
-    }.bind(this), 3000);
-
+  render () {
     return (
-      <div className="loader fadeIn animated">
-        <div className={`loader-inner ${loaderCss}`}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+      <div className="app-mersocarlin">
+        {this.renderMyImage()}
+        {this.renderMySocialStuff()}
+        {this.renderSayMyTitle()}
       </div>
     );
-  },
-
-  render () {
-    if(this.state.loaded)
-      return (
-        <div className="app-mersocarlin">
-          {this.renderMyImage()}
-          {this.renderMySocialStuff()}
-          {this.renderSayMyTitle()}
-        </div>
-      );
-    else
-      return this.renderLoader();
   }
 });
