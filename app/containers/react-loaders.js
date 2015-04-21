@@ -16,7 +16,7 @@ export default React.createClass({
 
   render () {
     return (
-      <div className="react-loaders">
+      <div className="react-loaders fadeIn animated">
         <header>
           <div className="left">
             <h1>React-Loaders</h1>
@@ -29,7 +29,7 @@ export default React.createClass({
 
         <div className="loaders">
           {
-            LoaderTypes.map(function(loader) {
+            LoaderTypes.map((loader) => {
               return(
                 <div className="loader">
                   <ReactLoaders type={loader} />
