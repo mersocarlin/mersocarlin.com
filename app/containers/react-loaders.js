@@ -1,23 +1,20 @@
-var React = require("react");
-var ReactLoaders = require("react-loaders/dist/react-loaders");
+import React from 'react';
+import ReactLoaders from 'react-loaders/dist/react-loaders';
 
 
-require("../styles/containers/react-loaders.scss");
-
-
-var LoaderTypes = ["ball-pulse", "ball-grid-pulse", "ball-clip-rotate", "ball-clip-rotate-pulse", "square-spin", "ball-clip-rotate-multiple",
+let LoaderTypes = ["ball-pulse", "ball-grid-pulse", "ball-clip-rotate", "ball-clip-rotate-pulse", "square-spin", "ball-clip-rotate-multiple",
   "ball-pulse-rise", "ball-rotate", "cube-transition", "ball-zig-zag", "ball-zig-zag-deflect", "ball-triangle-path", "ball-scale",
   "line-scale", "line-scale-party", "ball-scale-multiple", "ball-pulse-sync", "ball-beat", "line-scale-pulse-out", "line-scale-pulse-out-rapid",
   "ball-scale-ripple", "ball-scale-ripple-multiple", "ball-spin-fade-loader", "line-spin-fade-loader", "triangle-skew-spin",
   "pacman", "ball-grid-beat", "semi-circle-spin"];
 
-module.exports = React.createClass({
+export default React.createClass({
 
-  componentDidMount: function () {
+  componentDidMount () {
     ga('send', 'pageview', '/react-loaders');
   },
 
-  render: function() {
+  render () {
     return (
       <div className="react-loaders">
         <header>

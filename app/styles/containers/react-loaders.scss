@@ -1,37 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-/**
- *
- *
- */
-
-/**
- *
- *
- */
-$gray: #dcdcdc;
-$text: #fff;
-$bg-color: #ed5565;
-$reactLoadersFont: 'Open Sans', sans-serif;
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  font-size: 16px;
-  /*background: $bg-color;
-  color: $text;
-  font-family: $reactLoadersFont;*/
-}
-
 .react-loaders {
-  background: $bg-color;
-  color: $text;
+  background: $reactLoadersBackground;
+  color: $white;
   font-family: $reactLoadersFont;
   padding: 5em;
 
   h1 {
-    color: $text;
+    color: $white;
     font-family: $reactLoadersFont;
     font-size: 2.8em;
     font-weight: 400;
@@ -44,17 +18,17 @@ body {
   }
 
   h2 {
-    color: $text;
+    color: $white;
     font-family: $reactLoadersFont;
     font-size: 1.15em;
     font-weight: 300;
     margin: 0.3rem 0;
 
     a {
-      color: $text;
+      color: $white;
 
       &:visited {
-        color: $text;
+        color: $white;
       }
     }
   }
@@ -98,42 +72,42 @@ body {
       position: initial;
     }
   }
-}
 
-/**
+  /**
  * Util classes
  */
 
-.left {
-  float: left;
-}
+  .left {
+    float: left;
+  }
 
-.right {
-  float: right;
-}
+  .right {
+    float: right;
+  }
 
-.cf {
-  content: "";
-  display: table;
-  clear: both;
-}
+  .cf {
+    content: "";
+    display: table;
+    clear: both;
+  }
 
-/**
- * Buttons
- */
+  /**
+   * Buttons
+   */
 
-.btn {
-  color: $text;
-  padding: .75rem 1.25rem;
-  border: 2px solid $text;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: transform .1s ease-out, border .1s ease-out, background-color .15s ease-out, color .1s ease-out;
-  margin: 2rem 0;
+  .btn {
+    color: $white;
+    padding: .75rem 1.25rem;
+    border: 2px solid $white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform .1s ease-out, border .1s ease-out, background-color .15s ease-out, color .1s ease-out;
+    margin: 2rem 0;
 
-  &:hover {
-    transform: scale(1.01562);
-    background-color: #fff;
-    color: $bg-color;
+    &:hover {
+      transform: scale(1.01562);
+      background-color: $white;
+      color: $reactLoadersBackground;
+    }
   }
 }

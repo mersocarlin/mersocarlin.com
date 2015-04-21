@@ -2,12 +2,18 @@
 * Font variables
 */
 $mainFont: 'Josefin Sans', sans-serif;
+$reactLoadersFont: 'Open Sans', sans-serif;
 
 /**
  *  Color variables
  */
-
 $mainBackground: #c1b6a5;
 $red: #f95551;
 $redHover: #dd4844;
 $white: #fff;
+
+
+/**
+ * react-loaders container
+ */
+$reactLoadersBackground: $redHover;

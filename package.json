@@ -29,7 +29,6 @@
     "karma-jasmine": "^0.3.5",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-webpack": "^1.5.0",
-    "react-loaders": "git://github.com/mersocarlin/react-loaders#master",
     "sass-loader": "^0.4.0-beta",
     "style-loader": "^0.8.3",
     "url-loader": "^0.5.5",
@@ -45,6 +44,7 @@
     "lodash": "^3.5.0",
     "material-ui": "^0.7.3",
     "react": "^0.13.1",
+    "react-loaders": "git://github.com/mersocarlin/react-loaders#master",
     "react-router": "^0.13.2",
     "react-tap-event-plugin": "^0.1.6",
     "zurb-foundation-5": "^5.4.7"
