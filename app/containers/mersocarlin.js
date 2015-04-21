@@ -45,7 +45,7 @@ export default React.createClass({
       ],
       imgUrl: 'https://s.gravatar.com/avatar/9d345af079c0e2a554a586c6cad3c20c?s=300',
       sayMyName: 'mersocarlin',
-      sayMyTitle: 'Software Enginner'
+      sayMyTitle: 'Software Engineer'
     }
   },
 
