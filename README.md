@@ -1,3 +1,3 @@
 # mersocarlin.com
 
-This is the prototype of my personal website.
+My personal website's source.
