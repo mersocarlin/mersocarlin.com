@@ -1,36 +1,50 @@
 {
   "name": "mersocarlin",
   "version": "1.0.0",
-  "description": "This is the prototype of my personal website.",
-  "main": "Gruntfile.js",
-  "dependencies": {
-    "bootstrap": "~3.3.2",
-    "bower": "^1.3.12",
-    "font-awesome": "^4.3.0",
-    "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-copy": "^0.8.0",
-    "grunt-contrib-cssmin": "^0.12.2",
-    "grunt-contrib-uglify": "^0.8.1",
-    "grunt-processhtml": "^0.3.7",
-    "grunt-string-replace": "^1.0.0",
-    "grunt-stripcomments": "^0.3.1",
-    "jquery": "~2.1.3",
-    "normalizecss": "^3.0.0"
-  },
-  "devDependencies": {},
+  "description": "mersocarlin",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mersocarlin/mersocarlin.git"
+    "test": "./node_modules/.bin/jsxhint lib/ spec/ && ./node_modules/.bin/jshint lib/ spec/ && ./node_modules/karma/bin/karma start karma.conf.js",
+    "watch-test": "./node_modules/karma/bin/karma start karma.conf.js --auto-watch --no-single-run",
+    "build": "./node_modules/.bin/webpack -p",
+    "rename-css-bower-dependencies": "find bower_components -name '*.css' | sed -e 'p;s/.css$/.scss/' | xargs -n2 mv",
+    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot",
+    "postinstall": "bower install"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mersocarlin/mersocarlin/issues"
+  "license": "BSD",
+  "devDependencies": {
+    "babel": "^4.6.6",
+    "babel-core": "^4.6.6",
+    "babel-loader": "^4.0.0",
+    "css-loader": "^0.9.1",
+    "es5-shim": "^4.1.0",
+    "file-loader": "^0.8.1",
+    "imports-loader": "^0.6.3",
+    "jasmine": "^2.2.1",
+    "jasmine-core": "^2.2.0",
+    "jshint": "^2.6.0",
+    "jsx-loader": "^0.12.2",
+    "jsxhint": "^0.10.0",
+    "karma": "^0.12.31",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-webpack": "^1.5.0",
+    "sass-loader": "^0.4.0-beta",
+    "style-loader": "^0.8.3",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.5.3",
+    "webpack-dev-server": "^1.7.0"
   },
-  "homepage": "https://github.com/mersocarlin/mersocarlin"
+  "dependencies": {
+    "express": "^4.11.1",
+    "fastclick": "^1.0.3",
+    "font-awesome": "^4.3.0",
+    "is-retina": "^1.0.3",
+    "jquery": "^2.1.3",
+    "lodash": "^3.5.0",
+    "react": "^0.13.1",
+    "react-loaders": "git://github.com/mersocarlin/react-loaders#master",
+    "react-router": "^0.13.2",
+    "zurb-foundation-5": "^5.4.7"
+  }
 }

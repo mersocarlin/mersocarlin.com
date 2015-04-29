@@ -1,0 +1,64 @@
+body {
+  background-color: $mainBackground;
+  color: $white;
+  font-family: $mainFont;
+}
+
+.app-mersocarlin {
+  padding-top: 50px;
+
+  .img-avatar {
+    @include border-radius(50%);
+
+    background-color: $red;
+    border: 5px solid $white;
+    margin-bottom: 3em;
+    width: 100%;
+
+    &:hover {
+      background-color: $redHover;
+    }
+  }
+
+  h2 {
+    font-family: $mainFont !important;
+    &.myName {
+      color: $white;
+      font-size: 3.3em;
+      line-height: 0.6em;
+      padding: 0;
+      margin: 0;
+
+      @media (min-width: 643px) and (max-width: 768px) {
+        font-size: 2.6em;
+      }
+
+      @media (min-width: 768px) and (max-width: 900px) {
+        font-size: 3.2em;
+      }
+
+      @media (min-width: 900px) {
+        font-size: 3.8em;
+      }
+    }
+  }
+
+  .myTitle {
+    h3 {
+      font-family: $mainFont;
+      color: $white;
+      font-size: 2em;
+    }
+  }
+
+
+  .columns-social {
+    height: 3em;
+  }
+
+  .fa-code {
+    color: $red;
+    margin-left: 0.5em;
+  }
+
+}
