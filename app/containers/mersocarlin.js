@@ -4,10 +4,6 @@ import React from 'react';
 import SocialList from '../components/social-list';
 
 
-import '../main.scss';
-
-
-
 export default React.createClass({
 
   propTypes: {

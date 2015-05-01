@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import ReactLoaders from 'react-loaders/dist/react-loaders';
 
 
@@ -38,6 +39,14 @@ export default React.createClass({
             })
           }
         </div>
+
+        <footer>
+          <div className="left">
+          <Link to="app" className="btn">
+            Back to my website
+          </Link>
+          </div>
+        </footer>
       </div>
     );
   }
