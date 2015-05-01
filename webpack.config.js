@@ -2,23 +2,19 @@
 var path = require('path');
 var webpack = require('webpack');
 
+
 module.exports = {
   context: path.join(__dirname),
-
-  entry: {
-    poll: ['./lib/index.js']
-  },
+  entry: './lib/index.js',
 
   output: {
     path: 'build',
-    publicPath: '/build/',
-    filename: 'mersocarlin.js',
-    //libraryTarget: 'umd',
-    library: 'Mersocarlin'
+    publicPath: 'build/',
+    filename: 'mersocarlin.js'
   },
 
-  node: {
-    fs: "empty"
+  externals: {
+   'react': 'var React'
   },
 
   resolve: {
@@ -27,14 +23,14 @@ module.exports = {
   },
 
   plugins: [
-    /*new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-        'BRAVI_APPSTORE_APPS_SERVICE_URL': JSON.stringify(process.env.BRAVI_APPSTORE_APPS_SERVICE_URL || 'http://bravi-appstore-apps-service.develop.bravi.com.br'),
-        'BRAVI_APPSTORE_AUTH_SERVICE_URL': JSON.stringify(process.env.BRAVI_APPSTORE_AUTH_SERVICE_URL || 'http://bravi-appstore-auth-service.develop.bravi.com.br'),
-      }
-    }),*/
-    new webpack.IgnorePlugin(/vertx/),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
+      "root.jQuery": "jquery"
+    })
   ],
 
   module: {
@@ -63,10 +59,6 @@ module.exports = {
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "file-loader"
-      },
-      {
-        test: /\.jsx$/,
-        loader: 'jsx-loader?harmony'
       }
     ]
   }

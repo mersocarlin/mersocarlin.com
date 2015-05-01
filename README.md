@@ -1,27 +1,14 @@
 # mersocarlin
 
-Get the AMD module located at `mersocarlin.js` and include it in your project.
+This is my personal [website's](http://www.mersocarlin.com) source.
 
-Here is a sample integration:
+## What do we have here? 
 
-```js
-require.config({
-  paths: {
-    'react': 'vendor/bower_components/react/react',
-    'Mersocarlin': 'mersocarlin'
-  }
-});
+* [NodeJS](https://nodejs.org/)
+* [ReactJS](https://facebook.github.io/react/)
+* [Webpack](http://webpack.github.io/)
+* [Animate.css](http://daneden.github.io/animate.css/)
+* [Font-awesome](http://fortawesome.github.io/Font-Awesome/)
+* [Zurb Foundation](http://foundation.zurb.com/)
 
-require(['react', 'Mersocarlin'], function(React, Mersocarlin) {
-
-  React.render(React.createElement(Mersocarlin), document.getElementById('widget-container'));
-
-});
-```
-
-## Development
-
-* Development server `npm run dev`.
-* Continuously run tests on file changes `npm run watch-test`;
-* Run tests: `npm test`;
-* Build `npm run build`;
+I also have a template for building ReactJS apps. Find out more by clicking [here](https://github.com/mersocarlin/react-webpack-template)
