@@ -19,12 +19,14 @@ export default React.createClass({
     return (
       <div className="react-loaders fadeIn animated">
         <header>
-          <div className="left">
-            <h1>React-Loaders</h1>
-            <h2>Delightful and performance-focused pure css loading animations made for <a href="https://facebook.github.io/react/">React</a> around <a href="https://github.com/ConnorAtherton/loaders.css">Loader.css</a></h2>
-          </div>
-          <div className="right">
-            <a href="https://github.com/mersocarlin/react-loaders" className="btn right">View on Github</a>
+          <div className="row">
+            <div className="small-12 medium-7 large-9 columns">
+              <h1>React-Loaders</h1>
+              <h2>Delightful and performance-focused pure css loading animations made for <a href="https://facebook.github.io/react/">React</a> around <a href="https://github.com/ConnorAtherton/loaders.css">Loader.css</a></h2>
+            </div>
+            <div className="small-12 medium-5 large-3 columns">
+              <a href="https://github.com/mersocarlin/react-loaders" className="btn right">View on Github</a>
+            </div>
           </div>
         </header>
 
