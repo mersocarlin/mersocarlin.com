@@ -33,21 +33,17 @@
     }
   }
 
-  header {
-    @extend .cf;
-
-    width: 100%;
-
-    > div {
-      width: 50%;
-    }
-
-    > .left,
-    > .right {
-      height: 100%;
-    }
-
-  }
+  // .loaders {
+  //   width: 100%;
+  //
+  //   .loader {
+  //     height: 200px;
+  //
+  //     .loader-inner {
+  //       margin: 0 auto;
+  //     }
+  //   }
+  // }
 
   .loaders {
     width: 100%;
@@ -71,28 +67,6 @@
       justify-content: center;
       position: initial;
     }
-  }
-
-  footer {
-    margin-top: 5em;
-  }
-
-  /**
- * Util classes
- */
-
-  .left {
-    float: left;
-  }
-
-  .right {
-    float: right;
-  }
-
-  .cf {
-    content: "";
-    display: table;
-    clear: both;
   }
 
   /**

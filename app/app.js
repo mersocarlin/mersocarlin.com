@@ -6,7 +6,8 @@ import routes from './routes';
 
 
 import './styles/animate.css';
-import './styles/main.scss';
+import './styles/app.scss';
+
 
 Router.run(routes, function (Handler) {
   React.render(<Handler/>, document.body);
