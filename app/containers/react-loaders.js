@@ -43,10 +43,12 @@ export default React.createClass({
         </div>
 
         <footer>
-          <div className="left">
-          <Link to="app" className="btn">
-            Back to my website
-          </Link>
+          <div className="row">
+            <div className="small-12 medium-12 large-12">
+              <Link to="app" className="btn">
+                Back to my website
+              </Link>
+            </div>
           </div>
         </footer>
       </div>
