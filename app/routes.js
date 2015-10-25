@@ -1,14 +1,18 @@
 import React from 'react';
-import { Route, DefaultRoute } from 'react-router';
+import { IndexRoute, Router, Route } from 'react-router';
 
 
-import MersoCarlin  from './containers/mersocarlin';
+import App from './containers/app';
+import Home  from './containers/home';
 import ReactLoaders from './containers/react-loaders';
 
 
 export default (
-  <Route>
-    <Route path="/" name="app" handler={MersoCarlin} />
-    <Route path="/github/react-loaders" name="react-loaders" handler={ReactLoaders} />
-  </Route>
+  <Router>
+    <Route path="/" component={App}>
+      <IndexRoute component={Home}/>
+
+      <Route path="/github/react-loaders" component={ReactLoaders} />
+    </Route>
+  </Router>
 );
