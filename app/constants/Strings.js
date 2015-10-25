@@ -11,26 +11,33 @@ Strings['pt-BR'] = Object.assign({}, Strings['en-US'], {
   language: 'pt-BR',
 
   App: {
+    AppName: 'mersocarlin',
     GravatarUrl: 'https://s.gravatar.com/avatar/9d345af079c0e2a554a586c6cad3c20c?s=300',
-
-    CenterName: 'mersocarlin',
-
-    Social: [
+    MyTitle: 'Software Engineer',
+    SocialList: [
       {
-        Name: 'LinkedIn',
-        URL: 'https://www.linkedin.com/in/mersocarlin/en'
+        name: 'LinkedIn',
+        url:  'https://www.linkedin.com/in/mersocarlin/en',
+        icon: 'linkedin',
+        side: 0
       },
       {
-        Name: 'GMail',
-        URL: 'mailto:mersocarlin@mersocarlin.com'
+        name: 'Email',
+        url:  'mailto:mersocarlin@mersocarlin.com',
+        icon: 'envelope-o',
+        side: 0
       },
       {
-        Name: 'Facebook',
-        URL: 'http://www.facebook.com/mersocarlin'
+        name: 'Github',
+        url:  'https://github.com/mersocarlin',
+        icon: 'github',
+        side: 1
       },
       {
-        Name: 'Twitter',
-        URL: 'http://www.twitter.com/mersocarlin'
+        name: 'Twitter',
+        url:  'http://www.twitter.com/mersocarlin',
+        icon: 'twitter',
+        side: 1
       }
     ]
   }
