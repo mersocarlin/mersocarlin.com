@@ -22,15 +22,8 @@ export default React.createClass({
 
   render () {
     return (
-      <div className="app">
-
-        <Link to="/" activeClassName="active">Home</Link>
-        <br/>
-        <Link to="/about" activeClassName="active">About</Link>
-
-        <div className="container">
-          {this.props.children}
-        </div>
+      <div className="app-mersocarlin">
+        {this.props.children}
       </div>
     );
   }

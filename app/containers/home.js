@@ -106,7 +106,7 @@ export default React.createClass({
 
   render () {
     return (
-      <div className="app-mersocarlin">
+      <div className="page-home">
         {this.renderMyImage()}
         {this.renderMySocialStuff()}
         {this.renderSayMyTitle()}

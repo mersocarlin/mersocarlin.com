@@ -8,7 +8,9 @@ $fa-font-path: '~font-awesome/fonts';
 @import './variables';
 @import './mixins';
 
-@import './containers/mersocarlin';
+/* Containers */
+@import './containers/home';
 @import './containers/react-loaders';
 
+/* Components */
 @import './components/social-list';
