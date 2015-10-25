@@ -2,8 +2,8 @@ import 'babel/register';
 
 
 import React from 'react';
-import Router from 'react-router';
-import ReactDOM from 'react-dom';
+import { Router } from 'react-router';
+import { render } from 'react-dom'
 import FastClick from 'fastclick';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
@@ -23,7 +23,7 @@ import './styles/app.scss';
     FastClick.attach(document.body);
 
     //React.initializeTouchEvents(true);
-    ReactDOM.render(
+    render(
       <Router history={history}>{routes}</Router>,
       document.getElementById("main"));
   });
