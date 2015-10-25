@@ -10,12 +10,6 @@ export default React.createClass({
 
   mixins: [ FluxMixins, RouterMixins ],
 
-  getInitialState () {
-    return {
-      pageTitle: "Home"
-    }
-  },
-
   componentDidMount () { },
 
   componentDidUpdate () { },
