@@ -12,7 +12,7 @@ export default (
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
 
-      <Route path="/github/react-loaders" component={ReactLoaders} />
+      <Route path="github/react-loaders" component={ReactLoaders} />
     </Route>
   </Router>
 );
