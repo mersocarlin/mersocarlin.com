@@ -1,69 +1,34 @@
 import React from 'react';
 
 
+import { Strings } from '../constants';
+
+
 import SocialList from '../components/social-list';
 
 
 export default React.createClass({
 
-  propTypes: {
-    socialList: React.PropTypes.array,
-    myName: React.PropTypes.string
-  },
-
-  getDefaultProps () {
-    return {
-      socialList: [
-        {
-          name: 'LinkedIn',
-          url: 'https://www.linkedin.com/in/mersocarlin/en',
-          icon: 'linkedin',
-          side: 0
-        },
-        {
-          name: 'Email',
-          url: 'mailto:mersocarlin@mersocarlin.com',
-          icon: 'envelope-o',
-          side: 0
-        },
-        {
-          name: 'Github',
-          url: 'https://github.com/mersocarlin',
-          icon: 'github',
-          side: 1
-        },
-        {
-          name: 'Twitter',
-          url: 'http://www.twitter.com/mersocarlin',
-          icon: 'twitter',
-          side: 1
-        }
-      ],
-      imgUrl: 'https://s.gravatar.com/avatar/9d345af079c0e2a554a586c6cad3c20c?s=300',
-      sayMyName: 'mersocarlin',
-      sayMyTitle: 'Software Engineer'
-    }
-  },
-
   renderMyImage () {
     return (
       <div className="row text-center">
         <div className="small-8 medium-4 large-4 small-offset-2 medium-offset-4 large-offset-4 columns">
-          <img src={this.props.imgUrl} className="img-avatar bounceInDown animated" alt="" />
+          <img src={Strings.App.GravatarUrl} className="img-avatar bounceInDown animated" alt="" />
         </div>
       </div>
     );
   },
 
   renderSocialListBySide (side) {
-    var socialList = this.props.socialList.filter((social) => {
+    const socialList = Strings.App.SocialList.filter((social) => {
       return social.side === side || side === -1;
     });
-    return <SocialList socialList={socialList}/>;
+
+    return <SocialList socialList={socialList} />;
   },
 
   renderSayMyName () {
-    return <h2 className="myName text-center">{this.props.sayMyName}</h2>;
+    return <h2 className="myName text-center">{Strings.App.AppName}</h2>;
   },
 
   renderMySocialStuff () {
@@ -96,7 +61,7 @@ export default React.createClass({
       <div className="row text-center rubberBand animated myTitle">
         <div className="small-12 medium-8 large-8 medium-offset-2 large-offset-2 columns">
           <h3>
-            {this.props.sayMyTitle}
+            {Strings.App.MyTitle}
             <i className="fa fa-code"></i>
           </h3>
         </div>
@@ -106,7 +71,7 @@ export default React.createClass({
 
   render () {
     return (
-      <div className="app-mersocarlin">
+      <div className="page-home">
         {this.renderMyImage()}
         {this.renderMySocialStuff()}
         {this.renderSayMyTitle()}

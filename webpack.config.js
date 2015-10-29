@@ -13,15 +13,6 @@ module.exports = {
     filename: 'mersocarlin.js'
   },
 
-  externals: {
-   'react': 'var React'
-  },
-
-  resolve: {
-    modulesDirectories: ['webmodules', 'node_modules', 'bower_components'],
-    extensions: ['', '.js', '.json', 'css', 'sass']
-  },
-
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
