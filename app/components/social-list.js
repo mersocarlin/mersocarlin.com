@@ -1,16 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default React.createClass({
 
-  propTypes: {
-    socialList: React.PropTypes.array
-  },
-
-  getDefaultProps () {
-    return {
-      socialList: []
-    };
-  },
+export default class SocialList extends Component {
+  static propTypes: {
+    socialList: PropTypes.array,
+  }
 
   render () {
     return (
@@ -20,15 +14,15 @@ export default React.createClass({
             this.props.socialList.map((social, index) => {
               return (
                 <li key={index}>
-                  <a target='_blank' href={social.url}>
+                  <a target="_blank" href={social.url}>
                     <i className={`fa fa-${social.icon}`}></i>
                   </a>
                 </li>
-              )
+              );
             })
           }
         </ul>
       </div>
     );
   }
-});
+}

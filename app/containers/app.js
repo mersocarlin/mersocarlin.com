@@ -1,19 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
 
 
-import { FluxMixins, RouterMixins } from '../mixins';
-import { Strings } from '../constants';
-
-
-export default React.createClass({
-
-  mixins: [ FluxMixins, RouterMixins ],
-
-  componentDidMount () { },
-
-  componentDidUpdate () { },
-
+export default class App extends Component {
   render () {
     return (
       <div className="app-mersocarlin">
@@ -21,5 +9,4 @@ export default React.createClass({
       </div>
     );
   }
-
-});
+}
