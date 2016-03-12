@@ -1,16 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Josefin+Sans);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-$fa-font-path: '~font-awesome/fonts';
-@import "~font-awesome/scss/font-awesome";
-@import '~zurb-foundation-5/scss/foundation';
-
 @import './variables';
 @import './mixins';
 
 /* Containers */
 @import './containers/home';
-@import './containers/react-loaders';
-
-/* Components */
-@import './components/social-list';
