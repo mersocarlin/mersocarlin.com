@@ -32,7 +32,7 @@ class Home extends Component {
       <div className="ui rubberBand animated myTitle">
         <h3>
           {Strings.App.MyTitle}
-          <i className="fa fa-code"></i>
+          <i className="code icon"></i>
         </h3>
       </div>
     );
