@@ -5,6 +5,8 @@ import Root from './containers/root';
 const createHashHistory = require('history/lib/createHashHistory');
 
 import 'jquery';
+import 'semantic-ui-css/semantic.js';
+import 'semantic-ui-css/semantic.css';
 import './styles/animate.css';
 import './styles/app.scss';
 
