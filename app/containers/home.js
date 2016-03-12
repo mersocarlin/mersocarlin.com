@@ -1,81 +1,79 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { fetchSocialList } from '../actions/home';
 
 import { Strings } from '../constants';
 
+import Image from '../components/image';
+import SocialItem from '../components/social-item';
 
-import SocialList from '../components/social-list';
 
-
-export default React.createClass({
+class Home extends Component {
+  componentWillMount () {
+    this.props.dispatch(fetchSocialList());
+  }
 
   renderMyImage () {
     return (
-      <div className="row text-center">
-        <div className="small-8 medium-4 large-4 small-offset-2 medium-offset-4 large-offset-4 columns">
-          <img src={Strings.App.GravatarUrl} className="img-avatar bounceInDown animated" alt="" />
-        </div>
-      </div>
+      <Image
+        className="ui medium circular image fadeIn animated"
+        src={Strings.App.GravatarUrl}
+      />
     );
-  },
-
-  renderSocialListBySide (side) {
-    const socialList = Strings.App.SocialList.filter((social) => {
-      return social.side === side || side === -1;
-    });
-
-    return <SocialList socialList={socialList} />;
-  },
+  }
 
   renderSayMyName () {
-    return <h2 className="myName text-center">{Strings.App.AppName}</h2>;
-  },
-
-  renderMySocialStuff () {
-    return (
-      <div className="row bounceInUp animated mySocial">
-        <div className="small-10 medium-8 large-8 small-offset-1 medium-offset-2 large-offset-2 columns">
-          <div className="row">
-            <div className="hide-for-small-only medium-3 large-3 columns columns-social">
-              {this.renderSocialListBySide(0)}
-            </div>
-            <div className="small-12 medium-6 large-6 columns columns-social">
-              {this.renderSayMyName()}
-            </div>
-            <div className="hide-for-small-only medium-3 large-3 columns columns-social">
-              {this.renderSocialListBySide(1)}
-            </div>
-          </div>
-          <div className="row show-for-small-only">
-            <div className="small-12">
-              {this.renderSocialListBySide(-1)}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  },
+    return <h2 className="ui myName">{Strings.App.AppName}</h2>;
+  }
 
   renderSayMyTitle () {
     return (
-      <div className="row text-center rubberBand animated myTitle">
-        <div className="small-12 medium-8 large-8 medium-offset-2 large-offset-2 columns">
-          <h3>
-            {Strings.App.MyTitle}
-            <i className="fa fa-code"></i>
-          </h3>
-        </div>
-      </div>
-    );
-  },
-
-  render () {
-    return (
-      <div className="page-home">
-        {this.renderMyImage()}
-        {this.renderMySocialStuff()}
-        {this.renderSayMyTitle()}
+      <div className="ui rubberBand animated myTitle">
+        <h3>
+          {Strings.App.MyTitle}
+          <i className="fa fa-code"></i>
+        </h3>
       </div>
     );
   }
-});
+
+  renderSocialList ({ items }) {
+    return (
+      <div className="ui social-list">
+        {
+          items.map((item, index) => {
+            return (
+              <SocialItem
+                key={index}
+                item={item}
+              />
+            );
+          })
+        }
+      </div>
+    );
+  }
+
+  render () {
+    const { socialList } = this.props;
+
+    return (
+      <div className="page-home ui middle aligned center aligned grid">
+        <div className="column">
+          {this.renderMyImage()}
+          {this.renderSayMyName()}
+          {this.renderSayMyTitle()}
+          {!socialList.isFetching && this.renderSocialList(socialList)}
+        </div>
+      </div>
+    );
+  }
+}
+
+
+export default connect(state => {
+  return {
+    socialList: state.socialList,
+  };
+})(Home);

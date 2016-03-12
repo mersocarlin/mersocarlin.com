@@ -1,6 +1,3 @@
-import Strings from './strings';
+import strings from './strings';
 
-
-export default {
-  Strings: Strings
-}
+export const Strings = strings;
