@@ -16,28 +16,33 @@ function _fetchSocialList () {
     try {
       const data = [
         {
-          name: 'LinkedIn',
-          url: 'https://www.linkedin.com/in/mersocarlin/en',
           icon: 'linkedin',
+          name: 'LinkedIn',
           side: 0,
+          title: 'Checkout my LinkedIn profile!',
+          url: 'https://www.linkedin.com/in/mersocarlin/en',
         },
         {
+          className: 'google plus',
+          icon: 'mail',
           name: 'Email',
-          url: 'mailto:mersocarlin@mersocarlin.com',
-          icon: 'envelope-o',
           side: 0,
+          title: 'Feel free to send me an email and get in touch!',
+          url: 'mailto:mersocarlin@mersocarlin.com',
         },
         {
-          name: 'Github',
-          url: 'https://github.com/mersocarlin',
           icon: 'github',
+          name: 'Github',
           side: 1,
+          title: 'Want to see how do I code? GitHub is the right place ;)',
+          url: 'https://github.com/mersocarlin',
         },
         {
-          name: 'Twitter',
-          url: 'http://www.twitter.com/mersocarlin',
           icon: 'twitter',
+          name: 'Twitter',
           side: 1,
+          title: 'Checkout my last tweets!',
+          url: 'http://www.twitter.com/mersocarlin',
         },
       ];
       dispatch({ type: SOCIAL_LIST_SUCCESS, data });
