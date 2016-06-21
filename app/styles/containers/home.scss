@@ -1,20 +1,10 @@
 body {
   background-color: $mainBackground;
-  color: $white;
+  color: $mainColor;
   font-family: $mainFont !important;
-
-  .grid {
-    height: 100%;;
-  }
 }
 
 .page-home {
-  .column {
-    & > .ui {
-      margin-top: 1em;
-    }
-  }
-
   .image-component {
     height: 200px;
     margin: 0 auto;
@@ -25,12 +15,12 @@ body {
     }
 
     img {
-      border: 3px solid $white;
+      border: 3px solid $mainColor;
     }
   }
 
   .myName {
-    color: $white;
+    color: $mainColor;
     font-family: $mainFont;
     font-size: 3em;
     line-height: 1em;
@@ -42,7 +32,7 @@ body {
   .myTitle {
     h3 {
       font-family: $mainFont;
-      color: $white;
+      color: $mainColor;
       font-size: 2em;
       margin: 0;
       padding: 0;
