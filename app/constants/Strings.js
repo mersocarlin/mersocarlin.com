@@ -8,6 +8,12 @@ export default {
   },
   Contact: {
     Title: 'Contact',
+    Feedback: {
+      Header: 'Thanks for you contact!',
+      Message1: 'Your message has been sent to me!',
+      Message2: 'I really appreciate your contact and we\'ll be in touch very soon.',
+      Message3: 'Best,',
+    },
     Form: {
       ErrorHeader: 'Ooops! Something is wrong!',
       Name: {

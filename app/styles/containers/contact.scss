@@ -1,0 +1,30 @@
+.page-contact {
+  .ui.header {
+    margin: 2em 0;
+  }
+
+  .ui.text.container {
+    font-family: $mainFont !important;
+  }
+
+  .contact-sent {
+    margin: 5em 0;
+
+    .ui.card {
+      margin: 0 auto;
+    }
+  }
+
+  .contact-form-component {
+    margin-bottom: 5em;
+  }
+
+  .map-component {
+    margin-top: 1em;
+  }
+
+  .social-list {
+    text-align: center;
+    margin-top: 2em;
+  }
+}
