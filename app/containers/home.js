@@ -59,7 +59,7 @@ class Home extends Component {
     const { socialList } = this.props;
 
     return (
-      <div className="page-home ui middle aligned center aligned grid">
+      <div className="page-home ui middle aligned column centered grid">
         <div className="column">
           {this.renderMyImage()}
           {this.renderSayMyName()}

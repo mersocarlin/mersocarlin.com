@@ -84,3 +84,9 @@
   -moz-box-shadow: inset 0px 0px 0px $width $color;
   -o-box-shadow: inset 0px 0px 0px $width $color;
 }
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
