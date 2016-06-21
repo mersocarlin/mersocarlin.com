@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: 'build',
     publicPath: 'build/',
-    filename: 'mersocarlin.js'
+    filename: 'mersocarlin.js',
   },
 
   plugins: [
@@ -18,14 +18,16 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
     }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-      }
+        'MAP_CENTER_LATITUDE': JSON.stringify(process.env.MAP_CENTER_LATITUDE || '53.551086'),
+        'MAP_CENTER_LONGITUDE': JSON.stringify(process.env.MAP_CENTER_LONGITUDE || '9.993682'),
+      },
     }),
   ],
 

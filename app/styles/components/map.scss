@@ -1,0 +1,10 @@
+.map-component {
+  .map {
+    height: 200px;
+    width: 100%;
+
+    @media (min-width: 768px) {
+      height: 300px;
+    }
+  }
+}
