@@ -2,7 +2,7 @@ import {
   SOCIAL_LIST_REQUEST,
   SOCIAL_LIST_SUCCESS,
   SOCIAL_LIST_FAILURE,
-} from '../actions/home';
+} from '../actions/social';
 
 
 const INITIAL_STATE = {

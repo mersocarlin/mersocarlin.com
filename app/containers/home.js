@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchSocialList } from '../actions/home';
+import { fetchSocialList } from '../actions/social';
 
 import { Strings } from '../constants';
 
