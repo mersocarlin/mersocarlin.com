@@ -2,6 +2,7 @@ import {
   SEND_CONTACT_REQUEST,
   SEND_CONTACT_SUCCESS,
   SEND_CONTACT_FAILURE,
+  RESET_CONTACT_FORM,
 } from '../actions/contact';
 
 
@@ -31,6 +32,10 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         isSubmiting: false,
         error: action.error,
+      };
+    case RESET_CONTACT_FORM:
+      return {
+        ...INITIAL_STATE,
       };
     default:
       return state;

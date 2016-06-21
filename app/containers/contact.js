@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 
 import config from '../env/config';
-import { sendContactForm } from '../actions/contact';
+import { resetContactForm, sendContactForm } from '../actions/contact';
 import { fetchSocialList } from '../actions/social';
 import { Strings } from '../constants';
 
@@ -29,6 +29,10 @@ class Contact extends Component {
 
   componentWillMount () {
     this.props.dispatch(fetchSocialList());
+  }
+
+  componentWillUnmount () {
+    this.props.dispatch(resetContactForm());
   }
 
   onSubmit (payload) {
@@ -118,7 +122,7 @@ class Contact extends Component {
             zoom={15}
           />
         </div>
-        <div className="ui two column centered grid">
+        <div className="ui column centered grid">
           <div className="column">
             {!socialList.isFetching && this.renderSocialList(socialList)}
           </div>
