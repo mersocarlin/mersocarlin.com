@@ -6,6 +6,11 @@ export default class App extends Component {
     return (
       <div className="app-mersocarlin">
         {this.props.children}
+        <div className="ui footer container">
+          <div className="column">
+            &copy; 2016 Hemerson Carlin. All rights reserved.
+          </div>
+        </div>
       </div>
     );
   }
