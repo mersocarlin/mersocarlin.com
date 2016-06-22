@@ -45,7 +45,9 @@ export default class App extends Component {
     return (
       <div className="app-mersocarlin">
         {this.renderMenu(this.props)}
-        {this.props.children}
+        <div className="page-mersocarlin">
+          {this.props.children}
+        </div>
         <div className="ui footer container">
           <div className="column">
             &copy; 2016 Hemerson Carlin. All rights reserved.

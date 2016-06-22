@@ -24,12 +24,12 @@ class Home extends Component {
   }
 
   renderSayMyName () {
-    return <h2 className="ui myName">{Strings.App.AppName}</h2>;
+    return <h2 className="myName">{Strings.App.AppName}</h2>;
   }
 
   renderSayMyTitle () {
     return (
-      <div className="ui rubberBand animated myTitle">
+      <div className="rubberBand animated myTitle">
         <h3>
           {Strings.App.MyTitle}
           <i className="code icon"></i>
@@ -40,7 +40,7 @@ class Home extends Component {
 
   renderSocialList ({ items }) {
     return (
-      <div className="ui social-list">
+      <div className="social-list">
         {
           items.map((item, index) => {
             return (
@@ -59,13 +59,11 @@ class Home extends Component {
     const { socialList } = this.props;
 
     return (
-      <div className="page-home ui middle aligned column centered grid">
-        <div className="column">
-          {this.renderMyImage()}
-          {this.renderSayMyName()}
-          {this.renderSayMyTitle()}
-          {!socialList.isFetching && this.renderSocialList(socialList)}
-        </div>
+      <div className="page-home">
+        {this.renderMyImage()}
+        {this.renderSayMyName()}
+        {this.renderSayMyTitle()}
+        {!socialList.isFetching && this.renderSocialList(socialList)}
       </div>
     );
   }

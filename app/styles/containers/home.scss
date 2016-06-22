@@ -4,63 +4,79 @@ body {
   font-family: $mainFont !important;
 }
 
-.top-menu {
-  border: none !important;
-  @include border-radius(0px !important);
-  @include box-shadow(none !important);
-}
+.app-mersocarlin {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 
-.page-home {
-  .image-component {
-    height: 200px;
-    margin: 0 auto;
-    width: 200px;
+  .top-menu {
+    border: none !important;
+    @include border-radius(0px !important);
+    @include box-shadow(none !important);
+  }
 
-    .loader {
-      top: 85px;
-    }
+  .page-mersocarlin {
+    flex: 1;
 
-    img {
-      border: 3px solid $mainColor;
+    .page-home {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+
+      .image-component {
+        height: 200px;
+        margin: 0 auto;
+        width: 200px;
+
+        .loader {
+          top: 85px;
+        }
+
+        img {
+          border: 3px solid $mainColor;
+        }
+      }
+
+      .myName {
+        color: $mainColor;
+        font-family: $mainFont;
+        font-size: 3em;
+        line-height: 1em;
+        margin: 0.3em 0 0 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      .myTitle {
+        margin: 1em 0;
+        h3 {
+          font-family: $mainFont;
+          color: $mainColor;
+          font-size: 2em;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+        }
+
+        .code {
+          margin-left: 0.5em;
+        }
+      }
+
+      .social-list {
+        text-align: center;
+
+        a {
+          margin: 0 0.5em;
+        }
+      }
     }
   }
 
-  .myName {
-    color: $mainColor;
-    font-family: $mainFont;
-    font-size: 3em;
-    line-height: 1em;
-    margin: 0;
-    padding: 0;
+  .footer {
     text-align: center;
+    margin-bottom: 1em;
   }
-
-  .myTitle {
-    margin-top: 2em;
-    h3 {
-      font-family: $mainFont;
-      color: $mainColor;
-      font-size: 2em;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-
-    .code {
-      margin-left: 0.5em;
-    }
-  }
-
-  .social-list {
-    margin-top: 2em;
-    text-align: center;
-    a {
-      margin: 0 0.5em;
-    }
-  }
-}
-
-.footer {
-  text-align: center;
-  margin: 2em 0;
 }
