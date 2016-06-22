@@ -41,7 +41,7 @@ class Contact extends Component {
 
   renderSocialList ({ items }) {
     return (
-      <div className=" social-list">
+      <div className="social-list">
         {
           items.map((item, index) => {
             return (
@@ -122,11 +122,7 @@ class Contact extends Component {
             zoom={15}
           />
         </div>
-        <div className="ui column centered grid">
-          <div className="column">
-            {!socialList.isFetching && this.renderSocialList(socialList)}
-          </div>
-        </div>
+        {!socialList.isFetching && this.renderSocialList(socialList)}
       </div>
     );
   }
