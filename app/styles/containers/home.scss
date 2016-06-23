@@ -13,6 +13,10 @@ body {
     border: none !important;
     @include border-radius(0px !important);
     @include box-shadow(none !important);
+
+    .pointing.menu {
+      border-bottom: 2px solid $mainBackground;
+    }
   }
 
   .page-mersocarlin {

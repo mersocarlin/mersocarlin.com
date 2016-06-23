@@ -14,10 +14,12 @@ export default class App extends Component {
   renderMenu ({ location: { pathname } }) {
     const menuItems = [{
       name: Strings.Menu.Home,
+      icon: 'home',
       to: '/',
       active: [/^\/$/].some(path => path.test(pathname)),
     }, {
       name: Strings.Menu.Contact,
+      icon: 'call',
       to: '/contact',
       active: [/^\/contact$/].some(path => path.test(pathname)),
     }];
@@ -25,17 +27,19 @@ export default class App extends Component {
     return (
       <div className="ui segment top-menu">
         <div className="ui secondary pointing menu">
-          {menuItems.map((item, index) => {
-            const itemCssClass = classNames('item', { active: item.active });
-            return (
-              <Link
-                key={index}
-                to={item.to}
-                className={itemCssClass}
-              >{item.name}
-              </Link>
-            );
-          })}
+          <div className="right menu">
+            {menuItems.map((item, index) => {
+              const itemCssClass = classNames('item', { active: item.active });
+              return (
+                <Link
+                  key={index}
+                  to={item.to}
+                  className={itemCssClass}
+                ><i className={`${item.icon} icon`}></i> {item.name}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
@@ -49,9 +53,7 @@ export default class App extends Component {
           {this.props.children}
         </div>
         <div className="ui footer container">
-          <div className="column">
-            &copy; 2016 Hemerson Carlin. All rights reserved.
-          </div>
+          &copy; 2016 Hemerson Carlin. All rights reserved.
         </div>
       </div>
     );
