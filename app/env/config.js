@@ -8,4 +8,5 @@ export default {
       lng: process.env.MAP_CENTER_LONGITUDE,
     },
   },
+  googleAnalyticsId: process.env.GA_ID,
 };
