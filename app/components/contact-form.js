@@ -58,7 +58,7 @@ export default class ContactForm extends Component {
     this.props.onSubmit(payload);
   }
 
-  renderErrorMessage ({ error }) {
+  renderErrorMessage (error) {
     if (!error) return null;
 
     return (
@@ -68,14 +68,14 @@ export default class ContactForm extends Component {
           <div className="header">
             {Strings.Contact.Form.ErrorHeader}
           </div>
-          <p>{error.detail}</p>
+          <p>{error.message}</p>
         </div>
       </div>
     );
   }
 
   render () {
-    const { isSubmiting } = this.props;
+    const { error, isSubmiting } = this.props;
     const { errorFields, hasError } = this.state;
     const {
       name: nameError,
@@ -85,7 +85,10 @@ export default class ContactForm extends Component {
     } = errorFields;
 
     const fieldCssClass = 'required field';
-    const formCssClass = classNames('contact-form-component ui form', { 'error': hasError });
+    const formCssClass = classNames(
+      'contact-form-component ui form',
+      { 'error': hasError || error }
+    );
     const nameFieldCssClass = classNames(fieldCssClass, { 'error': nameError });
     const emailFieldCssClass = classNames(fieldCssClass, { 'error': emailError });
     const subjectFieldCssClass = classNames(fieldCssClass, { 'error': subjectError });
@@ -127,7 +130,7 @@ export default class ContactForm extends Component {
           <label>{formStrings.Message.Label}</label>
           <textarea ref="message" rows="4"></textarea>
         </div>
-        {this.renderErrorMessage(this.props)}
+        {this.renderErrorMessage(error)}
         <div className={submitCssClass} onClick={::this.onSubmit}>
           {formStrings.Send}
         </div>

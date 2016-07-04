@@ -46,19 +46,23 @@ class ApiClient {
       if (!err) {
         throw new UnauthorizationError('Unauthorization');
       }
+      let errorMessage = err.statusText;
+      if (err.data && err.data.message) {
+        errorMessage = err.data.message;
+      }
 
       switch (err.status) {
         default:
         case 401:
           throw new UnauthorizationError('Unautorized');
         case 400:
-          throw new BadRequestError(err.statusText);
+          throw new BadRequestError(errorMessage);
         case 404:
-          throw new NotFoundError(err.statusText);
+          throw new NotFoundError(errorMessage);
         case 500:
         case 502:
         case 503:
-          throw new InternalServerError(err.statusText);
+          throw new InternalServerError(errorMessage);
       }
     }
   }
