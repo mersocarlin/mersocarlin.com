@@ -28,6 +28,7 @@ module.exports = {
         'GA_ID': JSON.stringify(process.env.GA_ID || 'UA-17163651-1'),
         'MAP_CENTER_LATITUDE': JSON.stringify(process.env.MAP_CENTER_LATITUDE || '53.551086'),
         'MAP_CENTER_LONGITUDE': JSON.stringify(process.env.MAP_CENTER_LONGITUDE || '9.993682'),
+        'API_SERVICE_URL': JSON.stringify(process.env.API_SERVICE_URL || 'http://localhost:4000/'),
       },
     }),
   ],
