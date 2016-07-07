@@ -20,6 +20,8 @@ export default {
     },
     Form: {
       ErrorHeader: 'Ooops! Something is wrong!',
+      ErrorMessage: 'It seems that my server is down. Don\'t worry, it will be back in a minute. Meanwhile, what about you send an email to <a href="mailto:mersocarlin@mersocarlin.com" target="_blank">mersocarlin@mersocarlin.com</a> ? I\'m always happy to help ;)',
+      BigMessage: 'It seems that you are sending a very big message to me. In that case, would you mind sending an email to <a href="mailto:mersocarlin@mersocarlin.com" target="_blank">mersocarlin@mersocarlin.com</a> ? I\'m always happy to help ;)',
       Name: {
         Label: 'Name',
         Placeholder: 'Your name',
@@ -34,6 +36,10 @@ export default {
       },
       Message: {
         Label: 'Message',
+        Placeholder: '',
+      },
+      Validation: {
+        Label: '5 + 3?',
         Placeholder: '',
       },
       Send: 'Send',
