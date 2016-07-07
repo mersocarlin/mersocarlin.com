@@ -21,6 +21,7 @@ export default class ContactForm extends Component {
         email: false,
         subject: false,
         message: false,
+        validation: false,
       },
       hasError: false,
     };
@@ -32,34 +33,36 @@ export default class ContactForm extends Component {
       email: this.refs.email.value,
       subject: this.refs.subject.value,
       message: this.refs.message.value,
+      validation: this.refs.validation.value,
     };
 
     const { errorFields } = this.state;
     const error = { ...errorFields };
     Object
       .keys(error)
-      .forEach(field => error[field] = false);
+      .forEach(field => { error[field] = !payload[field]; });
 
-    if (!payload.name) error.name = true;
-    if (!payload.email) error.email = true;
-    if (!payload.subject) error.subject = true;
-    if (!payload.message) error.message = true;
+    if (parseInt(payload.validation, 10) !== 8) error.validation = true;
 
     const hasError = Object
       .keys(error)
       .filter(field => error[field])
       .length > 0;
 
-    if (hasError) {
-      this.setState({ errorFields: error, hasError });
-      return;
-    }
+    this.setState({ errorFields: error, hasError });
+
+    if (hasError) return;
 
     this.props.onSubmit(payload);
   }
 
   renderErrorMessage (error) {
     if (!error) return null;
+
+    let errorMessage = Strings.Contact.Form.ErrorMessage;
+    if (error.message) {
+      errorMessage = error.message;
+    }
 
     return (
       <div className="ui icon error message">
@@ -68,7 +71,7 @@ export default class ContactForm extends Component {
           <div className="header">
             {Strings.Contact.Form.ErrorHeader}
           </div>
-          <p>{error.message}</p>
+          <p dangerouslySetInnerHTML={{ __html: errorMessage }}></p>
         </div>
       </div>
     );
@@ -82,6 +85,7 @@ export default class ContactForm extends Component {
       email: emailError,
       subject: subjectError,
       message: messageError,
+      validation: validationError,
     } = errorFields;
 
     const fieldCssClass = 'required field';
@@ -93,6 +97,7 @@ export default class ContactForm extends Component {
     const emailFieldCssClass = classNames(fieldCssClass, { 'error': emailError });
     const subjectFieldCssClass = classNames(fieldCssClass, { 'error': subjectError });
     const messageFieldCssClass = classNames(fieldCssClass, { 'error': messageError });
+    const validationFieldCssClass = classNames(fieldCssClass, { 'error': validationError });
     const submitCssClass = classNames('ui green submit button', { 'loading': isSubmiting });
     const formStrings = Strings.Contact.Form;
 
@@ -104,7 +109,6 @@ export default class ContactForm extends Component {
             <input
               ref="name"
               type="text"
-              name="first-name"
               placeholder={formStrings.Name.Placeholder}
             />
           </div>
@@ -122,13 +126,20 @@ export default class ContactForm extends Component {
           <input
             ref="subject"
             type="text"
-            name="subject"
             placeholder={formStrings.Subject.Placeholder}
           />
         </div>
         <div className={messageFieldCssClass}>
           <label>{formStrings.Message.Label}</label>
           <textarea ref="message" rows="4"></textarea>
+        </div>
+        <div className={validationFieldCssClass}>
+          <label>{formStrings.Validation.Label}</label>
+          <input
+            ref="validation"
+            type="text"
+            placeholder={formStrings.Validation.Placeholder}
+          />
         </div>
         {this.renderErrorMessage(error)}
         <div className={submitCssClass} onClick={::this.onSubmit}>

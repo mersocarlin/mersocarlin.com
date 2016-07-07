@@ -44,7 +44,7 @@ class ApiClient {
       return await axios({ ...options });
     } catch (err) {
       if (!err) {
-        throw new UnauthorizationError('Unauthorization');
+        throw new UnauthorizationError(null);
       }
       let errorMessage = err.statusText;
       if (err.data && err.data.message) {
@@ -54,7 +54,7 @@ class ApiClient {
       switch (err.status) {
         default:
         case 401:
-          throw new UnauthorizationError('Unautorized');
+          throw new UnauthorizationError(null);
         case 400:
           throw new BadRequestError(errorMessage);
         case 404:
