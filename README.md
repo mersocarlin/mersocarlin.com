@@ -23,8 +23,8 @@ My personal [website's](http://www.mersocarlin.com) source.
 
 * [Express](https://expressjs.com/)
 * [Docker](https://www.docker.com/)
-* [Docker Cloud](https://www.docker.com/)
-* [Docker Hub](https://www.docker.com/)
+* [Docker Cloud](https://cloud.docker.com/)
+* [Docker Hub](https://hub.docker.com/)
 * [NodeJS](https://nodejs.org/)
 
 
