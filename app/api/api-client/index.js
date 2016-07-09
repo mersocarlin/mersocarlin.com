@@ -46,11 +46,8 @@ class ApiClient {
       if (!err) {
         throw new UnauthorizationError(null);
       }
-      let errorMessage = err.statusText;
-      if (err.data && err.data.message) {
-        errorMessage = err.data.message;
-      }
 
+      const errorMessage = err.data && err.data.error_message || err.statusText;
       switch (err.status) {
         default:
         case 401:
