@@ -1,62 +1,86 @@
 body {
   background-color: $mainBackground;
-  color: $white;
+  color: $mainColor;
   font-family: $mainFont !important;
-
-  .grid {
-    height: 100%;;
-  }
 }
 
-.page-home {
-  .column {
-    & > .ui {
-      margin-top: 1em;
+.app-mersocarlin {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  .top-menu {
+    border: none !important;
+    @include border-radius(0px !important);
+    @include box-shadow(none !important);
+
+    .pointing.menu {
+      border-bottom: 2px solid $mainBackground;
     }
   }
 
-  .image-component {
-    height: 200px;
-    margin: 0 auto;
-    width: 200px;
+  .page-mersocarlin {
+    flex: 1;
 
-    .loader {
-      top: 85px;
-    }
+    .page-home {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
 
-    img {
-      border: 3px solid $white;
+      .image-component {
+        height: 200px;
+        margin: 0 auto;
+        width: 200px;
+
+        .loader {
+          top: 85px;
+        }
+
+        img {
+          border: 3px solid $mainColor;
+        }
+      }
+
+      .myName {
+        color: $mainColor;
+        font-family: $mainFont;
+        font-size: 3em;
+        line-height: 1em;
+        margin: 0.3em 0 0 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      .myTitle {
+        margin: 1em 0;
+        h3 {
+          font-family: $mainFont;
+          color: $mainColor;
+          font-size: 2em;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+        }
+
+        .code {
+          margin-left: 0.5em;
+        }
+      }
+
+      .social-list {
+        text-align: center;
+
+        a {
+          margin: 0 0.5em;
+        }
+      }
     }
   }
 
-  .myName {
-    color: $white;
-    font-family: $mainFont;
-    font-size: 3em;
-    line-height: 1em;
-    margin: 0;
-    padding: 0;
+  .footer {
     text-align: center;
-  }
-
-  .myTitle {
-    h3 {
-      font-family: $mainFont;
-      color: $white;
-      font-size: 2em;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-
-    .code {
-      margin-left: 0.5em;
-    }
-  }
-
-  .social-list {
-    a {
-      margin: 0 0.5em;
-    }
+    margin-bottom: 1em;
   }
 }

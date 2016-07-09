@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: 'build',
     publicPath: 'build/',
-    filename: 'mersocarlin.js'
+    filename: 'mersocarlin.js',
   },
 
   plugins: [
@@ -18,14 +18,18 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
     }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-      }
+        'GA_ID': JSON.stringify(process.env.GA_ID || 'UA-17163651-1'),
+        'MAP_CENTER_LATITUDE': JSON.stringify(process.env.MAP_CENTER_LATITUDE || '53.551086'),
+        'MAP_CENTER_LONGITUDE': JSON.stringify(process.env.MAP_CENTER_LONGITUDE || '9.993682'),
+        'API_SERVICE_URL': JSON.stringify(process.env.API_SERVICE_URL || ''),
+      },
     }),
   ],
 
@@ -33,32 +37,32 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: 'style-loader!css-loader',
       },
       {
         test: /\.scss$/,
         loader: 'style!css!sass?outputStyle=expanded&'
         + 'includePaths[]=' + (path.resolve(__dirname, './bower_components'))
         + '&'
-        + 'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
+        + 'includePaths[]=' + (path.resolve(__dirname, './node_modules')),
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel',
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: "file-loader"
+        loader: 'file-loader',
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=10000&minetype=application/font-woff"
+        loader: 'url-loader?limit=10000&minetype=application/font-woff',
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader"
-      }
-    ]
-  }
+        loader: 'file-loader',
+      },
+    ],
+  },
 };
