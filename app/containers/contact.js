@@ -119,7 +119,7 @@ class Contact extends Component {
           <Map
             centerLat={parseFloat(lat)}
             centerLng={parseFloat(lng)}
-            zoom={15}
+            zoom={13}
           />
         </div>
         {!socialList.isFetching && this.renderSocialList(socialList)}
