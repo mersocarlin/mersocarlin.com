@@ -1,11 +1,10 @@
-/* jshint node: true */
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 
 module.exports = {
   context: path.join(__dirname),
-  entry: './app/index.js',
+  entry: './src/index.js',
 
   output: {
     path: 'dist',
@@ -25,7 +24,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-        'GA_ID': JSON.stringify(process.env.GA_ID || 'UA-17163651-1'),
+        'GOOGLE_ANALYTICS_ID': JSON.stringify(process.env.GOOGLE_ANALYTICS_ID || 'UA-17163651-1'),
+        'GOOGLE_MAPS_API_KEY': JSON.stringify(process.env.GOOGLE_MAPS_API_KEY || 'AIzaSyA946EyUxmKjZBttWpQJBIOdOdaBee8LHc'),
         'MAP_CENTER_LATITUDE': JSON.stringify(process.env.MAP_CENTER_LATITUDE || '52.5205177'),
         'MAP_CENTER_LONGITUDE': JSON.stringify(process.env.MAP_CENTER_LONGITUDE || '13.4014216'),
         'API_SERVICE_URL': JSON.stringify(process.env.API_SERVICE_URL || 'https://mersocarlin-api.herokuapp.com/'),
