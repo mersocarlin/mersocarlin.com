@@ -6,36 +6,27 @@
   "scripts": {
     "build": "npm run clean && NODE_ENV=production ./node_modules/.bin/webpack -p --progress --config ./webpack.config.js",
     "clean": "rm -rf dist",
-    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot",
-    "test": "./node_modules/.bin/eslint app/"
+    "dev": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --inline --hot",
+    "lint": "./node_modules/.bin/eslint app/"
   },
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mersocarlin/mersocarlin"
+    "url": "https://github.com/mersocarlin/mersocarlin.github.io"
   },
-  "keywords": [
-    "template",
-    "webpack",
-    "react js",
-    "javascript",
-    "es6",
-    "website",
-    "responsive"
-  ],
+  "keywords": [],
   "dependencies": {
-    "history": "1.13.1",
+    "google-map-react": "^0.22.3",
     "jquery": "^2.1.4",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "react-redux": "^4.0.1",
-    "react-router": "^1.0.2",
-    "redux": "^3.0.5",
-    "redux-router": "^1.0.0-beta5",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
     "semantic-ui-css": "^2.1.8"
   },
   "devDependencies": {
-    "axios": "^0.12.0",
     "babel-core": "^6.3.17",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.0",
@@ -53,8 +44,6 @@
     "meaning-error": "^2.1.0",
     "node-sass": "^3.4.0",
     "react-ga": "^2.1.0",
-    "redux-promise": "^0.5.0",
-    "redux-thunk": "^1.0.2",
     "sass-loader": "^3.0.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
