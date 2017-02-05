@@ -1,8 +1,6 @@
 # mersocarlin
 
-My personal [website's](http://www.mersocarlin.com) source.
-
-## What sort of stack are you using?
+My personal [website's](https://mersocarlin.github.io/) source.
 
 ### General
 
@@ -10,6 +8,9 @@ My personal [website's](http://www.mersocarlin.com) source.
 * [ES6](http://es6-features.org/#Constants)
 * [Babel](https://babeljs.io/)
 * [ESLint](http://eslint.org/)
+* [Jest](https://facebook.github.io/jest/)
+* [chai](http://chaijs.com/)
+* [enzyme](https://github.com/airbnb/enzyme/)
 
 ### Front-end
 
@@ -22,10 +23,4 @@ My personal [website's](http://www.mersocarlin.com) source.
 ### Back-end
 
 * [Express](https://expressjs.com/)
-* [Docker](https://www.docker.com/)
-* [Docker Cloud](https://cloud.docker.com/)
-* [Docker Hub](https://hub.docker.com/)
 * [NodeJS](https://nodejs.org/)
-
-
-I also have both templates for building [ReactJS apps](https://github.com/mersocarlin/react-webpack-template) and [Backend/microservices](https://github.com/mersocarlin/restify-template).
