@@ -8,8 +8,8 @@ module.exports = {
   entry: './app/index.js',
 
   output: {
-    path: 'build',
-    publicPath: 'build/',
+    path: 'dist',
+    publicPath: 'dist/',
     filename: 'mersocarlin.js',
   },
 
@@ -28,7 +28,7 @@ module.exports = {
         'GA_ID': JSON.stringify(process.env.GA_ID || 'UA-17163651-1'),
         'MAP_CENTER_LATITUDE': JSON.stringify(process.env.MAP_CENTER_LATITUDE || '52.5205177'),
         'MAP_CENTER_LONGITUDE': JSON.stringify(process.env.MAP_CENTER_LONGITUDE || '13.4014216'),
-        'API_SERVICE_URL': JSON.stringify(process.env.API_SERVICE_URL || ''),
+        'API_SERVICE_URL': JSON.stringify(process.env.API_SERVICE_URL || 'https://mersocarlin-api.herokuapp.com/'),
       },
     }),
   ],

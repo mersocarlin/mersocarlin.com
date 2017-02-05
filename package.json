@@ -4,7 +4,8 @@
   "description": "My personal website's source.",
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
   "scripts": {
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack -p",
+    "build": "npm run clean && NODE_ENV=production ./node_modules/.bin/webpack -p --progress --config ./webpack.config.js",
+    "clean": "rm -rf dist",
     "dev": "./node_modules/.bin/webpack-dev-server --inline --hot",
     "test": "./node_modules/.bin/eslint app/"
   },
