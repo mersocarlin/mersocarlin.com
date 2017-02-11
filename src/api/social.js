@@ -1,4 +1,5 @@
-export function getSocialList () {
+
+function getSocialList () {
   return [
     {
       icon: 'linkedin',
@@ -25,5 +26,9 @@ export function getSocialList () {
       side: 1,
       url: 'http://www.twitter.com/mersocarlin',
     },
-  ];
+  ]
+}
+
+export default {
+  getSocialList: getSocialList.bind(this),
 }

@@ -1,7 +1,2 @@
-import * as contact from './contact';
-import * as social from './social';
-
-export default {
-  contact,
-  social,
-};
+export contact from './contact'
+export social from './social'

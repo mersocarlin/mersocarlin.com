@@ -1,1 +1,1 @@
-export { default as ContactException } from './contact-exception';
+export ContactException from './contact-exception'
