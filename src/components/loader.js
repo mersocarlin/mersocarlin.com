@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react'
 
 
-class Loader extends Component {
-  render () {
-    return (
-      <div className="ui active centered inline loader"></div>
-    );
-  }
-}
+const Loader = () => (
+  <div className="ui active centered inline loader" />
+)
 
-export default Loader;
+export default Loader
