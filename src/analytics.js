@@ -1,14 +1,17 @@
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga'
 
-import { env } from './config';
+import { env } from './config'
 
-ReactGA.initialize(env.google.analyticsId);
+ReactGA.initialize(env.google.analyticsId)
 
-export function logPageView () {
-  if (env.environment === 'development') return;
+export default function () {
+  if (env.environment === 'development') {
+    return
+  }
 
-  const { location: { pathname } } = window;
+  // eslint-disable-next-line no-undef
+  const { location: { pathname } } = window
 
-  ReactGA.set({ page: pathname });
-  ReactGA.pageview(pathname);
+  ReactGA.set({ page: pathname })
+  ReactGA.pageview(pathname)
 }
