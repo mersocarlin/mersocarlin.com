@@ -13,4 +13,4 @@ export default {
       lng: parseFloat(process.env.MAP_CENTER_LONGITUDE),
     },
   },
-};
+}

@@ -1,51 +1,51 @@
-import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames';
+import React, { Component, PropTypes } from 'react'
+import classNames from 'classnames'
 
-import Loader from './loader';
+import Loader from './loader'
 
 class Image extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
-  };
+  }
 
   constructor (props) {
-    super(props);
+    super(props)
 
-    this.state = { isLoading: true };
-    this.handleLoad = this.handleLoad.bind(this);
+    this.state = { isLoading: true }
+    this.handleLoad = this.handleLoad.bind(this)
   }
 
   handleLoad () {
-    this.setState({ isLoading: false });
+    this.setState({ isLoading: false })
   }
 
-  renderImage ({ src }, { isLoading }) {
+  renderImage (src, isLoading) {
     const imageClass = classNames(
       'ui medium circular image fadeIn animated',
-      { 'hidden': isLoading }
-    );
+      { hidden: isLoading },
+    )
 
     return (
       <img
         alt=""
         className={imageClass}
         src={src}
-        onLoad={this.handleLoad.bind(this)}
+        onLoad={this.handleLoad}
       />
-    );
+    )
   }
 
   render () {
-    const { props, state } = this;
-    const { isLoading } = state;
+    const { src } = this.props
+    const { isLoading } = this.state
 
     return (
       <div className="image-component">
         {isLoading && <Loader />}
-        {this.renderImage(props, state)}
+        {this.renderImage(src, isLoading)}
       </div>
-    );
+    )
   }
 }
 
-export default Image;
+export default Image

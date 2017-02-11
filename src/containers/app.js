@@ -1,18 +1,27 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import classNames from 'classnames';
+import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
+import classNames from 'classnames'
+import moment from 'moment'
+
+import Icon from '../components/icon'
 
 
-import { strings } from '../config';
-import './app.scss';
+import { strings } from '../config'
+import './app.scss'
 
 
 export default class App extends Component {
   static propTypes = {
+    children: PropTypes.any,
     location: PropTypes.object,
-  };
+  }
 
-  renderMenu ({ location: { pathname } }) {
+  static defaultProps = {
+    children: null,
+    location: null,
+  }
+
+  renderMenu ({ pathname }) {
     const menuItems = [{
       name: strings.menu.home,
       icon: 'home',
@@ -23,40 +32,45 @@ export default class App extends Component {
       icon: 'call',
       to: '/contact',
       active: [/^\/contact$/].some(path => path.test(pathname)),
-    }];
+    }]
 
     return (
       <div className="ui segment top-menu">
         <div className="ui secondary pointing menu">
           <div className="right menu">
-            {menuItems.map((item, index) => {
-              const itemCssClass = classNames('item', { active: item.active });
+            {menuItems.map((item) => {
+              const itemCssClass = classNames('item', { active: item.active })
               return (
                 <Link
-                  key={index}
+                  key={item.icon}
                   to={item.to}
                   className={itemCssClass}
-                ><i className={`${item.icon} icon`}></i> {item.name}
+                >
+                  <Icon icon={item.icon} />
+                  {item.name}
                 </Link>
-              );
+              )
             })}
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   render () {
+    const { children, location } = this.props
+
     return (
       <div className="app-mersocarlin">
-        {this.renderMenu(this.props)}
+        {this.renderMenu(location)}
         <div className="page-mersocarlin">
-          {this.props.children}
+          {children}
         </div>
         <div className="ui footer container">
-          &copy; 2016 Hemerson Carlin. All rights reserved.
+          <Icon icon="copyright" />
+          {moment().year()} {strings.app.copy}
         </div>
       </div>
-    );
+    )
   }
 }

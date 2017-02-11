@@ -1,28 +1,29 @@
-import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames';
+import React, { PropTypes } from 'react'
+import classNames from 'classnames'
 
 
-class FormField extends Component {
-  static propTypes = {
-    label: PropTypes.string.isRequired,
-    hasError: PropTypes.bool.isRequired,
-  };
+const FormField = ({ children, hasError, label }) => {
+  const fieldCssClass = classNames(
+    'required field',
+    { error: hasError },
+  )
 
-  render () {
-    const { children, hasError, label } = this.props;
-
-    const fieldCssClass = classNames(
-      'required field',
-      { 'error': hasError }
-    );
-
-    return (
-      <div className={fieldCssClass}>
-        <label>{label}</label>
-        {children}
-      </div>
-    );
-  }
+  return (
+    <div className={fieldCssClass}>
+      <label>{label}</label>
+      {children}
+    </div>
+  )
 }
 
-export default FormField;
+FormField.propTypes = {
+  children: PropTypes.element,
+  hasError: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+}
+
+FormField.defaultProps = {
+  children: null,
+}
+
+export default FormField

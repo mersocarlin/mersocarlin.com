@@ -1,39 +1,37 @@
-import React, { Component, PropTypes } from 'react';
-import GoogleMap from 'google-map-react';
+import React, { PropTypes } from 'react'
+import GoogleMap from 'google-map-react'
 
-import { mapStyle } from './map.style';
-import './map.scss';
+import mapStyle from './map.style'
+import './map.scss'
 
-class Map extends Component {
-  static propTypes = {
-    apiKey: PropTypes.string.isRequired,
-    center: PropTypes.object.isRequired,
-    zoom: PropTypes.number.isRequired,
-  };
+const Map = ({ children, apiKey, center, options, zoom }) => (
+  <div className="map-component">
+    <GoogleMap
+      bootstrapURLKeys={{
+        key: apiKey,
+        language: 'en',
+      }}
+      center={center}
+      zoom={zoom}
+      options={{ styles: mapStyle, ...options }}
+    >
+      {children}
+    </GoogleMap>
+  </div>
+)
 
-  render () {
-    const { apiKey, center, zoom } = this.props;
-    const bootstrapURLKeys = {
-      key: apiKey,
-      language: 'en',
-    };
-    const mapOptions = {
-      styles: mapStyle,
-    };
-
-    return (
-      <div className="map-component">
-        <GoogleMap ref="map"
-          bootstrapURLKeys={bootstrapURLKeys}
-          defaultCenter={center}
-          defaultZoom={zoom}
-          onChange={this.onMapChange}
-          options={mapOptions}
-        >
-        </GoogleMap>
-      </div>
-    );
-  }
+Map.propTypes = {
+  apiKey: PropTypes.string.isRequired,
+  center: PropTypes.object.isRequired,
+  children: PropTypes.element,
+  options: PropTypes.object,
+  zoom: PropTypes.number,
 }
 
-export default Map;
+Map.defaultProps = {
+  children: null,
+  options: { },
+  zoom: 13,
+}
+
+export default Map

@@ -1,2 +1,2 @@
-export { default as strings } from './strings';
-export { default as env } from './env';
+export strings from './strings'
+export env from './env'
