@@ -5,6 +5,7 @@ export default {
     appName: 'mersocarlin',
     gravatarUrl: 'https://www.gravatar.com/avatar/9d345af079c0e2a554a586c6cad3c20c?s=250',
     myTitle: 'Software Engineer',
+    copy: 'Hemerson Carlin. All rights reserved.',
   },
   menu: {
     home: 'Home',
@@ -14,7 +15,7 @@ export default {
     title: 'Contact',
     feedback: {
       header: 'Thanks for you contact!',
-      message1: 'Your message has been sent to me!',
+      message1: 'Your message has been sent to me! ',
       message2: 'I really appreciate your contact and we\'ll be in touch very soon.',
       message3: 'Best,',
     },

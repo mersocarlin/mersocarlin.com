@@ -1,21 +1,34 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 
-import { env } from '../config';
-import { resetContactForm, sendContactForm } from '../actions/contact';
-import { fetchSocialList } from '../actions/social';
-import { strings } from '../config';
+import { env, strings } from '../config'
+import { resetContactForm, sendContactForm } from '../actions/contact'
+import { fetchSocialList } from '../actions/social'
 
 
-import ContactForm from '../components/contact-form';
-import Map from '../components/map';
-import SocialItem from '../components/social-item';
-import './contact.scss';
+import ContactForm from '../components/contact-form'
+import Icon from '../components/icon'
+import Map from '../components/map'
+import SocialItem from '../components/social-item'
+import './contact.scss'
 
 class Contact extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+    sendContact: PropTypes.object,
+    socialList: PropTypes.object,
+  }
+
+  static defaultProps = {
+    dispatch: null,
+    sendContact: null,
+    socialList: null,
+  }
+
   constructor () {
-    super();
+    super()
     this.state = {
       hasError: false,
       errorFields: {
@@ -24,42 +37,40 @@ class Contact extends Component {
         subject: false,
         message: false,
       },
-    };
+    }
 
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
-  componentWillMount () {
-    this.props.dispatch(fetchSocialList());
+  componentDidMount () {
+    this.props.dispatch(fetchSocialList())
   }
 
   componentWillUnmount () {
-    this.props.dispatch(resetContactForm());
+    this.props.dispatch(resetContactForm())
   }
 
   onSubmit (payload) {
-    this.props.dispatch(sendContactForm(payload));
+    this.props.dispatch(sendContactForm(payload))
   }
 
   renderSocialList ({ items }) {
     return (
       <div className="social-list">
         {
-          items.map((item, index) => {
-            return (
-              <SocialItem
-                key={index}
-                item={item}
-              />
-            );
-          })
+          items.map(item => (
+            <SocialItem
+              key={item.icon}
+              item={item}
+            />
+          ))
         }
       </div>
-    );
+    )
   }
 
   renderContactSentCard ({ contactSent }) {
-    if (!contactSent) return null;
+    if (!contactSent) return null
 
     return (
       <div className="ui column centered grid contact-sent bounceIn animated">
@@ -71,7 +82,7 @@ class Contact extends Component {
             <div className="meta">
               <span className="category">
                 {strings.contact.feedback.message1}
-                <i className="send icon"></i>
+                <Icon icon="send" />
               </span>
             </div>
             <div className="description">
@@ -82,16 +93,16 @@ class Contact extends Component {
           <div className="extra content">
             <span className="left floated like">
               <img alt="" className="ui avatar image" src={strings.app.gravatarUrl} />
-              <a href="http://www.twitter.com/mersocarlin" target="_blank">@mersocarlin</a>
+              <a href="http://www.twitter.com/mersocarlin" target="_blank" rel="noopener noreferrer">@mersocarlin</a>
             </span>
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   renderContactForm ({ contactSent, error, isSubmiting }) {
-    if (contactSent) return null;
+    if (contactSent) return null
 
     return (
       <div className="column">
@@ -101,12 +112,12 @@ class Contact extends Component {
           onSubmit={this.onSubmit}
         />
       </div>
-    );
+    )
   }
 
   render () {
-    const { google: { mapsApiKey },  map: { center } } = env;
-    const { sendContact, socialList } = this.props;
+    const { google: { mapsApiKey }, map: { center } } = env
+    const { sendContact, socialList } = this.props
 
     return (
       <div className="page-contact">
@@ -120,18 +131,22 @@ class Contact extends Component {
         <Map
           apiKey={mapsApiKey}
           center={center}
-          zoom={13}
-        />
+          options={{ zoomControl: false }}
+        >
+          <Icon
+            icon="marker"
+            size="huge"
+            lat={center.lat}
+            lng={center.lng}
+          />
+        </Map>
         {!socialList.isFetching && this.renderSocialList(socialList)}
       </div>
-    );
+    )
   }
 }
 
-
-export default connect(state => {
-  return {
-    sendContact: state.sendContact,
-    socialList: state.socialList,
-  };
-})(Contact);
+export default connect(state => ({
+  sendContact: state.sendContact,
+  socialList: state.socialList,
+}))(Contact)

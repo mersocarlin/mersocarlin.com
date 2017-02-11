@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react';
-import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import React, { PropTypes } from 'react'
+import { Provider } from 'react-redux'
+import { Router, browserHistory } from 'react-router'
 
-import { logPageView } from '../analytics';
-import routes from '../routes';
+import logPageView from '../analytics'
+import routes from '../routes'
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -13,10 +13,10 @@ const Root = ({ store }) => (
       onUpdate={logPageView}
     />
   </Provider>
-);
+)
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,
-};
+}
 
-export default Root;
+export default Root
