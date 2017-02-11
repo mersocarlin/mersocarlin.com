@@ -1,4 +1,4 @@
-# mersocarlin
+# mersocarlin [![Travis][build-badge]][build]
 
 My personal [website's](https://mersocarlin.github.io/) source.
 
@@ -24,3 +24,6 @@ My personal [website's](https://mersocarlin.github.io/) source.
 
 * [Express](https://expressjs.com/)
 * [NodeJS](https://nodejs.org/)
+
+[build-badge]: https://travis-ci.org/mersocarlin/mersocarlin.github.io.svg
+[build]: https://travis-ci.org/mersocarlin/mersocarlin.github.io
