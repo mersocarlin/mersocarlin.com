@@ -24,7 +24,7 @@ function getSocialList () {
       icon: 'twitter',
       name: 'Twitter',
       side: 1,
-      url: 'http://www.twitter.com/mersocarlin',
+      url: 'https://twitter.com/mersocarlin',
     },
   ]
 }
