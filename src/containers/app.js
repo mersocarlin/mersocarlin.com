@@ -1,26 +1,56 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 import moment from 'moment'
+import $ from 'jquery'
 
+import FlagMenu from '../components/flag-menu'
 import Icon from '../components/icon'
+
+import { updateLocale } from '../actions/i18n'
 
 import './app.scss'
 
 
-export default class App extends Component {
+class App extends Component {
   static contextTypes = {
     intl: PropTypes.object,
   }
 
   static propTypes = {
+    dispatch: PropTypes.func,
     children: PropTypes.any,
     location: PropTypes.object,
   }
 
   static defaultProps = {
+    dispatch: null,
     children: null,
     location: null,
+  }
+
+  constructor (context, props) {
+    super(context, props)
+
+    this.state = {
+      flag: 'gb',
+      locale: 'en',
+    }
+    this.handleFlagClick = this.handleFlagClick.bind(this)
+  }
+
+  componentDidMount () {
+    $('.ui.dropdown').dropdown()
+  }
+
+  handleFlagClick (flag, locale) {
+    if (this.state.locale === locale) {
+      return
+    }
+
+    this.setState({ flag, locale })
+    this.props.dispatch(updateLocale(locale))
   }
 
   renderMenu ({ formatMessage }, { pathname }) {
@@ -53,6 +83,7 @@ export default class App extends Component {
               ))
             }
           </div>
+          <FlagMenu value={this.state.flag} onChange={this.handleFlagClick} />
         </div>
       </div>
     )
@@ -76,3 +107,7 @@ export default class App extends Component {
     )
   }
 }
+
+export default connect(state => ({
+  i18n: state.i18n,
+}))(App)

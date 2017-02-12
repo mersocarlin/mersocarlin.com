@@ -1,5 +1,5 @@
 export default {
-  'application.name': 'mersocarlin pt',
+  'application.name': 'mersocarlin',
   'application.copy': 'Hemerson Carlin. Todos os direitos reservados.',
 
   'mersocarlin.title': 'Engenheiro de Software',
@@ -11,7 +11,7 @@ export default {
 
   'contact.title': 'Contato',
   'contact.feedback.header': 'Obrigado pelo seu contato!',
-  'contact.feedback.message1': 'Sua mensagem já foi enviada pra mim! ',
+  'contact.feedback.message1': 'Mensagem enviada com sucesso! ',
   'contact.feedback.message2': 'Entrarei em contato o mais rápido possível.',
   'contact.feedback.message3': 'Atenciosamente,',
 

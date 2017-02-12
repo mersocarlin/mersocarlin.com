@@ -20,6 +20,20 @@ body {
     .pointing-menu {
       border-bottom: 2px solid #fff !important;
     }
+
+    .dropdown {
+      &.active {
+        font-weight: normal !important;
+      }
+
+      .menu {
+        .item {
+          &.active {
+            border: none;
+          }
+        }
+      }
+    }
   }
 
   .page-mersocarlin {
