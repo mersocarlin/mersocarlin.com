@@ -40,19 +40,18 @@ export default class App extends Component {
       <div className="ui segment top-menu">
         <div className="ui secondary pointing menu">
           <div className="right menu">
-            {menuItems.map((item) => {
-              const itemCssClass = classNames('item', { active: item.active })
-              return (
+            {
+              menuItems.map(item => (
                 <Link
                   key={item.icon}
                   to={item.to}
-                  className={itemCssClass}
+                  className={classNames('item', { active: item.active })}
                 >
                   <Icon icon={item.icon} />
                   {item.name}
                 </Link>
-              )
-            })}
+              ))
+            }
           </div>
         </div>
       </div>

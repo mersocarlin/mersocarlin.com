@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchSocialList } from '../actions/social'
 import Icon from '../components/icon'
 import Image from '../components/image'
-import SocialItem from '../components/social-item'
+import SocialList from '../components/social-list'
 import './home.scss'
 
 
@@ -27,13 +27,13 @@ class Home extends Component {
     this.props.dispatch(fetchSocialList())
   }
 
-  renderMyImage () {
+  renderImage () {
     return (
       <Image src={this.context.intl.formatMessage({ id: 'mersocarlin.gravatarUrl' })} />
     )
   }
 
-  renderMyName () {
+  renderName () {
     return (
       <h2 className="myName">
         {this.context.intl.formatMessage({ id: 'application.name' })}
@@ -41,7 +41,7 @@ class Home extends Component {
     )
   }
 
-  renderSayMyTitle () {
+  renderTitle () {
     return (
       <div className="rubberBand animated myTitle">
         <h3>
@@ -52,30 +52,15 @@ class Home extends Component {
     )
   }
 
-  renderSocialList ({ items }) {
-    return (
-      <div className="social-list">
-        {
-          items.map(item => (
-            <SocialItem
-              key={item.icon}
-              item={item}
-            />
-          ))
-        }
-      </div>
-    )
-  }
-
   render () {
     const { socialList } = this.props
 
     return (
       <div className="page-home">
-        {this.renderMyImage()}
-        {this.renderMyName()}
-        {this.renderSayMyTitle()}
-        {!socialList.isFetching && this.renderSocialList(socialList)}
+        {this.renderImage()}
+        {this.renderName()}
+        {this.renderTitle()}
+        {!socialList.isFetching && <SocialList items={socialList.items} />}
       </div>
     )
   }
