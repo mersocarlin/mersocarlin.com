@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -30,15 +30,16 @@ module.exports = {
         API_SERVICE_URL: JSON.stringify(process.env.API_SERVICE_URL || 'https://mersocarlin-api.herokuapp.com/'),
       },
     }),
+    new ExtractTextPlugin('[name].css'),
   ],
 
   module: {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
-      { test: /\.s?css$/, loaders: ['style', 'css', 'sass?includePaths[]='+ path.resolve(__dirname, 'node_modules')] },
-      { test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader' },
-      { test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' },
+      { test: /\.s?css$/, loader: ExtractTextPlugin.extract('style', 'css!sass', { publicPath: './' }) },
+      { test: /\.(png|jpg|jpeg|gif)$/, loader: 'file' },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=50000&mimetype=application/font-woff' },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file' },
     ],
   },
 }
