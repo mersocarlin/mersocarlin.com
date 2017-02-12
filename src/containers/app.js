@@ -5,12 +5,14 @@ import moment from 'moment'
 
 import Icon from '../components/icon'
 
-
-import { strings } from '../config'
 import './app.scss'
 
 
 export default class App extends Component {
+  static contextTypes = {
+    intl: PropTypes.object,
+  }
+
   static propTypes = {
     children: PropTypes.any,
     location: PropTypes.object,
@@ -21,14 +23,14 @@ export default class App extends Component {
     location: null,
   }
 
-  renderMenu ({ pathname }) {
+  renderMenu ({ formatMessage }, { pathname }) {
     const menuItems = [{
-      name: strings.menu.home,
+      name: formatMessage({ id: 'menu.home' }),
       icon: 'home',
       to: '/',
       active: [/^\/$/].some(path => path.test(pathname)),
     }, {
-      name: strings.menu.contact,
+      name: formatMessage({ id: 'menu.contact' }),
       icon: 'call',
       to: '/contact',
       active: [/^\/contact$/].some(path => path.test(pathname)),
@@ -58,17 +60,18 @@ export default class App extends Component {
   }
 
   render () {
+    const { intl } = this.context
     const { children, location } = this.props
 
     return (
       <div className="app-mersocarlin">
-        {this.renderMenu(location)}
+        {this.renderMenu(intl, location)}
         <div className="page-mersocarlin">
           {children}
         </div>
         <div className="ui footer container">
           <Icon icon="copyright" />
-          {moment().year()} {strings.app.copy}
+          {moment().year()} {intl.formatMessage({ id: 'application.copy' })}
         </div>
       </div>
     )

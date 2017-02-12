@@ -4,18 +4,18 @@ import fetchMock from 'fetch-mock'
 import { expect } from 'chai'
 
 import { env } from '../../src/config'
-import * as contactActions from '../../src/actions/contact'
 import {
+  sendContactForm,
   SEND_CONTACT_REQUEST,
   SEND_CONTACT_SUCCESS,
   SEND_CONTACT_FAILURE,
 } from '../../src/actions/contact'
 import { createBigString } from '../spec-helper'
 
-const middlewares = [ thunk ]
+const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
-describe.only('actions-contact', () => {
+describe('actions-contact', () => {
   beforeAll(() => {
     env.apiService.url = 'http://localhost.com/'
   })
@@ -23,7 +23,7 @@ describe.only('actions-contact', () => {
   it('it should dispatch SEND_CONTACT_FAILURE when invalid payload data', () => {
     fetchMock.mock('api/messages', {})
 
-    const expectedActions = [ SEND_CONTACT_REQUEST, SEND_CONTACT_FAILURE ]
+    const expectedActions = [SEND_CONTACT_REQUEST, SEND_CONTACT_FAILURE]
     const store = mockStore({})
     const payload = {
       name: createBigString(),
@@ -33,7 +33,7 @@ describe.only('actions-contact', () => {
     }
 
     return store
-      .dispatch(contactActions.sendContactForm(payload))
+      .dispatch(sendContactForm(payload))
       .then(() => {
         const actions = store
           .getActions()
@@ -47,10 +47,10 @@ describe.only('actions-contact', () => {
   it('it should dispatch SEND_CONTACT_FAILURE when invalid request from api', () => {
     fetchMock.mock(
       'http://localhost.com/api/messages',
-      { body: { error_message: 'Something is wrong', status_code: 400 } }
+      { body: { error_message: 'Something is wrong', status_code: 400 } },
     )
 
-    const expectedActions = [ SEND_CONTACT_REQUEST, SEND_CONTACT_FAILURE ]
+    const expectedActions = [SEND_CONTACT_REQUEST, SEND_CONTACT_FAILURE]
     const store = mockStore({})
     const payload = {
       name: 'your name',
@@ -60,7 +60,7 @@ describe.only('actions-contact', () => {
     }
 
     return store
-      .dispatch(contactActions.sendContactForm(payload))
+      .dispatch(sendContactForm(payload))
       .then(() => {
         const actions = store
           .getActions()
@@ -74,7 +74,7 @@ describe.only('actions-contact', () => {
   it('it should dispatch SEND_CONTACT_SUCCESS posting new contact message', () => {
     fetchMock.mock('http://localhost.com/api/messages', {})
 
-    const expectedActions = [ SEND_CONTACT_REQUEST, SEND_CONTACT_SUCCESS ]
+    const expectedActions = [SEND_CONTACT_REQUEST, SEND_CONTACT_SUCCESS]
     const store = mockStore({})
     const payload = {
       name: 'your name',
@@ -84,7 +84,7 @@ describe.only('actions-contact', () => {
     }
 
     return store
-      .dispatch(contactActions.sendContactForm(payload))
+      .dispatch(sendContactForm(payload))
       .then(() => {
         const actions = store
           .getActions()

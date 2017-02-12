@@ -1,6 +1,9 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 import { expect } from 'chai'
+
+import { mountWithIntl } from '../helpers/intl-enzyme-test-helper'
+
 import ContactForm from '../../src/components/contact-form'
 
 function setup () {
@@ -10,7 +13,7 @@ function setup () {
     onSubmit: jest.fn(),
   }
 
-  const enzymeWrapper = shallow(
+  const enzymeWrapper = mountWithIntl(
     <ContactForm {...props} />,
   )
 
@@ -38,7 +41,7 @@ describe('components -> contact-form', () => {
   })
 
   it('should render with error class', () => {
-    const wrapper = mount(
+    const wrapper = mountWithIntl(
       <ContactForm
         error={null}
         isSubmiting={false}
@@ -55,7 +58,7 @@ describe('components -> contact-form', () => {
   })
 
   it('should render message error', () => {
-    const wrapper = mount(
+    const wrapper = mountWithIntl(
       <ContactForm
         error={{ message: 'error message' }}
         isSubmiting={false}

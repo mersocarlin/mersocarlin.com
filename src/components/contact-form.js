@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 
 import FormField from './form-field'
 import Icon from './icon'
-import { strings } from '../config'
 
 
 class ContactForm extends Component {
   static propTypes = {
     error: PropTypes.object,
+    intl: intlShape.isRequired,
     isSubmiting: PropTypes.bool.isRequired,
     onSubmit: PropTypes.func.isRequired,
   }
@@ -65,12 +66,31 @@ class ContactForm extends Component {
     this.props.onSubmit(payload)
   }
 
-  renderErrorMessage (error) {
+  renderErrorMessage (error, formatMessage) {
     if (!error) return null
 
-    let errorMessage = strings.contact.form.errorMessage
+    const emailAddress = formatMessage({ id: 'mersocarlin.email' })
+    const email = (
+      <a href={`mailto:${emailAddress}`} target="_blank" rel="noopener noreferrer">
+        {emailAddress}
+      </a>
+    )
+    let errorMessage = (
+      <FormattedMessage
+        id="contact.form.errorMessage"
+        tagName="p"
+        values={{ email }}
+      />
+    )
     if (error.message) {
-      errorMessage = error.message
+      errorMessage = (
+        <FormattedMessage
+          id={error.message}
+          defaultMessage={error.message}
+          tagName="p"
+          values={{ email }}
+        />
+      )
     }
 
     return (
@@ -78,16 +98,16 @@ class ContactForm extends Component {
         <Icon icon="warning sign" />
         <div className="content">
           <div className="header">
-            {strings.contact.form.errorHeader}
+            {formatMessage({ id: 'contact.form.errorHeader' })}
           </div>
-          <p>{errorMessage}</p>
+          {errorMessage}
         </div>
       </div>
     )
   }
 
   render () {
-    const { error, isSubmiting } = this.props
+    const { error, intl: { formatMessage }, isSubmiting } = this.props
     const { errorFields, hasError } = this.state
     const formCssClass = classNames(
       'contact-form-component ui form',
@@ -97,50 +117,64 @@ class ContactForm extends Component {
       'ui green submit button',
       { loading: isSubmiting },
     )
-    const formStrings = strings.contact.form
 
     return (
       <div className={formCssClass}>
         <div className="two fields">
-          <FormField label={formStrings.name.label} hasError={errorFields.name}>
+          <FormField
+            label={formatMessage({ id: 'contact.form.name.label' })}
+            hasError={errorFields.name}
+          >
             <input
               ref={(name) => { this.name = name }}
               type="text"
-              placeholder={formStrings.name.placeholder}
+              placeholder={formatMessage({ id: 'contact.form.name.placeholder' })}
             />
           </FormField>
-          <FormField label={formStrings.email.label} hasError={errorFields.email}>
+          <FormField
+            label={formatMessage({ id: 'contact.form.email.label' })}
+            hasError={errorFields.email}
+          >
             <input
               ref={(email) => { this.email = email }}
               type="email"
-              placeholder={formStrings.email.placeholder}
+              placeholder={formatMessage({ id: 'contact.form.email.placeholder' })}
             />
           </FormField>
         </div>
-        <FormField label={formStrings.subject.label} hasError={errorFields.subject}>
+        <FormField
+          label={formatMessage({ id: 'contact.form.subject.label' })}
+          hasError={errorFields.subject}
+        >
           <input
             ref={(subject) => { this.subject = subject }}
             type="text"
-            placeholder={formStrings.subject.placeholder}
+            placeholder={formatMessage({ id: 'contact.form.subject.placeholder' })}
           />
         </FormField>
-        <FormField label={formStrings.message.label} hasError={errorFields.message}>
+        <FormField
+          label={formatMessage({ id: 'contact.form.message.label' })}
+          hasError={errorFields.message}
+        >
           <textarea ref={(message) => { this.message = message }} rows="4" />
         </FormField>
-        <FormField label={formStrings.validation.label} hasError={errorFields.validation}>
+        <FormField
+          label={formatMessage({ id: 'contact.form.validation.label' })}
+          hasError={errorFields.validation}
+        >
           <input
             ref={(validation) => { this.validation = validation }}
             type="text"
-            placeholder={formStrings.validation.placeholder}
+            placeholder=""
           />
         </FormField>
-        {this.renderErrorMessage(error)}
+        {this.renderErrorMessage(error, formatMessage)}
         <button className={submitCssClass} onClick={this.onSubmit}>
-          {formStrings.send}
+          {formatMessage({ id: 'contact.form.send' })}
         </button>
       </div>
     )
   }
 }
 
-export default ContactForm
+export default injectIntl(ContactForm)

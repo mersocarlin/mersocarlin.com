@@ -2,10 +2,9 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 
-import { env, strings } from '../config'
+import { env } from '../config'
 import { resetContactForm, sendContactForm } from '../actions/contact'
 import { fetchSocialList } from '../actions/social'
-
 
 import ContactForm from '../components/contact-form'
 import Icon from '../components/icon'
@@ -14,6 +13,9 @@ import SocialItem from '../components/social-item'
 import './contact.scss'
 
 class Contact extends Component {
+  static contextTypes = {
+    intl: PropTypes.object,
+  }
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -69,7 +71,7 @@ class Contact extends Component {
     )
   }
 
-  renderContactSentCard ({ contactSent }) {
+  renderContactSentCard (formatMessage, { contactSent }) {
     if (!contactSent) return null
 
     return (
@@ -77,22 +79,22 @@ class Contact extends Component {
         <div className="ui card">
           <div className="content">
             <div className="header">
-              {strings.contact.feedback.header}
+              {formatMessage({ id: 'contact.feedback.header' })}
             </div>
             <div className="meta">
               <span className="category">
-                {strings.contact.feedback.message1}
+                {formatMessage({ id: 'contact.feedback.message1' })}
                 <Icon icon="send" />
               </span>
             </div>
             <div className="description">
-              <p>{strings.contact.feedback.message2}</p>
-              <p>{strings.contact.feedback.message3}</p>
+              <p>{formatMessage({ id: 'contact.feedback.message2' })}</p>
+              <p>{formatMessage({ id: 'contact.feedback.message3' })}</p>
             </div>
           </div>
           <div className="extra content">
             <span className="left floated like">
-              <img alt="" className="ui avatar image" src={strings.app.gravatarUrl} />
+              <img alt="" className="ui avatar image" src={formatMessage({ id: 'mersocarlin.gravatarUrl' })} />
               <a href="http://www.twitter.com/mersocarlin" target="_blank" rel="noopener noreferrer">@mersocarlin</a>
             </span>
           </div>
@@ -117,15 +119,16 @@ class Contact extends Component {
 
   render () {
     const { google: { mapsApiKey }, map: { center } } = env
+    const { intl: { formatMessage } } = this.context
     const { sendContact, socialList } = this.props
 
     return (
       <div className="page-contact">
         <div className="ui text container">
           <div className="column">
-            <h1 className="ui header">{strings.contact.title}</h1>
+            <h1 className="ui header">{formatMessage({ id: 'contact.title' })}</h1>
           </div>
-          {this.renderContactSentCard(sendContact)}
+          {this.renderContactSentCard(formatMessage, sendContact)}
           {this.renderContactForm(sendContact)}
         </div>
         <Map

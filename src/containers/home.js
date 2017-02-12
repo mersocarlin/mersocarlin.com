@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchSocialList } from '../actions/social'
-import { strings } from '../config'
 import Icon from '../components/icon'
 import Image from '../components/image'
 import SocialItem from '../components/social-item'
@@ -10,6 +9,10 @@ import './home.scss'
 
 
 class Home extends Component {
+  static contextTypes = {
+    intl: PropTypes.object,
+  }
+
   static propTypes = {
     dispatch: PropTypes.func,
     socialList: PropTypes.object,
@@ -26,19 +29,23 @@ class Home extends Component {
 
   renderMyImage () {
     return (
-      <Image src={strings.app.gravatarUrl} />
+      <Image src={this.context.intl.formatMessage({ id: 'mersocarlin.gravatarUrl' })} />
     )
   }
 
-  renderSayMyName () {
-    return <h2 className="myName">{strings.app.appName}</h2>
+  renderMyName () {
+    return (
+      <h2 className="myName">
+        {this.context.intl.formatMessage({ id: 'application.name' })}
+      </h2>
+    )
   }
 
   renderSayMyTitle () {
     return (
       <div className="rubberBand animated myTitle">
         <h3>
-          {strings.app.myTitle}
+          {this.context.intl.formatMessage({ id: 'mersocarlin.title' })}
           <Icon icon="code" />
         </h3>
       </div>
@@ -66,7 +73,7 @@ class Home extends Component {
     return (
       <div className="page-home">
         {this.renderMyImage()}
-        {this.renderSayMyName()}
+        {this.renderMyName()}
         {this.renderSayMyTitle()}
         {!socialList.isFetching && this.renderSocialList(socialList)}
       </div>

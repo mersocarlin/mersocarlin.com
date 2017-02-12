@@ -1,5 +1,5 @@
 import { ContactException } from './exceptions'
-import { env, strings } from '../config'
+import { env } from '../config'
 
 const SAFE_LENGTH = 5000
 
@@ -17,7 +17,7 @@ async function sendContact (payload) {
     .length > 0
 
   if (isBigMessage) {
-    throw new ContactException(strings.contact.form.bigMessage)
+    throw new ContactException('contact.form.bigMessage')
   }
 
   // eslint-disable-next-line no-undef
