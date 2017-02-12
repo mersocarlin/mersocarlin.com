@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
+import { injectIntl, intlShape } from 'react-intl'
 
+import ErrorMessage from './error-message'
 import FormField from './form-field'
-import Icon from './icon'
 
 
 class ContactForm extends Component {
@@ -15,7 +15,7 @@ class ContactForm extends Component {
   }
 
   static defaultProps = {
-    error: {},
+    error: null,
   }
 
   constructor (props) {
@@ -32,10 +32,10 @@ class ContactForm extends Component {
       hasError: false,
     }
 
-    this.onSubmit = this.onSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  onSubmit () {
+  handleSubmit () {
     if (this.props.isSubmiting) return
 
     const payload = {
@@ -46,13 +46,15 @@ class ContactForm extends Component {
       validation: this.validation.value,
     }
 
-    const { errorFields } = this.state
-    const error = { ...errorFields }
+    const error = { ...this.state.errorFields }
+
     Object
       .keys(error)
-      .forEach((field) => { error[field] = !payload[field] })
+      .forEach(field => (error[field] = !payload[field]))
 
-    if (parseInt(payload.validation, 10) !== 8) error.validation = true
+    if (parseInt(payload.validation, 10) !== 8) {
+      error.validation = true
+    }
 
     const hasError = Object
       .keys(error)
@@ -64,46 +66,6 @@ class ContactForm extends Component {
     if (hasError) return
 
     this.props.onSubmit(payload)
-  }
-
-  renderErrorMessage (error, formatMessage) {
-    if (!error) return null
-
-    const emailAddress = formatMessage({ id: 'mersocarlin.email' })
-    const email = (
-      <a href={`mailto:${emailAddress}`} target="_blank" rel="noopener noreferrer">
-        {emailAddress}
-      </a>
-    )
-    let errorMessage = (
-      <FormattedMessage
-        id="contact.form.errorMessage"
-        tagName="p"
-        values={{ email }}
-      />
-    )
-    if (error.message) {
-      errorMessage = (
-        <FormattedMessage
-          id={error.message}
-          defaultMessage={error.message}
-          tagName="p"
-          values={{ email }}
-        />
-      )
-    }
-
-    return (
-      <div className="ui icon error message">
-        <Icon icon="warning sign" />
-        <div className="content">
-          <div className="header">
-            {formatMessage({ id: 'contact.form.errorHeader' })}
-          </div>
-          {errorMessage}
-        </div>
-      </div>
-    )
   }
 
   render () {
@@ -168,8 +130,8 @@ class ContactForm extends Component {
             placeholder=""
           />
         </FormField>
-        {this.renderErrorMessage(error, formatMessage)}
-        <button className={submitCssClass} onClick={this.onSubmit}>
+        { error && <ErrorMessage error={error} /> }
+        <button className={submitCssClass} onClick={this.handleSubmit}>
           {formatMessage({ id: 'contact.form.send' })}
         </button>
       </div>

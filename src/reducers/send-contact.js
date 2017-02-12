@@ -19,6 +19,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         contactSent: false,
+        error: null,
         isSubmiting: true,
       }
     case SEND_CONTACT_SUCCESS:
