@@ -6,13 +6,13 @@ import thunk from 'redux-thunk'
 import 'jquery'
 import 'semantic-ui-css/semantic'
 import 'semantic-ui-css/semantic.css'
-import 'flag-icon-css/css/flag-icon.css'
 
 import rootReducer from './reducers'
 import App from './containers/app'
 import Root from './containers/root'
 
 import './styles/animate.css'
+import './styles/flags/flags.css'
 
 const store = createStore(
   rootReducer,
