@@ -1,16 +1,24 @@
 import { addLocaleData } from 'react-intl'
 import enLocaleData from 'react-intl/locale-data/en'
-import brLocaleData from 'react-intl/locale-data/br'
+import ptBRLocaleData from 'react-intl/locale-data/pt'
 
 import en from './lang-en'
 import br from './lang-pt-BR'
 
 addLocaleData([
   ...enLocaleData,
-  ...brLocaleData,
+  ...ptBRLocaleData,
 ])
 
 export default {
-  en,
-  br,
+  en: {
+    flag: 'gb',
+    locale: 'en',
+    messages: en,
+  },
+  'pt-BR': {
+    flag: 'br',
+    locale: 'pt-BR',
+    messages: br,
+  },
 }

@@ -16,7 +16,7 @@ import { mount, shallow } from 'enzyme'
 import locales from '../../src/i18n'
 
 // Create the IntlProvider to retrieve context for wrapping around.
-const intlProvider = new IntlProvider({ locale: 'en', messages: locales.en }, {})
+const intlProvider = new IntlProvider({ ...locales.en }, {})
 const { intl } = intlProvider.getChildContext()
 
 /**

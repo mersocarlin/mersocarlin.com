@@ -19,41 +19,25 @@ class App extends Component {
   }
 
   static propTypes = {
-    dispatch: PropTypes.func,
     children: PropTypes.any,
+    dispatch: PropTypes.func,
+    i18n: PropTypes.object,
     location: PropTypes.object,
   }
 
   static defaultProps = {
-    dispatch: null,
     children: null,
+    dispatch: null,
+    i18n: null,
     location: null,
-  }
-
-  constructor (context, props) {
-    super(context, props)
-
-    this.state = {
-      flag: 'gb',
-      locale: 'en',
-    }
-    this.handleFlagClick = this.handleFlagClick.bind(this)
   }
 
   componentDidMount () {
     $('.ui.dropdown').dropdown()
   }
 
-  handleFlagClick (flag, locale) {
-    if (this.state.locale === locale) {
-      return
-    }
-
-    this.setState({ flag, locale })
-    this.props.dispatch(updateLocale(locale))
-  }
-
-  renderMenu ({ formatMessage }, { pathname }) {
+  renderMenu ({ formatMessage }) {
+    const { dispatch, i18n, location: { pathname } } = this.props
     const menuItems = [{
       name: formatMessage({ id: 'menu.home' }),
       icon: 'home',
@@ -83,7 +67,10 @@ class App extends Component {
               ))
             }
           </div>
-          <FlagMenu value={this.state.flag} onChange={this.handleFlagClick} />
+          <FlagMenu
+            value={i18n.flag}
+            onChange={locale => dispatch(updateLocale(locale))}
+          />
         </div>
       </div>
     )
@@ -91,11 +78,11 @@ class App extends Component {
 
   render () {
     const { intl } = this.context
-    const { children, location } = this.props
+    const { children } = this.props
 
     return (
       <div className="app-mersocarlin">
-        {this.renderMenu(intl, location)}
+        {this.renderMenu(intl)}
         <div className="page-mersocarlin">
           {children}
         </div>

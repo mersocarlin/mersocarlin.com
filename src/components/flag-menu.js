@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import FlagIcon from './flag-icon'
 
 const items = [
-  { flag: 'br', locale: 'br' },
+  { flag: 'br', locale: 'pt-BR' },
   { flag: 'gb', locale: 'en' },
 ]
 
@@ -14,7 +14,7 @@ const FlagMenu = ({ value, onChange }) => (
     <div className="menu">
       {
         items.map(({ flag, locale }) => (
-          <a key={flag} className={classNames('item', { active: value === flag })} onClick={() => onChange(flag, locale)} tabIndex="-1">
+          <a key={flag} className={classNames('item', { active: value === flag })} onClick={() => onChange(locale)} tabIndex="-1">
             <FlagIcon flag={flag} />
           </a>
         ))

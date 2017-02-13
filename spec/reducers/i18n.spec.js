@@ -7,10 +7,7 @@ import locales from '../../src/i18n'
 describe('i18n reducer', () => {
   it('should return initial state', () => {
     const actualState = reducer(undefined, {})
-    const expectedState = {
-      locale: 'en',
-      messages: locales.en,
-    }
+    const expectedState = { ...locales.en }
 
     expect(actualState).to.deep.equal(expectedState)
   })
@@ -18,16 +15,10 @@ describe('i18n reducer', () => {
   it('should handle UPDATE_LOCALE', () => {
     const actualState = reducer(undefined, {
       type: UPDATE_LOCALE,
-      data: {
-        locale: 'pt',
-        messages: locales.pt,
-      },
+      data: { ...locales['pt-BR'] },
     })
 
-    const expectedState = {
-      locale: 'pt',
-      messages: locales.pt,
-    }
+    const expectedState = { ...locales['pt-BR'] }
 
     expect(actualState).to.deep.equal(expectedState)
   })
