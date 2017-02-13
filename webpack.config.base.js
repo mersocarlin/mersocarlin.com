@@ -34,11 +34,9 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
       { test: /\.s?css$/, loader: ExtractTextPlugin.extract('style', 'css!sass', { publicPath: './' }) },
-      { test: /\.(png|jpg|jpeg|gif)$/, loader: 'file' },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=50000&mimetype=application/font-woff' },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file' },
+      { test: /\.(png|jpg|jpeg|svg|woff|woff2|eot|ttf|gif)($|\?)/, loader: 'file' },
     ],
   },
 }
