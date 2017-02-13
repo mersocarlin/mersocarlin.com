@@ -1,19 +1,21 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-
-import { env, strings } from '../config'
+import { env } from '../config'
 import { resetContactForm, sendContactForm } from '../actions/contact'
 import { fetchSocialList } from '../actions/social'
 
-
 import ContactForm from '../components/contact-form'
+import ContactSent from '../components/contact-sent'
 import Icon from '../components/icon'
 import Map from '../components/map'
-import SocialItem from '../components/social-item'
+import SocialList from '../components/social-list'
 import './contact.scss'
 
 class Contact extends Component {
+  static contextTypes = {
+    intl: PropTypes.object,
+  }
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -27,78 +29,12 @@ class Contact extends Component {
     socialList: null,
   }
 
-  constructor () {
-    super()
-    this.state = {
-      hasError: false,
-      errorFields: {
-        name: false,
-        email: false,
-        subject: false,
-        message: false,
-      },
-    }
-
-    this.onSubmit = this.onSubmit.bind(this)
-  }
-
   componentDidMount () {
     this.props.dispatch(fetchSocialList())
   }
 
   componentWillUnmount () {
     this.props.dispatch(resetContactForm())
-  }
-
-  onSubmit (payload) {
-    this.props.dispatch(sendContactForm(payload))
-  }
-
-  renderSocialList ({ items }) {
-    return (
-      <div className="social-list">
-        {
-          items.map(item => (
-            <SocialItem
-              key={item.icon}
-              item={item}
-            />
-          ))
-        }
-      </div>
-    )
-  }
-
-  renderContactSentCard ({ contactSent }) {
-    if (!contactSent) return null
-
-    return (
-      <div className="ui column centered grid contact-sent bounceIn animated">
-        <div className="ui card">
-          <div className="content">
-            <div className="header">
-              {strings.contact.feedback.header}
-            </div>
-            <div className="meta">
-              <span className="category">
-                {strings.contact.feedback.message1}
-                <Icon icon="send" />
-              </span>
-            </div>
-            <div className="description">
-              <p>{strings.contact.feedback.message2}</p>
-              <p>{strings.contact.feedback.message3}</p>
-            </div>
-          </div>
-          <div className="extra content">
-            <span className="left floated like">
-              <img alt="" className="ui avatar image" src={strings.app.gravatarUrl} />
-              <a href="http://www.twitter.com/mersocarlin" target="_blank" rel="noopener noreferrer">@mersocarlin</a>
-            </span>
-          </div>
-        </div>
-      </div>
-    )
   }
 
   renderContactForm ({ contactSent, error, isSubmiting }) {
@@ -109,7 +45,7 @@ class Contact extends Component {
         <ContactForm
           error={error}
           isSubmiting={isSubmiting}
-          onSubmit={this.onSubmit}
+          onSubmit={payload => this.props.dispatch(sendContactForm(payload))}
         />
       </div>
     )
@@ -117,15 +53,16 @@ class Contact extends Component {
 
   render () {
     const { google: { mapsApiKey }, map: { center } } = env
+    const { intl: { formatMessage } } = this.context
     const { sendContact, socialList } = this.props
 
     return (
       <div className="page-contact">
         <div className="ui text container">
           <div className="column">
-            <h1 className="ui header">{strings.contact.title}</h1>
+            <h1 className="ui header">{formatMessage({ id: 'contact.title' })}</h1>
           </div>
-          {this.renderContactSentCard(sendContact)}
+          {sendContact.contactSent && <ContactSent />}
           {this.renderContactForm(sendContact)}
         </div>
         <Map
@@ -140,7 +77,7 @@ class Contact extends Component {
             lng={center.lng}
           />
         </Map>
-        {!socialList.isFetching && this.renderSocialList(socialList)}
+        {!socialList.isFetching && <SocialList items={socialList.items} />}
       </div>
     )
   }
