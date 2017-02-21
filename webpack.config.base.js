@@ -12,9 +12,7 @@ module.exports = {
     publicPath: 'dist/',
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -33,10 +31,22 @@ module.exports = {
     new ExtractTextPlugin('[name].css'),
   ],
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
-      { test: /\.s?css$/, loader: ExtractTextPlugin.extract('style', 'css!sass', { publicPath: './' }) },
-      { test: /\.(png|jpg|jpeg|svg|woff|woff2|eot|ttf|gif)($|\?)/, loader: 'file' },
-    ],
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [{ loader: 'babel-loader' }],
+    },
+    {
+      test: /\.s?css$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        loader: 'css-loader!sass-loader',
+        publicPath: './',
+      }),
+    },
+    {
+      test: /\.(png|jpg|jpeg|svg|woff|woff2|eot|ttf|gif)($|\?)/,
+      use: [{ loader: 'file-loader' }],
+    }],
   },
 }
