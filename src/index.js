@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import 'jquery'
 import 'semantic-ui-css/semantic'
-import 'semantic-ui-css/semantic.css'
+import 'semantic-ui-css/semantic.min.css'
 
 import rootReducer from './reducers'
 import App from './containers/app'
