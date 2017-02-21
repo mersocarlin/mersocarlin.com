@@ -26,10 +26,18 @@ body {
         font-weight: normal !important;
       }
 
+      .flag {
+        margin: 0;
+      }
+
       .menu {
         .item {
           &.active {
             border: none;
+          }
+
+          .flag {
+            margin: 0;
           }
         }
       }

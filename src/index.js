@@ -12,7 +12,6 @@ import App from './containers/app'
 import Root from './containers/root'
 
 import './styles/animate.css'
-import './styles/flags/flags.css'
 
 const store = createStore(
   rootReducer,

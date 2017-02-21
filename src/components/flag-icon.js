@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 const FlagIcon = ({ flag }) => (
-  <span className={`flag flag-${flag}`} />
+  <i className={`flag ${flag}`} />
 )
 
 FlagIcon.propTypes = {
