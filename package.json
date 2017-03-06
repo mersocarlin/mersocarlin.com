@@ -46,7 +46,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
-    "extract-text-webpack-plugin": "^2.0.0",
+    "extract-text-webpack-plugin": "^2.1.0",
     "fetch-mock": "^5.9.3",
     "file-loader": "^0.10.1",
     "jest": "^19.0.2",
