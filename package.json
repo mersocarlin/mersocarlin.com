@@ -4,11 +4,11 @@
   "description": "My personal website's source.",
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
   "scripts": {
-    "build": "npm run clean && NODE_ENV=production ./node_modules/.bin/webpack -p --progress --config ./webpack.config.production.js",
+    "build": "yarn run clean && NODE_ENV=production ./node_modules/.bin/webpack -p --progress --config ./webpack.config.production.js",
     "clean": "rm -rf dist",
     "start": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --inline --hot --config ./webpack.config.base.js",
     "lint": "./node_modules/.bin/eslint src/",
-    "test": "npm run lint && ./node_modules/.bin/jest"
+    "test": "yarn run lint && ./node_modules/.bin/jest"
   },
   "main": "src/index.js",
   "repository": {
