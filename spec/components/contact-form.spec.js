@@ -1,76 +1,79 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
-import { expect } from 'chai'
 
 import { mountWithIntl } from '../helpers/intl-enzyme-test-helper'
-
 import ContactForm from '../../src/components/contact-form'
 
-function setup () {
-  const props = {
-    error: null,
-    isSubmiting: false,
-    onSubmit: jest.fn(),
-  }
-
-  const enzymeWrapper = mountWithIntl(
-    <ContactForm {...props} />,
-  )
-
-  return {
-    props,
-    enzymeWrapper,
-  }
-}
-
 describe('components -> contact-form', () => {
+  let component
+  let defaultProps
+
+  beforeEach(() => {
+    defaultProps = {
+      error: null,
+      isSubmiting: false,
+    }
+
+    component = mountWithIntl(
+      <ContactForm {...defaultProps} />,
+    )
+  })
+
   it('should render without error class', () => {
-    const { enzymeWrapper } = setup()
+    expect(component.find('FormField')).toHaveLength(5)
+    expect(component.find('ErrorMessage')).toHaveLength(0)
 
-    const rootDiv = enzymeWrapper.find('.contact-form-component')
-    expect(rootDiv).to.not.be.null
-    expect(rootDiv.find('FormField')).to.have.length(5)
-    expect(rootDiv.find('.error.message')).to.have.length(0)
-
+    const rootDiv = component.find('.contact-form-component')
     const props = rootDiv.props()
-    expect(props).to.have.property('className', 'contact-form-component ui form')
+    expect(props).toHaveProperty('className', 'contact-form-component ui form')
 
-    const submit = rootDiv.find('.submit')
-    expect(submit).to.not.be.null
-    expect(submit.hasClass('loading')).to.be.equal(false)
+    expect(component.find('.submit').hasClass('loading')).toBeFalsy
   })
 
   it('should render with error class', () => {
-    const wrapper = mountWithIntl(
-      <ContactForm
-        error={null}
-        isSubmiting={false}
-        onSubmit={jest.fn()}
-      />,
-    )
-    const rootDiv = wrapper.find('.contact-form-component')
-    expect(rootDiv).to.not.be.null
-
-    const submit = wrapper.find('.submit')
+    const submit = component.find('.submit')
     submit.simulate('click')
 
-    expect(rootDiv.hasClass('error')).to.be.equal(true)
+    expect(component.find('.contact-form-component').hasClass('error')).toBeTruthy
   })
 
-  it('should render message error', () => {
-    const wrapper = mountWithIntl(
-      <ContactForm
-        error={{ message: 'error message' }}
-        isSubmiting={false}
-        onSubmit={jest.fn()}
-      />,
-    )
-    const rootDiv = wrapper.find('.contact-form-component')
-    expect(rootDiv).to.not.be.null
+  it('should render error message', () => {
+    const handleSubmit = jest.fn()
+    component.setProps({
+      error: {
+        message: 'error message',
+      },
+      onSubmit: handleSubmit,
+    })
 
-    const submit = wrapper.find('.submit')
-    submit.simulate('click')
+    expect(handleSubmit).not.toHaveBeenCalled()
+    component.find('.submit').simulate('click')
 
-    expect(rootDiv.find('.error.message')).to.have.length(1)
+    expect(handleSubmit).toHaveBeenCalledTimes(0)
+    expect(component.find('ErrorMessage')).toHaveLength(1)
+  })
+
+  it('should submit form', () => {
+    const handleSubmit = jest.fn()
+    component.setProps({
+      onSubmit: handleSubmit,
+    })
+
+    component.find('FormField').find('Text').at(0).simulate('change', { target: { value: 'Name' } })
+    component.find('FormField').find('Text').at(1).simulate('change', { target: { value: 'mail@me.com' } })
+    component.find('FormField').find('Text').at(2).simulate('change', { target: { value: 'Subject' } })
+    component.find('FormField').find('Textarea').at(0).simulate('change', { target: { value: 'Message' } })
+    component.find('FormField').find('Text').at(3).simulate('change', { target: { value: '8' } })
+
+    expect(handleSubmit).not.toHaveBeenCalled()
+    component.find('.submit').simulate('click')
+
+    expect(handleSubmit).toHaveBeenCalledTimes(1)
+    expect(handleSubmit).toHaveBeenCalledWith({
+      name: 'Name',
+      email: 'mail@me.com',
+      subject: 'Subject',
+      message: 'Message',
+    })
+    expect(component.find('ErrorMessage')).toHaveLength(0)
   })
 })
