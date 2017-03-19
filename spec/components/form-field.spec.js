@@ -1,42 +1,39 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { expect } from 'chai'
 import FormField from '../../src/components/form-field'
 
-function setup (hasError) {
-  const props = {
-    label: 'Label field',
-    hasError,
-  }
-
-  const enzymeWrapper = shallow(
-    <FormField {...props} />
-  )
-
-  return {
-    props,
-    enzymeWrapper,
-  }
-}
-
 describe('components -> form-field', () => {
+  let component
+  let defaultProps
+
+  beforeEach(() => {
+    defaultProps = {
+      label: 'Label field',
+      hasError: false,
+    }
+    component = mount(
+      <FormField {...defaultProps} />
+    )
+  })
+
   it('should render without error class', () => {
-    const { enzymeWrapper } = setup(false)
-    expect(enzymeWrapper.find('div')).to.not.be.null
+    expect(component).to.exist
 
-    const divProps = enzymeWrapper.find('div').props()
-    expect(divProps).to.have.property('className', 'required field')
+    const props = component.find('div').props()
+    expect(props).to.have.property('className', 'required field')
 
-    const label = enzymeWrapper.find('label')
-    expect(label).to.not.be.null
+    const label = component.find('Label')
+    expect(label).to.exist
     expect(label.text()).to.be.equal('Label field')
   })
 
   it('should render with error class', () => {
-    const { enzymeWrapper } = setup(true)
-    expect(enzymeWrapper.find('div')).to.not.be.null
+    component.setProps({
+      hasError: true,
+    })
 
-    const divProps = enzymeWrapper.find('div').props()
+    const divProps = component.find('div').props()
     expect(divProps).to.have.property('className', 'required field error')
   })
 })
