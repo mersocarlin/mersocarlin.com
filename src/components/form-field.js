@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import classNames from 'classnames'
-
+import { Label } from 'react-app-components'
 
 const FormField = ({ children, hasError, label }) => {
   const fieldCssClass = classNames(
@@ -10,7 +10,7 @@ const FormField = ({ children, hasError, label }) => {
 
   return (
     <div className={fieldCssClass}>
-      <label>{label}</label>
+      <Label>{label}</Label>
       {children}
     </div>
   )
