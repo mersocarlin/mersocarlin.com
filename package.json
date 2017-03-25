@@ -43,7 +43,7 @@
     "chai": "^3.5.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.27.3",
-    "enzyme": "^2.7.1",
+    "enzyme": "^2.8.0",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
