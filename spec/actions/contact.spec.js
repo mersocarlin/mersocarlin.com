@@ -1,7 +1,6 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import fetchMock from 'fetch-mock'
-import { expect } from 'chai'
 
 import { env } from '../../src/config'
 import {
@@ -38,7 +37,7 @@ describe('actions-contact', () => {
         const actions = store
           .getActions()
           .map(action => action.type)
-        expect(actions).to.have.members(expectedActions)
+        expect(actions).toEqual(expectedActions)
 
         fetchMock.restore()
       })
@@ -65,7 +64,7 @@ describe('actions-contact', () => {
         const actions = store
           .getActions()
           .map(action => action.type)
-        expect(actions).to.have.members(expectedActions)
+        expect(actions).toEqual(expectedActions)
 
         fetchMock.restore()
       })
@@ -89,7 +88,7 @@ describe('actions-contact', () => {
         const actions = store
           .getActions()
           .map(action => action.type)
-        expect(actions).to.have.members(expectedActions)
+        expect(actions).toEqual(expectedActions)
 
         fetchMock.restore()
       })

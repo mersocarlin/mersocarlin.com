@@ -1,4 +1,3 @@
-import { expect } from 'chai'
 import reducer from '../../src/reducers/social-list'
 import {
   SOCIAL_LIST_REQUEST,
@@ -15,7 +14,7 @@ describe('social-list reducer', () => {
       isFetching: false,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 
   it('should handle SOCIAL_LIST_FAILURE', () => {
@@ -26,7 +25,7 @@ describe('social-list reducer', () => {
       isFetching: true,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
 
     actualState = reducer(expectedState, { type: SOCIAL_LIST_FAILURE, error: {} })
     expectedState = {
@@ -35,7 +34,7 @@ describe('social-list reducer', () => {
       isFetching: false,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 
   it('should handle SOCIAL_LIST_SUCCESS', () => {
@@ -46,7 +45,7 @@ describe('social-list reducer', () => {
       isFetching: true,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
 
     const data = [
       {
@@ -64,6 +63,6 @@ describe('social-list reducer', () => {
       isFetching: false,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 })
