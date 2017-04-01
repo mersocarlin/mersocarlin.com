@@ -1,4 +1,3 @@
-import { expect } from 'chai'
 import reducer from '../../src/reducers/send-contact'
 import {
   SEND_CONTACT_REQUEST,
@@ -16,7 +15,7 @@ describe('send-contact reducer', () => {
       isSubmiting: false,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 
   it('should handle SEND_CONTACT_FAILURE', () => {
@@ -27,7 +26,7 @@ describe('send-contact reducer', () => {
       isSubmiting: true,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
 
     actualState = reducer(expectedState, { type: SEND_CONTACT_FAILURE, error: {} })
     expectedState = {
@@ -36,7 +35,7 @@ describe('send-contact reducer', () => {
       isSubmiting: false,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 
   it('should handle SEND_CONTACT_SUCCESS', () => {
@@ -47,7 +46,7 @@ describe('send-contact reducer', () => {
       isSubmiting: true,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
 
     actualState = reducer(expectedState, { type: SEND_CONTACT_SUCCESS, data: true })
     expectedState = {
@@ -56,7 +55,7 @@ describe('send-contact reducer', () => {
       isSubmiting: false,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 
   it('should handle RESET_CONTACT_FORM', () => {
@@ -67,6 +66,6 @@ describe('send-contact reducer', () => {
       isSubmiting: false,
     }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 })
