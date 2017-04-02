@@ -1,4 +1,3 @@
-import { expect } from 'chai'
 import reducer from '../../src/reducers/i18n'
 
 import { UPDATE_LOCALE } from '../../src/actions/i18n'
@@ -9,7 +8,7 @@ describe('i18n reducer', () => {
     const actualState = reducer(undefined, {})
     const expectedState = { ...locales.en }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 
   it('should handle UPDATE_LOCALE', () => {
@@ -20,6 +19,6 @@ describe('i18n reducer', () => {
 
     const expectedState = { ...locales['pt-BR'] }
 
-    expect(actualState).to.deep.equal(expectedState)
+    expect(actualState).toEqual(expectedState)
   })
 })

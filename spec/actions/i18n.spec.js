@@ -1,6 +1,5 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { expect } from 'chai'
 import { updateLocale, UPDATE_LOCALE } from '../../src/actions/i18n'
 
 const middlewares = [thunk]
@@ -13,6 +12,6 @@ describe('i18n-actions', () => {
     const store = mockStore({})
 
     const action = store.dispatch(updateLocale('en'))
-    expect(action.type).to.deep.equal(expectedAction.type)
+    expect(action.type).toEqual(expectedAction.type)
   })
 })
