@@ -1,6 +1,5 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { expect } from 'chai'
 
 import socialApiStub from '../stubs/api/social'
 import {
@@ -26,7 +25,7 @@ describe('actions-social', () => {
         const actions = store
           .getActions()
           .map(action => action.type)
-        expect(actions).to.have.members(expectedActions)
+        expect(actions).toEqual(expectedActions)
       })
   })
 })

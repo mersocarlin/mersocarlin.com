@@ -1,6 +1,5 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { expect } from 'chai'
 import FormField from '../../src/components/form-field'
 
 describe('components -> form-field', () => {
@@ -18,14 +17,14 @@ describe('components -> form-field', () => {
   })
 
   it('should render without error class', () => {
-    expect(component).to.exist
+    expect(component).toBeDefined()
 
     const props = component.find('div').props()
-    expect(props).to.have.property('className', 'required field')
+    expect(props).toHaveProperty('className', 'required field')
 
     const label = component.find('Label')
-    expect(label).to.exist
-    expect(label.text()).to.be.equal('Label field')
+    expect(label).toBeDefined()
+    expect(label.text()).toBe('Label field')
   })
 
   it('should render with error class', () => {
@@ -34,6 +33,6 @@ describe('components -> form-field', () => {
     })
 
     const divProps = component.find('div').props()
-    expect(divProps).to.have.property('className', 'required field error')
+    expect(divProps).toHaveProperty('className', 'required field error')
   })
 })
