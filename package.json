@@ -17,7 +17,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "google-map-react": "^0.23.0",
+    "google-map-react": "^0.24.0",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
