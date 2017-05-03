@@ -4,14 +4,11 @@ import { env } from './config'
 
 ReactGA.initialize(env.google.analyticsId)
 
-export default function () {
+export default function (location) {
   if (env.environment === 'development') {
     return
   }
 
-  // eslint-disable-next-line no-undef
-  const { location: { pathname } } = window
-
-  ReactGA.set({ page: pathname })
-  ReactGA.pageview(pathname)
+  ReactGA.set({ page: location })
+  ReactGA.pageview(location)
 }
