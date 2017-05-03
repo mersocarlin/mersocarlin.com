@@ -1,10 +1,10 @@
 const webpack = require('webpack')
-const _ = require('lodash')
+const { merge, union } = require('lodash')
 
 const webpackConfig = require('./webpack.config.base')
 
-module.exports = _.merge(webpackConfig, {
-  plugins: _.union(webpackConfig.plugins, [
+module.exports = merge(webpackConfig, {
+  plugins: union(webpackConfig.plugins, [
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
       mangle: {
