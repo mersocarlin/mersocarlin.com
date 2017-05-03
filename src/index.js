@@ -1,20 +1,18 @@
 import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+import { hashHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 
-import rootReducer from './reducers'
 import App from './containers/app'
 import Root from './containers/root'
+import configureStore from './store/configureStore'
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk),
-)
+const store = configureStore()
+const history = syncHistoryWithStore(hashHistory, store)
 
 render(
-  <Root store={store}>
+  <Root history={history} store={store}>
     <App />
   </Root>,
   document.getElementById('root'), // eslint-disable-line
