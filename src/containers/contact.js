@@ -1,90 +1,83 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { compose, lifecycle, withHandlers, withProps } from 'recompose'
 import { connect } from 'react-redux'
 
 import { env } from '../config'
-import { resetContactForm, sendContactForm } from '../actions/contact'
-import { fetchSocialList } from '../actions/social'
+import {
+  resetContactForm as resetContactFormAction,
+  sendContactForm as sendContactFormAction,
+} from '../actions/contact'
+import { fetchSocialList as fetchSocialListAction } from '../actions/social'
 
-import ContactForm from '../components/contact-form'
-import ContactSent from '../components/contact-sent'
-import Icon from '../components/icon'
-import Map from '../components/map'
-import SocialList from '../components/social-list'
+import { ContactForm, ContactSent, Icon, Map, SocialList } from '../components'
+
+import { withIntl } from '../higher-order'
+
 import './contact.scss'
 
-class Contact extends Component {
-  static contextTypes = {
-    intl: PropTypes.object,
-  }
-
-  static propTypes = {
-    dispatch: PropTypes.func,
-    sendContact: PropTypes.object,
-    socialList: PropTypes.object,
-  }
-
-  static defaultProps = {
-    dispatch: null,
-    sendContact: null,
-    socialList: null,
-  }
-
-  componentDidMount () {
-    this.props.dispatch(fetchSocialList())
-  }
-
-  componentWillUnmount () {
-    this.props.dispatch(resetContactForm())
-  }
-
-  renderContactForm ({ contactSent, error, isSubmiting }) {
-    if (contactSent) return null
-
-    return (
+const Contact = ({ center, intl, mapsApiKey, onSubmit, sendContact, socialList }) => (
+  <div className="page-contact">
+    <div className="ui text container">
       <div className="column">
-        <ContactForm
-          error={error}
-          isSubmiting={isSubmiting}
-          onSubmit={payload => this.props.dispatch(sendContactForm(payload))}
-        />
+        <h1 className="ui header">{intl.formatMessage({ id: 'contact.title' })}</h1>
       </div>
-    )
-  }
-
-  render () {
-    const { google: { mapsApiKey }, map: { center } } = env
-    const { intl: { formatMessage } } = this.context
-    const { sendContact, socialList } = this.props
-
-    return (
-      <div className="page-contact">
-        <div className="ui text container">
-          <div className="column">
-            <h1 className="ui header">{formatMessage({ id: 'contact.title' })}</h1>
-          </div>
-          {sendContact.contactSent && <ContactSent />}
-          {this.renderContactForm(sendContact)}
-        </div>
-        <Map
-          apiKey={mapsApiKey}
-          center={center}
-          options={{ zoomControl: false }}
-        >
-          <Icon
-            icon="marker"
-            size="huge"
-            lat={center.lat}
-            lng={center.lng}
+      {sendContact.contactSent ? <ContactSent /> : (
+        <div className="column">
+          <ContactForm
+            {...sendContact}
+            onSubmit={onSubmit}
           />
-        </Map>
-        {!socialList.isFetching && <SocialList items={socialList.items} />}
-      </div>
-    )
-  }
+        </div>
+      )}
+    </div>
+    <Map
+      apiKey={mapsApiKey}
+      center={center}
+      options={{ zoomControl: false }}
+    >
+      <Icon
+        icon="marker"
+        size="huge"
+        {...center}
+      />
+    </Map>
+    {!socialList.isFetching && <SocialList {...socialList} />}
+  </div>
+)
+
+Contact.propTypes = {
+  center: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired,
+  mapsApiKey: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  sendContact: PropTypes.object.isRequired,
+  socialList: PropTypes.object.isRequired,
 }
 
-export default connect(state => ({
-  sendContact: state.sendContact,
-  socialList: state.socialList,
-}))(Contact)
+export default compose(
+  withIntl,
+  connect(state => ({
+    sendContact: state.sendContact,
+    socialList: state.socialList,
+  }), {
+    fetchSocialList: fetchSocialListAction,
+    resetContactForm: resetContactFormAction,
+    sendContactForm: sendContactFormAction,
+  }),
+  withProps(({
+    center: env.map.center,
+    mapsApiKey: env.google.mapsApiKey,
+  })),
+  withHandlers({
+    onSubmit: ({ sendContactForm }) => payload => sendContactForm(payload),
+  }),
+  lifecycle({
+    componentDidMount () {
+      this.props.fetchSocialList()
+    },
+    componentWillUnmount () {
+      this.props.resetContactForm()
+    },
+  }),
+)(Contact)

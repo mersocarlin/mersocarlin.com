@@ -1,4 +1,7 @@
+export ContactForm from './contact-form'
+export ContactSent from './contact-sent'
 export Icon from './icon'
 export Image from './image'
+export Map from './map'
 export Menu from './Menu'
 export SocialList from './social-list'
