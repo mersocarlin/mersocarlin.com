@@ -4,8 +4,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
+    vendor: './src/vendor.js',
     mersocarlin: './src/index.js',
   },
+
   output: {
     filename: '[name].js',
     path: path.join(__dirname, 'dist'),
@@ -14,9 +16,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
-      $: 'jquery',
       jQuery: 'jquery',
-      'window.jQuery': 'jquery',
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -29,6 +29,13 @@ module.exports = {
       },
     }),
     new ExtractTextPlugin('[name].css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: module => module.context && module.context.indexOf('node_modules') !== -1,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+    }),
   ],
   module: {
     rules: [{
@@ -41,6 +48,7 @@ module.exports = {
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: 'css-loader!sass-loader',
+        publicPath: './',
       }),
     },
     {

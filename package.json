@@ -17,6 +17,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "animate.css": "^3.5.2",
     "google-map-react": "^0.24.0",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
