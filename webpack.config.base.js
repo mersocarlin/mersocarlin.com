@@ -40,13 +40,20 @@ module.exports = {
       test: /\.s?css$/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        loader: 'css-loader!sass-loader',
-        publicPath: './',
+        use: 'css-loader!sass-loader',
       }),
     },
     {
-      test: /\.(png|jpg|jpeg|svg|woff|woff2|eot|ttf|gif)($|\?)/,
+      test: /\.(png|jpg|jpeg|gif)($|\?)/,
       use: [{ loader: 'file-loader' }],
+    }, {
+      test: /\.(woff|woff2|eot|ttf|svg)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: 100000,
+        },
+      },
     }],
   },
 }
