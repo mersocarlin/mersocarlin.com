@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { compose, lifecycle, withHandlers, withState } from 'recompose'
 import classNames from 'classnames'
-import { injectIntl, intlShape } from 'react-intl'
 import { Button, Text, Textarea } from 'react-app-components'
 
 import ErrorMessage from './error-message'
 import FormField from './form-field'
+import { withIntl } from '../higher-order'
 
 const FORM_KEYS = ['name', 'email', 'subject', 'message', 'validation']
 const createPayload = () => (FORM_KEYS.reduce((prev, curr) => (
@@ -101,7 +101,7 @@ const ContactForm = ({
 
 ContactForm.propTypes = {
   error: PropTypes.object,
-  intl: intlShape.isRequired,
+  intl: PropTypes.object.isRequired,
   isSubmiting: PropTypes.bool.isRequired,
   isValid: PropTypes.bool,
   onFieldChange: PropTypes.func,
@@ -117,7 +117,7 @@ ContactForm.defaultProps = {
 }
 
 export default compose(
-  injectIntl,
+  withIntl,
   withState('payload', 'setPayload', createPayload()),
   withState('isValid', 'toggleValid', true),
   withHandlers({

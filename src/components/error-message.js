@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 
 import Icon from './icon'
+import { withIntl } from '../higher-order'
 
 const ErrorMessage = ({ error, intl }) => {
   const emailAddress = intl.formatMessage({ id: 'mersocarlin.email' })
@@ -33,7 +34,7 @@ const ErrorMessage = ({ error, intl }) => {
 
 ErrorMessage.propTypes = {
   error: PropTypes.object.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.object.isRequired,
 }
 
-export default injectIntl(ErrorMessage)
+export default withIntl(ErrorMessage)
