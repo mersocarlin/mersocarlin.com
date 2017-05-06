@@ -1,6 +1,6 @@
 import reducer from '../../src/reducers/i18n'
 
-import { UPDATE_LOCALE } from '../../src/actions/i18n'
+import { I18nActionCreators } from '../../src/actions'
 import locales from '../../src/i18n'
 
 describe('i18n reducer', () => {
@@ -13,7 +13,7 @@ describe('i18n reducer', () => {
 
   it('should handle UPDATE_LOCALE', () => {
     const actualState = reducer(undefined, {
-      type: UPDATE_LOCALE,
+      type: I18nActionCreators.UPDATE_LOCALE,
       data: { ...locales['pt-BR'] },
     })
 

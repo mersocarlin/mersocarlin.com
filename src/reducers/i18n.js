@@ -1,14 +1,12 @@
 import locales from '../i18n'
-import {
-  UPDATE_LOCALE,
-} from '../actions/i18n'
+import { I18nActionCreators } from '../actions'
 
 
 const INITIAL_STATE = { ...locales.en }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UPDATE_LOCALE:
+    case I18nActionCreators.UPDATE_LOCALE:
       if (!action.data.messages) {
         return state
       }

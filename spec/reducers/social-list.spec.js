@@ -1,9 +1,5 @@
 import reducer from '../../src/reducers/social-list'
-import {
-  SOCIAL_LIST_REQUEST,
-  SOCIAL_LIST_SUCCESS,
-  SOCIAL_LIST_FAILURE,
-} from '../../src/actions/social'
+import { SocialActionCreators } from '../../src/actions'
 
 describe('social-list reducer', () => {
   it('should return the initial state', () => {
@@ -18,7 +14,7 @@ describe('social-list reducer', () => {
   })
 
   it('should handle SOCIAL_LIST_FAILURE', () => {
-    let actualState = reducer(undefined, { type: SOCIAL_LIST_REQUEST })
+    let actualState = reducer(undefined, { type: SocialActionCreators.SOCIAL_LIST_REQUEST })
     let expectedState = {
       items: [],
       error: null,
@@ -27,7 +23,7 @@ describe('social-list reducer', () => {
 
     expect(actualState).toEqual(expectedState)
 
-    actualState = reducer(expectedState, { type: SOCIAL_LIST_FAILURE, error: {} })
+    actualState = reducer(expectedState, { type: SocialActionCreators.SOCIAL_LIST_FAILURE, error: {} })
     expectedState = {
       items: [],
       error: {},
@@ -38,7 +34,7 @@ describe('social-list reducer', () => {
   })
 
   it('should handle SOCIAL_LIST_SUCCESS', () => {
-    let actualState = reducer(undefined, { type: SOCIAL_LIST_REQUEST })
+    let actualState = reducer(undefined, { type: SocialActionCreators.SOCIAL_LIST_REQUEST })
     let expectedState = {
       items: [],
       error: null,
@@ -56,7 +52,7 @@ describe('social-list reducer', () => {
       },
     ]
 
-    actualState = reducer(expectedState, { type: SOCIAL_LIST_SUCCESS, data })
+    actualState = reducer(expectedState, { type: SocialActionCreators.SOCIAL_LIST_SUCCESS, data })
     expectedState = {
       items: data,
       error: null,

@@ -6,7 +6,7 @@ import moment from 'moment'
 
 import { Icon, Menu } from '../components'
 
-import { updateLocale as updateLocaleAction } from '../actions/i18n'
+import { I18nActionCreators } from '../actions'
 import { withIntl, withNavigation } from '../higher-order'
 
 import './app.scss'
@@ -44,7 +44,7 @@ export default compose(
   connect(state => ({
     i18n: state.i18n,
   }), {
-    updateLocale: updateLocaleAction,
+    updateLocale: I18nActionCreators.updateLocale,
   }),
   withHandlers({
     onLocaleChange: ({ updateLocale }) => locale => updateLocale(locale),

@@ -4,11 +4,7 @@ import { compose, lifecycle, withHandlers, withProps } from 'recompose'
 import { connect } from 'react-redux'
 
 import { env } from '../config'
-import {
-  resetContactForm as resetContactFormAction,
-  sendContactForm as sendContactFormAction,
-} from '../actions/contact'
-import { fetchSocialList as fetchSocialListAction } from '../actions/social'
+import { ContactActionCreators, SocialActionCreators } from '../actions'
 
 import { ContactForm, ContactSent, Icon, Map, SocialList } from '../components'
 
@@ -61,9 +57,9 @@ export default compose(
     sendContact: state.sendContact,
     socialList: state.socialList,
   }), {
-    fetchSocialList: fetchSocialListAction,
-    resetContactForm: resetContactFormAction,
-    sendContactForm: sendContactFormAction,
+    fetchSocialList: SocialActionCreators.fetchSocialList,
+    resetContactForm: ContactActionCreators.resetContactForm,
+    sendContactForm: ContactActionCreators.sendContactForm,
   }),
   withProps(({
     center: env.map.center,

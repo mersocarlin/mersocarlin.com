@@ -3,12 +3,7 @@ import thunk from 'redux-thunk'
 import fetchMock from 'fetch-mock'
 
 import { env } from '../../src/config'
-import {
-  sendContactForm,
-  SEND_CONTACT_REQUEST,
-  SEND_CONTACT_SUCCESS,
-  SEND_CONTACT_FAILURE,
-} from '../../src/actions/contact'
+import { ContactActionCreators } from '../../src/actions'
 import { createBigString } from '../spec-helper'
 
 const middlewares = [thunk]
@@ -22,7 +17,10 @@ describe('actions-contact', () => {
   it('it should dispatch SEND_CONTACT_FAILURE when invalid payload data', () => {
     fetchMock.mock('api/messages', {})
 
-    const expectedActions = [SEND_CONTACT_REQUEST, SEND_CONTACT_FAILURE]
+    const expectedActions = [
+      ContactActionCreators.SEND_CONTACT_REQUEST,
+      ContactActionCreators.SEND_CONTACT_FAILURE,
+    ]
     const store = mockStore({})
     const payload = {
       name: createBigString(),
@@ -32,7 +30,7 @@ describe('actions-contact', () => {
     }
 
     return store
-      .dispatch(sendContactForm(payload))
+      .dispatch(ContactActionCreators.sendContactForm(payload))
       .then(() => {
         const actions = store
           .getActions()
@@ -49,7 +47,10 @@ describe('actions-contact', () => {
       { body: { error_message: 'Something is wrong', status_code: 400 } },
     )
 
-    const expectedActions = [SEND_CONTACT_REQUEST, SEND_CONTACT_FAILURE]
+    const expectedActions = [
+      ContactActionCreators.SEND_CONTACT_REQUEST,
+      ContactActionCreators.SEND_CONTACT_FAILURE,
+    ]
     const store = mockStore({})
     const payload = {
       name: 'your name',
@@ -59,7 +60,7 @@ describe('actions-contact', () => {
     }
 
     return store
-      .dispatch(sendContactForm(payload))
+      .dispatch(ContactActionCreators.sendContactForm(payload))
       .then(() => {
         const actions = store
           .getActions()
@@ -73,7 +74,10 @@ describe('actions-contact', () => {
   it('it should dispatch SEND_CONTACT_SUCCESS posting new contact message', () => {
     fetchMock.mock('http://localhost.com/api/messages', {})
 
-    const expectedActions = [SEND_CONTACT_REQUEST, SEND_CONTACT_SUCCESS]
+    const expectedActions = [
+      ContactActionCreators.SEND_CONTACT_REQUEST,
+      ContactActionCreators.SEND_CONTACT_SUCCESS,
+    ]
     const store = mockStore({})
     const payload = {
       name: 'your name',
@@ -83,7 +87,7 @@ describe('actions-contact', () => {
     }
 
     return store
-      .dispatch(sendContactForm(payload))
+      .dispatch(ContactActionCreators.sendContactForm(payload))
       .then(() => {
         const actions = store
           .getActions()
