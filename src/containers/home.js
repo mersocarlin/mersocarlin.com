@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose, lifecycle } from 'recompose'
 import { connect } from 'react-redux'
 
-import { fetchSocialList as fetchSocialListAction } from '../actions/social'
+import { SocialActionCreators } from '../actions'
 import { Icon, Image, SocialList } from '../components'
 
 import { withIntl } from '../higher-order'
@@ -36,7 +36,7 @@ export default compose(
   connect(state => ({
     socialList: state.socialList,
   }), {
-    fetchSocialList: fetchSocialListAction,
+    fetchSocialList: SocialActionCreators.fetchSocialList,
   }),
   lifecycle({
     componentDidMount () {

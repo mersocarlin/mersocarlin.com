@@ -1,10 +1,5 @@
 import reducer from '../../src/reducers/send-contact'
-import {
-  SEND_CONTACT_REQUEST,
-  SEND_CONTACT_SUCCESS,
-  SEND_CONTACT_FAILURE,
-  RESET_CONTACT_FORM,
-} from '../../src/actions/contact'
+import { ContactActionCreators } from '../../src/actions'
 
 describe('send-contact reducer', () => {
   it('should return the initial state', () => {
@@ -19,7 +14,7 @@ describe('send-contact reducer', () => {
   })
 
   it('should handle SEND_CONTACT_FAILURE', () => {
-    let actualState = reducer(undefined, { type: SEND_CONTACT_REQUEST })
+    let actualState = reducer(undefined, { type: ContactActionCreators.SEND_CONTACT_REQUEST })
     let expectedState = {
       contactSent: false,
       error: null,
@@ -28,7 +23,7 @@ describe('send-contact reducer', () => {
 
     expect(actualState).toEqual(expectedState)
 
-    actualState = reducer(expectedState, { type: SEND_CONTACT_FAILURE, error: {} })
+    actualState = reducer(expectedState, { type: ContactActionCreators.SEND_CONTACT_FAILURE, error: {} })
     expectedState = {
       contactSent: false,
       error: {},
@@ -39,7 +34,7 @@ describe('send-contact reducer', () => {
   })
 
   it('should handle SEND_CONTACT_SUCCESS', () => {
-    let actualState = reducer(undefined, { type: SEND_CONTACT_REQUEST })
+    let actualState = reducer(undefined, { type: ContactActionCreators.SEND_CONTACT_REQUEST })
     let expectedState = {
       contactSent: false,
       error: null,
@@ -48,7 +43,10 @@ describe('send-contact reducer', () => {
 
     expect(actualState).toEqual(expectedState)
 
-    actualState = reducer(expectedState, { type: SEND_CONTACT_SUCCESS, data: true })
+    actualState = reducer(
+      expectedState,
+      { type: ContactActionCreators.SEND_CONTACT_SUCCESS, data: true },
+    )
     expectedState = {
       contactSent: true,
       error: null,
@@ -59,7 +57,7 @@ describe('send-contact reducer', () => {
   })
 
   it('should handle RESET_CONTACT_FORM', () => {
-    const actualState = reducer(undefined, { type: RESET_CONTACT_FORM })
+    const actualState = reducer(undefined, { type: ContactActionCreators.RESET_CONTACT_FORM })
     const expectedState = {
       contactSent: false,
       error: null,
