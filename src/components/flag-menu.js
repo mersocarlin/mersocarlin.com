@@ -1,5 +1,5 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import FlagIcon from './flag-icon'
@@ -9,7 +9,12 @@ const items = [
   { flag: 'gb', locale: 'en' },
 ]
 
-const FlagMenu = ({ value, onChange }) => (
+type PropsT = {
+  value: string,
+  onChange: (locale: string) => void,
+};
+
+const FlagMenu = ({ value, onChange }: PropsT) => (
   <div className="ui dropdown item">
     <FlagIcon flag={value} />
     <div className="menu">
@@ -23,10 +28,5 @@ const FlagMenu = ({ value, onChange }) => (
     </div>
   </div>
 )
-
-FlagMenu.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-}
 
 export default FlagMenu

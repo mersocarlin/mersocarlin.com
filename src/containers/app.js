@@ -1,5 +1,5 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import { compose, withHandlers } from 'recompose'
 import { connect } from 'react-redux'
 import moment from 'moment'
@@ -8,10 +8,20 @@ import { Icon, Menu } from '../components'
 
 import { I18nActionCreators } from '../actions'
 import { withIntl, withNavigation } from '../higher-order'
+import type { i18nReducerT, IntlT, LocationT } from '../types'
 
 import './app.scss'
 
-const App = ({ children, i18n, intl, location, onLocaleChange, onMenuItemClick }) => (
+type PropsT = {
+  children: React$Element<*>,
+  i18n: i18nReducerT,
+  intl: IntlT,
+  location: LocationT,
+  onLocaleChange: (locale: string) => void,
+  onMenuItemClick: (location: string) => void,
+};
+
+const App = ({ children, i18n, intl, location, onLocaleChange, onMenuItemClick }: PropsT) => (
   <div className="app-mersocarlin">
     <Menu
       locale={i18n.flag}
@@ -28,15 +38,6 @@ const App = ({ children, i18n, intl, location, onLocaleChange, onMenuItemClick }
     </div>
   </div>
 )
-
-App.propTypes = {
-  children: PropTypes.any.isRequired,
-  i18n: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  onLocaleChange: PropTypes.func.isRequired,
-  onMenuItemClick: PropTypes.func.isRequired,
-}
 
 export default compose(
   withIntl,

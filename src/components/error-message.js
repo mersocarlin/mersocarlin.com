@@ -1,11 +1,17 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 
 import Icon from './icon'
 import { withIntl } from '../higher-order'
+import type { IntlT, ReducerErrorT } from '../types'
 
-const ErrorMessage = ({ error, intl }) => {
+type PropsT = {
+  error: ReducerErrorT,
+  intl: IntlT,
+};
+
+const ErrorMessage = ({ error, intl }: PropsT) => {
   const emailAddress = intl.formatMessage({ id: 'mersocarlin.email' })
 
   return (
@@ -30,11 +36,6 @@ const ErrorMessage = ({ error, intl }) => {
       </div>
     </div>
   )
-}
-
-ErrorMessage.propTypes = {
-  error: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
 }
 
 export default withIntl(ErrorMessage)

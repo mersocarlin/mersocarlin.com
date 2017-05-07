@@ -1,9 +1,15 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Label } from 'react-app-components'
 
-const FormField = ({ children, hasError, label }) => {
+type PropsT = {
+  children?: React$Element<*>,
+  hasError: boolean,
+  label: string,
+};
+
+const FormField = ({ children, hasError, label }: PropsT) => {
   const fieldCssClass = classNames(
     'required field',
     { error: hasError },
@@ -15,12 +21,6 @@ const FormField = ({ children, hasError, label }) => {
       {children}
     </div>
   )
-}
-
-FormField.propTypes = {
-  children: PropTypes.element,
-  hasError: PropTypes.bool.isRequired,
-  label: PropTypes.string.isRequired,
 }
 
 FormField.defaultProps = {

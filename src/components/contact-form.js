@@ -1,5 +1,5 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import { compose, lifecycle, withHandlers, withState } from 'recompose'
 import classNames from 'classnames'
 import { Button, Text, Textarea } from 'react-app-components'
@@ -7,6 +7,17 @@ import { Button, Text, Textarea } from 'react-app-components'
 import ErrorMessage from './error-message'
 import FormField from './form-field'
 import { withIntl } from '../higher-order'
+import type { ContactT, IntlT, ReducerErrorT } from '../types'
+
+type PropsT = {
+  error: ReducerErrorT,
+  intl: IntlT,
+  isSubmiting: boolean,
+  onFieldChange: (key: string, value: string) => void,
+  onSubmit: () => void,
+  payload: ContactT,
+  isValid: boolean,
+};
 
 const FORM_KEYS = ['name', 'email', 'subject', 'message', 'validation']
 const createPayload = () => (FORM_KEYS.reduce((prev, curr) => (
@@ -21,13 +32,13 @@ const createPayload = () => (FORM_KEYS.reduce((prev, curr) => (
 
 const ContactForm = ({
   error,
-  intl: { formatMessage },
+  intl,
   isSubmiting,
   onFieldChange,
   onSubmit,
   payload,
   isValid,
-}) => {
+}: PropsT) => {
   const formCssClass = classNames(
     'contact-form-component ui form',
     { error: !isValid || error },
@@ -41,39 +52,39 @@ const ContactForm = ({
     <div className={formCssClass}>
       <div className="two fields">
         <FormField
-          label={formatMessage({ id: 'contact.form.name.label' })}
+          label={intl.formatMessage({ id: 'contact.form.name.label' })}
           hasError={!payload.name.isValid}
         >
           <Text
             onChange={value => onFieldChange('name', value)}
-            placeholder={formatMessage({ id: 'contact.form.name.placeholder' })}
+            placeholder={intl.formatMessage({ id: 'contact.form.name.placeholder' })}
             value={payload.name.value}
           />
         </FormField>
         <FormField
-          label={formatMessage({ id: 'contact.form.email.label' })}
+          label={intl.formatMessage({ id: 'contact.form.email.label' })}
           hasError={!payload.email.isValid}
         >
           <Text
             onChange={value => onFieldChange('email', value)}
-            placeholder={formatMessage({ id: 'contact.form.email.placeholder' })}
+            placeholder={intl.formatMessage({ id: 'contact.form.email.placeholder' })}
             type="email"
             value={payload.name.email}
           />
         </FormField>
       </div>
       <FormField
-        label={formatMessage({ id: 'contact.form.subject.label' })}
+        label={intl.formatMessage({ id: 'contact.form.subject.label' })}
         hasError={!payload.subject.isValid}
       >
         <Text
           onChange={value => onFieldChange('subject', value)}
-          placeholder={formatMessage({ id: 'contact.form.subject.placeholder' })}
+          placeholder={intl.formatMessage({ id: 'contact.form.subject.placeholder' })}
           value={payload.name.subject}
         />
       </FormField>
       <FormField
-        label={formatMessage({ id: 'contact.form.message.label' })}
+        label={intl.formatMessage({ id: 'contact.form.message.label' })}
         hasError={!payload.message.isValid}
       >
         <Textarea
@@ -83,7 +94,7 @@ const ContactForm = ({
         />
       </FormField>
       <FormField
-        label={formatMessage({ id: 'contact.form.validation.label' })}
+        label={intl.formatMessage({ id: 'contact.form.validation.label' })}
         hasError={!payload.validation.isValid}
       >
         <Text
@@ -93,27 +104,10 @@ const ContactForm = ({
       </FormField>
       { error && <ErrorMessage error={error} /> }
       <Button className={submitCssClass} onClick={onSubmit}>
-        {formatMessage({ id: 'contact.form.send' })}
+        {intl.formatMessage({ id: 'contact.form.send' })}
       </Button>
     </div>
   )
-}
-
-ContactForm.propTypes = {
-  error: PropTypes.object,
-  intl: PropTypes.object.isRequired,
-  isSubmiting: PropTypes.bool.isRequired,
-  isValid: PropTypes.bool,
-  onFieldChange: PropTypes.func,
-  onSubmit: PropTypes.func.isRequired,
-  payload: PropTypes.object,
-}
-
-ContactForm.defaultProps = {
-  error: null,
-  isValid: false,
-  onFieldChange: null,
-  payload: null,
 }
 
 export default compose(

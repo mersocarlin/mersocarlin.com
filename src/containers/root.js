@@ -1,5 +1,5 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import { compose, lifecycle } from 'recompose'
 import { connect, Provider } from 'react-redux'
 import { Router } from 'react-router'
@@ -8,7 +8,12 @@ import IntlProvider from './intl-provider'
 import logPageView from '../analytics'
 import routes from '../routes'
 
-const Root = ({ history, store }) => (
+type PropsT = {
+  history: any,
+  store: any,
+};
+
+const Root = ({ history, store }: PropsT) => (
   <Provider store={store}>
     <IntlProvider>
       <Router
@@ -18,11 +23,6 @@ const Root = ({ history, store }) => (
     </IntlProvider>
   </Provider>
 )
-
-Root.propTypes = {
-  history: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired,
-}
 
 const getPathName = routing => (
   routing.locationBeforeTransitions.pathname

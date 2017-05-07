@@ -12,7 +12,7 @@ describe('components -> form-field', () => {
       hasError: false,
     }
     component = mount(
-      <FormField {...defaultProps} />
+      <FormField {...defaultProps} />,
     )
   })
 
