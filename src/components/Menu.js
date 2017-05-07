@@ -1,5 +1,5 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import { compose, lifecycle, withHandlers } from 'recompose'
 import classNames from 'classnames'
@@ -7,10 +7,18 @@ import $ from 'jquery'
 
 import FlagMenu from './flag-menu'
 import Icon from './icon'
-
 import { withIntl } from '../higher-order'
+import type { IntlT } from '../types'
 
-const Menu = ({ intl, locale, onClick, onLocaleChange, pathname }) => {
+type PropsT = {
+  intl: IntlT,
+  locale: string,
+  onClick: (path: string) => void,
+  onLocaleChange: (locale: string) => void,
+  pathname: string,
+};
+
+const Menu = ({ intl, locale, onClick, onLocaleChange, pathname }: PropsT) => {
   const menuItems = [{
     name: intl.formatMessage({ id: 'menu.home' }),
     icon: 'home',
@@ -47,14 +55,6 @@ const Menu = ({ intl, locale, onClick, onLocaleChange, pathname }) => {
       </div>
     </div>
   )
-}
-
-Menu.propTypes = {
-  intl: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  onLocaleChange: PropTypes.func.isRequired,
-  pathname: PropTypes.string.isRequired,
 }
 
 export default compose(

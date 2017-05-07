@@ -1,18 +1,26 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import { compose, lifecycle, withHandlers, withProps } from 'recompose'
 import { connect } from 'react-redux'
 
 import { env } from '../config'
 import { ContactActionCreators, SocialActionCreators } from '../actions'
-
 import { ContactForm, ContactSent, Icon, Map, SocialList } from '../components'
-
 import { withIntl } from '../higher-order'
+import type { ContactT, IntlT, MapCenterT, SendContactReducerT, SocialListReducerT } from '../types'
 
 import './contact.scss'
 
-const Contact = ({ center, intl, mapsApiKey, onSubmit, sendContact, socialList }) => (
+type PropsT = {
+  center: MapCenterT,
+  intl: IntlT,
+  mapsApiKey: string,
+  onSubmit: (contact: ContactT) => void,
+  sendContact: SendContactReducerT,
+  socialList: SocialListReducerT,
+};
+
+const Contact = ({ center, intl, mapsApiKey, onSubmit, sendContact, socialList }: PropsT) => (
   <div className="page-contact">
     <div className="ui text container">
       <div className="column">
@@ -41,15 +49,6 @@ const Contact = ({ center, intl, mapsApiKey, onSubmit, sendContact, socialList }
     {!socialList.isFetching && <SocialList {...socialList} />}
   </div>
 )
-
-Contact.propTypes = {
-  center: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
-  mapsApiKey: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  sendContact: PropTypes.object.isRequired,
-  socialList: PropTypes.object.isRequired,
-}
 
 export default compose(
   withIntl,

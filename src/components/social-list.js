@@ -1,9 +1,14 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import SocialItem from './social-item'
+import type { SocialItemT } from '../types'
 
-const SocialList = ({ items }) => (
+type PropsT = {
+  items: Array<SocialItemT>,
+};
+
+const SocialList = ({ items }: PropsT) => (
   <div className="social-list">
     {
       items.map(item => (
@@ -15,9 +20,5 @@ const SocialList = ({ items }) => (
     }
   </div>
 )
-
-SocialList.propTypes = {
-  items: PropTypes.array.isRequired,
-}
 
 export default SocialList

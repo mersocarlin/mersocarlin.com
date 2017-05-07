@@ -1,9 +1,14 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Icon from './icon'
+import type { SocialItemT } from '../types'
 
-const SocialItem = ({ item }) => (
+type PropsT = {
+  item: SocialItemT,
+};
+
+const SocialItem = ({ item }: PropsT) => (
   <a
     data-content={item.url}
     className={`ui circular icon button ${item.className || item.icon}`}
@@ -14,9 +19,5 @@ const SocialItem = ({ item }) => (
     <Icon icon={item.icon} />
   </a>
 )
-
-SocialItem.propTypes = {
-  item: PropTypes.object.isRequired,
-}
 
 export default SocialItem

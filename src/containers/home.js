@@ -1,16 +1,21 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import { compose, lifecycle } from 'recompose'
 import { connect } from 'react-redux'
 
 import { SocialActionCreators } from '../actions'
 import { Icon, Image, SocialList } from '../components'
-
 import { withIntl } from '../higher-order'
+import type { IntlT, SocialListReducerT } from '../types'
 
 import './home.scss'
 
-const Home = ({ intl, socialList }) => (
+type PropsT = {
+  intl: IntlT,
+  socialList: SocialListReducerT,
+};
+
+const Home = ({ intl, socialList }: PropsT) => (
   <div className="page-home">
     <Image src={intl.formatMessage({ id: 'mersocarlin.gravatarUrl' })} />
     <h2 className="myName">
@@ -25,11 +30,6 @@ const Home = ({ intl, socialList }) => (
     {!socialList.isFetching && <SocialList {...socialList} />}
   </div>
 )
-
-Home.propTypes = {
-  intl: PropTypes.object.isRequired,
-  socialList: PropTypes.object.isRequired,
-}
 
 export default compose(
   withIntl,

@@ -6,9 +6,10 @@
   "scripts": {
     "build": "yarn run clean && NODE_ENV=production ./node_modules/.bin/webpack -p --progress --config ./webpack.config.production.js",
     "clean": "rm -rf dist",
+    "flow": "flow",
     "start": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --inline --hot --config ./webpack.config.base.js",
     "lint": "./node_modules/.bin/eslint src/",
-    "test": "yarn run lint && ./node_modules/.bin/jest"
+    "test": "yarn flow && yarn lint && ./node_modules/.bin/jest"
   },
   "main": "src/index.js",
   "repository": {
@@ -41,6 +42,7 @@
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "classnames": "^2.2.5",
@@ -48,12 +50,15 @@
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-flowtype": "^2.32.1",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^20.0.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "fetch-mock": "^5.10.0",
     "file-loader": "^0.11.1",
+    "flow-bin": "^0.45.0",
     "jest": "^19.0.2",
     "node-sass": "^4.5.2",
     "react-addons-test-utils": "^15.5.1",

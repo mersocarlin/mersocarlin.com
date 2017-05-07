@@ -1,11 +1,20 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import GoogleMap from 'google-map-react'
 
 import mapStyle from './map.style'
+import type { MapCenterT } from '../types'
 import './map.scss'
 
-const Map = ({ children, apiKey, center, options, zoom }) => (
+type PropsT = {
+  apiKey: string,
+  center: MapCenterT,
+  children: React$Element<*>,
+  options: any,
+  zoom: number,
+};
+
+const Map = ({ children, apiKey, center, options, zoom }: PropsT) => (
   <div className="map-component">
     <GoogleMap
       bootstrapURLKeys={{
@@ -21,16 +30,7 @@ const Map = ({ children, apiKey, center, options, zoom }) => (
   </div>
 )
 
-Map.propTypes = {
-  apiKey: PropTypes.string.isRequired,
-  center: PropTypes.object.isRequired,
-  children: PropTypes.element,
-  options: PropTypes.object,
-  zoom: PropTypes.number,
-}
-
 Map.defaultProps = {
-  children: null,
   options: { },
   zoom: 13,
 }

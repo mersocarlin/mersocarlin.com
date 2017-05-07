@@ -1,10 +1,15 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Icon from './icon'
 import { withIntl } from '../higher-order'
+import type { IntlT } from '../types'
 
-const ContactSent = ({ intl }) => (
+type PropsT = {
+  intl: IntlT,
+};
+
+const ContactSent = ({ intl }: PropsT) => (
   <div className="ui column centered grid contact-sent bounceIn animated">
     <div className="ui card">
       <div className="content">
@@ -31,9 +36,5 @@ const ContactSent = ({ intl }) => (
     </div>
   </div>
 )
-
-ContactSent.propTypes = {
-  intl: PropTypes.object.isRequired,
-}
 
 export default withIntl(ContactSent)

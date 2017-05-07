@@ -1,12 +1,12 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const FlagIcon = ({ flag }) => (
+type PropsT = {
+  flag: string,
+};
+
+const FlagIcon = ({ flag }: PropsT) => (
   <i className={`flag ${flag}`} />
 )
-
-FlagIcon.propTypes = {
-  flag: PropTypes.string.isRequired,
-}
 
 export default FlagIcon
