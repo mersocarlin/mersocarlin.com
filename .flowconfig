@@ -1,0 +1,8 @@
+[ignore]
+
+[include]
+
+[libs]
+
+[options]
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/flow/stub/SCSSFlowStub.js.flow'
