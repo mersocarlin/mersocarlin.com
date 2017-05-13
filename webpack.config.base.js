@@ -1,20 +1,8 @@
-const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  entry: {
-    vendor: './src/vendor.js',
-    mersocarlin: './src/index.js',
-  },
-
-  output: {
-    filename: '[name].js',
-    path: path.join(__dirname, 'dist'),
-    publicPath: 'dist/',
-  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
     }),
@@ -28,14 +16,6 @@ module.exports = {
         API_SERVICE_URL: JSON.stringify(process.env.API_SERVICE_URL || 'https://mersocarlin-api.herokuapp.com/'),
       },
     }),
-    new ExtractTextPlugin('[name].css'),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: module => module.context && module.context.indexOf('node_modules') !== -1,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-    }),
   ],
   module: {
     rules: [{
@@ -48,7 +28,6 @@ module.exports = {
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: 'css-loader!sass-loader',
-        publicPath: './',
       }),
     },
     {
@@ -63,5 +42,10 @@ module.exports = {
         },
       },
     }],
+  },
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
   },
 }
