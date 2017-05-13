@@ -10,7 +10,7 @@ const appConfig = {
   paths: {
     appPath: __dirname,
     appBuild: path.join(__dirname, 'dist'),
-    publicPath: '/dist',
+    publicPath: '/dist/',
   },
 }
 
