@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);.map-component {
+  height: 200px;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .map-component {
+      height: 300px; } }
+body {
+  background-color: #fff;
+  color: #666;
+  font-family: 'Josefin Sans', sans-serif !important; }
+
+.app-mersocarlin {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+  .app-mersocarlin .top-menu {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important; }
+    .app-mersocarlin .top-menu .pointing-menu {
+      border-bottom: 2px solid #fff !important; }
+    .app-mersocarlin .top-menu .dropdown.active {
+      font-weight: normal !important; }
+    .app-mersocarlin .top-menu .dropdown .flag {
+      margin: 0; }
+    .app-mersocarlin .top-menu .dropdown .menu .item.active {
+      border: none; }
+    .app-mersocarlin .top-menu .dropdown .menu .item .flag {
+      margin: 0; }
+  .app-mersocarlin .page-mersocarlin {
+    flex: 1; }
+  .app-mersocarlin .footer {
+    text-align: center;
+    margin-bottom: 1em; }
+.page-home {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; }
+  .page-home .image-component {
+    height: 200px;
+    margin: 0 auto;
+    width: 200px; }
+    .page-home .image-component .loader {
+      top: 85px; }
+    .page-home .image-component img {
+      border: 3px solid #666; }
+  .page-home .myName {
+    color: #666;
+    font-family: 'Josefin Sans', sans-serif !important;
+    font-size: 3em;
+    line-height: 1em;
+    margin: 0.3em 0 0 0;
+    padding: 0;
+    text-align: center; }
+  .page-home .myTitle {
+    margin: 1em 0; }
+    .page-home .myTitle h3 {
+      font-family: 'Josefin Sans', sans-serif !important;
+      color: #666;
+      font-size: 2em;
+      margin: 0;
+      padding: 0;
+      text-align: center; }
+    .page-home .myTitle .code {
+      margin-left: 0.5em; }
+  .page-home .social-list {
+    text-align: center; }
+    .page-home .social-list a {
+      margin: 0 0.5em; }
+.page-contact .ui.header {
+  margin-bottom: 1em; }
+
+.page-contact .ui.text.container {
+  font-family: 'Josefin Sans', sans-serif !important; }
+
+.page-contact .contact-sent {
+  margin: 5em 0 !important; }
+  .page-contact .contact-sent .ui.card {
+    margin: 0 auto; }
+
+.page-contact .contact-form-component {
+  margin-bottom: 2em; }
+
+.page-contact .social-list {
+  text-align: center;
+  margin: 2em 0; }
+
+/*# sourceMappingURL=mersocarlin.map*/
