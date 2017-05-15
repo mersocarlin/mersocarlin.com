@@ -8,8 +8,8 @@ const appConfig = {
   PORT: '8080',
 
   paths: {
-    appPath: __dirname,
-    appBuild: path.join(__dirname, 'dist'),
+    appPath: path.join(__dirname, '../'),
+    appBuild: path.join(__dirname, '../dist'),
     publicPath: '/dist/',
   },
 }
