@@ -66,10 +66,11 @@ const ContactForm = ({
           hasError={!payload.email.isValid}
         >
           <Text
+            lowercase
             onChange={value => onFieldChange('email', value)}
             placeholder={intl.formatMessage({ id: 'contact.form.email.placeholder' })}
             type="email"
-            value={payload.name.email}
+            value={payload.email.value}
           />
         </FormField>
       </div>
@@ -80,7 +81,7 @@ const ContactForm = ({
         <Text
           onChange={value => onFieldChange('subject', value)}
           placeholder={intl.formatMessage({ id: 'contact.form.subject.placeholder' })}
-          value={payload.name.subject}
+          value={payload.subject.value}
         />
       </FormField>
       <FormField
@@ -90,7 +91,7 @@ const ContactForm = ({
         <Textarea
           onChange={value => onFieldChange('message', value)}
           rows="4"
-          value={payload.name.message}
+          value={payload.message.value}
         />
       </FormField>
       <FormField
@@ -99,7 +100,7 @@ const ContactForm = ({
       >
         <Text
           onChange={value => onFieldChange('validation', value)}
-          value={payload.name.validation}
+          value={payload.validation.value}
         />
       </FormField>
       { error && <ErrorMessage error={error} /> }
