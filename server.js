@@ -2,7 +2,7 @@
 
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
-const webpackConfig = require('./webpack.config.development')
+const webpackConfig = require('./config/webpack.config.dev')
 
 const config = require('./config')
 

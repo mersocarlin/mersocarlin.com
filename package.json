@@ -4,12 +4,12 @@
   "description": "My personal website's source.",
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
   "scripts": {
-    "build": "yarn run clean && NODE_ENV=production ./node_modules/.bin/webpack --progress --config ./webpack.config.production.js",
+    "build": "yarn run clean && NODE_ENV=production ./node_modules/.bin/webpack --progress --config ./config/webpack.config.prod.js",
     "clean": "rm -rf dist",
     "flow": "flow",
     "start": "NODE_ENV=development node server.js",
     "lint": "./node_modules/.bin/eslint src/",
-    "test": "yarn flow && yarn lint && ./node_modules/.bin/jest"
+    "test": "yarn lint && jest"
   },
   "main": "src/index.js",
   "repository": {
@@ -23,15 +23,15 @@
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-app-components": "^1.0.5",
+    "react-app-components": "^1.0.6",
     "react-dom": "^15.5.4",
-    "react-intl": "^2.2.3",
+    "react-intl": "^2.3.0",
     "react-redux": "^5.0.4",
     "react-router": "^3.0.2",
     "react-router-redux": "^4.0.8",
-    "recompose": "^0.23.1",
+    "recompose": "^0.23.4",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "semantic-ui-css": "^2.2.10"
@@ -49,35 +49,30 @@
     "css-loader": "^0.28.1",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-flowtype": "^2.32.1",
+    "eslint-config-airbnb": "^15.0.0",
+    "eslint-plugin-flowtype": "^2.33.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jest": "^20.0.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-jest": "^20.0.1",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "fetch-mock": "^5.10.0",
     "file-loader": "^0.11.1",
-    "flow-bin": "^0.45.0",
+    "flow-bin": "^0.46.0",
     "html-webpack-plugin": "^2.28.0",
-    "jest": "^19.0.2",
+    "jest": "^20.0.1",
     "node-sass": "^4.5.2",
     "react-addons-test-utils": "^15.5.1",
     "react-ga": "^2.2.0",
     "redux-mock-store": "^1.2.3",
-    "sass-loader": "^6.0.3",
+    "regenerator-runtime": "^0.10.5",
+    "sass-loader": "^6.0.5",
     "sinon": "^2.2.0",
     "style-loader": "^0.17.0",
     "url-loader": "^0.5.8",
-    "webpack": "^2.4.1",
+    "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5",
     "webpack-manifest-plugin": "^1.1.0"
   },
-  "license": "MIT",
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less|scss)$": "<rootDir>/spec/__mocks__/styleMock.js"
-    }
-  }
+  "license": "MIT"
 }

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const { merge, union } = require('lodash')
 
-const config = require('./config')
+const config = require('./index')
 const webpackConfig = require('./webpack.config.base')
 
 module.exports = merge(webpackConfig, {

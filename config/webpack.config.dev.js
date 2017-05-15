@@ -3,7 +3,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { merge, union } = require('lodash')
 
-const config = require('./config')
+const config = require('./index')
 const webpackBaseConfig = require('./webpack.config.base')
 
 module.exports = merge(webpackBaseConfig, {
