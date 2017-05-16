@@ -1,32 +1,27 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Map from '../../src/components/map'
 
-function setup () {
-  const props = {
-    apiKey: 'abc123',
-    center: { lat: 0, lng: 0 },
-    zoom: 15,
-  }
-
-  const enzymeWrapper = shallow(
-    <Map {...props} />,
-  )
-
-  return {
-    props,
-    enzymeWrapper,
-  }
-}
+import { Map } from '../../src/components'
 
 describe('components -> map', () => {
+  let component
+  let defaultProps
+
+  beforeEach(() => {
+    defaultProps = {
+      apiKey: 'abc123',
+      center: { lat: 0, lng: 0 },
+      zoom: 15,
+    }
+
+    component = shallow(<Map {...defaultProps} />)
+  })
+
   it('should render self and subcomponents', () => {
-    const { enzymeWrapper } = setup()
+    expect(component.find('div').hasClass('map-component')).toBeTruthy()
+    expect(component.find('GoogleMap')).not.toBeNull()
 
-    expect(enzymeWrapper.find('div').hasClass('map-component')).toBeTruthy()
-    expect(enzymeWrapper.find('GoogleMap')).not.toBeNull()
-
-    const gMapProps = enzymeWrapper.find('GoogleMap').props()
+    const gMapProps = component.find('GoogleMap').props()
     expect(gMapProps).toHaveProperty('bootstrapURLKeys')
     expect(gMapProps.bootstrapURLKeys).toEqual({ key: 'abc123', language: 'en' })
     expect(gMapProps).toHaveProperty('center')
