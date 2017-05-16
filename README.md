@@ -1,4 +1,4 @@
-# mersocarlin [![Travis][build-badge]][build-url] [![Greenkeeper badge][greenkeeper-badge]][greenkeeper-url]
+# mersocarlin [![Travis][build-badge]][build-url]
 
 My personal [website's](https://mersocarlin.github.io/) source.
 
@@ -27,5 +27,3 @@ My personal [website's](https://mersocarlin.github.io/) source.
 
 [build-badge]: https://travis-ci.org/mersocarlin/mersocarlin.github.io.svg
 [build-url]: https://travis-ci.org/mersocarlin/mersocarlin.github.io
-[greenkeeper-badge]: https://badges.greenkeeper.io/mersocarlin/mersocarlin.github.io.svg
-[greenkeeper-url]: https://greenkeeper.io/
