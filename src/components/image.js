@@ -1,52 +1,42 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import React from 'react'
+import { compose, withHandlers, withState } from 'recompose'
 import classNames from 'classnames'
 
 import Loader from './loader'
 
-class Image extends Component {
-  static propTypes = {
-    src: PropTypes.string.isRequired,
-  }
+type InnerPropsT = {
+  isLoading: boolean,
+  onLoad: () => void,
+  toggleLoading: (loading: boolean) => void,
+};
 
-  constructor (props) {
-    super(props)
+type PropsT = {
+  src: string,
+} & InnerPropsT;
 
-    this.state = { isLoading: true }
-    this.handleLoad = this.handleLoad.bind(this)
-  }
+const Image = ({ isLoading, src, onLoad }: PropsT) => {
+  const imageClass = classNames(
+    'ui medium circular image fadeIn animated',
+    { hidden: isLoading },
+  )
 
-  handleLoad () {
-    this.setState({ isLoading: false })
-  }
-
-  renderImage (src, isLoading) {
-    const imageClass = classNames(
-      'ui medium circular image fadeIn animated',
-      { hidden: isLoading },
-    )
-
-    return (
+  return (
+    <div className="image-component">
+      {isLoading && <Loader />}
       <img
         alt=""
         className={imageClass}
         src={src}
-        onLoad={this.handleLoad}
+        onLoad={onLoad}
       />
-    )
-  }
-
-  render () {
-    const { src } = this.props
-    const { isLoading } = this.state
-
-    return (
-      <div className="image-component">
-        {isLoading && <Loader />}
-        {this.renderImage(src, isLoading)}
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
-export default Image
+export default compose(
+  withState('isLoading', 'toggleLoading', true),
+  withHandlers({
+    onLoad: ({ toggleLoading }: PropsT) => () => toggleLoading(false),
+  }),
+)(Image)
