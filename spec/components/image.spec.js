@@ -1,45 +1,26 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Image from '../../src/components/image'
 
-function setup() {
-  const props = {
-    src: 'http://www.example.com/images/me.png',
-  }
+import { Image, Loader } from '../../src/components'
 
-  const enzymeWrapper = shallow(
-    <Image {...props} />
-  )
-
-  return {
-    props,
-    enzymeWrapper
-  }
-}
+const IMG_URL = 'http://www.example.com/images/me.png'
 
 describe('components -> image', () => {
-  it('should render self and subcomponents with initial state', () => {
-    const { enzymeWrapper } = setup()
-
-    expect(enzymeWrapper.find('div').hasClass('image-component')).toBeTruthy()
-    expect(enzymeWrapper.find('Loader')).not.toBeNull()
-    const imgProps = enzymeWrapper.find('img').props()
-    expect(imgProps).toHaveProperty('alt', '')
-    expect(imgProps).toHaveProperty('className', 'ui medium circular image fadeIn animated hidden')
-    expect(imgProps).toHaveProperty('src', 'http://www.example.com/images/me.png')
+  let component
+  beforeAll(() => {
+    component = shallow(<Image src={IMG_URL} />)
   })
 
-  it('should render self and subcomponents after image has been loaded', () => {
-    const { enzymeWrapper } = setup()
+  it('should render Loader in first place', () => {
+    expect(component.dive().find(Loader)).toHaveLength(1)
+    expect(component.props()).toHaveProperty('isLoading', true)
+    expect(component.dive().find('img').props()).toHaveProperty('src', IMG_URL)
+  })
 
-    enzymeWrapper.find('img').simulate('load')
+  it('should not render Loader after image has been loaded', () => {
+    component.dive().find('img').simulate('load')
 
-    expect(enzymeWrapper.find('div').hasClass('image-component')).toBeTruthy()
-    expect(enzymeWrapper.find('Loader')).toHaveLength(0)
-
-    const imgProps = enzymeWrapper.find('img').props()
-    expect(imgProps).toHaveProperty('alt', '')
-    expect(imgProps).toHaveProperty('className', 'ui medium circular image fadeIn animated')
-    expect(imgProps).toHaveProperty('src', 'http://www.example.com/images/me.png')
+    expect(component.props()).toHaveProperty('isLoading', false)
+    expect(component.dive().find(Loader)).toHaveLength(0)
   })
 })
