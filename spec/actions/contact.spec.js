@@ -32,9 +32,7 @@ describe('actions-contact', () => {
     return store
       .dispatch(ContactActionCreators.sendContactForm(payload))
       .then(() => {
-        const actions = store
-          .getActions()
-          .map(action => action.type)
+        const actions = store.getActions().map(action => action.type)
         expect(actions).toEqual(expectedActions)
 
         fetchMock.restore()
@@ -42,10 +40,9 @@ describe('actions-contact', () => {
   })
 
   it('it should dispatch SEND_CONTACT_FAILURE when invalid request from api', () => {
-    fetchMock.mock(
-      'http://localhost.com/api/messages',
-      { body: { error_message: 'Something is wrong', status_code: 400 } },
-    )
+    fetchMock.mock('http://localhost.com/api/messages', {
+      body: { error_message: 'Something is wrong', status_code: 400 },
+    })
 
     const expectedActions = [
       ContactActionCreators.SEND_CONTACT_REQUEST,
@@ -62,9 +59,7 @@ describe('actions-contact', () => {
     return store
       .dispatch(ContactActionCreators.sendContactForm(payload))
       .then(() => {
-        const actions = store
-          .getActions()
-          .map(action => action.type)
+        const actions = store.getActions().map(action => action.type)
         expect(actions).toEqual(expectedActions)
 
         fetchMock.restore()
@@ -89,9 +84,7 @@ describe('actions-contact', () => {
     return store
       .dispatch(ContactActionCreators.sendContactForm(payload))
       .then(() => {
-        const actions = store
-          .getActions()
-          .map(action => action.type)
+        const actions = store.getActions().map(action => action.type)
         expect(actions).toEqual(expectedActions)
 
         fetchMock.restore()

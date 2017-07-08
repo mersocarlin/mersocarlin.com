@@ -3,15 +3,15 @@ export type ContactT = {
   message: string,
   name: string,
   subject: string,
-};
+}
 
 type IntlBodyT = {
-  id: string
-};
+  id: string,
+}
 
 export type IntlT = {
-  formatMessage: (body: IntlBodyT) => string
-};
+  formatMessage: (body: IntlBodyT) => string,
+}
 
 export type LocationT = {
   action: string,
@@ -19,19 +19,18 @@ export type LocationT = {
   key: string,
   pathname: string,
   search: string,
-};
+}
 
 export type MapCenterT = {
   lat: string,
   lng: string,
-};
+}
 
 export type SocialItemT = {
   icon: string,
   name: string,
   side: number,
   url: string,
-};
-
+}
 
 export * from './reducers'

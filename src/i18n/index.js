@@ -5,10 +5,7 @@ import ptBRLocaleData from 'react-intl/locale-data/pt'
 import en from './lang-en'
 import br from './lang-pt-BR'
 
-addLocaleData([
-  ...enLocaleData,
-  ...ptBRLocaleData,
-])
+addLocaleData([...enLocaleData, ...ptBRLocaleData])
 
 export default {
   en: {

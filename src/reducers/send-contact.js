@@ -1,12 +1,10 @@
 import { ContactActionCreators } from '../actions'
 
-
 const INITIAL_STATE = {
   contactSent: false,
   error: null,
   isSubmiting: false,
 }
-
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

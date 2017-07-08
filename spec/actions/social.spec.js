@@ -17,13 +17,9 @@ describe('actions-social', () => {
     ]
     const store = mockStore({})
 
-    return store
-      .dispatch(SocialActionCreators.fetchSocialList())
-      .then(() => {
-        const actions = store
-          .getActions()
-          .map(action => action.type)
-        expect(actions).toEqual(expectedActions)
-      })
+    return store.dispatch(SocialActionCreators.fetchSocialList()).then(() => {
+      const actions = store.getActions().map(action => action.type)
+      expect(actions).toEqual(expectedActions)
+    })
   })
 })

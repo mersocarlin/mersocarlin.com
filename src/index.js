@@ -15,5 +15,5 @@ render(
   <Root history={history} store={store}>
     <App />
   </Root>,
-  document.getElementById('root'), // eslint-disable-line
+  document.getElementById('root') // eslint-disable-line
 )

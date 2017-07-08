@@ -7,17 +7,16 @@ type PropsT = {
   children?: React$Element<*>,
   hasError: boolean,
   label: string,
-};
+}
 
 const FormField = ({ children, hasError, label }: PropsT) => {
-  const fieldCssClass = classNames(
-    'required field',
-    { error: hasError },
-  )
+  const fieldCssClass = classNames('required field', { error: hasError })
 
   return (
     <div className={fieldCssClass}>
-      <Label>{label}</Label>
+      <Label>
+        {label}
+      </Label>
       {children}
     </div>
   )

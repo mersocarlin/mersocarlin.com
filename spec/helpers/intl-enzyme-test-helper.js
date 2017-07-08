@@ -10,7 +10,6 @@ import React from 'react'
 import { IntlProvider, intlShape } from 'react-intl'
 import { mount, shallow } from 'enzyme'
 
-
 // You can pass your messages to the IntlProvider. Optional: remove if unneeded.
 // const locales = require('../../src/i18n')
 import locales from '../../src/i18n'
@@ -22,25 +21,23 @@ const { intl } = intlProvider.getChildContext()
 /**
  * When using React-Intl `injectIntl` on components, props.intl is required.
  */
-function nodeWithIntlProp (node) {
+function nodeWithIntlProp(node) {
   return React.cloneElement(node, { intl })
 }
 
-export function shallowWithIntl (node, { context } = {}) {
-  return shallow(
-    nodeWithIntlProp(node),
-    {
-      context: Object.assign({}, context, { intl }),
-    },
-  )
+export function shallowWithIntl(node, { context } = {}) {
+  return shallow(nodeWithIntlProp(node), {
+    context: Object.assign({}, context, { intl }),
+  })
 }
 
-export function mountWithIntl (node, { context, childContextTypes } = {}) {
-  return mount(
-    nodeWithIntlProp(node),
-    {
-      context: Object.assign({}, context, { intl }),
-      childContextTypes: Object.assign({}, { intl: intlShape }, childContextTypes),
-    },
-  )
+export function mountWithIntl(node, { context, childContextTypes } = {}) {
+  return mount(nodeWithIntlProp(node), {
+    context: Object.assign({}, context, { intl }),
+    childContextTypes: Object.assign(
+      {},
+      { intl: intlShape },
+      childContextTypes
+    ),
+  })
 }

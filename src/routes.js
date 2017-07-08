@@ -5,7 +5,6 @@ import App from './containers/app'
 import Home from './containers/home'
 import Contact from './containers/contact'
 
-
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />

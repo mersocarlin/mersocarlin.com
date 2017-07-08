@@ -1,7 +1,6 @@
 import locales from '../i18n'
 import { I18nActionCreators } from '../actions'
 
-
 const INITIAL_STATE = { ...locales.en }
 
 export default (state = INITIAL_STATE, action) => {

@@ -1,0 +1,42 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "jest",
+    "prettier"
+  ],
+  "env": {
+    "jest/globals": true
+  },
+  "globals": {
+    "Element": true,
+    "KeyboardEvent": true,
+    "ReactClass": true,
+    "ReactElement": true,
+    "React$Element": true
+  },
+  "rules": {
+    "import/prefer-default-export": "warn",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js"] }],
+    "react/jsx-wrap-multilines": ["error", {
+      "arrow": false
+    }],
+    "react/no-children-prop": 0,
+    "react/require-default-props": "off",
+
+    "prettier/prettier": ["error", {
+      "semi": false,
+      "singleQuote": true,
+      "tabWidth": 2,
+      "trailingComma": "es5"
+    }]
+  }
+}

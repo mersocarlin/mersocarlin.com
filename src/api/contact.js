@@ -3,7 +3,7 @@ import { env } from '../config'
 
 const SAFE_LENGTH = 5000
 
-async function sendContact (payload) {
+async function sendContact(payload) {
   const body = {
     name: payload.name,
     email: payload.email,
@@ -11,10 +11,8 @@ async function sendContact (payload) {
     content: payload.message,
   }
 
-  const isBigMessage = Object
-    .keys(body)
-    .filter(key => body[key].length > SAFE_LENGTH)
-    .length > 0
+  const isBigMessage =
+    Object.keys(body).filter(key => body[key].length > SAFE_LENGTH).length > 0
 
   if (isBigMessage) {
     throw new ContactException('contact.form.bigMessage')

@@ -13,9 +13,7 @@ describe('components -> contact-form', () => {
       isSubmiting: false,
     }
 
-    component = mountWithIntl(
-      <ContactForm {...defaultProps} />,
-    )
+    component = mountWithIntl(<ContactForm {...defaultProps} />)
   })
 
   it('should render without error class', () => {
@@ -33,7 +31,8 @@ describe('components -> contact-form', () => {
     const submit = component.find('.submit')
     submit.simulate('click')
 
-    expect(component.find('.contact-form-component').hasClass('error')).toBeTruthy
+    expect(component.find('.contact-form-component').hasClass('error'))
+      .toBeTruthy
   })
 
   it('should render error message', () => {
@@ -58,11 +57,31 @@ describe('components -> contact-form', () => {
       onSubmit: handleSubmit,
     })
 
-    component.find('FormField').find('Text').at(0).simulate('change', { target: { value: 'Name' } })
-    component.find('FormField').find('Text').at(1).simulate('change', { target: { value: 'mail@me.com' } })
-    component.find('FormField').find('Text').at(2).simulate('change', { target: { value: 'Subject' } })
-    component.find('FormField').find('Textarea').at(0).simulate('change', { target: { value: 'Message' } })
-    component.find('FormField').find('Text').at(3).simulate('change', { target: { value: '8' } })
+    component
+      .find('FormField')
+      .find('Text')
+      .at(0)
+      .simulate('change', { target: { value: 'Name' } })
+    component
+      .find('FormField')
+      .find('Text')
+      .at(1)
+      .simulate('change', { target: { value: 'mail@me.com' } })
+    component
+      .find('FormField')
+      .find('Text')
+      .at(2)
+      .simulate('change', { target: { value: 'Subject' } })
+    component
+      .find('FormField')
+      .find('Textarea')
+      .at(0)
+      .simulate('change', { target: { value: 'Message' } })
+    component
+      .find('FormField')
+      .find('Text')
+      .at(3)
+      .simulate('change', { target: { value: '8' } })
 
     expect(handleSubmit).not.toHaveBeenCalled()
     component.find('.submit').simulate('click')

@@ -9,27 +9,21 @@ type InnerPropsT = {
   isLoading: boolean,
   onLoad: () => void,
   toggleLoading: (loading: boolean) => void,
-};
+}
 
 type PropsT = {
   src: string,
-} & InnerPropsT;
+} & InnerPropsT
 
 const Image = ({ isLoading, src, onLoad }: PropsT) => {
-  const imageClass = classNames(
-    'ui medium circular image fadeIn animated',
-    { hidden: isLoading },
-  )
+  const imageClass = classNames('ui medium circular image fadeIn animated', {
+    hidden: isLoading,
+  })
 
   return (
     <div className="image-component">
       {isLoading && <Loader />}
-      <img
-        alt=""
-        className={imageClass}
-        src={src}
-        onLoad={onLoad}
-      />
+      <img alt="" className={imageClass} src={src} onLoad={onLoad} />
     </div>
   )
 }
@@ -38,5 +32,5 @@ export default compose(
   withState('isLoading', 'toggleLoading', true),
   withHandlers({
     onLoad: ({ toggleLoading }: PropsT) => () => toggleLoading(false),
-  }),
+  })
 )(Image)

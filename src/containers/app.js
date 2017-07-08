@@ -19,9 +19,16 @@ type PropsT = {
   location: LocationT,
   onLocaleChange: (locale: string) => void,
   onMenuItemClick: (location: string) => void,
-};
+}
 
-const App = ({ children, i18n, intl, location, onLocaleChange, onMenuItemClick }: PropsT) => (
+const App = ({
+  children,
+  i18n,
+  intl,
+  location,
+  onLocaleChange,
+  onMenuItemClick,
+}: PropsT) =>
   <div className="app-mersocarlin">
     <Menu
       locale={i18n.flag}
@@ -37,18 +44,20 @@ const App = ({ children, i18n, intl, location, onLocaleChange, onMenuItemClick }
       {moment().year()} {intl.formatMessage({ id: 'application.copy' })}
     </div>
   </div>
-)
 
 export default compose(
   withIntl,
   withNavigation,
-  connect(state => ({
-    i18n: state.i18n,
-  }), {
-    updateLocale: I18nActionCreators.updateLocale,
-  }),
+  connect(
+    state => ({
+      i18n: state.i18n,
+    }),
+    {
+      updateLocale: I18nActionCreators.updateLocale,
+    }
+  ),
   withHandlers({
     onLocaleChange: ({ updateLocale }) => locale => updateLocale(locale),
     onMenuItemClick: ({ navigateTo }) => location => navigateTo(location),
-  }),
+  })
 )(App)

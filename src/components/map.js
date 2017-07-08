@@ -12,9 +12,9 @@ type PropsT = {
   children: React$Element<*>,
   options: any,
   zoom: number,
-};
+}
 
-const Map = ({ children, apiKey, center, options, zoom }: PropsT) => (
+const Map = ({ children, apiKey, center, options, zoom }: PropsT) =>
   <div className="map-component">
     <GoogleMap
       bootstrapURLKeys={{
@@ -28,10 +28,9 @@ const Map = ({ children, apiKey, center, options, zoom }: PropsT) => (
       {children}
     </GoogleMap>
   </div>
-)
 
 Map.defaultProps = {
-  options: { },
+  options: {},
   zoom: 13,
 }
 
