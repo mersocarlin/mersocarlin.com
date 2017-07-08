@@ -9,7 +9,7 @@ import type { IntlT, ReducerErrorT } from '../types'
 type PropsT = {
   error: ReducerErrorT,
   intl: IntlT,
-};
+}
 
 const ErrorMessage = ({ error, intl }: PropsT) => {
   const emailAddress = intl.formatMessage({ id: 'mersocarlin.email' })
@@ -27,7 +27,11 @@ const ErrorMessage = ({ error, intl }: PropsT) => {
           tagName="p"
           values={{
             email: (
-              <a href={`mailto:${emailAddress}`} target="_blank" rel="noopener noreferrer">
+              <a
+                href={`mailto:${emailAddress}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {emailAddress}
               </a>
             ),

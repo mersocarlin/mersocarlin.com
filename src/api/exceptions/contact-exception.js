@@ -1,6 +1,5 @@
-
 class ContactException {
-  constructor (message) {
+  constructor(message) {
     this.message = message
     this.name = 'ContactException'
   }

@@ -17,18 +17,20 @@ type PropsT = {
   onSubmit: () => void,
   payload: ContactT,
   isValid: boolean,
-};
+}
 
 const FORM_KEYS = ['name', 'email', 'subject', 'message', 'validation']
-const createPayload = () => (FORM_KEYS.reduce((prev, curr) => (
-  {
-    ...prev,
-    [curr]: {
-      isValid: true,
-      value: '',
-    },
-  }
-), {}))
+const createPayload = () =>
+  FORM_KEYS.reduce(
+    (prev, curr) => ({
+      ...prev,
+      [curr]: {
+        isValid: true,
+        value: '',
+      },
+    }),
+    {}
+  )
 
 const ContactForm = ({
   error,
@@ -39,14 +41,12 @@ const ContactForm = ({
   payload,
   isValid,
 }: PropsT) => {
-  const formCssClass = classNames(
-    'contact-form-component ui form',
-    { error: !isValid || error },
-  )
-  const submitCssClass = classNames(
-    'ui green submit button',
-    { loading: isSubmiting },
-  )
+  const formCssClass = classNames('contact-form-component ui form', {
+    error: !isValid || error,
+  })
+  const submitCssClass = classNames('ui green submit button', {
+    loading: isSubmiting,
+  })
 
   return (
     <div className={formCssClass}>
@@ -57,7 +57,9 @@ const ContactForm = ({
         >
           <Text
             onChange={value => onFieldChange('name', value)}
-            placeholder={intl.formatMessage({ id: 'contact.form.name.placeholder' })}
+            placeholder={intl.formatMessage({
+              id: 'contact.form.name.placeholder',
+            })}
             value={payload.name.value}
           />
         </FormField>
@@ -68,7 +70,9 @@ const ContactForm = ({
           <Text
             lowercase
             onChange={value => onFieldChange('email', value)}
-            placeholder={intl.formatMessage({ id: 'contact.form.email.placeholder' })}
+            placeholder={intl.formatMessage({
+              id: 'contact.form.email.placeholder',
+            })}
             type="email"
             value={payload.email.value}
           />
@@ -80,7 +84,9 @@ const ContactForm = ({
       >
         <Text
           onChange={value => onFieldChange('subject', value)}
-          placeholder={intl.formatMessage({ id: 'contact.form.subject.placeholder' })}
+          placeholder={intl.formatMessage({
+            id: 'contact.form.subject.placeholder',
+          })}
           value={payload.subject.value}
         />
       </FormField>
@@ -103,7 +109,7 @@ const ContactForm = ({
           value={payload.validation.value}
         />
       </FormField>
-      { error && <ErrorMessage error={error} /> }
+      {error && <ErrorMessage error={error} />}
       <Button className={submitCssClass} onClick={onSubmit}>
         {intl.formatMessage({ id: 'contact.form.send' })}
       </Button>
@@ -125,24 +131,29 @@ export default compose(
         },
       })
     },
-    onSubmit: ({ isSubmiting, onSubmit, payload, setPayload, toggleValid }) => () => {
+    onSubmit: ({
+      isSubmiting,
+      onSubmit,
+      payload,
+      setPayload,
+      toggleValid,
+    }) => () => {
       if (isSubmiting) {
         return
       }
 
       const formFields = { ...payload }
-      Object
-        .keys(formFields)
-        .forEach(field => (formFields[field].isValid = !!formFields[field].value))
+      Object.keys(formFields).forEach(
+        field => (formFields[field].isValid = !!formFields[field].value)
+      )
 
       if (parseInt(formFields.validation.value, 10) !== 8) {
         formFields.validation.isValid = false
       }
 
-      const isValid = Object
-        .keys(formFields)
-        .filter(field => !formFields[field].isValid)
-        .length === 0
+      const isValid =
+        Object.keys(formFields).filter(field => !formFields[field].isValid)
+          .length === 0
       toggleValid(isValid)
 
       setPayload({ ...formFields })
@@ -152,19 +163,19 @@ export default compose(
       }
 
       onSubmit(
-        Object
-          .keys(formFields)
-          .filter(key => key !== 'validation')
-          .reduce((prev, curr) => ({
+        Object.keys(formFields).filter(key => key !== 'validation').reduce(
+          (prev, curr) => ({
             ...prev,
             [curr]: formFields[curr].value,
-          }), {}),
+          }),
+          {}
+        )
       )
     },
   }),
   lifecycle({
-    componentDidMount () {
+    componentDidMount() {
       this.props.setPayload(createPayload())
     },
-  }),
+  })
 )(ContactForm)

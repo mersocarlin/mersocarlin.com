@@ -1,12 +1,10 @@
 import { SocialActionCreators } from '../actions'
 
-
 const INITIAL_STATE = {
   items: [],
   error: null,
   isFetching: false,
 }
-
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

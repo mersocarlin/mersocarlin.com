@@ -13,9 +13,9 @@ import './home.scss'
 type PropsT = {
   intl: IntlT,
   socialList: SocialListReducerT,
-};
+}
 
-const Home = ({ intl, socialList }: PropsT) => (
+const Home = ({ intl, socialList }: PropsT) =>
   <div className="page-home">
     <Image src={intl.formatMessage({ id: 'mersocarlin.gravatarUrl' })} />
     <h2 className="myName">
@@ -29,18 +29,20 @@ const Home = ({ intl, socialList }: PropsT) => (
     </div>
     {!socialList.isFetching && <SocialList {...socialList} />}
   </div>
-)
 
 export default compose(
   withIntl,
-  connect(state => ({
-    socialList: state.socialList,
-  }), {
-    fetchSocialList: SocialActionCreators.fetchSocialList,
-  }),
+  connect(
+    state => ({
+      socialList: state.socialList,
+    }),
+    {
+      fetchSocialList: SocialActionCreators.fetchSocialList,
+    }
+  ),
   lifecycle({
-    componentDidMount () {
+    componentDidMount() {
       this.props.fetchSocialList()
     },
-  }),
+  })
 )(Home)

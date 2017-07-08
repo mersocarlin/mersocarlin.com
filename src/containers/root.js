@@ -11,32 +11,26 @@ import routes from '../routes'
 type PropsT = {
   history: any,
   store: any,
-};
+}
 
-const Root = ({ history, store }: PropsT) => (
+const Root = ({ history, store }: PropsT) =>
   <Provider store={store}>
     <IntlProvider>
-      <Router
-        history={history}
-        children={routes}
-      />
+      <Router history={history} children={routes} />
     </IntlProvider>
   </Provider>
-)
 
-const getPathName = routing => (
-  routing.locationBeforeTransitions.pathname
-)
+const getPathName = routing => routing.locationBeforeTransitions.pathname
 
 export default compose(
   connect(state => ({
     routing: state.routing,
   })),
   lifecycle({
-    componentDidMount () {
+    componentDidMount() {
       logPageView(getPathName(this.props.routing))
     },
-    componentWillReceiveProps ({ routing }) {
+    componentWillReceiveProps({ routing }) {
       const currentLocation = getPathName(this.props.routing)
       const nextLocation = getPathName(routing)
 
@@ -44,5 +38,5 @@ export default compose(
         logPageView(nextLocation)
       }
     },
-  }),
+  })
 )(Root)

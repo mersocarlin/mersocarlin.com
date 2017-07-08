@@ -11,9 +11,7 @@ describe('components -> form-field', () => {
       label: 'Label field',
       hasError: false,
     }
-    component = mount(
-      <FormField {...defaultProps} />,
-    )
+    component = mount(<FormField {...defaultProps} />)
   })
 
   it('should render without error class', () => {

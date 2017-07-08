@@ -23,7 +23,10 @@ describe('components -> map', () => {
 
     const gMapProps = component.find('GoogleMap').props()
     expect(gMapProps).toHaveProperty('bootstrapURLKeys')
-    expect(gMapProps.bootstrapURLKeys).toEqual({ key: 'abc123', language: 'en' })
+    expect(gMapProps.bootstrapURLKeys).toEqual({
+      key: 'abc123',
+      language: 'en',
+    })
     expect(gMapProps).toHaveProperty('center')
     expect(gMapProps.center).toEqual({ lat: 0, lng: 0 })
     expect(gMapProps).toHaveProperty('zoom', 15)

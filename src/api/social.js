@@ -1,5 +1,4 @@
-
-function getSocialList () {
+function getSocialList() {
   return [
     {
       icon: 'linkedin',

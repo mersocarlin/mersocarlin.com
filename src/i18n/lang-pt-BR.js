@@ -4,7 +4,8 @@ export default {
 
   'mersocarlin.title': 'Engenheiro de Software',
   'mersocarlin.email': 'mersocarlin@mersocarlin.com',
-  'mersocarlin.gravatarUrl': 'https://www.gravatar.com/avatar/9d345af079c0e2a554a586c6cad3c20c?s=250',
+  'mersocarlin.gravatarUrl':
+    'https://www.gravatar.com/avatar/9d345af079c0e2a554a586c6cad3c20c?s=250',
 
   'menu.home': 'Home',
   'menu.contact': 'Contato',
@@ -16,8 +17,10 @@ export default {
   'contact.feedback.message3': 'Atenciosamente,',
 
   'contact.form.errorHeader': 'Ooops! Algo deu errado!',
-  'contact.form.errorMessage': 'Parece que meu servidor está fora do ar. Mas não se preocupe, ele deve estar voltar em instantes. Enquanto isso, qual tal você enviar um email para {email} ?',
-  'contact.form.bigMessage': 'Parece que você está tentando enviar uma mensagem muito extensa pra mim. Neste caso, você se importaria de enviar um email para {email} ?',
+  'contact.form.errorMessage':
+    'Parece que meu servidor está fora do ar. Mas não se preocupe, ele deve estar voltar em instantes. Enquanto isso, qual tal você enviar um email para {email} ?',
+  'contact.form.bigMessage':
+    'Parece que você está tentando enviar uma mensagem muito extensa pra mim. Neste caso, você se importaria de enviar um email para {email} ?',
   'contact.form.name.label': 'Nome',
   'contact.form.name.placeholder': 'Seu nome',
   'contact.form.email.label': 'E-mail',
