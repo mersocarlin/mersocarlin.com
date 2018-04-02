@@ -48,7 +48,11 @@ const Contact = ({
           </div>
         )}
       </div>
-      <Map apiKey={mapsApiKey} center={center} options={{ zoomControl: false }}>
+      <Map
+        apiKey={mapsApiKey}
+        center={center}
+        options={{ fullscreenControl: false, zoomControl: false }}
+      >
         <Icon icon="marker" size="huge" {...center} />
       </Map>
 
