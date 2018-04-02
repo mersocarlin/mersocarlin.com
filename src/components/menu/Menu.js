@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import { Menu as SemanticMenu } from 'semantic-ui-react'
 
 import { withIntl } from '../../higher-order'
-import Icon from '../Icon'
+import { Icon } from '../index'
 import FlagMenu from './FlagMenu'
 
 import type { IntlT } from '../../types'

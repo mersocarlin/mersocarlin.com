@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 
-import Icon from '../Icon'
+import { Icon } from '../index'
 
 import type { SocialItemT } from '../../types'
 
