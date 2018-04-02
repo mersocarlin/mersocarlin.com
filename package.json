@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "My personal website's source.",
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
+  "homepage": "https://mersocarlin.github.io",
   "private": true,
   "dependencies": {
     "animate.css": "^3.5.2",
     "classnames": "^2.2.5",
+    "gh-pages": "^1.1.0",
     "google-map-react": "^0.24.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
@@ -26,6 +28,8 @@
     "semantic-ui-react": "^0.79.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
