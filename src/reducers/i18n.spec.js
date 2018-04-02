@@ -1,7 +1,7 @@
 import reducer from '../../src/reducers/i18n'
 
-import { I18nActionCreators } from '../../src/actions'
-import locales from '../../src/i18n'
+import { I18nActionCreators } from '../actions'
+import locales from '../i18n'
 
 describe('i18n reducer', () => {
   it('should return initial state', () => {

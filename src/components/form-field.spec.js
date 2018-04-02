@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import FormField from '../../src/components/form-field'
+import FormField from './form-field'
 
 describe('components -> form-field', () => {
   let component

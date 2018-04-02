@@ -1,7 +1,7 @@
 import React from 'react'
+import { mount } from 'enzyme'
 
-import { mountWithIntl } from '../helpers/intl-enzyme-test-helper'
-import ContactForm from '../../src/components/contact-form'
+import ContactForm from './contact-form'
 
 describe('components -> contact-form', () => {
   let component
@@ -13,7 +13,7 @@ describe('components -> contact-form', () => {
       isSubmiting: false,
     }
 
-    component = mountWithIntl(<ContactForm {...defaultProps} />)
+    component = mount(<ContactForm {...defaultProps} />)
   })
 
   it('should render without error class', () => {
@@ -24,11 +24,16 @@ describe('components -> contact-form', () => {
     const props = rootDiv.props()
     expect(props).toHaveProperty('className', 'contact-form-component ui form')
 
-    expect(component.find('.submit').hasClass('loading')).toBeFalsy
+    expect(
+      component
+        .find('.submit')
+        .at(0)
+        .hasClass('loading')
+    ).toBeFalsy()
   })
 
   it('should render with error class', () => {
-    const submit = component.find('.submit')
+    const submit = component.find('.submit').at(0)
     submit.simulate('click')
 
     expect(component.find('.contact-form-component').hasClass('error'))
@@ -45,7 +50,10 @@ describe('components -> contact-form', () => {
     })
 
     expect(handleSubmit).not.toHaveBeenCalled()
-    component.find('.submit').simulate('click')
+    component
+      .find('.submit')
+      .at(0)
+      .simulate('click')
 
     expect(handleSubmit).toHaveBeenCalledTimes(0)
     expect(component.find('ErrorMessage')).toHaveLength(1)
@@ -84,7 +92,10 @@ describe('components -> contact-form', () => {
       .simulate('change', { target: { value: '8' } })
 
     expect(handleSubmit).not.toHaveBeenCalled()
-    component.find('.submit').simulate('click')
+    component
+      .find('.submit')
+      .at(0)
+      .simulate('click')
 
     expect(handleSubmit).toHaveBeenCalledTimes(1)
     expect(handleSubmit).toHaveBeenCalledWith({

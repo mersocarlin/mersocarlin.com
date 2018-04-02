@@ -1,4 +1,4 @@
-export function createBigString() {
+export default function createBigString() {
   let text = ''
   const possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'

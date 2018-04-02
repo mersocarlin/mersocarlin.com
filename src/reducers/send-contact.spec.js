@@ -1,5 +1,5 @@
-import reducer from '../../src/reducers/send-contact'
-import { ContactActionCreators } from '../../src/actions'
+import reducer from './send-contact'
+import { ContactActionCreators } from '../actions'
 
 describe('send-contact reducer', () => {
   it('should return the initial state', () => {
