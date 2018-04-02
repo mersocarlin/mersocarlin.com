@@ -5,9 +5,10 @@ import { compose, withHandlers } from 'recompose'
 import classNames from 'classnames'
 import { Menu as SemanticMenu } from 'semantic-ui-react'
 
-import FlagMenu from './FlagMenu'
-import Icon from '../icon'
 import { withIntl } from '../../higher-order'
+import Icon from '../Icon'
+import FlagMenu from './FlagMenu'
+
 import type { IntlT } from '../../types'
 
 type PropsT = {

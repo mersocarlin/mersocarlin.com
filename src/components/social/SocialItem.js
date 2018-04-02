@@ -1,14 +1,15 @@
 // @flow
 import React from 'react'
 
-import Icon from './icon'
-import type { SocialItemT } from '../types'
+import Icon from '../Icon'
+
+import type { SocialItemT } from '../../types'
 
 type PropsT = {
   item: SocialItemT,
 }
 
-const SocialItem = ({ item }: PropsT) =>
+const SocialItem = ({ item }: PropsT) => (
   <a
     data-content={item.url}
     className={`ui circular icon button ${item.className || item.icon}`}
@@ -18,5 +19,6 @@ const SocialItem = ({ item }: PropsT) =>
   >
     <Icon icon={item.icon} />
   </a>
+)
 
 export default SocialItem

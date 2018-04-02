@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import SocialItem from './social-item'
+import SocialItem from './SocialItem'
 
 function setup() {
   const props = {

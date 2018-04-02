@@ -1,16 +1,11 @@
 // @flow
 import React from 'react'
 
-type PropsT = {
+type ApiPropsT = {
   icon: string,
   size?: string,
 }
 
-const Icon = ({ icon, size = '' }: PropsT) =>
-  <i className={`${icon} ${size} icon`} />
-
-Icon.defaultProps = {
-  size: '',
+export default function Icon({ icon, size = '' }: ApiPropsT) {
+  return <i className={`${icon} ${size} icon`} />
 }
-
-export default Icon

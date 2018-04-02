@@ -3,7 +3,7 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 
 import { withIntl } from '../higher-order'
-import Icon from './icon'
+import Icon from './Icon'
 
 import type { IntlT } from '../types'
 

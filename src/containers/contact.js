@@ -5,16 +5,10 @@ import { connect } from 'react-redux'
 import { Header } from 'semantic-ui-react'
 
 import { env } from '../config'
-import { ContactActionCreators, SocialActionCreators } from '../actions'
+import { ContactActionCreators } from '../actions'
 import { ContactForm, ContactSent, Icon, Map, SocialList } from '../components'
 import { withIntl } from '../higher-order'
-import type {
-  ContactT,
-  IntlT,
-  MapCenterT,
-  SendContactReducerT,
-  SocialListReducerT,
-} from '../types'
+import type { ContactT, IntlT, MapCenterT, SendContactReducerT } from '../types'
 
 type PropsT = {
   center: MapCenterT,
@@ -22,7 +16,6 @@ type PropsT = {
   mapsApiKey: string,
   onSubmit: (contact: ContactT) => void,
   sendContact: SendContactReducerT,
-  socialList: SocialListReducerT,
 }
 
 const Contact = ({
@@ -31,7 +24,6 @@ const Contact = ({
   mapsApiKey,
   onSubmit,
   sendContact,
-  socialList,
 }: PropsT) => {
   return (
     <Fragment>
@@ -60,11 +52,9 @@ const Contact = ({
         <Icon icon="marker" size="huge" {...center} />
       </Map>
 
-      {!socialList.isFetching && (
-        <div style={{ margin: '2em 0', textAlign: 'center' }}>
-          <SocialList {...socialList} />
-        </div>
-      )}
+      <div style={{ margin: '2em 0', textAlign: 'center' }}>
+        <SocialList />
+      </div>
     </Fragment>
   )
 }
@@ -74,10 +64,8 @@ export default compose(
   connect(
     state => ({
       sendContact: state.sendContact,
-      socialList: state.socialList,
     }),
     {
-      fetchSocialList: SocialActionCreators.fetchSocialList,
       resetContactForm: ContactActionCreators.resetContactForm,
       sendContactForm: ContactActionCreators.sendContactForm,
     }
@@ -90,9 +78,6 @@ export default compose(
     onSubmit: ({ sendContactForm }) => payload => sendContactForm(payload),
   }),
   lifecycle({
-    componentDidMount() {
-      this.props.fetchSocialList()
-    },
     componentWillUnmount() {
       this.props.resetContactForm()
     },
