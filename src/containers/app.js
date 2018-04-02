@@ -10,7 +10,7 @@ import { I18nActionCreators } from '../actions'
 import { withIntl, withNavigation } from '../higher-order'
 import type { i18nReducerT, IntlT, LocationT } from '../types'
 
-import './app.scss'
+import './app.css'
 
 type PropsT = {
   children: React$Element<*>,
