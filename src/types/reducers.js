@@ -18,12 +18,6 @@ export type SendContactReducerT = {
   isSubmiting: boolean,
 }
 
-export type SocialListReducerT = {
-  items: Array<SocialItemT>,
-  error: ReducerErrorT,
-  isFetching: boolean,
-}
-
 export type RoutingReducerT = {
   locationBeforeTransitions: LocationT,
 }

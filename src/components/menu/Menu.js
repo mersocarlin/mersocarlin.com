@@ -5,10 +5,11 @@ import { compose, withHandlers } from 'recompose'
 import classNames from 'classnames'
 import { Menu as SemanticMenu } from 'semantic-ui-react'
 
-import FlagMenu from './flag-menu'
-import Icon from './icon'
-import { withIntl } from '../higher-order'
-import type { IntlT } from '../types'
+import { withIntl } from '../../higher-order'
+import { Icon } from '../index'
+import FlagMenu from './FlagMenu'
+
+import type { IntlT } from '../../types'
 
 type PropsT = {
   intl: IntlT,
@@ -28,7 +29,7 @@ const Menu = ({ intl, locale, onClick, onLocaleChange, pathname }: PropsT) => {
     },
     {
       name: intl.formatMessage({ id: 'menu.contact' }),
-      icon: 'call',
+      icon: 'mail',
       to: '/contact',
       active: [/^\/contact$/].some(path => path.test(pathname)),
     },

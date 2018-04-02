@@ -18,7 +18,6 @@ describe('components -> map', () => {
   })
 
   it('should render self and subcomponents', () => {
-    expect(component.find('div').hasClass('map-component')).toBeTruthy()
     expect(component.find('GoogleMap')).not.toBeNull()
 
     const gMapProps = component.find('GoogleMap').props()

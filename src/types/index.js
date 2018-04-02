@@ -29,7 +29,6 @@ export type MapCenterT = {
 export type SocialItemT = {
   icon: string,
   name: string,
-  side: number,
   url: string,
 }
 

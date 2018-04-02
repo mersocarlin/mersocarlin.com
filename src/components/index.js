@@ -1,10 +1,12 @@
-import ContactForm from './contact-form'
-import ContactSent from './contact-sent'
-import Icon from './icon'
+import ContactSent from './ContactSent'
+import Icon from './Icon'
 import Image from './image'
 import Loader from './loader'
 import Map from './map'
-import Menu from './Menu'
-import SocialList from './social-list'
 
-export { ContactForm, ContactSent, Icon, Image, Loader, Map, Menu, SocialList }
+import Menu from './menu'
+import SocialList from './social'
+
+export * from './forms'
+
+export { ContactSent, Icon, Image, Loader, Map, Menu, SocialList }
