@@ -1,2 +1,4 @@
-export withIntl from './withIntl'
-export withNavigation from './withNavigation'
+import withIntl from './withIntl'
+import withNavigation from './withNavigation'
+
+export { withIntl, withNavigation }

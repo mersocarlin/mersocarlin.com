@@ -28,7 +28,7 @@ const App = ({
   location,
   onLocaleChange,
   onMenuItemClick,
-}: PropsT) =>
+}: PropsT) => (
   <div className="app-mersocarlin">
     <Menu
       locale={i18n.flag}
@@ -36,14 +36,13 @@ const App = ({
       onMenuItemClick={onMenuItemClick}
       pathname={location.pathname}
     />
-    <div className="page-mersocarlin">
-      {children}
-    </div>
+    <div className="page-mersocarlin">{children}</div>
     <div className="ui footer container">
       <Icon icon="copyright" />
       {moment().year()} {intl.formatMessage({ id: 'application.copy' })}
     </div>
   </div>
+)
 
 export default compose(
   withIntl,
