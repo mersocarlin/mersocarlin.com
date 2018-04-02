@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import React, { Fragment } from 'react'
 import { compose, lifecycle, withHandlers, withProps } from 'recompose'
 import { connect } from 'react-redux'
 import { Header } from 'semantic-ui-react'
@@ -15,8 +15,6 @@ import type {
   SendContactReducerT,
   SocialListReducerT,
 } from '../types'
-
-import './contact.css'
 
 type PropsT = {
   center: MapCenterT,
@@ -34,28 +32,42 @@ const Contact = ({
   onSubmit,
   sendContact,
   socialList,
-}: PropsT) => (
-  <div className="page-contact">
-    <div className="ui text container">
-      <div className="column">
-        <Header as="h1" style={{ marginBottom: '1em' }}>
-          {intl.formatMessage({ id: 'contact.title' })}
-        </Header>
-      </div>
-      {sendContact.contactSent ? (
-        <ContactSent />
-      ) : (
+}: PropsT) => {
+  return (
+    <Fragment>
+      <div className="ui text container">
         <div className="column">
-          <ContactForm {...sendContact} onSubmit={onSubmit} />
+          <Header as="h1" style={{ marginBottom: '1em' }}>
+            {intl.formatMessage({ id: 'contact.title' })}
+          </Header>
+        </div>
+
+        {sendContact.contactSent ? (
+          <div style={{ margin: '5em 0' }}>
+            <ContactSent />
+          </div>
+        ) : (
+          <div className="column" style={{ marginBottom: '2em' }}>
+            <ContactForm
+              error={sendContact.error}
+              isSubmiting={sendContact.isSubmiting}
+              onSubmit={onSubmit}
+            />
+          </div>
+        )}
+      </div>
+      <Map apiKey={mapsApiKey} center={center} options={{ zoomControl: false }}>
+        <Icon icon="marker" size="huge" {...center} />
+      </Map>
+
+      {!socialList.isFetching && (
+        <div style={{ margin: '2em 0', textAlign: 'center' }}>
+          <SocialList {...socialList} />
         </div>
       )}
-    </div>
-    <Map apiKey={mapsApiKey} center={center} options={{ zoomControl: false }}>
-      <Icon icon="marker" size="huge" {...center} />
-    </Map>
-    {!socialList.isFetching && <SocialList {...socialList} />}
-  </div>
-)
+    </Fragment>
+  )
+}
 
 export default compose(
   withIntl,

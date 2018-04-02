@@ -14,8 +14,8 @@ export default {
   'contact.feedback.header': 'Thanks for your contact!',
   'contact.feedback.message1': 'Your message has been sent to me! ',
   'contact.feedback.message2':
-    "I really appreciate your contact and we'll be in touch very soon.",
-  'contact.feedback.message3': 'Best,',
+    "I appreciate your time to sending me this message. I'm looking forward to talking to you very soon.",
+  'contact.feedback.message3': 'All the Best,',
 
   'contact.form.errorHeader': 'Ooops! Something is wrong!',
   'contact.form.errorMessage':
