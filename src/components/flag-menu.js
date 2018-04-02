@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import classNames from 'classnames'
+import { Dropdown } from 'semantic-ui-react'
 
 import FlagIcon from './flag-icon'
 
@@ -11,22 +11,21 @@ type PropsT = {
   onChange: (locale: string) => void,
 }
 
-const FlagMenu = ({ value, onChange }: PropsT) =>
-  <div className="ui dropdown item">
-    <FlagIcon flag={value} />
-    <div className="menu">
-      {items.map(({ flag, locale }) =>
-        <a
-          key={flag}
-          className={classNames('item', { active: value === flag })}
-          onClick={() => onChange(locale)}
-          role="link"
-          tabIndex="-1"
-        >
-          <FlagIcon flag={flag} />
-        </a>
-      )}
-    </div>
-  </div>
-
-export default FlagMenu
+export default function FlagMenu({ value, onChange }: PropsT) {
+  return (
+    <Dropdown item trigger={<FlagIcon flag={value} />}>
+      <Dropdown.Menu>
+        {items.map((item, index) => (
+          <Dropdown.Item
+            key={index}
+            active={item.flag === value}
+            onClick={() => onChange(item.locale)}
+            style={{ border: 'none', textAlign: 'center' }}
+          >
+            <FlagIcon flag={item.flag} />
+          </Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
+  )
+}

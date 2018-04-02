@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
 import { Link } from 'react-router'
-import { compose, lifecycle, withHandlers } from 'recompose'
+import { compose, withHandlers } from 'recompose'
 import classNames from 'classnames'
-import $ from 'jquery'
+import { Menu as SemanticMenu } from 'semantic-ui-react'
 
 import FlagMenu from './flag-menu'
 import Icon from './icon'
@@ -35,23 +35,21 @@ const Menu = ({ intl, locale, onClick, onLocaleChange, pathname }: PropsT) => {
   ]
 
   return (
-    <div className="ui segment top-menu">
-      <div className="ui secondary pointing menu">
-        <div className="right menu">
-          {menuItems.map(item =>
-            <Link
-              key={item.icon}
-              onClick={() => onClick(item.to)}
-              className={classNames('item', { active: item.active })}
-            >
-              <Icon icon={item.icon} />
-              {item.name}
-            </Link>
-          )}
-        </div>
+    <SemanticMenu pointing secondary>
+      <SemanticMenu.Menu position="right">
+        {menuItems.map((item, index) => (
+          <Link
+            key={item.icon}
+            onClick={() => onClick(item.to)}
+            className={classNames('item', { active: item.active })}
+          >
+            <Icon icon={item.icon} />
+            {item.name}
+          </Link>
+        ))}
         <FlagMenu value={locale} onChange={onLocaleChange} />
-      </div>
-    </div>
+      </SemanticMenu.Menu>
+    </SemanticMenu>
   )
 }
 
@@ -59,10 +57,5 @@ export default compose(
   withIntl,
   withHandlers({
     onClick: ({ onMenuItemClick }) => location => onMenuItemClick(location),
-  }),
-  lifecycle({
-    componentDidMount() {
-      $('.ui.dropdown').dropdown()
-    },
   })
 )(Menu)
