@@ -1,1 +1,3 @@
-export ContactException from './contact-exception'
+import ContactException from './contact-exception'
+
+export { ContactException }

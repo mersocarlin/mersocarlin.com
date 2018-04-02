@@ -1,2 +1,3 @@
-export contact from './contact'
-export social from './social'
+import contact from './contact'
+
+export { contact }

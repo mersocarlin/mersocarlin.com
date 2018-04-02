@@ -4,7 +4,7 @@ import GoogleMap from 'google-map-react'
 
 import mapStyle from './map.style'
 import type { MapCenterT } from '../types'
-import './map.scss'
+import './map.css'
 
 type PropsT = {
   apiKey: string,
@@ -14,7 +14,7 @@ type PropsT = {
   zoom: number,
 }
 
-const Map = ({ children, apiKey, center, options, zoom }: PropsT) =>
+const Map = ({ children, apiKey, center, options, zoom }: PropsT) => (
   <div className="map-component">
     <GoogleMap
       bootstrapURLKeys={{
@@ -28,6 +28,7 @@ const Map = ({ children, apiKey, center, options, zoom }: PropsT) =>
       {children}
     </GoogleMap>
   </div>
+)
 
 Map.defaultProps = {
   options: {},

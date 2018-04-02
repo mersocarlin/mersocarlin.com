@@ -2,6 +2,7 @@
 import React from 'react'
 import { compose, lifecycle, withHandlers, withProps } from 'recompose'
 import { connect } from 'react-redux'
+import { Header } from 'semantic-ui-react'
 
 import { env } from '../config'
 import { ContactActionCreators, SocialActionCreators } from '../actions'
@@ -15,7 +16,7 @@ import type {
   SocialListReducerT,
 } from '../types'
 
-import './contact.scss'
+import './contact.css'
 
 type PropsT = {
   center: MapCenterT,
@@ -33,25 +34,28 @@ const Contact = ({
   onSubmit,
   sendContact,
   socialList,
-}: PropsT) =>
+}: PropsT) => (
   <div className="page-contact">
     <div className="ui text container">
       <div className="column">
-        <h1 className="ui header">
+        <Header as="h1" style={{ marginBottom: '1em' }}>
           {intl.formatMessage({ id: 'contact.title' })}
-        </h1>
+        </Header>
       </div>
-      {sendContact.contactSent
-        ? <ContactSent />
-        : <div className="column">
-            <ContactForm {...sendContact} onSubmit={onSubmit} />
-          </div>}
+      {sendContact.contactSent ? (
+        <ContactSent />
+      ) : (
+        <div className="column">
+          <ContactForm {...sendContact} onSubmit={onSubmit} />
+        </div>
+      )}
     </div>
     <Map apiKey={mapsApiKey} center={center} options={{ zoomControl: false }}>
       <Icon icon="marker" size="huge" {...center} />
     </Map>
     {!socialList.isFetching && <SocialList {...socialList} />}
   </div>
+)
 
 export default compose(
   withIntl,

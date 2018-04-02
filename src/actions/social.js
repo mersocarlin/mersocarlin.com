@@ -1,17 +1,31 @@
-import { social } from '../api'
-
-export const SOCIAL_LIST_REQUEST = 'SOCIAL_LIST_REQUEST'
-export const SOCIAL_LIST_SUCCESS = 'SOCIAL_LIST_SUCCESS'
-export const SOCIAL_LIST_FAILURE = 'SOCIAL_LIST_FAILURE'
+const SOCIAL_LIST = [
+  {
+    icon: 'linkedin',
+    name: 'LinkedIn',
+    side: 0,
+    url: 'https://www.linkedin.com/in/mersocarlin/en',
+  },
+  {
+    className: 'google plus',
+    icon: 'mail',
+    name: 'Email',
+    side: 0,
+    url: 'mailto:mersocarlin@mersocarlin.com',
+  },
+  {
+    icon: 'github',
+    name: 'Github',
+    side: 1,
+    url: 'https://github.com/mersocarlin',
+  },
+  {
+    icon: 'twitter',
+    name: 'Twitter',
+    side: 1,
+    url: 'https://twitter.com/mersocarlin',
+  },
+]
 
 export function fetchSocialList() {
-  return async dispatch => {
-    dispatch({ type: SOCIAL_LIST_REQUEST })
-    try {
-      const data = social.getSocialList()
-      dispatch({ type: SOCIAL_LIST_SUCCESS, data })
-    } catch (error) {
-      dispatch({ type: SOCIAL_LIST_FAILURE, error })
-    }
-  }
+  return { type: 'SOCIAL_LIST_SUCCESS', data: SOCIAL_LIST }
 }
