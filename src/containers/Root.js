@@ -13,12 +13,13 @@ type PropsT = {
   store: any,
 }
 
-const Root = ({ history, store }: PropsT) =>
+const Root = ({ history, store }: PropsT) => (
   <Provider store={store}>
     <IntlProvider>
       <Router history={history} children={routes} />
     </IntlProvider>
   </Provider>
+)
 
 const getPathName = routing => routing.locationBeforeTransitions.pathname
 
