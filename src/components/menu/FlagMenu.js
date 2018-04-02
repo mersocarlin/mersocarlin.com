@@ -2,8 +2,6 @@
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
 
-import FlagIcon from './flag-icon'
-
 const items = [{ flag: 'br', locale: 'pt-BR' }, { flag: 'gb', locale: 'en' }]
 
 type PropsT = {
@@ -29,3 +27,5 @@ export default function FlagMenu({ value, onChange }: PropsT) {
     </Dropdown>
   )
 }
+
+const FlagIcon = ({ flag }) => <i className={`flag ${flag}`} />

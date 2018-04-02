@@ -3,7 +3,7 @@ import Icon from './icon'
 import Image from './image'
 import Loader from './loader'
 import Map from './map'
-import Menu from './Menu'
+import Menu from './menu'
 import SocialList from './social-list'
 
 export * from './forms'
