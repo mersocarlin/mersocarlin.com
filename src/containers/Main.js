@@ -2,7 +2,7 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
-import App from './app'
+import App from './App'
 import Contact from './Contact'
 import Home from './Home'
 
