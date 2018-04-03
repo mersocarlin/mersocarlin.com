@@ -4,7 +4,7 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 
 import App from './app'
 import Contact from './contact'
-import Home from './home'
+import Home from './Home'
 
 export default function Main() {
   return (
