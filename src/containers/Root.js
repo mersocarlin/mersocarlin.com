@@ -5,7 +5,7 @@ import { connect, Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 
 import logPageView from '../analytics'
-import IntlProvider from './intl-provider'
+import IntlProvider from './IntlProvider'
 import Main from './Main'
 
 type PropsT = {
