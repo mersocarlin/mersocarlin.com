@@ -17,7 +17,3 @@ export type SendContactReducerT = {
   error: ReducerErrorT,
   isSubmiting: boolean,
 }
-
-export type RoutingReducerT = {
-  locationBeforeTransitions: LocationT,
-}
