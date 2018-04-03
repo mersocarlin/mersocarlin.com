@@ -7,8 +7,8 @@ import moment from 'moment'
 import { Icon, Menu } from '../components'
 
 import { I18nActionCreators } from '../actions'
-import { withIntl, withNavigation } from '../higher-order'
-import type { i18nReducerT, IntlT, LocationT } from '../types'
+import { withIntl } from '../higher-order'
+import type { i18nReducerT, IntlT } from '../types'
 
 import './app.css'
 
@@ -16,37 +16,26 @@ type PropsT = {
   children: React$Element<*>,
   i18n: i18nReducerT,
   intl: IntlT,
-  location: LocationT,
   onLocaleChange: (locale: string) => void,
-  onMenuItemClick: (location: string) => void,
 }
 
-const App = ({
-  children,
-  i18n,
-  intl,
-  location,
-  onLocaleChange,
-  onMenuItemClick,
-}: PropsT) => (
-  <div className="app-mersocarlin">
-    <Menu
-      locale={i18n.flag}
-      onLocaleChange={onLocaleChange}
-      onMenuItemClick={onMenuItemClick}
-      pathname={location.pathname}
-    />
-    <div className="page-mersocarlin">{children}</div>
-    <div className="ui footer container">
-      <Icon icon="copyright" />
-      {moment().year()} {intl.formatMessage({ id: 'application.copy' })}
+function App({ children, i18n, intl, onLocaleChange }: PropsT) {
+  return (
+    <div className="app-mersocarlin">
+      <Menu locale={i18n.flag} onLocaleChange={onLocaleChange} />
+
+      <div className="page-mersocarlin">{children}</div>
+
+      <div className="ui footer container">
+        <Icon icon="copyright" />
+        {moment().year()} {intl.formatMessage({ id: 'application.copy' })}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default compose(
   withIntl,
-  withNavigation,
   connect(
     state => ({
       i18n: state.i18n,
@@ -57,6 +46,5 @@ export default compose(
   ),
   withHandlers({
     onLocaleChange: ({ updateLocale }) => locale => updateLocale(locale),
-    onMenuItemClick: ({ navigateTo }) => location => navigateTo(location),
   })
 )(App)
