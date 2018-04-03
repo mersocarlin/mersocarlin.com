@@ -1,8 +1,6 @@
 // @flow
 import React from 'react'
-import { Link } from 'react-router'
-import { compose, withHandlers } from 'recompose'
-import classNames from 'classnames'
+import { NavLink } from 'react-router-dom'
 import { Menu as SemanticMenu } from 'semantic-ui-react'
 
 import { withIntl } from '../../higher-order'
@@ -16,22 +14,19 @@ type PropsT = {
   locale: string,
   onClick: (path: string) => void,
   onLocaleChange: (locale: string) => void,
-  pathname: string,
 }
 
-const Menu = ({ intl, locale, onClick, onLocaleChange, pathname }: PropsT) => {
+function Menu({ intl, locale, onLocaleChange }: PropsT) {
   const menuItems = [
     {
       name: intl.formatMessage({ id: 'menu.home' }),
       icon: 'home',
       to: '/',
-      active: [/^\/$/].some(path => path.test(pathname)),
     },
     {
       name: intl.formatMessage({ id: 'menu.contact' }),
       icon: 'mail',
       to: '/contact',
-      active: [/^\/contact$/].some(path => path.test(pathname)),
     },
   ]
 
@@ -39,24 +34,21 @@ const Menu = ({ intl, locale, onClick, onLocaleChange, pathname }: PropsT) => {
     <SemanticMenu pointing secondary>
       <SemanticMenu.Menu position="right">
         {menuItems.map((item, index) => (
-          <Link
-            key={item.icon}
-            onClick={() => onClick(item.to)}
-            className={classNames('item', { active: item.active })}
+          <NavLink
+            key={index}
+            exact={item.to === '/'}
+            className="item"
+            to={item.to}
           >
             <Icon icon={item.icon} />
             {item.name}
-          </Link>
+          </NavLink>
         ))}
+
         <FlagMenu value={locale} onChange={onLocaleChange} />
       </SemanticMenu.Menu>
     </SemanticMenu>
   )
 }
 
-export default compose(
-  withIntl,
-  withHandlers({
-    onClick: ({ onMenuItemClick }) => location => onMenuItemClick(location),
-  })
-)(Menu)
+export default withIntl(Menu)

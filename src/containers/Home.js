@@ -5,7 +5,7 @@ import { Icon, Image, SocialList } from '../components'
 import { withIntl } from '../higher-order'
 import type { IntlT } from '../types'
 
-import './home.css'
+import './Home.css'
 
 type PropsT = {
   intl: IntlT,
