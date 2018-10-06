@@ -6,25 +6,18 @@ import { Header } from 'semantic-ui-react'
 
 import { env } from '../config'
 import { ContactActionCreators } from '../actions'
-import { ContactForm, ContactSent, Icon, Map, SocialList } from '../components'
+import { ContactForm, ContactSent, Map, SocialList } from '../components'
 import { withIntl } from '../higher-order'
 import type { ContactT, IntlT, MapCenterT, SendContactReducerT } from '../types'
 
 type PropsT = {
   center: MapCenterT,
   intl: IntlT,
-  mapsApiKey: string,
   onSubmit: (contact: ContactT) => void,
   sendContact: SendContactReducerT,
 }
 
-const Contact = ({
-  center,
-  intl,
-  mapsApiKey,
-  onSubmit,
-  sendContact,
-}: PropsT) => {
+const Contact = ({ center, intl, onSubmit, sendContact }: PropsT) => {
   return (
     <Fragment>
       <div className="ui text container">
@@ -49,12 +42,9 @@ const Contact = ({
         )}
       </div>
       <Map
-        apiKey={mapsApiKey}
         center={center}
         options={{ fullscreenControl: false, zoomControl: false }}
-      >
-        <Icon icon="marker" size="huge" {...center} />
-      </Map>
+      />
 
       <div style={{ margin: '2em 0', textAlign: 'center' }}>
         <SocialList />
@@ -76,7 +66,6 @@ export default compose(
   ),
   withProps({
     center: env.map.center,
-    mapsApiKey: env.google.mapsApiKey,
   }),
   withHandlers({
     onSubmit: ({ sendContactForm }) => payload => sendContactForm(payload),

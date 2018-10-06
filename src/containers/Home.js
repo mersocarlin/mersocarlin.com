@@ -15,14 +15,14 @@ function Home({ intl }: PropsT) {
   return (
     <div className="page-home">
       <Image src={intl.formatMessage({ id: 'mersocarlin.gravatarUrl' })} />
-      <h2 className="myName">
+      <h1 className="myName">
         {intl.formatMessage({ id: 'application.name' })}
-      </h2>
+      </h1>
       <div className="rubberBand animated myTitle">
-        <h3>
+        <h2>
           {intl.formatMessage({ id: 'mersocarlin.title' })}
           <Icon icon="code" />
-        </h3>
+        </h2>
       </div>
 
       <SocialList />
