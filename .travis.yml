@@ -1,3 +1,19 @@
 language: node_js
 node_js:
   - 8
+cache:
+  yarn: true
+  directories:
+    - .npm
+stages:
+  - test
+  - name: deploy
+    if: branch = v2
+jobs:
+  include:
+    - stage: test
+      name: "Unit Tests"
+      script: yarn test
+    - stage: deploy
+      name: "Deploy to GH Pages"
+      script: yarn deploy
