@@ -5,11 +5,20 @@
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
   "homepage": "https://mersocarlin.github.io",
   "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "deploy": "gh-pages -b master -d build",
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "predeploy": "npm run build",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
+  },
   "dependencies": {
     "animate.css": "^3.5.2",
     "classnames": "^2.2.5",
-    "flow-bin": "^0.69.0",
-    "gh-pages": "^1.1.0",
+    "flow-bin": "^0.82.0",
+    "gh-pages": "^2.0.1",
     "google-map-react": "^0.34.0",
     "history": "^4.7.2",
     "moment": "^2.18.1",
@@ -20,26 +29,23 @@
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
-    "react-scripts": "1.1.1",
-    "recompose": "^0.26.0",
-    "redux": "^3.7.1",
+    "react-scripts": "2.0.4",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.0",
     "redux-thunk": "^2.1.0",
-    "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.79.0"
-  },
-  "scripts": {
-    "build": "react-scripts build",
-    "deploy": "gh-pages -b master -d build",
-    "eject": "react-scripts eject",
-    "flow": "flow",
-    "predeploy": "npm run build",
-    "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "semantic-ui-css": "^2.4.0",
+    "semantic-ui-react": "^0.82.5"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "fetch-mock": "^6.3.0",
     "redux-mock-store": "^1.5.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
