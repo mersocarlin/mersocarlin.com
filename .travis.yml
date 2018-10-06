@@ -5,6 +5,10 @@ cache:
   yarn: true
   directories:
     - .npm
+stages:
+  - test
+  - name: deploy
+    if: branch = v2
 jobs:
   include:
     - stage: test
@@ -12,5 +16,4 @@ jobs:
       script: yarn test
     - stage: deploy
       name: "Deploy to GH Pages"
-      if: branch = v2
       script: yarn deploy
