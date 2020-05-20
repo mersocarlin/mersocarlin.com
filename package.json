@@ -9,7 +9,8 @@
     "dev": "next",
     "prebuild": "rimraf .next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "yarn tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
     "classnames": "^2.2.6",
