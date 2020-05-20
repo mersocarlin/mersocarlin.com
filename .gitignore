@@ -1,6 +1,13 @@
-node_modules
-bower_components
-.DS_Store
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# folders
+**/coverage
+**/node_modules
+.next
+.now
+
+# files
 .idea
+.DS_Store
+.env.local
 *.log
-coverage
