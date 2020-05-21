@@ -1,10 +1,9 @@
 {
   "name": "mersocarlin.github.io",
-  "version": "2.0.0",
+  "version": "0.0.0",
   "description": "My personal website's source.",
-  "author": "Hemerson Carlin <mersocarlin@gmail.com>",
+  "author": "Hemerson Carlin",
   "homepage": "https://mersocarlin.github.io",
-  "private": true,
   "scripts": {
     "dev": "next",
     "prebuild": "rimraf .next",
@@ -36,11 +35,5 @@
     "redux-mock-store": "^1.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^3.9.3"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  }
 }
