@@ -1,0 +1,9 @@
+# folders
+.vscode
+.git
+.github
+scripts
+
+# files
+jest.config.js
+jest.setup.js

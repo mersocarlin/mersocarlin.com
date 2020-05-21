@@ -1,52 +1,39 @@
 {
   "name": "mersocarlin.github.io",
-  "version": "2.0.0",
+  "version": "0.0.0",
   "description": "My personal website's source.",
-  "author": "Hemerson Carlin <mersocarlin@gmail.com>",
+  "author": "Hemerson Carlin",
   "homepage": "https://mersocarlin.github.io",
-  "private": true,
   "scripts": {
-    "build": "react-scripts build",
-    "deploy": "gh-pages -b master -d build",
-    "eject": "react-scripts eject",
-    "flow": "flow",
-    "predeploy": "npm run build",
-    "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "dev": "next",
+    "prebuild": "rimraf .next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "yarn tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
-    "animate.css": "^3.5.2",
-    "classnames": "^2.2.5",
-    "flow-bin": "^0.82.0",
-    "gh-pages": "^2.0.1",
-    "history": "^4.7.2",
-    "leaflet": "^1.3.4",
-    "moment": "^2.18.1",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "react-ga": "^2.2.0",
-    "react-intl": "^2.3.0",
-    "react-leaflet": "^2.0.1",
-    "react-redux": "^5.0.4",
-    "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.9",
-    "react-scripts": "2.0.4",
-    "recompose": "^0.30.0",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.14.0",
+    "gray-matter": "^4.0.2",
+    "next": "^9.4.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-ga": "^2.7.0",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.1.0",
-    "semantic-ui-css": "^2.4.0",
-    "semantic-ui-react": "^0.82.5"
+    "remark": "^12.0.0",
+    "remark-html": "^11.0.2",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/styled-components": "^5.1.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "fetch-mock": "^6.3.0",
-    "redux-mock-store": "^1.5.1"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "redux-mock-store": "^1.5.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.3"
+  }
 }
