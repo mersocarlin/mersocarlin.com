@@ -4,6 +4,7 @@ import useLocalStorage from '../hooks/useLocalStorage'
 
 interface ThemeContextProps {
   onUpdateTheme: (theme: string) => void
+  theme: string
 }
 
 const ThemeContext = React.createContext<ThemeContextProps | undefined>(
@@ -42,9 +43,20 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
     <ThemeContext.Provider
       value={{
         onUpdateTheme,
+        theme,
       }}
     >
       {children}
     </ThemeContext.Provider>
   )
+}
+
+export function useTheme() {
+  const context = React.useContext(ThemeContext)
+
+  if (context === undefined) {
+    throw new Error('useTheme must be used within a ThemeProvider')
+  }
+
+  return context
 }

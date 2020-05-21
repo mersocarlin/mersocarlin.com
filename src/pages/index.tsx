@@ -8,7 +8,7 @@ const Main = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 20px);
+  height: calc(100% - 70rem);
   justify-content: center;
   width: 100%;
 `

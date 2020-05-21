@@ -35,12 +35,14 @@ const theme = css`
   .light-theme {
     /* color definitions */
     --background-main: #fafafa;
+    --background-main-level1: #fafafa;
     --background-text: #666;
   }
 
   .dark-theme {
     /* color definitions */
     --background-main: #212121;
+    --background-main-level1: #333;
     --background-text: #fafafa;
   }
 `
