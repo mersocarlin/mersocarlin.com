@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-const baseDescription = `Hemerson Carlin is a Brazilian Software Engineer. He has experience in designing and developing web applications using microservices architecture alongside ASP.NET platform, NodeJS and ReactJS. Over the course of his carrer, he's been working with projects in Australia, Brazil, England, Germany, Ireland, New Zealand and United States.`
+const baseDescription = `Hemerson Carlin is a Brazilian Software Engineer. He has experience in designing and developing web applications using microservices architecture alongside ASP.NET platform, NodeJS and ReactJS. Over the course of his carrer, he's been working with projects in Australia, Brazil, UK, Germany, Ireland, New Zealand and United States.`
 
 interface MetaProps {
   description?: string

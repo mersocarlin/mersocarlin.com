@@ -51,7 +51,7 @@ export default function SocialList() {
           target="_blank"
           title={item.name}
         >
-          <img alt={item.name} role="image" src={`/${item.icon}.svg`} />
+          <img alt={item.name} role="img" src={`/${item.icon}.svg`} />
         </a>
       ))}
     </Main>
