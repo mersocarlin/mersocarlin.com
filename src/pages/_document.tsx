@@ -63,30 +63,16 @@ export default class MyDocument extends Document {
           <style
             dangerouslySetInnerHTML={{
               __html: `
-                html {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  box-sizing: border-box;
-                  font-size: 1px;
-                }
-
                 html, body, #__next {
                   height: 100%;
                 }
                 
-                *, *::before, *::after {
-                  box-sizing: inherit;
-                }
-                
-                strong, b {
-                  font-weight: bolder;
-                }
-                
                 body {
-                  font-family: 'Josefin Sans', 'Helvetica', 'Arial', sans-serif;
+                  background: var(--background-main);
+                  color: var(--background-text);
+                  font-family: var(--font-family);
                   margin: 0;
                   padding: 0;
-                  
                 }
               `,
             }}
