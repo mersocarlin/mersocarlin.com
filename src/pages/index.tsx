@@ -8,29 +8,28 @@ const Main = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 20px);
+  height: calc(100% - 70rem);
   justify-content: center;
   width: 100%;
 `
 
 const Image = styled.img`
   border-radius: 50%;
-  border: 3px solid #666;
+  border: 3px solid var(--background-text);
+  box-shadow: var(--box-shadow-1);
   height: 200px;
   width: 200px;
 `
 
 const Title = styled.h1`
-  color: #666;
-  font-size: 40rem;
+  font-size: var(--font-size-h1);
   padding: 0;
   margin: 16rem 0;
 `
 
 const Subtitle = styled.h2`
-  color: #666;
-  font-size: 30rem;
-  margin: 0 0 16rem 0;
+  font-size: var(--font-size-h2);
+  margin: 0 0 var(--padding-large) 0;
   padding: 0;
 `
 
