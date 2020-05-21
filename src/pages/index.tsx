@@ -39,7 +39,6 @@ interface IndexProps {
 }
 
 export default function Index({ gaId }: IndexProps) {
-  console.log('index', gaId, 'test')
   return (
     <Layout gaId={gaId}>
       <Main>

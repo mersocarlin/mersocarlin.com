@@ -20,11 +20,7 @@ const StyledFooter = styled.footer`
   width: 100%;
 `
 
-export default function Layout({
-  children,
-  gaId,
-  title = 'Hemerson Carlin | About Page',
-}: LayouProps) {
+export default function Layout({ children, gaId, title }: LayouProps) {
   React.useEffect(() => {
     initGA(gaId)
     trackPageView(`${window.location.pathname}${window.location.search}`)
@@ -32,16 +28,7 @@ export default function Layout({
 
   return (
     <React.Fragment>
-      <Head>
-        <title>{title}</title>
-        <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-        />
-
-        <Meta title={title} />
-      </Head>
+      <Meta title={title} />
 
       {children}
 

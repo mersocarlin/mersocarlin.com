@@ -1,14 +1,25 @@
 import React from 'react'
+import Head from 'next/head'
 
-const description = `Hemerson Carlin is a Brazilian Software Engineer. He has experience in designing and developing web applications using microservices architecture alongside ASP.NET platform, NodeJS and ReactJS. Over the course of his carrer, he's been working with projects in Australia, Brazil, England, Germany, Ireland, New Zealand and United States.`
+const baseDescription = `Hemerson Carlin is a Brazilian Software Engineer. He has experience in designing and developing web applications using microservices architecture alongside ASP.NET platform, NodeJS and ReactJS. Over the course of his carrer, he's been working with projects in Australia, Brazil, England, Germany, Ireland, New Zealand and United States.`
 
 interface MetaProps {
-  title: string
+  description?: string
+  title?: string
 }
 
-export default function Meta({ title }: MetaProps) {
+export default function Meta({
+  description = baseDescription,
+  title = 'Hemerson Carlin | About Page',
+}: MetaProps) {
   return (
-    <React.Fragment>
+    <Head>
+      <title>{title}</title>
+      <meta charSet="utf-8" />
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+      />
       <meta name="description" content={description} />
       <meta
         name="keywords"
@@ -31,6 +42,6 @@ export default function Meta({ title }: MetaProps) {
       <meta name="twitter:site" content="@mersocarlin" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:image" content="/logo-180px.png" />
-    </React.Fragment>
+    </Head>
   )
 }
