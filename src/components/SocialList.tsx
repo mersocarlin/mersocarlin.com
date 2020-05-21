@@ -31,7 +31,7 @@ const Main = styled.div`
   display: flex;
 
   a {
-    margin: 0 8rem;
+    margin: 0 var(--padding-normal);
 
     img {
       height: 40rem;
