@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -7,6 +8,7 @@ import ThemeSwitcher from './ThemeSwitcher'
 
 interface LayouProps {
   children: React.ReactNode
+  fullHeight?: boolean
   gaId: string
   title?: string
 }
@@ -20,6 +22,29 @@ const StyledHeader = styled.header`
   height: 50rem;
   justify-content: space-between;
   padding: 0 var(--padding-large);
+
+  a {
+    color: var(--background-text);
+    text-decoration: none;
+  }
+`
+
+const LayoutContent = styled.div`
+  height: ${(props: any) =>
+    props['data-fullheight'] ? 'calc(100% - 70rem);' : 'auto'};
+  width: auto;
+
+  @media (min-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 768px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1024px;
+  }
 `
 
 const StyledFooter = styled.footer`
@@ -31,7 +56,12 @@ const StyledFooter = styled.footer`
   width: 100%;
 `
 
-export default function Layout({ children, gaId, title }: LayouProps) {
+export default function Layout({
+  children,
+  fullHeight,
+  gaId,
+  title,
+}: LayouProps) {
   React.useEffect(() => {
     initGA(gaId)
     trackPageView(`${window.location.pathname}${window.location.search}`)
@@ -42,13 +72,17 @@ export default function Layout({ children, gaId, title }: LayouProps) {
       <Meta title={title} />
 
       <StyledHeader>
-        <div>@mersocarlin</div>
+        <Link href="/">
+          <a>@mersocarlin</a>
+        </Link>
         <div>
           <ThemeSwitcher />
         </div>
       </StyledHeader>
 
-      {children}
+      <LayoutContent data-fullheight={Boolean(fullHeight)}>
+        {children}
+      </LayoutContent>
 
       <StyledFooter>{`© ${new Date().getFullYear()} Hemerson Carlin. All rights reserved.`}</StyledFooter>
     </React.Fragment>

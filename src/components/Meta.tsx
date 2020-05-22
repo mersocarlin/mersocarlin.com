@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-const baseDescription = `Hemerson Carlin is a Brazilian Software Engineer. He has experience in designing and developing web applications using microservices architecture alongside ASP.NET platform, NodeJS and ReactJS. Over the course of his carrer, he's been working with projects in Australia, Brazil, UK, Germany, Ireland, New Zealand and United States.`
+const baseDescription = `Hemerson Carlin is a Brazilian Software Engineer. He has experience in designing and developing web applications using microservices architecture alongside ASP.NET platform, NodeJS and ReactJS. Over the course of his carrer, he's been working with projects in Australia, Brazil, Europe, New Zealand and the United States.`
 
 interface MetaProps {
   description?: string
@@ -28,11 +28,11 @@ export default function Meta({
       <meta name="author" content="Hemerson Carlin" />
 
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="/logo-180px.png" />
-      <meta property="og:image:secure_url" content="/logo-180px.png" />
+      <meta property="og:image" content="/hemerson-dark.jpg" />
+      <meta property="og:image:secure_url" content="/hemerson-dark.jpg" />
       <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:width" content="180" />
-      <meta property="og:image:height" content="180" />
+      <meta property="og:image:width" content="200" />
+      <meta property="og:image:height" content="200" />
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://mersocarlin.com/" />
@@ -41,7 +41,7 @@ export default function Meta({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:site" content="@mersocarlin" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:image" content="/logo-180px.png" />
+      <meta name="twitter:image" content="/hemerson-dark.jpg" />
     </Head>
   )
 }
