@@ -6,6 +6,7 @@ const theme = css`
     --font-family: 'Josefin Sans', 'Helvetica', 'Arial', sans-serif;
     --font-size-h1: 40rem;
     --font-size-h2: 30rem;
+    --font-size-h3: 25rem;
 
     /* paddings */
     --padding-xsmall: 2rem;
@@ -35,8 +36,10 @@ const theme = css`
   .light-theme {
     /* color definitions */
     --background-main: #fafafa;
-    --background-main-level1: #fafafa;
+    --background-main-level1: #fff;
     --background-text: #666;
+    --primary-main: #4caf81;
+    --primary-dark: #0c7f54;
   }
 
   .dark-theme {
@@ -44,6 +47,8 @@ const theme = css`
     --background-main: #212121;
     --background-main-level1: #333;
     --background-text: #fafafa;
+    --primary-main: #97ceb3;
+    --primary-dark: #689d83;
   }
 `
 
