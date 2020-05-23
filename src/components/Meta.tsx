@@ -25,7 +25,7 @@ export default function Meta({
       <meta name="description" content={description} />
       <meta
         name="keywords"
-        content="web, webdesign, developer, software, software engineer, Brazil, Ireland, Dublin"
+        content="software, javascript, JS, ReactJS, NodeJS, software engineer, full stack, developer, blog, website"
       />
       <meta name="author" content="Hemerson Carlin" />
 
