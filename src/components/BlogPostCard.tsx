@@ -52,7 +52,7 @@ const Main = styled.div`
 
 const BlogPostImage = styled.div`
   img {
-    height: 150rem;
+    height: auto;
     width: 100%;
   }
 `
