@@ -36,15 +36,18 @@ const Greetings = styled.div`
 `
 
 const BlogPosts = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 30px;
+  padding: 0 var(--padding-large);
+
+  @media (min-width: 468px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   @media (min-width: 768px) {
-    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
   }
 `
 

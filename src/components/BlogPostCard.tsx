@@ -29,10 +29,8 @@ const Main = styled.div`
   box-shadow: var(--box-shadow-1);
   color: var(--background-text);
   cursor: pointer;
-  height: 340rem;
-  margin-bottom: var(--padding-xlarge);
   overflow: hidden;
-  width: 300rem;
+  width: 100%;
 
   &[data-disabled='true'] {
     cursor: default;
@@ -52,9 +50,8 @@ const Main = styled.div`
 `
 
 const BlogPostImage = styled.div`
-  height: 150rem;
-
   img {
+    height: 150rem;
     width: 100%;
   }
 `
