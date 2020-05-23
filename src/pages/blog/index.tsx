@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { GetStaticProps } from 'next'
 
 import { getPosts } from '../../api'
 import BlogPostCard from '../../components/BlogPostCard'
@@ -75,7 +76,7 @@ const placeholder = {
 
 export default function Blog({ posts, gaId }: IndexProps) {
   return (
-    <Layout fullHeight gaId={gaId}>
+    <Layout gaId={gaId}>
       <Meta title="Hemerson Carlin Blog" />
 
       <Main>
@@ -89,7 +90,7 @@ export default function Blog({ posts, gaId }: IndexProps) {
 
           <p>
             This is going to be my own space to share the things I like, a
-            couple of ideias and some of my work.
+            couple of ideas and some of my work.
           </p>
         </Greetings>
 
@@ -108,7 +109,7 @@ export default function Blog({ posts, gaId }: IndexProps) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts: await getPosts(),

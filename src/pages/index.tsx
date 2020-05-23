@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { GetStaticProps } from 'next'
 
 import Layout from '../components/Layout'
 import Meta from '../components/Meta'
@@ -65,7 +66,7 @@ export default function Index({ gaId }: IndexProps) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       gaId: process.env.GOOGLE_ANALYTICS_ID,

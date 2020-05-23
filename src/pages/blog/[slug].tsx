@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRouter } from 'next/router'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import styled from 'styled-components'
 
@@ -18,13 +18,11 @@ const Main = styled.div`
 
 interface PostPageProps {
   gaId: string
-  post: Post
+  post?: Post
 }
 
 export default function PostPage({ gaId, post }: PostPageProps) {
-  const router = useRouter()
-
-  if (!router.isFallback && !post?.slug) {
+  if (!post || !post.slug) {
     return <ErrorPage statusCode={404} />
   }
 
@@ -45,18 +43,28 @@ export default function PostPage({ gaId, post }: PostPageProps) {
   )
 }
 
-export async function getStaticProps({ params }: any) {
-  const post = await getPostBySlug(params.slug)
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const gaId = process.env.GOOGLE_ANALYTICS_ID
+
+  if (!params) {
+    return {
+      props: {
+        gaId,
+      },
+    }
+  }
+
+  const post = await getPostBySlug(`${params.slug}`)
 
   return {
     props: {
-      gaId: process.env.GOOGLE_ANALYTICS_ID,
+      gaId,
       post,
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts()
 
   return {
