@@ -90,7 +90,9 @@ const BlogContent = styled.div`
   }
 
   blockquote {
-    margin: var(--padding-xlarge);
+    padding: var(--padding-large);
+    border-left: 3px solid var(--background-text);
+    margin: 0;
   }
 
   a {

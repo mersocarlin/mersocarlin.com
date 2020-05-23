@@ -6,10 +6,18 @@ import Link from './Link'
 import ThemeSwitcher from './ThemeSwitcher'
 
 interface LayouProps {
+  centerContent?: boolean
   children: React.ReactNode
-  fullHeight?: boolean
   gaId: string
 }
+
+const Main = styled.div`
+  min-height: 100vh; /* cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100rem; /* footer height */
+`
 
 const StyledHeader = styled.header`
   align-items: center;
@@ -40,9 +48,8 @@ const Menu = styled.div`
   }
 `
 
-const LayoutContent = styled.div`
-  height: ${(props: any) =>
-    props['data-fullheight'] ? 'calc(100% - 70rem);' : 'auto'};
+const LayoutContent = styled.section`
+  margin: var(--padding-xlarge) 0;
   width: auto;
 
   @media (min-width: 768px) {
@@ -56,25 +63,38 @@ const LayoutContent = styled.div`
     margin-right: auto;
     width: 1024px;
   }
+
+  &[data-centercontent='true'] {
+    @media (min-width: 768px) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 `
 
 const StyledFooter = styled.footer`
   align-items: center;
+  background: var(--background-main-level1);
+  box-shadow: var(--box-shadow-1);
+  bottom: 0;
   display: flex;
   font-size: 14rem;
-  height: 20rem;
+  height: 100rem;
   justify-content: center;
+  position: absolute;
   width: 100%;
 `
 
-export default function Layout({ children, fullHeight, gaId }: LayouProps) {
+export default function Layout({ centerContent, children, gaId }: LayouProps) {
   React.useEffect(() => {
     initGA(gaId)
     trackPageView(`${window.location.pathname}${window.location.search}`)
   }, [])
 
   return (
-    <React.Fragment>
+    <Main>
       <StyledHeader>
         <Link href="/">@mersocarlin</Link>
 
@@ -84,13 +104,13 @@ export default function Layout({ children, fullHeight, gaId }: LayouProps) {
         </Menu>
       </StyledHeader>
 
-      <LayoutContent data-fullheight={Boolean(fullHeight)}>
+      <LayoutContent data-centercontent={Boolean(centerContent)}>
         {children}
       </LayoutContent>
 
       <StyledFooter>
         {`Hemerson Carlin © 2010 — ${new Date().getFullYear()}`}
       </StyledFooter>
-    </React.Fragment>
+    </Main>
   )
 }
