@@ -12,7 +12,14 @@ const Main = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  padding: var(--padding-large);
   width: 100%;
+
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    padding: 0;
+    width: 600px;
+  }
 `
 
 const Image = styled.img`
@@ -24,24 +31,26 @@ const Image = styled.img`
 `
 
 const Title = styled.h1`
-  font-size: var(--font-size-h1);
+  font-size: 30rem;
   margin: 16rem 0 0 0;
   padding: 0;
   text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h1);
+  }
 `
 
 const Subtitle1 = styled.h2`
-  font-size: var(--font-size-h2);
+  font-size: 20rem;
+  line-height: 1.2;
   margin: var(--padding-large) 0;
   padding: 0;
   text-align: center;
-`
 
-const Subtitle2 = styled.h3`
-  font-size: var(--font-size-h3);
-  margin: 0 0 var(--padding-xlarge) 0;
-  padding: 0;
-  text-align: center;
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h3);
+  }
 `
 
 interface IndexProps {
@@ -57,8 +66,10 @@ export default function Index({ gaId }: IndexProps) {
         <Image alt="mersocarlin" src={`/hemerson-dark.jpg`} />
 
         <Title>Hi there 👋🏼</Title>
-        <Subtitle1>My name is Hemerson</Subtitle1>
-        <Subtitle2>I'm a Software Engineer</Subtitle2>
+        <Subtitle1>
+          I'm Hemerson Carlin, also known as <em>mersocarlin</em>, and I'm a
+          Full Stack JavaScript Developer from Brazil based in Dublin, Ireland.
+        </Subtitle1>
 
         <SocialList />
       </Main>
