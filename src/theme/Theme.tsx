@@ -38,8 +38,6 @@ const theme = css`
     --background-main: #fafafa;
     --background-main-level1: #fff;
     --background-text: #666;
-    --footer-background: #1f1f1f;
-    --footer-text: #fff;
     --primary-main: #4caf81;
     --primary-dark: #0c7f54;
   }
@@ -49,8 +47,6 @@ const theme = css`
     --background-main: #212121;
     --background-main-level1: #333;
     --background-text: #fafafa;
-    --footer-background: #333;
-    --footer-text: #fafafa;
     --primary-main: #97ceb3;
     --primary-dark: #689d83;
   }
