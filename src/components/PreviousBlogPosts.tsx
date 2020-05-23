@@ -5,7 +5,6 @@ import Link from './Link'
 
 const Main = styled.div`
   font-size: 16rem;
-  margin-bottom: var(--padding-xlarge);
   text-align: right;
 `
 

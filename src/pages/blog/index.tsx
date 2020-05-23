@@ -12,7 +12,6 @@ import { Post } from '../../types'
 const Main = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: var(--padding-xlarge);
 `
 
 const Greetings = styled.div`

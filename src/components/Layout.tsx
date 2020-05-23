@@ -11,6 +11,14 @@ interface LayouProps {
   gaId: string
 }
 
+const Main = styled.div`
+  min-height: 100vh; /* cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100rem; /* footer height */
+`
+
 const StyledHeader = styled.header`
   align-items: center;
   background: var(--background-main-level1);
@@ -40,9 +48,8 @@ const Menu = styled.div`
   }
 `
 
-const LayoutContent = styled.div`
-  height: ${(props: any) =>
-    props['data-fullheight'] ? 'calc(100% - 70rem);' : 'auto'};
+const LayoutContent = styled.section`
+  margin: var(--padding-xlarge) 0;
   width: auto;
 
   @media (min-width: 768px) {
@@ -56,14 +63,26 @@ const LayoutContent = styled.div`
     margin-right: auto;
     width: 1024px;
   }
+
+  &[data-fullheight='true'] {
+    @media (min-width: 768px) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 `
 
 const StyledFooter = styled.footer`
   align-items: center;
+  border-top: 1px solid var(--background-text);
+  bottom: 0;
   display: flex;
   font-size: 14rem;
-  height: 20rem;
+  height: 100rem;
   justify-content: center;
+  position: absolute;
   width: 100%;
 `
 
@@ -74,7 +93,7 @@ export default function Layout({ children, fullHeight, gaId }: LayouProps) {
   }, [])
 
   return (
-    <React.Fragment>
+    <Main>
       <StyledHeader>
         <Link href="/">@mersocarlin</Link>
 
@@ -91,6 +110,6 @@ export default function Layout({ children, fullHeight, gaId }: LayouProps) {
       <StyledFooter>
         {`Hemerson Carlin © 2010 — ${new Date().getFullYear()}`}
       </StyledFooter>
-    </React.Fragment>
+    </Main>
   )
 }

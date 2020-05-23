@@ -12,7 +12,6 @@ import PreviousBlogPosts from '../../components/PreviousBlogPosts'
 import { Post } from '../../types'
 
 const Main = styled.div`
-  padding-top: var(--padding-xlarge);
   width: 100%;
 `
 
