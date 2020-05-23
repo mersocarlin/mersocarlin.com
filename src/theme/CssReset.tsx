@@ -13,6 +13,10 @@ const cssReset = css`
     box-sizing: border-box;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   strong,
   b {
     font-weight: bolder;

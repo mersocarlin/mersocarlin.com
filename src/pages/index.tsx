@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Layout from '../components/Layout'
+import Meta from '../components/Meta'
 import SocialList from '../components/SocialList'
 
 const Main = styled.div`
@@ -49,6 +50,8 @@ interface IndexProps {
 export default function Index({ gaId }: IndexProps) {
   return (
     <Layout fullHeight gaId={gaId}>
+      <Meta />
+
       <Main>
         <Image alt="mersocarlin" src={`/hemerson-dark.jpg`} />
 
