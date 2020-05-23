@@ -68,9 +68,11 @@ const BlogContent = styled.div`
 const Excerpt = styled.div`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  align-items: center;
   display: -webkit-box;
+  display: flex;
   font-size: 14rem;
-  height: 45px;
+  height: 50px;
   margin-bottom: var(--padding-large);
   overflow: hidden;
 `

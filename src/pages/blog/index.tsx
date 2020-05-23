@@ -16,7 +16,6 @@ const Main = styled.div`
 `
 
 const Greetings = styled.div`
-  font-size: 16rem;
   padding: 0 var(--padding-large);
 
   @media (min-width: 768px) {
@@ -29,7 +28,7 @@ const Greetings = styled.div`
   }
 
   p {
-    font-size: 18rem;
+    font-size: 16rem;
     line-height: 1.3;
     margin: 0;
     padding: 0;
@@ -85,12 +84,13 @@ export default function Blog({ posts, gaId }: IndexProps) {
           <p>Welcome to my personal Blog!</p>
           <p>
             My name is Hemerson Carlin (a.k.a. <em>mersocarlin</em>) and I'm a
-            Senior Software Engineer based in Dublin, Ireland 🇮🇪.
+            Full Stack JavaScript Developer from Brazil based in Dublin,
+            Ireland.
           </p>
 
           <p>
-            This is going to be my own space to share the things I like, a
-            couple of ideas and some of my work.
+            This is going to be my space to share the things I like, a couple of
+            ideas and some of my work.
           </p>
         </Greetings>
 
