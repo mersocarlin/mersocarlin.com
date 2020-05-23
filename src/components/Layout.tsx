@@ -3,14 +3,12 @@ import styled from 'styled-components'
 
 import { initGA, trackPageView } from '../utils/analytics'
 import Link from './Link'
-import Meta from './Meta'
 import ThemeSwitcher from './ThemeSwitcher'
 
 interface LayouProps {
   children: React.ReactNode
   fullHeight?: boolean
   gaId: string
-  title?: string
 }
 
 const StyledHeader = styled.header`
@@ -69,12 +67,7 @@ const StyledFooter = styled.footer`
   width: 100%;
 `
 
-export default function Layout({
-  children,
-  fullHeight,
-  gaId,
-  title,
-}: LayouProps) {
+export default function Layout({ children, fullHeight, gaId }: LayouProps) {
   React.useEffect(() => {
     initGA(gaId)
     trackPageView(`${window.location.pathname}${window.location.search}`)
@@ -82,8 +75,6 @@ export default function Layout({
 
   return (
     <React.Fragment>
-      <Meta title={title} />
-
       <StyledHeader>
         <Link href="/">@mersocarlin</Link>
 

@@ -5,11 +5,13 @@ const baseDescription = `Hemerson Carlin is a Brazilian Software Engineer. He ha
 
 interface MetaProps {
   description?: string
+  ogImageUrl?: string
   title?: string
 }
 
 export default function Meta({
   description = baseDescription,
+  ogImageUrl = '/hemerson-dark.jpg',
   title = 'Hemerson Carlin | Full Stack Developer',
 }: MetaProps) {
   return (
@@ -28,8 +30,8 @@ export default function Meta({
       <meta name="author" content="Hemerson Carlin" />
 
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="/hemerson-dark.jpg" />
-      <meta property="og:image:secure_url" content="/hemerson-dark.jpg" />
+      <meta property="og:image" content={ogImageUrl} />
+      <meta property="og:image:secure_url" content={ogImageUrl} />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="200" />
       <meta property="og:image:height" content="200" />
@@ -41,7 +43,7 @@ export default function Meta({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:site" content="@mersocarlin" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:image" content="/hemerson-dark.jpg" />
+      <meta name="twitter:image" content={ogImageUrl} />
     </Head>
   )
 }

@@ -5,6 +5,7 @@ import { getPosts } from '../../api'
 import BlogPostCard from '../../components/BlogPostCard'
 import Divider from '../../components/Divider'
 import Layout from '../../components/Layout'
+import Meta from '../../components/Meta'
 import { Post } from '../../types'
 
 const Main = styled.div`
@@ -72,6 +73,8 @@ const placeholder = {
 export default function Blog({ posts, gaId }: IndexProps) {
   return (
     <Layout fullHeight gaId={gaId}>
+      <Meta title="Hemerson Carlin Blog" />
+
       <Main>
         <Greetings>
           <h1>Thoughts, ideas, tech and stuff!</h1>
@@ -94,7 +97,6 @@ export default function Blog({ posts, gaId }: IndexProps) {
             <BlogPostCard key={post.slug} post={post} />
           ))}
 
-          <BlogPostCard disabled post={placeholder} />
           <BlogPostCard disabled post={placeholder} />
           <BlogPostCard disabled post={placeholder} />
         </BlogPosts>

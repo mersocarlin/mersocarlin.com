@@ -7,6 +7,7 @@ import { getPosts, getPostBySlug } from '../../api'
 import BlogPost from '../../components/BlogPost'
 import Divider from '../../components/Divider'
 import Layout from '../../components/Layout'
+import Meta from '../../components/Meta'
 import PreviousBlogPosts from '../../components/PreviousBlogPosts'
 import { Post } from '../../types'
 
@@ -29,6 +30,12 @@ export default function PostPage({ gaId, post }: PostPageProps) {
 
   return (
     <Layout gaId={gaId}>
+      <Meta
+        description={post.excerpt}
+        ogImageUrl={post.ogImage.url}
+        title={`${post.title} | Hemerson Carlin Blog`}
+      />
+
       <Main>
         <BlogPost post={post} />
         <Divider size={50} />

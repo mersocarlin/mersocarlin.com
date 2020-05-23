@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -138,11 +137,6 @@ export default function BlogPost({ post }: BlogPostProps) {
 
   return (
     <Main>
-      <Head>
-        <title>{post.title} | Hemerson Carlin Blog</title>
-        <meta property="og:image" content={post.ogImage.url} />
-      </Head>
-
       <BlogImage>
         <img src={post.coverImageUrl} />
       </BlogImage>
