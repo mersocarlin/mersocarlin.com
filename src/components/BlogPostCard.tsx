@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Post } from '../types'
+import BlogPostDate from './BlogPostDate'
 
 interface BlogPostCardProps {
   disabled?: boolean
@@ -82,12 +83,6 @@ const Footer = styled.div`
 `
 
 export default function BlogPostCard({ disabled, post }: BlogPostCardProps) {
-  const options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-
   const blogContent = (
     <Main data-disabled={Boolean(disabled)}>
       <BlogPostImage>
@@ -100,9 +95,7 @@ export default function BlogPostCard({ disabled, post }: BlogPostCardProps) {
         <Footer>
           <div>{post.author.name}</div>
           <div>
-            {new Intl.DateTimeFormat('en-US', options).format(
-              new Date(post.date),
-            )}
+            <BlogPostDate post={post} />
           </div>
         </Footer>
       </BlogContent>

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Post } from '../types'
+import BlogPostDate from './BlogPostDate'
 
 interface BlogPostProps {
   post: Post
@@ -129,12 +130,6 @@ const BlogContent = styled.div`
 `
 
 export default function BlogPost({ post }: BlogPostProps) {
-  const options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-
   return (
     <Main>
       <BlogImage>
@@ -149,9 +144,7 @@ export default function BlogPost({ post }: BlogPostProps) {
             <span>By {post.author.name}</span>
             <span>-</span>
             <span>
-              {new Intl.DateTimeFormat('en-US', options).format(
-                new Date(post.date),
-              )}
+              <BlogPostDate post={post} />
             </span>
           </AdditionalInfo>
         </BlogHeader>
