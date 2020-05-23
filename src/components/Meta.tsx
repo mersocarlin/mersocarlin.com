@@ -10,7 +10,7 @@ interface MetaProps {
 
 export default function Meta({
   description = baseDescription,
-  title = 'Hemerson Carlin | About Page',
+  title = 'Hemerson Carlin | Full Stack Developer',
 }: MetaProps) {
   return (
     <Head>

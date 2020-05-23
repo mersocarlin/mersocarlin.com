@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
 import { initGA, trackPageView } from '../utils/analytics'
+import Link from './Link'
 import Meta from './Meta'
 import ThemeSwitcher from './ThemeSwitcher'
 
@@ -25,7 +25,20 @@ const StyledHeader = styled.header`
 
   a {
     color: var(--background-text);
-    text-decoration: none;
+
+    :hover {
+      color: var(--background-text);
+      text-decoration: underline;
+    }
+  }
+`
+
+const Menu = styled.div`
+  display: flex;
+  align-items: center;
+
+  a {
+    margin-right: var(--padding-large);
   }
 `
 
@@ -72,19 +85,21 @@ export default function Layout({
       <Meta title={title} />
 
       <StyledHeader>
-        <Link href="/">
-          <a>@mersocarlin</a>
-        </Link>
-        <div>
+        <Link href="/">@mersocarlin</Link>
+
+        <Menu>
+          <Link href="/blog">Blog</Link>
           <ThemeSwitcher />
-        </div>
+        </Menu>
       </StyledHeader>
 
       <LayoutContent data-fullheight={Boolean(fullHeight)}>
         {children}
       </LayoutContent>
 
-      <StyledFooter>{`© ${new Date().getFullYear()} Hemerson Carlin. All rights reserved.`}</StyledFooter>
+      <StyledFooter>
+        {`Hemerson Carlin © 2010 — ${new Date().getFullYear()}`}
+      </StyledFooter>
     </React.Fragment>
   )
 }
