@@ -6,8 +6,8 @@ import Link from './Link'
 import ThemeSwitcher from './ThemeSwitcher'
 
 interface LayouProps {
+  centerContent?: boolean
   children: React.ReactNode
-  fullHeight?: boolean
   gaId: string
 }
 
@@ -64,7 +64,7 @@ const LayoutContent = styled.section`
     width: 1024px;
   }
 
-  &[data-fullheight='true'] {
+  &[data-centercontent='true'] {
     @media (min-width: 768px) {
       position: absolute;
       top: 50%;
@@ -87,7 +87,7 @@ const StyledFooter = styled.footer`
   width: 100%;
 `
 
-export default function Layout({ children, fullHeight, gaId }: LayouProps) {
+export default function Layout({ centerContent, children, gaId }: LayouProps) {
   React.useEffect(() => {
     initGA(gaId)
     trackPageView(`${window.location.pathname}${window.location.search}`)
@@ -104,7 +104,7 @@ export default function Layout({ children, fullHeight, gaId }: LayouProps) {
         </Menu>
       </StyledHeader>
 
-      <LayoutContent data-fullheight={Boolean(fullHeight)}>
+      <LayoutContent data-centercontent={Boolean(centerContent)}>
         {children}
       </LayoutContent>
 

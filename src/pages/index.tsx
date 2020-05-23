@@ -59,7 +59,7 @@ interface IndexProps {
 
 export default function Index({ gaId }: IndexProps) {
   return (
-    <Layout fullHeight gaId={gaId}>
+    <Layout centerContent gaId={gaId}>
       <Meta />
 
       <Main>
