@@ -31,9 +31,9 @@ const sortByDateDesc = (post1: Post, post2: Post) =>
   post1.date > post2.date ? -1 : 1
 
 export async function getPosts(): Promise<Post[]> {
-  const postsPromises = allFiles.map((slug) =>
-    getPostBySlug(slug.substring(11)),
-  )
+  const postsPromises = allFiles
+    .filter((file) => file.includes('.md'))
+    .map((slug) => getPostBySlug(slug.substring(11)))
 
   const posts = await Promise.all(postsPromises)
   return posts.sort(sortByDateDesc)
