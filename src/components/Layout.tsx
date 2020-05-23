@@ -76,7 +76,8 @@ const LayoutContent = styled.section`
 
 const StyledFooter = styled.footer`
   align-items: center;
-  border-top: 1px solid var(--background-text);
+  background-color: var(--footer-background);
+  color: var(--footer-text);
   bottom: 0;
   display: flex;
   font-size: 14rem;
