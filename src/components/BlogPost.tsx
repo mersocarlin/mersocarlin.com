@@ -45,7 +45,7 @@ const Title = styled.h1`
 `
 
 const AdditionalInfo = styled.div`
-  color: #757575;
+  color: var(--gray-600);
   font-size: 16rem;
   text-align: center;
 
@@ -104,6 +104,7 @@ const BlogContent = styled.div`
 
     :hover {
       color: var(--primary-dark);
+      text-decoration: underline;
     }
   }
 

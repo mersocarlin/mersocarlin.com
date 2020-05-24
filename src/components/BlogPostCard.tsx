@@ -75,10 +75,11 @@ const Excerpt = styled.div`
   height: 50px;
   margin-bottom: var(--padding-large);
   overflow: hidden;
+  text-align: left;
 `
 
 const Footer = styled.div`
-  color: #757575;
+  color: var(--gray-600);
   display: flex;
   font-size: 14rem;
   justify-content: space-between;

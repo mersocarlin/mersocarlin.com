@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 const StyledDivider = styled.hr`
-  background-color: var(--background-text);
+  background-color: var(--gray-300);
   border: none;
   flex-shrink: 0;
   height: 1px;
