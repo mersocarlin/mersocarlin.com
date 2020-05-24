@@ -38,8 +38,20 @@ const theme = css`
     --background-main: #fafafa;
     --background-main-level1: #fff;
     --background-text: #666;
-    --primary-main: #4caf81;
-    --primary-dark: #0c7f54;
+    --primary-main: #c0392b;
+    --primary-dark: #923026;
+
+    /* gray colors */
+    --gray-50: #fafafa;
+    --gray-100: #f5f5f5;
+    --gray-200: #eeeeee;
+    --gray-300: #e0e0e0;
+    --gray-400: #bdbdbd;
+    --gray-500: #9e9e9e;
+    --gray-600: #757575;
+    --gray-700: #616161;
+    --gray-800: #424242;
+    --gray-900: #212121;
   }
 
   .dark-theme {
@@ -47,8 +59,20 @@ const theme = css`
     --background-main: #212121;
     --background-main-level1: #333;
     --background-text: #fafafa;
-    --primary-main: #97ceb3;
-    --primary-dark: #689d83;
+    --primary-main: #ff0000;
+    --primary-dark: #d91e18;
+
+    /* gray colors */
+    --gray-50: #212121;
+    --gray-100: #424242;
+    --gray-200: #616161;
+    --gray-300: #757575;
+    --gray-400: #9e9e9e;
+    --gray-500: #bdbdbd;
+    --gray-600: #e0e0e0;
+    --gray-700: #eeeeee;
+    --gray-800: #f5f5f5;
+    --gray-900: #fafafa;
   }
 `
 
