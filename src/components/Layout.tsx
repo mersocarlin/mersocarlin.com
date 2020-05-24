@@ -66,7 +66,7 @@ const LayoutContent = styled.section`
   }
 
   &[data-centercontent='true'] {
-    @media (min-width: 768px) {
+    @media (min-width: 468px) {
       position: absolute;
       top: 50%;
       left: 50%;
