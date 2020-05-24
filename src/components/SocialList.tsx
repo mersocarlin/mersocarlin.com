@@ -27,7 +27,6 @@ const items = [
 
 const Main = styled.div`
   justify-content: center;
-  width: 100%;
   display: flex;
 
   a {

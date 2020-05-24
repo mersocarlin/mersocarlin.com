@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { initGA, trackPageView } from '../utils/analytics'
 import Link from './Link'
+import SocialList from './SocialList'
 import ThemeSwitcher from './ThemeSwitcher'
 
 interface LayouProps {
@@ -80,11 +81,27 @@ const StyledFooter = styled.footer`
   box-shadow: var(--box-shadow-1);
   bottom: 0;
   display: flex;
+  flex-direction: column;
   font-size: 14rem;
   height: 100rem;
   justify-content: center;
   position: absolute;
   width: 100%;
+  padding: 0;
+
+  .copyright {
+    margin-bottom: var(--padding-large);
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: 0 32rem;
+    justify-content: space-between;
+
+    .copyright {
+      margin: 0;
+    }
+  }
 `
 
 export default function Layout({ centerContent, children, gaId }: LayouProps) {
@@ -109,7 +126,9 @@ export default function Layout({ centerContent, children, gaId }: LayouProps) {
       </LayoutContent>
 
       <StyledFooter>
-        {`Hemerson Carlin © 2010 — ${new Date().getFullYear()}`}
+        <div className="copyright">{`Hemerson Carlin © 2010 — ${new Date().getFullYear()}`}</div>
+
+        <SocialList />
       </StyledFooter>
     </Main>
   )
