@@ -30,20 +30,29 @@ export default function Meta({
       <meta name="author" content="Hemerson Carlin" />
 
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImageUrl} />
-      <meta property="og:image:secure_url" content={ogImageUrl} />
+      <meta
+        property="og:image"
+        content={`https://mersocarlin.com${ogImageUrl}`}
+      />
+      <meta
+        property="og:image:secure_url"
+        content={`https://mersocarlin.com${ogImageUrl}`}
+      />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="200" />
       <meta property="og:image:height" content="200" />
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://mersocarlin.com/" />
+      <meta property="og:url" content="https://mersocarlin.com" />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:site" content="@mersocarlin" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:image" content={ogImageUrl} />
+      <meta
+        name="twitter:image"
+        content={`https://mersocarlin.com${ogImageUrl}`}
+      />
     </Head>
   )
 }
