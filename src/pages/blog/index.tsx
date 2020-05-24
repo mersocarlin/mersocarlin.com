@@ -4,10 +4,12 @@ import { GetStaticProps } from 'next'
 
 import { getPosts } from '../../api'
 import BlogPostCard from '../../components/BlogPostCard'
+import BlogPostsGrid from '../../components/BlogPostsGrid'
 import Divider from '../../components/Divider'
 import Layout from '../../components/Layout'
 import Meta from '../../components/Meta'
 import { Post } from '../../types'
+import { blogPostPlaceholder } from '../../utils/constants'
 
 const Main = styled.div`
   display: flex;
@@ -34,42 +36,9 @@ const Greetings = styled.div`
   }
 `
 
-const BlogPosts = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 30px;
-  padding: 0 var(--padding-large);
-
-  @media (min-width: 468px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0;
-  }
-`
-
 interface IndexProps {
   posts: Post[]
   gaId: string
-}
-
-const placeholder = {
-  author: {
-    name: 'Hemerson Carlin',
-    imageUrl: '/hemerson-dark.jpg',
-  },
-  content: '',
-  coverImageUrl: '/assets/blog/blog-post-placeholder.jpg',
-  date: new Date().toISOString(),
-  excerpt:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  ogImage: {
-    url: '/assets/blog/blog-post-placeholder.jpg',
-  },
-  slug: '',
-  title: '🔜 Coming soon 🔜',
 }
 
 export default function Blog({ posts, gaId }: IndexProps) {
@@ -95,14 +64,14 @@ export default function Blog({ posts, gaId }: IndexProps) {
 
         <Divider size={30} />
 
-        <BlogPosts>
+        <BlogPostsGrid>
           {posts.map((post) => (
             <BlogPostCard key={post.slug} post={post} />
           ))}
 
-          <BlogPostCard disabled post={placeholder} />
-          <BlogPostCard disabled post={placeholder} />
-        </BlogPosts>
+          <BlogPostCard disabled post={blogPostPlaceholder} />
+          <BlogPostCard disabled post={blogPostPlaceholder} />
+        </BlogPostsGrid>
       </Main>
     </Layout>
   )

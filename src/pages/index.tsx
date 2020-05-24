@@ -4,7 +4,6 @@ import { GetStaticProps } from 'next'
 
 import Layout from '../components/Layout'
 import Meta from '../components/Meta'
-import SocialList from '../components/SocialList'
 
 const Main = styled.div`
   align-items: center;
@@ -65,13 +64,11 @@ export default function Index({ gaId }: IndexProps) {
       <Main>
         <Image alt="mersocarlin" src={`/hemerson-dark.jpg`} />
 
-        <Title>Hi there 👋🏼</Title>
+        <Title>Hello there 👋🏼</Title>
         <Subtitle1>
           I'm Hemerson Carlin, also known as <em>mersocarlin</em>, and I'm a
           Full Stack JavaScript Developer from Brazil based in Dublin, Ireland.
         </Subtitle1>
-
-        <SocialList />
       </Main>
     </Layout>
   )

@@ -20,6 +20,7 @@ const StyledLink = styled.a`
 
   :hover {
     color: var(--primary-dark);
+    text-decoration: underline;
   }
 `
 
