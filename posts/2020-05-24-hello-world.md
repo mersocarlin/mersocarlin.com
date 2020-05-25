@@ -8,6 +8,7 @@ author:
   imageUrl: '/hemerson-dark.jpg'
 ogImage:
   url: '/assets/blog/hello-world-og.jpg'
+previousSlugs: 'atomic-money-from-a-spreadsheet-to-a-side-project'
 ---
 
 Welcome to my very first blog post on my personal website 🎉.
