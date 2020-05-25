@@ -1,9 +1,9 @@
 {
-  "name": "mersocarlin.github.io",
+  "name": "mersocarlin.",
   "version": "0.0.7",
   "description": "My personal website's source.",
   "author": "Hemerson Carlin",
-  "homepage": "https://mersocarlin.github.io",
+  "homepage": "https://mersocarlin.com",
   "scripts": {
     "dev": "next",
     "prebuild": "rimraf .next",
