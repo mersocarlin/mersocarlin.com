@@ -3,6 +3,8 @@ import { join } from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
+import slug from 'remark-slug'
+import headings from 'remark-autolink-headings'
 
 import { Post } from '../types'
 
@@ -10,7 +12,12 @@ const postsDirectory = join(process.cwd(), 'posts')
 const allFiles: string[] = fs.readdirSync(postsDirectory)
 
 async function markdownToHtml(markdown: string) {
-  const result = await remark().use(html).process(markdown)
+  const result = await remark()
+    .use(slug)
+    // headings goes after slug https://github.com/remarkjs/remark-autolink-headings
+    .use(headings)
+    .use(html)
+    .process(markdown)
   return result.toString()
 }
 
