@@ -35,8 +35,6 @@ const Main = styled.div`
 
   &[data-disabled='true'] {
     cursor: default;
-    -webkit-filter: blur(2px);
-    filter: blur(2px);
   }
 
   &[data-disabled='false'] {
@@ -72,10 +70,13 @@ const Excerpt = styled.div`
   display: -webkit-box;
   display: flex;
   font-size: 14rem;
+  height: 48px;
   height: 50px;
+  line-height: 1.2;
   margin-bottom: var(--padding-large);
   overflow: hidden;
   text-align: left;
+  text-overflow: ellipsis;
 `
 
 const Footer = styled.div`

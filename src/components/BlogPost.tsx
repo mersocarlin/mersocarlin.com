@@ -84,8 +84,17 @@ const BlogContent = styled.div`
     font-size: 16rem;
   }
 
+  del {
+    font-style: italic;
+  }
+
   h2 {
     font-size: 22rem;
+    margin: var(--padding-xlarge) 0;
+  }
+
+  h3 {
+    font-size: 18rem;
     margin: var(--padding-xlarge) 0;
   }
 
