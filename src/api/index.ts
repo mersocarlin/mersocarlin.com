@@ -23,6 +23,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return {
     ...data,
     content: await markdownToHtml(content),
+    previousSlugs: data.previousSlugs ? data.previousSlugs.split(',') : [],
     slug: slug.replace(/\.md$/, ''),
   } as Post
 }

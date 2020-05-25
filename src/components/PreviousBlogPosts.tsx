@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { blogPostPlaceholder } from '../utils/constants'
+import { Post } from '../types'
 import Link from './Link'
 import BlogPostCard from './BlogPostCard'
 import BlogPostsGrid from './BlogPostsGrid'
+
+interface PreviousBlogPostsProps {
+  posts: Post[]
+}
 
 const Main = styled.div`
   font-size: 16rem;
@@ -29,7 +33,7 @@ const Header = styled.div`
   }
 `
 
-export default function PreviousBlogPosts() {
+export default function PreviousBlogPosts({ posts }: PreviousBlogPostsProps) {
   return (
     <Main>
       <Header>
@@ -40,9 +44,13 @@ export default function PreviousBlogPosts() {
       </Header>
 
       <BlogPostsGrid>
-        <BlogPostCard disabled post={blogPostPlaceholder} />
-        <BlogPostCard disabled post={blogPostPlaceholder} />
-        <BlogPostCard disabled post={blogPostPlaceholder} />
+        {posts.map((post) => (
+          <BlogPostCard
+            disabled={post.content === ''}
+            key={post.slug}
+            post={post}
+          />
+        ))}
       </BlogPostsGrid>
     </Main>
   )

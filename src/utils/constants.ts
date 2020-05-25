@@ -1,6 +1,6 @@
 import { Post } from '../types'
 
-export const blogPostPlaceholder: Post = {
+export const createBlogPostPlaceholder = (slug: string): Post => ({
   author: {
     name: 'Hemerson Carlin',
     imageUrl: '/hemerson-dark.jpg',
@@ -13,6 +13,7 @@ export const blogPostPlaceholder: Post = {
   ogImage: {
     url: '/assets/blog/blog-post-placeholder.jpg',
   },
-  slug: '',
+  previousSlugs: [],
+  slug,
   title: '🔜 Coming soon 🔜',
-}
+})
