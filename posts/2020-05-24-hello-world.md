@@ -7,7 +7,7 @@ author:
   name: Hemerson Carlin
   imageUrl: '/hemerson-dark.jpg'
 ogImage:
-  url: '/assets/blog/hello-world-cover-og.jpg'
+  url: '/assets/blog/hello-world-og.jpg'
 ---
 
 Welcome to my very first blog post on my personal website 🎉.
