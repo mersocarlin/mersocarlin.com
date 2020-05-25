@@ -7,7 +7,7 @@ author:
   name: Hemerson Carlin
   imageUrl: '/hemerson-dark.jpg'
 ogImage:
-  url: '/assets/blog/hello-world-cover.jpg'
+  url: '/assets/blog/hello-world-cover-og.jpg'
 ---
 
 Welcome to my very first blog post on my personal website 🎉.
@@ -39,7 +39,7 @@ Even though this is the actual "Hello World" blog post around here, this is defi
 I have a backlog of code snippets, interview tips, libs & repos of all sorts and some side projects I want to give some visibility.
 I was never sure where I should keep them and I'm happy I've finally found the perfect place to share all that.
 
-Stay tuned! They are coming <a href="https://github.com/mersocarlin/mersocarlin.github.io/issues?q=is%3Aopen+is%3Aissue+label%3A%22Blog+Post%22" target="_blank">very soon</a>.
+Stay tuned! They are coming <a href="https://github.com/mersocarlin/mersocarlin/issues?q=is%3Aopen+is%3Aissue+label%3A%22Blog+Post%22" target="_blank">very soon</a>.
 
 ## The current situation
 
