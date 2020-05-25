@@ -10,6 +10,7 @@ export interface Post {
   ogImage: {
     url: string
   }
+  previousSlugs: string[]
   slug: string
   title: string
 }

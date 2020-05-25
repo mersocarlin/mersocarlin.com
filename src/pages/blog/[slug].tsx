@@ -10,6 +10,7 @@ import Layout from '../../components/Layout'
 import Meta from '../../components/Meta'
 import PreviousBlogPosts from '../../components/PreviousBlogPosts'
 import { Post } from '../../types'
+import { createBlogPostPlaceholder } from '../../utils/constants'
 
 const Main = styled.div`
   width: 100%;
@@ -18,9 +19,10 @@ const Main = styled.div`
 interface PostPageProps {
   gaId: string
   post?: Post
+  previousPosts: Post[]
 }
 
-export default function PostPage({ gaId, post }: PostPageProps) {
+export default function PostPage({ gaId, post, previousPosts }: PostPageProps) {
   if (!post || !post.slug) {
     return <ErrorPage statusCode={404} />
   }
@@ -36,7 +38,7 @@ export default function PostPage({ gaId, post }: PostPageProps) {
       <Main>
         <BlogPost post={post} />
         <Divider size={50} />
-        <PreviousBlogPosts />
+        <PreviousBlogPosts posts={previousPosts} />
       </Main>
     </Layout>
   )
@@ -54,11 +56,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const post = await getPostBySlug(`${params.slug}`)
+  const previousPosts = await Promise.all(post.previousSlugs.map(getPostBySlug))
+
+  while (previousPosts.length < 3) {
+    previousPosts.push(
+      createBlogPostPlaceholder(`sample${previousPosts.length}`),
+    )
+  }
 
   return {
     props: {
       gaId,
       post,
+      previousPosts,
     },
   }
 }
