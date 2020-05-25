@@ -32,6 +32,7 @@ export default function PostPage({ gaId, post, previousPosts }: PostPageProps) {
       <Meta
         description={post.excerpt}
         ogImageUrl={post.ogImage.url}
+        path={`/blog/${post.slug}`}
         title={`${post.title} | Hemerson Carlin Blog`}
       />
 

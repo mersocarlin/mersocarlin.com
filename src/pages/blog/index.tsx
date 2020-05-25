@@ -44,7 +44,7 @@ interface IndexProps {
 export default function Blog({ posts, gaId }: IndexProps) {
   return (
     <Layout gaId={gaId}>
-      <Meta title="Hemerson Carlin Blog" />
+      <Meta path="/blog" title="Hemerson Carlin Blog" />
 
       <Main>
         <Greetings>
