@@ -13,7 +13,7 @@ previousSlugs: 'hello-world'
 
 Tracking expenses is not an easy task.
 Some folks use apps, some others use a spreadsheet and some don't even bother (or care) where their money is going. 
-After all, a positive balance on the bank account is what really matters. Regardless of the methodology people adopt to get there.
+After all, a positive balance on the bank account is what really matters, regardless of the methodology people adopt to get there.
 
 I started my expense tracking journey years ago and since then I've been tracking them on an (almost) daily basis.
 And after some time, I realised I had a use case for building my own side project and level up new skills along the way.
@@ -115,6 +115,6 @@ If you are waiting to reach that level of confidence too, I'm afraid it is going
 
 And if you came this far reading my post, thank you very much for your valuable time and patience. I really appreciate it.
 
-I trully hope my journey can be of any help and inspiration for you too!
+I truly hope my journey can be of any help and inspiration for you too!
 
 Stay budgeting!
