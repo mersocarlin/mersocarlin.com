@@ -49,8 +49,22 @@ const AdditionalInfo = styled.div`
   font-size: 16rem;
   text-align: center;
 
-  span:nth-child(2) {
-    padding: 0 var(--padding-normal);
+  span:nth-child(3) {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
+  }
+
+  span:nth-child(4) {
+    display: block;
+    margin-top: var(--padding-normal);
+
+    @media (min-width: 768px) {
+      display: inline-block;
+      margin-top: 0;
+    }
   }
 `
 
@@ -154,10 +168,11 @@ export default function BlogPost({ post }: BlogPostProps) {
 
           <AdditionalInfo>
             <span>By {post.author.name}</span>
-            <span>-</span>
             <span>
-              <BlogPostDate post={post} />
+              ・<BlogPostDate post={post} />
             </span>
+            <span>・</span>
+            <span>{post.timeToRead}</span>
           </AdditionalInfo>
         </BlogHeader>
 

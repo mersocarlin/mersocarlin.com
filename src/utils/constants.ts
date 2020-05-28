@@ -15,5 +15,7 @@ export const createBlogPostPlaceholder = (slug: string): Post => ({
   },
   previousSlugs: [],
   slug,
+  timeToRead: '',
   title: '🔜 Coming soon 🔜',
+  wordCount: 0,
 })

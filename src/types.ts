@@ -12,5 +12,7 @@ export interface Post {
   }
   previousSlugs: string[]
   slug: string
+  timeToRead: string
   title: string
+  wordCount: number
 }
