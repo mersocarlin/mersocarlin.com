@@ -45,7 +45,8 @@ const sortByDateDesc = (post1: Post, post2: Post) =>
 
 export async function getPosts(): Promise<Post[]> {
   const postsPromises = allFiles
-    .filter((file) => file.includes('.md'))
+    // skip template
+    .filter((file) => !file.includes('POST_TEMPLATE'))
     .map((slug) => getPostBySlug(slug.substring(11)))
 
   const posts = await Promise.all(postsPromises)
