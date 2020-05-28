@@ -7,6 +7,7 @@ import slug from 'remark-slug'
 import headings from 'remark-autolink-headings'
 
 import { Post } from '../types'
+import calculateTimeToRead from '../utils/timeToRead'
 
 const postsDirectory = join(process.cwd(), 'posts')
 const allFiles: string[] = fs.readdirSync(postsDirectory)
@@ -27,11 +28,15 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
+  const { timeToRead, wordCount } = calculateTimeToRead(content)
+
   return {
     ...data,
     content: await markdownToHtml(content),
     previousSlugs: data.previousSlugs ? data.previousSlugs.split(',') : [],
     slug: slug.replace(/\.md$/, ''),
+    timeToRead,
+    wordCount,
   } as Post
 }
 
