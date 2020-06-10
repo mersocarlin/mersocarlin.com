@@ -5,6 +5,7 @@ import remark from 'remark'
 import html from 'remark-html'
 import slug from 'remark-slug'
 import headings from 'remark-autolink-headings'
+import highlight from 'remark-highlight.js'
 
 import { Post } from '../types'
 import calculateTimeToRead from '../utils/timeToRead'
@@ -17,6 +18,7 @@ async function markdownToHtml(markdown: string) {
     .use(slug)
     // headings goes after slug https://github.com/remarkjs/remark-autolink-headings
     .use(headings)
+    .use(highlight)
     .use(html)
     .process(markdown)
   return result.toString()

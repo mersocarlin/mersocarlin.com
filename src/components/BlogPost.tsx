@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Post } from '../types'
+import BlogContent from './BlogContent'
 import BlogPostDate from './BlogPostDate'
 
 interface BlogPostProps {
@@ -68,93 +69,6 @@ const AdditionalInfo = styled.div`
   }
 `
 
-const BlogContent = styled.div`
-  padding: 0 var(--padding-large);
-
-  @media (min-width: 768px) {
-    padding: 0;
-  }
-
-  p,
-  pre,
-  ul,
-  ol {
-    font-size: 18rem;
-    line-height: 1.3;
-    margin: var(--padding-large) 0;
-    padding: 0;
-  }
-
-  ul,
-  ol {
-    padding-left: var(--padding-xlarge);
-
-    li {
-      margin-bottom: var(--padding-normal);
-    }
-  }
-
-  code {
-    font-size: 16rem;
-  }
-
-  del {
-    font-style: italic;
-  }
-
-  h2 {
-    font-size: 22rem;
-    margin: var(--padding-xlarge) 0;
-  }
-
-  h3 {
-    font-size: 18rem;
-    margin: var(--padding-xlarge) 0;
-  }
-
-  blockquote {
-    padding: var(--padding-large);
-    border-left: 3px solid var(--background-text);
-    margin: 0;
-  }
-
-  a {
-    color: var(--primary-main);
-
-    :visited {
-      color: var(--primary-main);
-    }
-
-    :hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
-    }
-  }
-
-  .blog-post-image {
-    margin: var(--padding-xlarge) auto;
-
-    img {
-      border-radius: 5px;
-      box-shadow: var(--box-shadow-1);
-      display: block;
-      margin: 0 auto;
-      width: 100%;
-
-      @media (min-width: 768px) {
-        width: 50%;
-      }
-    }
-
-    p {
-      font-size: 15rem;
-      margin: var(--padding-normal) 0 0 0;
-      padding: 0;
-      text-align: center;
-    }
-  }
-`
-
 export default function BlogPost({ post }: BlogPostProps) {
   return (
     <Main>
@@ -176,7 +90,7 @@ export default function BlogPost({ post }: BlogPostProps) {
           </AdditionalInfo>
         </BlogHeader>
 
-        <BlogContent dangerouslySetInnerHTML={{ __html: post.content }} />
+        <BlogContent content={post.content} />
       </BlogContainer>
     </Main>
   )
