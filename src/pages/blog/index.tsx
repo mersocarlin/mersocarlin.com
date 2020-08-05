@@ -9,7 +9,6 @@ import Divider from '../../components/Divider'
 import Layout from '../../components/Layout'
 import Meta from '../../components/Meta'
 import { Post } from '../../types'
-import { createBlogPostPlaceholder } from '../../utils/constants'
 
 const Main = styled.div`
   display: flex;
@@ -68,9 +67,6 @@ export default function Blog({ posts, gaId }: IndexProps) {
           {posts.map((post) => (
             <BlogPostCard key={post.slug} post={post} />
           ))}
-
-          <BlogPostCard disabled post={createBlogPostPlaceholder('sample1')} />
-          <BlogPostCard disabled post={createBlogPostPlaceholder('sample2')} />
         </BlogPostsGrid>
       </Main>
     </Layout>

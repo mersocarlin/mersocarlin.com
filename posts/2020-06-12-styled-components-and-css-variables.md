@@ -8,7 +8,7 @@ author:
   imageUrl: '/hemerson-dark.jpg'
 ogImage:
   url: '/assets/blog/styled-components-and-css-variables-og.jpg'
-previousSlugs: 'atomic-money-from-a-spreadsheet-to-a-side-project,hello-world'
+previousSlugs: 'a-tale-of-javascript-errors,atomic-money-from-a-spreadsheet-to-a-side-project,hello-world'
 ---
 
 [`styled-components`](https://styled-components.com/) is a great library for styling your React app.
