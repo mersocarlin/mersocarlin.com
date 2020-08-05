@@ -7,8 +7,8 @@ import slug from 'remark-slug'
 import headings from 'remark-autolink-headings'
 import highlight from 'remark-highlight.js'
 
-import { Post } from '../types'
-import calculateTimeToRead from '../utils/timeToRead'
+import { Post } from '@mersocarlin.com/types'
+import calculateTimeToRead from '@mersocarlin.com/utils/timeToRead'
 
 const postsDirectory = join(process.cwd(), 'posts')
 const allFiles: string[] = fs.readdirSync(postsDirectory)

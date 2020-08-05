@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { initGA, trackPageView } from '../utils/analytics'
+import { initGA, trackPageView } from '@mersocarlin.com/utils/analytics'
+
 import Link from './Link'
 import SocialList from './SocialList'
 import ThemeSwitcher from './ThemeSwitcher'

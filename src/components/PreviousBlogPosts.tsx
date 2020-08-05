@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Post } from '../types'
+import { Post } from '@mersocarlin.com/types'
+
 import Link from './Link'
 import BlogPostCard from './BlogPostCard'
 import BlogPostsGrid from './BlogPostsGrid'

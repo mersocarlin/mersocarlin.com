@@ -2,7 +2,8 @@ import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
-import { Post } from '../types'
+import { Post } from '@mersocarlin.com/types'
+
 import BlogPostDate from './BlogPostDate'
 
 interface BlogPostCardProps {

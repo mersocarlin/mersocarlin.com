@@ -1,6 +1,6 @@
 import React from 'react'
 
-import useLocalStorage from '../hooks/useLocalStorage'
+import useLocalStorage from '@mersocarlin.com/hooks/useLocalStorage'
 
 interface ThemeContextProps {
   onUpdateTheme: (theme: string) => void

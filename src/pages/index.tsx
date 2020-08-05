@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { GetStaticProps } from 'next'
 
-import Layout from '../components/Layout'
-import Meta from '../components/Meta'
+import Layout from '@mersocarlin.com/components/Layout'
+import Meta from '@mersocarlin.com/components/Meta'
 
 const Main = styled.div`
   align-items: center;
