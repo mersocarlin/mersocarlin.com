@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { GetStaticProps } from 'next'
 
-import { getPosts } from '../../api'
-import BlogPostCard from '../../components/BlogPostCard'
-import BlogPostsGrid from '../../components/BlogPostsGrid'
-import Divider from '../../components/Divider'
-import Layout from '../../components/Layout'
-import Meta from '../../components/Meta'
-import { Post } from '../../types'
+import { getPosts } from '@mersocarlin.com/api'
+import BlogPostCard from '@mersocarlin.com/components/BlogPostCard'
+import BlogPostsGrid from '@mersocarlin.com/components/BlogPostsGrid'
+import Divider from '@mersocarlin.com/components/Divider'
+import Layout from '@mersocarlin.com/components/Layout'
+import Meta from '@mersocarlin.com/components/Meta'
+import { Post } from '@mersocarlin.com/types'
 
 const Main = styled.div`
   display: flex;

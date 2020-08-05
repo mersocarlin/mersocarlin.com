@@ -3,13 +3,13 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import styled from 'styled-components'
 
-import { getPosts, getPostBySlug } from '../../api'
-import BlogPost from '../../components/BlogPost'
-import Divider from '../../components/Divider'
-import Layout from '../../components/Layout'
-import Meta from '../../components/Meta'
-import PreviousBlogPosts from '../../components/PreviousBlogPosts'
-import { Post } from '../../types'
+import { getPosts, getPostBySlug } from '@mersocarlin.com/api'
+import BlogPost from '@mersocarlin.com/components/BlogPost'
+import Divider from '@mersocarlin.com/components/Divider'
+import Layout from '@mersocarlin.com/components/Layout'
+import Meta from '@mersocarlin.com/components/Meta'
+import PreviousBlogPosts from '@mersocarlin.com/components/PreviousBlogPosts'
+import { Post } from '@mersocarlin.com/types'
 
 const Main = styled.div`
   width: 100%;

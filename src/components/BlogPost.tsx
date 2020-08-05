@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Post } from '../types'
+import { Post } from '@mersocarlin.com/types'
+
 import BlogContent from './BlogContent'
 import BlogPostDate from './BlogPostDate'
 
