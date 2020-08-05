@@ -8,7 +8,7 @@ author:
   imageUrl: '/hemerson-dark.jpg'
 ogImage:
   url: '/assets/blog/atomic-money-from-a-spreadsheet-to-a-side-project-og.jpg'
-previousSlugs: 'styled-components-and-css-variables,hello-world'
+previousSlugs: 'a-tale-of-javascript-errors,styled-components-and-css-variables,hello-world'
 ---
 
 Tracking expenses is not an easy task.
