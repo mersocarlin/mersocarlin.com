@@ -11,7 +11,7 @@ interface Link {
 const StyledLink = styled.a`
   color: var(--primary-main);
   cursor: pointer;
-  font-size: 16rem;
+  font-size: 1rem;
   text-decoration: none;
 
   :visited {

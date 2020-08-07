@@ -11,10 +11,18 @@ const StyledBlogContent = styled.div`
   p,
   ul,
   ol {
-    font-size: 18rem;
-    line-height: 1.3;
+    font-size: 1rem;
+    line-height: 1.5;
     margin: var(--padding-large) 0;
     padding: 0;
+
+    code {
+      background: var(--gray-200);
+      border-radius: 6px;
+      font-size: 0.875rem;
+      margin: 0;
+      padding: 0.2em 0.4em;
+    }
   }
 
   ul,
@@ -46,7 +54,7 @@ const StyledBlogContent = styled.div`
       }
     }
 
-    font-size: 16rem;
+    font-size: 1rem;
     /*
       Atom One Dark by Daniel Gamage
       Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
@@ -147,12 +155,12 @@ const StyledBlogContent = styled.div`
   }
 
   h2 {
-    font-size: 22rem;
+    font-size: var(--font-size-h2);
     margin: var(--padding-xlarge) 0;
   }
 
   h3 {
-    font-size: 18rem;
+    font-size: var(--font-size-h3);
     margin: var(--padding-xlarge) 0;
   }
 
@@ -191,7 +199,7 @@ const StyledBlogContent = styled.div`
     }
 
     p {
-      font-size: 15rem;
+      font-size: 0.875rem;
       margin: var(--padding-normal) 0 0 0;
       padding: 0;
       text-align: center;

@@ -12,7 +12,7 @@ interface PreviousBlogPostsProps {
 }
 
 const Main = styled.div`
-  font-size: 16rem;
+  font-size: 1rem;
   text-align: right;
 `
 
@@ -24,7 +24,7 @@ const Header = styled.div`
   margin-bottom: var(--padding-xlarge);
 
   .title {
-    font-size: 20rem;
+    font-size: 1.25rem;
     font-weight: bold;
   }
 

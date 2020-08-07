@@ -18,7 +18,7 @@ const Main = styled.div`
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 100rem; /* footer height */
+  padding-bottom: 6.25rem; /* footer height */
 `
 
 const StyledHeader = styled.header`
@@ -26,8 +26,8 @@ const StyledHeader = styled.header`
   background: var(--background-main-level1);
   box-shadow: var(--box-shadow-1);
   display: flex;
-  font-size: 16rem;
-  height: 50rem;
+  font-size: 1rem;
+  height: 3.125rem;
   justify-content: space-between;
   padding: 0 var(--padding-large);
 
@@ -83,8 +83,8 @@ const StyledFooter = styled.footer`
   bottom: 0;
   display: flex;
   flex-direction: column;
-  font-size: 14rem;
-  height: 100rem;
+  font-size: 0.875rem;
+  height: 6.25rem;
   justify-content: center;
   position: absolute;
   width: 100%;
@@ -96,7 +96,7 @@ const StyledFooter = styled.footer`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    padding: 0 32rem;
+    padding: 0 2rem;
     justify-content: space-between;
 
     .copyright {

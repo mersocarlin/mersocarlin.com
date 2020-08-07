@@ -33,8 +33,8 @@ const Main = styled.div`
     margin: 0 var(--padding-normal);
 
     img {
-      height: 40rem;
-      width: 40rem;
+      height: 2.5rem;
+      width: 2.5rem;
     }
   }
 `

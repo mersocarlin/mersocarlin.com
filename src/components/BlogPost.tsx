@@ -39,7 +39,7 @@ const BlogHeader = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 25rem;
+  font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.2;
   margin: 0 0 var(--padding-xlarge) 0;
@@ -48,7 +48,7 @@ const Title = styled.h1`
 
 const AdditionalInfo = styled.div`
   color: var(--gray-600);
-  font-size: 16rem;
+  font-size: 1rem;
   text-align: center;
 
   span:nth-child(3) {
