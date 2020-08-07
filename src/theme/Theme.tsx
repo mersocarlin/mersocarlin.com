@@ -4,16 +4,16 @@ const theme = css`
   :root {
     /* font definitions */
     --font-family: 'Josefin Sans', 'Helvetica', 'Arial', sans-serif;
-    --font-size-h1: 40rem;
-    --font-size-h2: 30rem;
-    --font-size-h3: 25rem;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 1.375rem;
+    --font-size-h3: 1.125rem;
 
     /* paddings */
-    --padding-xsmall: 2rem;
-    --padding-small: 4rem;
-    --padding-normal: 8rem;
-    --padding-large: 16rem;
-    --padding-xlarge: 32rem;
+    --padding-xsmall: 0.125rem;
+    --padding-small: 0.25rem;
+    --padding-normal: 0.5rem;
+    --padding-large: 1rem;
+    --padding-xlarge: 2rem;
 
     /* box shadows */
     --box-shadow-1: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
@@ -29,7 +29,7 @@ const theme = css`
   }
 
   html {
-    font-size: 1px;
+    font-size: 16px;
   }
 
   body,

@@ -28,7 +28,7 @@ const Greetings = styled.div`
   }
 
   p {
-    font-size: 16rem;
+    font-size: 1rem;
     line-height: 1.3;
     margin: 0;
     padding: 0;

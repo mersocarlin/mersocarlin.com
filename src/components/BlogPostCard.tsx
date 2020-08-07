@@ -16,12 +16,12 @@ const Title = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 20rem;
+  font-size: 1.25rem;
   font-weight: bold;
-  height: 70rem;
+  height: 4.375rem;
   justify-content: center;
   letter-spacing: 0.05em;
-  line-height: 22rem;
+  line-height: 1.375rem;
   margin-bottom: var(--padding-normal);
 `
 
@@ -60,7 +60,7 @@ const BlogContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   display: flex;
-  height: 190rem;
+  height: 11.875rem;
   padding: var(--padding-large);
 `
 
@@ -69,7 +69,7 @@ const Excerpt = styled.div`
   -webkit-line-clamp: 3;
   display: -webkit-box;
   display: flex;
-  font-size: 14rem;
+  font-size: 0.875rem;
   height: 50px;
   line-height: 1.2;
   margin-bottom: var(--padding-large);
@@ -81,7 +81,7 @@ const Excerpt = styled.div`
 const Footer = styled.div`
   color: var(--gray-600);
   display: flex;
-  font-size: 14rem;
+  font-size: 0.875rem;
   justify-content: space-between;
 `
 

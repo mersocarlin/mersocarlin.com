@@ -30,8 +30,8 @@ const Image = styled.img`
 `
 
 const Title = styled.h1`
-  font-size: 30rem;
-  margin: 16rem 0 0 0;
+  font-size: 1.875rem;
+  margin: 1rem 0 0 0;
   padding: 0;
   text-align: center;
 
@@ -41,7 +41,7 @@ const Title = styled.h1`
 `
 
 const Subtitle1 = styled.h2`
-  font-size: 20rem;
+  font-size: 1.25rem;
   line-height: 1.2;
   margin: var(--padding-large) 0;
   padding: 0;
