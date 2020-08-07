@@ -8,7 +8,7 @@ import BlogPostsGrid from '@mersocarlin.com/components/BlogPostsGrid'
 import Divider from '@mersocarlin.com/components/Divider'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
-import { Post } from '@mersocarlin.com/types'
+import { PageProps, Post } from '@mersocarlin.com/types'
 
 const Main = styled.div`
   display: flex;
@@ -25,6 +25,10 @@ const Greetings = styled.div`
   h1 {
     font-size: var(--font-size-h2);
     margin: var(--padding-large) 0;
+
+    @media (min-width: 768px) {
+      font-size: var(--font-size-h1);
+    }
   }
 
   p {
@@ -35,14 +39,13 @@ const Greetings = styled.div`
   }
 `
 
-interface IndexProps {
+interface IndexProps extends PageProps {
   posts: Post[]
-  gaId: string
 }
 
-export default function Blog({ posts, gaId }: IndexProps) {
+export default function Blog({ appVersion, posts, gaId }: IndexProps) {
   return (
-    <Layout gaId={gaId}>
+    <Layout appVersion={appVersion} gaId={gaId}>
       <Meta path="/blog" title="Hemerson Carlin Blog" />
 
       <Main>
@@ -74,8 +77,11 @@ export default function Blog({ posts, gaId }: IndexProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const pkg = require('../../../package.json')
+
   return {
     props: {
+      appVersion: pkg.version,
       posts: await getPosts(),
       gaId: process.env.GOOGLE_ANALYTICS_ID,
     },

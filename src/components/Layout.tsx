@@ -8,6 +8,7 @@ import SocialList from './SocialList'
 import ThemeSwitcher from './ThemeSwitcher'
 
 interface LayouProps {
+  appVersion: string
   centerContent?: boolean
   children: React.ReactNode
   gaId: string
@@ -105,7 +106,12 @@ const StyledFooter = styled.footer`
   }
 `
 
-export default function Layout({ centerContent, children, gaId }: LayouProps) {
+export default function Layout({
+  appVersion,
+  centerContent,
+  children,
+  gaId,
+}: LayouProps) {
   React.useEffect(() => {
     initGA(gaId)
     trackPageView(`${window.location.pathname}${window.location.search}`)
@@ -127,7 +133,9 @@ export default function Layout({ centerContent, children, gaId }: LayouProps) {
       </LayoutContent>
 
       <StyledFooter>
-        <div className="copyright">{`Hemerson Carlin © 2010 — ${new Date().getFullYear()}`}</div>
+        <div className="copyright">
+          {`Hemerson Carlin © ${new Date().getFullYear()} - v${appVersion}`}
+        </div>
 
         <SocialList />
       </StyledFooter>
