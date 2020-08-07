@@ -1,3 +1,8 @@
+export interface PageProps {
+  appVersion: string
+  gaId: string
+}
+
 export interface Post {
   author: {
     name: string

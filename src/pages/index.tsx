@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next'
 
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
+import { PageProps } from '@mersocarlin.com/types'
 
 const Main = styled.div`
   align-items: center;
@@ -34,31 +35,19 @@ const Title = styled.h1`
   margin: 1rem 0 0 0;
   padding: 0;
   text-align: center;
-
-  @media (min-width: 768px) {
-    font-size: var(--font-size-h1);
-  }
 `
 
 const Subtitle1 = styled.h2`
-  font-size: 1.25rem;
-  line-height: 1.2;
+  font-size: var(--font-size-h2);
+  line-height: 1.5;
   margin: var(--padding-large) 0;
   padding: 0;
   text-align: center;
-
-  @media (min-width: 768px) {
-    font-size: var(--font-size-h3);
-  }
 `
 
-interface IndexProps {
-  gaId: string
-}
-
-export default function Index({ gaId }: IndexProps) {
+export default function Index({ gaId, appVersion }: PageProps) {
   return (
-    <Layout centerContent gaId={gaId}>
+    <Layout appVersion={appVersion} centerContent gaId={gaId}>
       <Meta />
 
       <Main>
@@ -75,8 +64,11 @@ export default function Index({ gaId }: IndexProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const pkg = require('../../package.json')
+
   return {
     props: {
+      appVersion: pkg.version,
       gaId: process.env.GOOGLE_ANALYTICS_ID,
     },
   }
