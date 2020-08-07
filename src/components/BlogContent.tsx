@@ -11,7 +11,7 @@ const StyledBlogContent = styled.div`
   p,
   ul,
   ol {
-    font-size: 1rem;
+    font-size: 1.125rem;
     line-height: 1.5;
     margin: var(--padding-large) 0;
     padding: 0;
@@ -19,7 +19,7 @@ const StyledBlogContent = styled.div`
     code {
       background: var(--gray-200);
       border-radius: 6px;
-      font-size: 0.875rem;
+      font-size: 1rem;
       margin: 0;
       padding: 0.2em 0.4em;
     }
