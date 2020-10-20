@@ -183,6 +183,30 @@ const StyledBlogContent = styled.div`
     }
   }
 
+  table {
+    border-collapse: collapse;
+    width: 100%;
+
+    tr {
+      background-color: var(--background-main);
+      border-top: 1px solid var(--background-text);
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--background-main-level1);
+    }
+
+    td,
+    th {
+      padding: var(--padding-normal);
+      border: 1px solid var(--gray-300);
+    }
+
+    th {
+      font-weight: bold;
+    }
+  }
+
   .blog-post-image {
     margin: var(--padding-xlarge) auto;
 
