@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 import { Post } from '@mersocarlin.com/types'
 
@@ -74,7 +75,7 @@ export default function BlogPost({ post }: BlogPostProps) {
   return (
     <Main>
       <BlogImage>
-        <img src={post.coverImageUrl} />
+        <Image src={post.coverImageUrl} height={500} width={1000} />
       </BlogImage>
 
       <BlogContainer>
