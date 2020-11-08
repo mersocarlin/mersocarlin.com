@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 const items = [
   {
@@ -50,7 +51,13 @@ export default function SocialList() {
           target="_blank"
           title={item.name}
         >
-          <img alt={item.name} role="img" src={`/${item.icon}.svg`} />
+          <Image
+            alt={item.name}
+            height={40}
+            role="img"
+            src={`/${item.icon}.svg`}
+            width={40}
+          />
         </a>
       ))}
     </Main>

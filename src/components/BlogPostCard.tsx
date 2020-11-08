@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 import { Post } from '@mersocarlin.com/types'
 
@@ -89,7 +90,7 @@ export default function BlogPostCard({ disabled, post }: BlogPostCardProps) {
   const blogContent = (
     <Main data-disabled={Boolean(disabled)}>
       <BlogPostImage>
-        <img src={post.coverImageUrl} />
+        <Image src={post.coverImageUrl} height={500} width={1000} />
       </BlogPostImage>
       <BlogContent>
         <Title>{post.title}</Title>
