@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { Post } from '@mersocarlin.com/types'
 
-import BlogContent from './BlogContent'
+import Content from './BlogPost/Content'
 import BlogPostDate from './BlogPostDate'
 
 interface BlogPostProps {
@@ -75,7 +75,12 @@ export default function BlogPost({ post }: BlogPostProps) {
   return (
     <Main>
       <BlogImage>
-        <Image src={post.coverImageUrl} height={500} width={1000} />
+        <Image
+          key={post.date}
+          src={post.coverImageUrl}
+          height={500}
+          width={1000}
+        />
       </BlogImage>
 
       <BlogContainer>
@@ -92,7 +97,7 @@ export default function BlogPost({ post }: BlogPostProps) {
           </AdditionalInfo>
         </BlogHeader>
 
-        <BlogContent content={post.content} />
+        <Content post={post} />
       </BlogContainer>
     </Main>
   )

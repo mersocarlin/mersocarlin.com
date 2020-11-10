@@ -1,28 +1,15 @@
 import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
-import remark from 'remark'
-import html from 'remark-html'
-import slug from 'remark-slug'
-import headings from 'remark-autolink-headings'
 import highlight from 'remark-highlight.js'
+import renderToString from 'next-mdx-remote/render-to-string'
 
+import Components from '@mersocarlin.com/components/BlogPost/Components'
 import { Post } from '@mersocarlin.com/types'
 import calculateTimeToRead from '@mersocarlin.com/utils/timeToRead'
 
 const postsDirectory = join(process.cwd(), 'posts')
 const allFiles: string[] = fs.readdirSync(postsDirectory)
-
-async function markdownToHtml(markdown: string) {
-  const result = await remark()
-    .use(slug)
-    // headings goes after slug https://github.com/remarkjs/remark-autolink-headings
-    .use(headings)
-    .use(highlight)
-    .use(html)
-    .process(markdown)
-  return result.toString()
-}
 
 export async function getPostBySlug(slug: string): Promise<Post> {
   const fileName = allFiles.find((file) => file.includes(slug))
@@ -32,9 +19,18 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
   const { timeToRead, wordCount } = calculateTimeToRead(content)
 
+  const mdxSource: string = await renderToString(content, {
+    components: Components,
+    mdxOptions: {
+      remarkPlugins: [highlight],
+      rehypePlugins: [],
+    },
+    scope: data,
+  })
+
   return {
     ...data,
-    content: await markdownToHtml(content),
+    content: mdxSource,
     previousSlugs: data.previousSlugs ? data.previousSlugs.split(',') : [],
     slug: slug.replace(/\.md$/, ''),
     timeToRead,

@@ -22,19 +22,14 @@ If you’ve never heard of Mesh Wi-Fi system, think of two or more connected dev
 
 I took advantage of this year’s Amazon Prime Days and bought the [Eero Wi-Fi System](https://www.amazon.co.uk/Introducing-Amazon-eero-system-3-pack/dp/B07WHMJ6XN/ref=redir_mobile_desktop?ie=UTF8&psc=1&ref_=ya_aw_od_pi) for £149 as opposed to £249 as it normally costs.
 
-<div class="blog-post-image">
-  <img alt="IMAGE_DESCRIPTION" src="/assets/blog/eero-mesh-wifi.jpg" style="width: 80%;" title="Eero Wi-fi system">
-  <p>Eero Wi-fi system</p>
-</div>
+<img alt="Eero Wi-fi system" height="756" src="/assets/blog/eero-mesh-wifi.jpg" title="Eero Wi-fi system" width="1008" />
+
 
 The setup is really easy and simple.
 
 In fact, instructions say it takes around 10 min to set it up and this is very true!
 
-<div class="blog-post-image">
-  <img alt="IMAGE_DESCRIPTION" src="/assets/blog/eero-setup.jpg" style="width: 100%;" title="Eero Wi-fi system setup">
-  <p>Eero Wi-fi system setup</p>
-</div>
+<img alt="Eero Wi-fi system setup" height="2436" src="/assets/blog/eero-setup.jpg" title="Eero Wi-fi system setup" width="2250" />
 
 ## Comparison 
 

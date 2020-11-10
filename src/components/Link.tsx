@@ -5,7 +5,9 @@ import styled from 'styled-components'
 interface Link {
   as?: string
   children: React.ReactNode
+  className?: string
   href: string
+  target?: string
 }
 
 const StyledLink = styled.a`
@@ -24,10 +26,26 @@ const StyledLink = styled.a`
   }
 `
 
-export default function Link({ as, children, href }: Link) {
+export default function Link({
+  as,
+  children,
+  className = '',
+  href,
+  target,
+}: Link) {
+  const isInternal = href.startsWith('/')
+
+  if (isInternal) {
+    return (
+      <NextLink as={as} href={href}>
+        <StyledLink className={className}>{children}</StyledLink>
+      </NextLink>
+    )
+  }
+
   return (
-    <NextLink as={as} href={href}>
-      <StyledLink>{children}</StyledLink>
-    </NextLink>
+    <StyledLink className={className} href={href} target={target}>
+      {children}
+    </StyledLink>
   )
 }

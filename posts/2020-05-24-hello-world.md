@@ -23,9 +23,7 @@ My main tech stack is TypeScript, NodeJS, MongoDB, GraphQL and ReactJS.
 In the early days of my career, Java and C# were my go-to for building everything, but I really like JS and it dominates most of my daily work now.
 Expect to see a bunch of JavaScript stuff here.
 
-<div class="blog-post-image">
-  <img alt="Welcome aboard" src="/assets/blog/hello-world-welcome.jpg" style="width: 80%;" title="Welcome aboard">
-</div>
+<img alt="Welcome on board" height="375" src="/assets/blog/hello-world-welcome.jpg" title="Welcome on board" width="500" />
 
 ## Past blog posts
 
