@@ -6,7 +6,7 @@ const StyledH2 = styled.h2`
   margin: var(--padding-xlarge) 0;
 `
 
-const StyledH3 = styled.h2`
+const StyledH3 = styled.h3`
   font-size: var(--font-size-h3);
   margin: var(--padding-xlarge) 0;
 `
