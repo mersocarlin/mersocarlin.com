@@ -20,9 +20,9 @@ And after some time, I realised I had a use case for building my own side projec
 
 I am going to break down this story into 3 parts just to make it easier to explain my thought process:
 
-- V1: Spreadsheet file
-- V2: Google Forms
-- V3: <a href="https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=atomic-money-from-a-spreadsheet-to-a-side-project" target="_blank">Atomic Money App</a>
+- [V1 - Spreadsheet file](#v1---spreadsheet-file)
+- [V2 - Google Forms](#v2---google-forms)
+- [V3 - Atomic Money App](#v3---meet-the-atomic-money-app)
 
 ## V1 - Spreadsheet file
 
@@ -34,10 +34,7 @@ Past data might not predict what is to come next, but they were helping me to at
 
 Even if I wanted to start budgeting for a big purchase in the future or for an upcoming trip for example, I had some sort of historical data to begin with.
 
-<div class="blog-post-image">
-  <img alt="Summary of income and expenses in the spreadsheet" src="/assets/blog/google-spreadsheet.jpg" style="width: 80%;" title="Summary of income and expenses in the spreadsheet">
-  <p>Summary of income and expenses in the spreadsheet</p>
-</div>
+<img alt="Summary of income and expenses in the spreadsheet" height="320" src="/assets/blog/google-spreadsheet.jpg" title="Summary of income and expenses in the spreadsheet" width="627" />
 
 The spreadsheet worked pretty well for a few months and I was really happy with it... at first.
 
@@ -51,7 +48,7 @@ Would your partner agree with saving daily transactions on a spreadsheet? Being 
 
 Mine definitely wouldn't. And this is how I got V2 started.
 
-## The V2 - Google Forms
+## V2 - Google Forms
 
 We used Google Forms for years.
 I kept the spreadsheet as its core and I had my first _"front-end"_ prototype working.
@@ -67,12 +64,9 @@ About that time too, we were going to start tracking our expenses in an extra cu
 
 We were both curious to compare how different our life was going to be by simply saving our expenses from Brazilian Real (BRL) to Euro. Were things going to be cheaper or more expensive? Less or more money at the end of the month?
 
-<div class="blog-post-image">
-  <img alt="Google forms I shared with my wife" src="/assets/blog/google-form.jpg" title="Google forms I shared with my wife">
-  <p>Google forms we used to track our income and expenses</p>
-</div>
+<img alt="Google forms I shared with my wife" height="651" src="/assets/blog/google-form.jpg" title="Google forms we used to track our income and expenses" width="433" />
 
-## The V3 - Meet the Atomic Money App
+## V3 - Meet the Atomic Money App
 
 At this point, I felt the need to code something on my spare time and apply some of my knowledge.
 I was ok writing "TODO lists" for every new tool or framework I ended up learning and I needed something else.
@@ -91,15 +85,11 @@ My requirements were simple:
 
 Here's a sneak peak of the final result: 
 
-<div class="blog-post-image">
-  <img alt="Atomic Money App" src="/assets/blog/atomicmoney.gif" title="Atomic Money App">
-  <p>Atomic Money App</p>
-</div>
+<img alt="Atomic Money App" height="712" src="/assets/blog/atomicmoney.gif" title="Atomic Money App" width="400" />
 
-Did you like everything you've seen so far? 
+Like everything you've seen so far? 
 
-You can either click 
-<a href="https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=atomic-money-from-a-spreadsheet-to-a-side-project" target="_blank">here</a> or simply go to https://atomicmoney.app: It's completely FREE and you can start tracking your expenses right now!
+You can either click <a href="https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=atomic-money-from-a-spreadsheet-to-a-side-project" target="_blank">here</a> or simply go to https://atomicmoney.app: It's completely FREE and you can start tracking your expenses right now!
 
 ## Conclusion
 
