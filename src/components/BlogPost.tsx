@@ -75,7 +75,12 @@ export default function BlogPost({ post }: BlogPostProps) {
   return (
     <Main>
       <BlogImage>
-        <Image src={post.coverImageUrl} height={500} width={1000} />
+        <Image
+          key={post.date}
+          src={post.coverImageUrl}
+          height={500}
+          width={1000}
+        />
       </BlogImage>
 
       <BlogContainer>
