@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { GetStaticProps } from 'next'
+import NextImage from 'next/image'
 
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
@@ -22,12 +23,12 @@ const Main = styled.div`
   }
 `
 
-const Image = styled.img`
-  border-radius: 50%;
-  border: 3px solid var(--background-text);
-  box-shadow: var(--box-shadow-1);
-  height: 200px;
-  width: 200px;
+const Image = styled(NextImage)`
+  && {
+    border-radius: 50%;
+    border: 3px solid var(--background-text) !important;
+    box-shadow: var(--box-shadow-1);
+  }
 `
 
 const Title = styled.h1`
@@ -51,7 +52,12 @@ export default function Index({ gaId, appVersion }: PageProps) {
       <Meta />
 
       <Main>
-        <Image alt="mersocarlin" src={`/hemerson-dark.jpg`} />
+        <Image
+          alt="mersocarlin"
+          height={200}
+          src="/hemerson-dark.jpg"
+          width={200}
+        />
 
         <Title>Hello there 👋🏼</Title>
         <Subtitle1>
