@@ -19,10 +19,16 @@ const StyledBlogContent = styled.div`
     padding: 0;
   }
 
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
   p,
   ul,
   ol {
-    margin: var(--padding-large) 0;
+    margin: 0 0 var(--padding-large) 0;
     padding: 0;
 
     code {
