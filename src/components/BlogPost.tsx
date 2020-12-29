@@ -15,7 +15,10 @@ const Main = styled.article`
   background: var(--background-main);
   width: 100%;
 `
-const BlogImage = styled.div`
+const BlogImageWrapper = styled.div`
+  text-align: center;
+  width: 100%;
+
   img {
     border-radius: 0;
     width: 100%;
@@ -35,21 +38,20 @@ const BlogContainer = styled.div`
   }
 `
 
-const BlogHeader = styled.div`
-  padding: var(--padding-xlarge) 0;
-`
-
 const Title = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.2;
-  margin: 0 0 var(--padding-xlarge) 0;
+  margin: 0;
+  padding: 0 0 var(--padding-xlarge) 0;
   text-align: center;
 `
 
 const AdditionalInfo = styled.div`
   color: var(--gray-600);
   font-size: 1rem;
+  padding-top: var(--padding-normal);
+  padding-bottom: var(--padding-xlarge);
   text-align: center;
 
   span:nth-child(3) {
@@ -74,28 +76,26 @@ const AdditionalInfo = styled.div`
 export default function BlogPost({ post }: BlogPostProps) {
   return (
     <Main>
-      <BlogImage>
+      <Title>{post.title}</Title>
+
+      <BlogImageWrapper>
         <Image
           key={post.date}
           src={post.coverImageUrl}
           height={500}
           width={1000}
         />
-      </BlogImage>
+      </BlogImageWrapper>
 
       <BlogContainer>
-        <BlogHeader>
-          <Title>{post.title}</Title>
-
-          <AdditionalInfo>
-            <span>By {post.author.name}</span>
-            <span>
-              ・<BlogPostDate post={post} />
-            </span>
-            <span>・</span>
-            <span>{post.timeToRead}</span>
-          </AdditionalInfo>
-        </BlogHeader>
+        <AdditionalInfo>
+          <span>By {post.author.name}</span>
+          <span>
+            ・<BlogPostDate post={post} />
+          </span>
+          <span>・</span>
+          <span>{post.timeToRead}</span>
+        </AdditionalInfo>
 
         <Content post={post} />
       </BlogContainer>
