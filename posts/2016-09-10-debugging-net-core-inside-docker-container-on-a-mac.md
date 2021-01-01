@@ -1,0 +1,97 @@
+---
+title: 'Debugging .NET Core inside Docker container on a Mac — The missing tutorial'
+excerpt: 'My findings on how to debug an ASP.NET Core app with Docker on a Mac.'
+date: '2016-09-10T00:00:00.000Z'
+---
+
+## Message from January 2021
+
+Hey reader! I'm glad you're here.
+
+This blogpost was written back in 2016 when ASP.NET Core was still brand new and resources for Mac OS were very hard to find.
+These are my findings at the time on how to debug ASP.NET apps with Docker.
+
+I originally wrote this blogpost on <a href="https://medium.com/@mersocarlin/debugging-net-core-inside-docker-container-on-a-mac-the-missing-tutorial-e85d7711dac9" target="_blank">Medium</a> and I am now bringing it to my own blog/platform.
+
+I'm sure things got better now (_especially in Mac OS land_) that Visual Studio is a <a href="https://visualstudio.microsoft.com/vs/mac/" target="_blank">native Mac application</a> and Docker on Mac have improve a lot!
+
+Bear in mind that when I wrote this in Sep 2016 nothing of that really existed, but I'm happy to keep this on my private archive for future reference.
+
+Happy reading!
+
+--------------------------
+
+I am a big fan of how some projects are setup to run (NodeJS, Go, Ruby..).
+Not only because most of the times they don't need Windows (no, I'm not a hater), but also because you are forced somehow to understand your command lines.
+For me, this is awesome so then I really need to know how my project is going to work and what should it do after writing my code.
+
+Windows on the other hand, facilitates this a lot I should say: Visual Studio brings you the "Start debugging" button and, on top of it, all your dependencies are magically created, your project is built and your are ready to run your code.
+
+With .NET Core, I became addicted on how to bring all of those command lines in terms of running a Windows project on my Mac, and this was one of my motivations to write this article.
+
+The second motivation is that .NET Core is yet new for non Windows users and most of the tutorials, how-to's and documentations still have a lack of information for some specific cases.
+
+**Debugging** is one of them!
+
+If you are a Visual Studio user, that hard work is already done. Only right click on your project, select Add -> Docker Support and it should work.
+
+<img alt="Adding Docker Support in Visual Studio" height="609" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-support-in-visual-studio.jpg" title="Adding Docker Support in Visual Studio" width="701" />
+
+## Getting your hands dirty
+
+Let's start!
+
+As the main purpose of this tutorial is simply debugging, I'm not going to enter in specific details about .NET Core and Docker.
+Neither going further into how to create a robust Web Api and so forth. There are lots of tutorials about them already.
+
+I'm also assuming that you are comfortable working with at least Docker and .NET Core.
+
+My step-by-step of this tutorial is as follows:
+
+1. Create a sample ASP.NET Core Web Api project on Mac
+2. Include all debug files
+3. Run & debug
+
+## Creating the Web Api project
+
+I'm going to use Yo generator for it.
+
+It's simple and easy to use.
+For more info you can find by clicking <a href="https://github.com/OmniSharp/generator-aspnet" target="_blank">here</a>.
+
+<img alt="Creating the Web Api project with generator-aspnet" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/creating-web-api-with-generator.gif" title="Creating the Web Api project with generator-aspnet" width="921" />
+
+From now on we are ready to run our project.
+
+## Configuring our project to debug
+
+This used to be the not so easy part.
+At least it was before I discovered <a href="https://github.com/Microsoft/generator-docker" target="_blank">this project on GitHub</a>.
+
+<img alt="Adding Docker debug files" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-debug-files.gif" title="Adding Docker debug files" width="921" />
+
+It takes care of what sort of images you need to use to run or debug your project.
+
+- Dockerfile.debug uses `microsfot/dotnet:1.0.0-preview2-sdk` image. Which maps to our development and debugging scenario.
+- Dockerfile uses the release image based on dotnet:1.0.0-core
+
+## Debugging our project
+
+Install/restore your project dependencies:
+```bash
+dotnet restore
+```
+
+Build the debug image:
+```bash
+dockerTask.sh build debug
+```
+
+Start the container:
+```bash
+dockerTask.sh composeForDebug
+```
+
+<img alt="Debug Process" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/debug-process.gif" title="Debug Process" width="921" />
+
+The sample code is hosted on my <a href="https://github.com/mersocarlin/aspnet-core-docker-debug" target="_blank">GitHub page</a>.

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Divider from '../Divider'
 import Link from '../Link'
 
 import Pre from './Pre'
@@ -16,6 +17,7 @@ const components = {
   a: BlogPostLink,
   h2: (props: any) => <Header as="h2" {...props} />,
   h3: (props: any) => <Header as="h3" {...props} />,
+  hr: (props: any) => <Divider size={30} {...props} />,
   img: Image,
   pre: Pre,
 }
