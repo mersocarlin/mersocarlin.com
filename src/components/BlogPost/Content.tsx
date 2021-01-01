@@ -56,7 +56,7 @@ const StyledBlogContent = styled.div`
   blockquote {
     padding: var(--padding-large);
     border-left: 3px solid var(--background-text);
-    margin: 0;
+    margin: 0 0 var(--padding-large) 0;
   }
 
   table {
