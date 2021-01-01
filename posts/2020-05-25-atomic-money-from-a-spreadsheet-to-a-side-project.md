@@ -1,13 +1,10 @@
 ---
 title: 'Atomic Money - from a spreadsheet to a side project'
 excerpt: 'After tracking my expenses in a spreadsheet for some time, I decided to take one step further and create my own expense tracking app: meet the Atomic Money App.'
-coverImageUrl: '/assets/blog/atomic-money-from-a-spreadsheet-to-a-side-project-cover.jpg'
 date: '2020-05-27T00:00:00.000Z'
-author:
-  name: Hemerson Carlin
-  imageUrl: '/hemerson-dark.jpg'
-ogImage:
-  url: '/assets/blog/atomic-money-from-a-spreadsheet-to-a-side-project-og.jpg'
+images:
+  coverUrl: '/assets/blog/atomic-money-from-a-spreadsheet-to-a-side-project-cover.jpg'
+  ogUrl: '/assets/blog/atomic-money-from-a-spreadsheet-to-a-side-project-og.jpg'
 ---
 
 Tracking expenses is not an easy task.

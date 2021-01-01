@@ -81,7 +81,7 @@ export default function BlogPost({ post }: BlogPostProps) {
       <BlogImageWrapper>
         <Image
           key={post.date}
-          src={post.coverImageUrl}
+          src={post.images.coverUrl}
           height={500}
           width={1000}
         />

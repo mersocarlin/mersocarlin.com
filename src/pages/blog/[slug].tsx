@@ -34,7 +34,7 @@ export default function PostPage({
     <Layout appVersion={appVersion} gaId={gaId}>
       <Meta
         description={post.excerpt}
-        ogImageUrl={post.ogImage.url}
+        ogImageUrl={post.images.ogUrl}
         path={`/blog/${post.slug}`}
         title={`${post.title} | Hemerson Carlin Blog`}
       />

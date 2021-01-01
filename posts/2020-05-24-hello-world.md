@@ -1,13 +1,10 @@
 ---
 title: 'Hello World 👋🏼'
 excerpt: "I'm Hemerson Carlin, Full Stack Developer based in Dublin, Ireland. Welcome to my Blog!"
-coverImageUrl: '/assets/blog/hello-world-cover.jpg'
 date: '2020-05-24T00:00:00.000Z'
-author:
-  name: Hemerson Carlin
-  imageUrl: '/hemerson-dark.jpg'
-ogImage:
-  url: '/assets/blog/hello-world-og.jpg'
+images:
+  coverUrl: '/assets/blog/hello-world-cover.jpg'
+  ogUrl: '/assets/blog/hello-world-og.jpg'
 ---
 
 Welcome to my very first blog post on my personal website 🎉.

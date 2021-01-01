@@ -90,7 +90,7 @@ export default function BlogPostCard({ disabled, post }: BlogPostCardProps) {
   const blogContent = (
     <Main data-disabled={Boolean(disabled)}>
       <BlogPostImage>
-        <Image src={post.coverImageUrl} height={500} width={1000} />
+        <Image src={post.images.coverUrl} height={500} width={1000} />
       </BlogPostImage>
       <BlogContent>
         <Title>{post.title}</Title>

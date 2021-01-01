@@ -1,13 +1,10 @@
 ---
 title: 'A tale of JavaScript errors'
 excerpt: 'Meet @mersocarlin/api-error. The lib that encapsulates API errors into named errors.'
-coverImageUrl: '/assets/blog/a-tale-of-javascript-errors-cover.jpg'
 date: '2020-08-06T00:00:00.000Z'
-author:
-  name: Hemerson Carlin
-  imageUrl: '/hemerson-dark.jpg'
-ogImage:
-  url: '/assets/blog/a-tale-of-javascript-errors-og.jpg'
+images:
+  coverUrl: '/assets/blog/a-tale-of-javascript-errors-cover.jpg'
+  ogUrl: '/assets/blog/a-tale-of-javascript-errors-og.jpg'
 ---
 
 Handling errors is probably one the first things we (Software Engineers) should think of when working on new features.
