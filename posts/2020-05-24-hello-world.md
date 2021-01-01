@@ -8,7 +8,6 @@ author:
   imageUrl: '/hemerson-dark.jpg'
 ogImage:
   url: '/assets/blog/hello-world-og.jpg'
-previousSlugs: 'a-tale-of-javascript-errors,styled-components-and-css-variables,atomic-money-from-a-spreadsheet-to-a-side-project'
 ---
 
 Welcome to my very first blog post on my personal website 🎉.
