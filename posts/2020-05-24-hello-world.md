@@ -2,9 +2,6 @@
 title: 'Hello World 👋🏼'
 excerpt: "I'm Hemerson Carlin, Full Stack Developer based in Dublin, Ireland. Welcome to my Blog!"
 date: '2020-05-24T00:00:00.000Z'
-images:
-  coverUrl: '/assets/blog/hello-world-cover.jpg'
-  ogUrl: '/assets/blog/hello-world-og.jpg'
 ---
 
 Welcome to my very first blog post on my personal website 🎉.
@@ -19,7 +16,7 @@ My main tech stack is TypeScript, NodeJS, MongoDB, GraphQL and ReactJS.
 In the early days of my career, Java and C# were my go-to for building everything, but I really like JS and it dominates most of my daily work now.
 Expect to see a bunch of JavaScript stuff here.
 
-<img alt="Welcome on board" height="375" src="/assets/blog/hello-world-welcome.jpg" title="Welcome on board" width="500" />
+<img alt="Welcome on board" height="375" src="/assets/blog/2020-05-24-hello-world/welcome.jpg" title="Welcome on board" width="500" />
 
 ## Past blog posts
 

@@ -2,9 +2,6 @@
 title: 'How I made the Wi-Fi speed at home 7x faster'
 excerpt: 'I have recently installed a Mesh Wi-Fi system at home and the results are really impressive.'
 date: '2020-10-20T00:00:00.000Z'
-images:
-  coverUrl: '/assets/blog/how-i-made-the-wifi-speed-at-home-7x-faster-cover.jpg'
-  ogUrl: '/assets/blog/how-i-made-the-wifi-speed-at-home-7x-faster-og.jpg'
 ---
 
 I think we all have a similar setup in our homes:
@@ -18,14 +15,14 @@ If you’ve never heard of Mesh Wi-Fi system, think of two or more connected dev
 
 I took advantage of this year’s Amazon Prime Days and bought the [Eero Wi-Fi System](https://www.amazon.co.uk/Introducing-Amazon-eero-system-3-pack/dp/B07WHMJ6XN/ref=redir_mobile_desktop?ie=UTF8&psc=1&ref_=ya_aw_od_pi) for £149 as opposed to £249 as it normally costs.
 
-<img alt="Eero Wi-fi system" height="756" src="/assets/blog/eero-mesh-wifi.jpg" title="Eero Wi-fi system" width="1008" />
+<img alt="Eero Wi-fi system" height="756" src="/assets/blog/2020-10-20-how-i-made-the-wifi-speed-at-home-7x-faster/eero-mesh-wifi.jpg" title="Eero Wi-fi system" width="1008" />
 
 
 The setup is really easy and simple.
 
 In fact, instructions say it takes around 10 min to set it up and this is very true!
 
-<img alt="Eero Wi-fi system setup" height="2436" src="/assets/blog/eero-setup.jpg" title="Eero Wi-fi system setup" width="2250" />
+<img alt="Eero Wi-fi system setup" height="2436" src="/assets/blog/2020-10-20-how-i-made-the-wifi-speed-at-home-7x-faster/eero-setup.jpg" title="Eero Wi-fi system setup" width="2250" />
 
 ## Comparison 
 
