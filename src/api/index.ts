@@ -6,14 +6,19 @@ import renderToString from 'next-mdx-remote/render-to-string'
 
 import Components from '@mersocarlin.com/components/BlogPost/Components'
 import { Post } from '@mersocarlin.com/types'
+import {
+  getPreviousSlugs,
+  getSlugByFileName,
+  sortByDateDesc,
+} from '@mersocarlin.com/utils/posts'
 import calculateTimeToRead from '@mersocarlin.com/utils/timeToRead'
 
-const postsDirectory = join(process.cwd(), 'posts')
-const allFiles: string[] = fs.readdirSync(postsDirectory)
+const POSTS_DIRECTORY = join(process.cwd(), 'posts')
+const ALL_FILES: string[] = fs.readdirSync(POSTS_DIRECTORY)
 
 export async function getPostBySlug(slug: string): Promise<Post> {
-  const fileName = allFiles.find((file) => file.includes(slug))
-  const fullPath = join(postsDirectory, `${fileName}`)
+  const fileName = ALL_FILES.find((file) => file.includes(slug)) as string
+  const fullPath = join(POSTS_DIRECTORY, `${fileName}`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
@@ -31,21 +36,17 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return {
     ...data,
     content: mdxSource,
-    previousSlugs: data.previousSlugs ? data.previousSlugs.split(',') : [],
-    slug: slug.replace(/\.md$/, ''),
+    previousSlugs: getPreviousSlugs(ALL_FILES, fileName),
+    slug,
     timeToRead,
     wordCount,
   } as Post
 }
 
-const sortByDateDesc = (post1: Post, post2: Post) =>
-  post1.date > post2.date ? -1 : 1
-
 export async function getPosts(): Promise<Post[]> {
-  const postsPromises = allFiles
-    // skip template
-    .filter((file) => !file.includes('POST_TEMPLATE'))
-    .map((slug) => getPostBySlug(slug.substring(11)))
+  const postsPromises = ALL_FILES.map((fileName) =>
+    getPostBySlug(getSlugByFileName(fileName)),
+  )
 
   const posts = await Promise.all(postsPromises)
   return posts.sort(sortByDateDesc)

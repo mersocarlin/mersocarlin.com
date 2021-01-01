@@ -8,7 +8,6 @@ author:
   imageUrl: '/hemerson-dark.jpg'
 ogImage:
   url: '/assets/blog/a-tale-of-javascript-errors-og.jpg'
-previousSlugs: 'styled-components-and-css-variables,atomic-money-from-a-spreadsheet-to-a-side-project,hello-world'
 ---
 
 Handling errors is probably one the first things we (Software Engineers) should think of when working on new features.
