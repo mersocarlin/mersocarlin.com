@@ -1,13 +1,10 @@
 ---
 title: 'How I made the Wi-Fi speed at home 7x faster'
 excerpt: 'I have recently installed a Mesh Wi-Fi system at home and the results are really impressive.'
-coverImageUrl: '/assets/blog/how-i-made-the-wifi-speed-at-home-7x-faster-cover.jpg'
 date: '2020-10-20T00:00:00.000Z'
-author:
-  name: Hemerson Carlin
-  imageUrl: '/hemerson-dark.jpg'
-ogImage:
-  url: '/assets/blog/post-title-og.jpg'
+images:
+  coverUrl: '/assets/blog/how-i-made-the-wifi-speed-at-home-7x-faster-cover.jpg'
+  ogUrl: '/assets/blog/how-i-made-the-wifi-speed-at-home-7x-faster-og.jpg'
 ---
 
 I think we all have a similar setup in our homes:

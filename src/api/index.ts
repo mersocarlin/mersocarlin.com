@@ -35,6 +35,10 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
   return {
     ...data,
+    author: {
+      name: 'Hemerson Carlin',
+      imageUrl: '/hemerson-dark.jpg',
+    },
     content: mdxSource,
     previousSlugs: getPreviousSlugs(ALL_FILES, fileName),
     slug,

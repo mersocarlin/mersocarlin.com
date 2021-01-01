@@ -9,11 +9,11 @@ export interface Post {
     imageUrl: string
   }
   content: string
-  coverImageUrl: string
   date: string
   excerpt: string
-  ogImage: {
-    url: string
+  images: {
+    coverUrl: string
+    ogUrl: string
   }
   previousSlugs: string[]
   slug: string
