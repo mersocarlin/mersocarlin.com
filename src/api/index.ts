@@ -5,8 +5,9 @@ import highlight from 'remark-highlight.js'
 import renderToString from 'next-mdx-remote/render-to-string'
 
 import Components from '@mersocarlin.com/components/BlogPost/Components'
-import { Post } from '@mersocarlin.com/types'
+import { Post, PostMarkdown } from '@mersocarlin.com/types'
 import {
+  getImages,
   getPreviousSlugs,
   getSlugByFileName,
   sortByDateDesc,
@@ -34,17 +35,20 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   })
 
   return {
-    ...data,
     author: {
       name: 'Hemerson Carlin',
       imageUrl: '/hemerson-dark.jpg',
     },
     content: mdxSource,
+    date: (data as PostMarkdown).date,
+    excerpt: (data as PostMarkdown).excerpt,
+    images: getImages(fileName),
     previousSlugs: getPreviousSlugs(ALL_FILES, fileName),
     slug,
     timeToRead,
+    title: (data as PostMarkdown).title,
     wordCount,
-  } as Post
+  }
 }
 
 export async function getPosts(): Promise<Post[]> {

@@ -2,9 +2,6 @@
 title: 'Atomic Money - from a spreadsheet to a side project'
 excerpt: 'After tracking my expenses in a spreadsheet for some time, I decided to take one step further and create my own expense tracking app: meet the Atomic Money App.'
 date: '2020-05-27T00:00:00.000Z'
-images:
-  coverUrl: '/assets/blog/atomic-money-from-a-spreadsheet-to-a-side-project-cover.jpg'
-  ogUrl: '/assets/blog/atomic-money-from-a-spreadsheet-to-a-side-project-og.jpg'
 ---
 
 Tracking expenses is not an easy task.
@@ -30,7 +27,7 @@ Past data might not predict what is to come next, but they were helping me to at
 
 Even if I wanted to start budgeting for a big purchase in the future or for an upcoming trip for example, I had some sort of historical data to begin with.
 
-<img alt="Summary of income and expenses in the spreadsheet" height="320" src="/assets/blog/google-spreadsheet.jpg" title="Summary of income and expenses in the spreadsheet" width="627" />
+<img alt="Summary of income and expenses in the spreadsheet" height="320" src="/assets/blog/2020-05-27-atomic-money-from-a-spreadsheet-to-a-side-project/google-spreadsheet.jpg" title="Summary of income and expenses in the spreadsheet" width="627" />
 
 The spreadsheet worked pretty well for a few months and I was really happy with it... at first.
 
@@ -60,7 +57,7 @@ About that time too, we were going to start tracking our expenses in an extra cu
 
 We were both curious to compare how different our life was going to be by simply saving our expenses from Brazilian Real (BRL) to Euro. Were things going to be cheaper or more expensive? Less or more money at the end of the month?
 
-<img alt="Google forms I shared with my wife" height="651" src="/assets/blog/google-form.jpg" title="Google forms we used to track our income and expenses" width="433" />
+<img alt="Google forms I shared with my wife" height="651" src="/assets/blog/2020-05-27-atomic-money-from-a-spreadsheet-to-a-side-project/google-form.jpg" title="Google forms we used to track our income and expenses" width="433" />
 
 ## V3 - Meet the Atomic Money App
 
@@ -81,7 +78,7 @@ My requirements were simple:
 
 Here's a sneak peak of the final result: 
 
-<img alt="Atomic Money App" height="712" src="/assets/blog/atomicmoney.gif" title="Atomic Money App" width="400" />
+<img alt="Atomic Money App" height="712" src="/assets/blog/2020-05-27-atomic-money-from-a-spreadsheet-to-a-side-project/atomicmoney.gif" title="Atomic Money App" width="400" />
 
 Like everything you've seen so far? 
 
