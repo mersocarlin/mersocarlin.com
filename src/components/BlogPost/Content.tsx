@@ -12,5 +12,7 @@ interface Props {
 export default function BlogContent({ post }: Props) {
   const content = hydrate(post.content, { components: Components })
 
-  return <div className="mersocarlin-text-gray text-lg">{content}</div>
+  return (
+    <div className="mersocarlin-text-gray text-lg font-light">{content}</div>
+  )
 }

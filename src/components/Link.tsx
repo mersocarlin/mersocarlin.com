@@ -17,7 +17,7 @@ export default function Link({
   as,
   children,
   className = '',
-  colorStyles = 'text-red-600 hover:text-red-800 visited:text-red-800 dark:hover:text-red-500 dark:visited:text-red-500',
+  colorStyles = 'mersocarlin-text-primary hover:text-red-800 visited:text-red-800 dark:hover:text-red-300 dark:visited:text-red-300',
   fontStyles = '',
   hoverStyles = 'hover:underline',
   href,
