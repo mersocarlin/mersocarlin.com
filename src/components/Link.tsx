@@ -36,6 +36,7 @@ export default function Link({
     <a
       className={`${colorStyles} ${fontStyles} ${hoverStyles}`}
       href={href}
+      rel="noopener noreferrer"
       target={target}
     >
       {children}
