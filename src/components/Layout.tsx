@@ -32,7 +32,7 @@ export default function Layout({
     >
       <header className="mersocarlin-bg-white flex items-center justify-between p-3 shadow-md">
         <Link
-          colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600"
+          colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
           href="/"
         >
           @mersocarlin
@@ -41,7 +41,7 @@ export default function Layout({
         <div className="flex items-center">
           <div className="mr-2">
             <Link
-              colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600"
+              colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
               href="/blog"
             >
               Blog
