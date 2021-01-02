@@ -18,7 +18,7 @@ export default function Blog({ appVersion, posts, gaId }: IndexProps) {
     <Layout appVersion={appVersion} gaId={gaId}>
       <Meta path="/blog" title="Hemerson Carlin Blog" />
 
-      <div className="flex flex-col text-gray-500 dark:text-gray-200">
+      <div className="flex flex-col mersocarlin-text-gray">
         <div>
           <h1 className="text-2xl md:text-4xl font-bold mb-4">
             Thoughts, ideas, tech and stuff!

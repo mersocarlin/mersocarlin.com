@@ -14,7 +14,7 @@ export default function PreviousBlogPosts({ posts }: PreviousBlogPostsProps) {
   return (
     <Fragment>
       <div className="flex items-center flex-col md:flex-row justify-between mb-8">
-        <div className="text-gray-500 dark:text-gray-200 font-bold text-xl mb-4 md:mb-0">
+        <div className="mersocarlin-text-gray font-bold text-xl mb-4 md:mb-0">
           Previous Blog Posts
         </div>
         <Link as="/blog" href="/blog">

@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .mersocarlin-text-gray {
+    @apply text-gray-500 dark:text-gray-200
+  }
+
+  .mersocarlin-bg-white {
+    @apply bg-white dark:bg-gray-700
+  }
+
+  .mersocarlin-border-gray {
+    @apply border-gray-500 dark:border-gray-200
+  }
+}
+
 @layer utilities {
   .line-clamp-3 {
     display: -webkit-box;

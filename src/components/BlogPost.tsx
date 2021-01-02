@@ -13,7 +13,7 @@ interface BlogPostProps {
 export default function BlogPost({ post }: BlogPostProps) {
   return (
     <article>
-      <h1 className="px-4 md:px-0 pb-8 text-2xl font-bold text-center text-gray-500 dark:text-gray-200">
+      <h1 className="px-4 md:px-0 pb-8 text-2xl font-bold text-center mersocarlin-text-gray">
         {post.title}
       </h1>
 
@@ -28,7 +28,7 @@ export default function BlogPost({ post }: BlogPostProps) {
       </div>
 
       <div className="w-full md:w-3/4 m-auto">
-        <div className="py-6 text-center text-sm text-gray-500 dark:text-gray-200">
+        <div className="py-6 text-center text-sm mersocarlin-text-gray">
           <span>By {post.author.name}</span>
           <span>
             ・<BlogPostDate post={post} />

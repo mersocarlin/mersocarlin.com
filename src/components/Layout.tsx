@@ -30,9 +30,9 @@ export default function Layout({
         centerContent ? 'h-screen' : ''
       }`}
     >
-      <header className="bg-white dark:bg-gray-700 flex items-center justify-between p-3 shadow-md">
+      <header className="mersocarlin-bg-white flex items-center justify-between p-3 shadow-md">
         <Link
-          colorStyles="text-gray-600 hover:text-gray-600 visited:text-gray-600 dark:text-gray-300"
+          colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600"
           href="/"
         >
           @mersocarlin
@@ -41,7 +41,7 @@ export default function Layout({
         <div className="flex items-center">
           <div className="mr-2">
             <Link
-              colorStyles="text-gray-600 hover:text-gray-600 visited:text-gray-600 dark:text-gray-300"
+              colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600"
               href="/blog"
             >
               Blog
@@ -56,7 +56,7 @@ export default function Layout({
         {children}
       </main>
 
-      <footer className="bg-white dark:bg-gray-700 text-gray-500 dark:text-gray-200 flex items-center justify-between flex-col md:flex-row text-sm p-3 border-t-2 dark:border-gray-700">
+      <footer className="mersocarlin-bg-white mersocarlin-text-gray flex items-center justify-between flex-col md:flex-row text-sm p-3 border-t-2 dark:border-gray-700">
         <div className="mb-4 md:mb-0">
           {`Hemerson Carlin © ${new Date().getFullYear()} - v${appVersion}`}
         </div>

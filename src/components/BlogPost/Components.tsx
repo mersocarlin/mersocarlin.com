@@ -9,7 +9,7 @@ const components = {
   a: Link,
   blockquote: (props: any) => (
     <blockquote
-      className="border-l-4 border-gray-500 dark:border-gray-200 mb-4 p-4"
+      className="border-l-4 mersocarlin-border-gray mb-4 p-4"
       {...props}
     />
   ),
@@ -26,21 +26,15 @@ const components = {
   ),
   table: (props: any) => (
     <table
-      className="border-collapse border w-full bg-white dark:bg-gray-700 mb-3"
+      className="border-collapse border w-full mersocarlin-bg-white mb-3"
       {...props}
     />
   ),
   td: (props: any) => (
-    <td
-      className="border border-gray-500 dark:border-gray-200 font-normal p-2"
-      {...props}
-    />
+    <td className="border mersocarlin-border-gray font-normal p-2" {...props} />
   ),
   th: (props: any) => (
-    <th
-      className="border border-gray-500 dark:border-gray-200 font-bold p-2"
-      {...props}
-    />
+    <th className="border mersocarlin-border-gray font-bold p-2" {...props} />
   ),
   thead: (props: any) => (
     <thead className="bg-gray-800 text-white dark:bg-gray-500" {...props} />

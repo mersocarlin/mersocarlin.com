@@ -11,7 +11,7 @@ export default function Index({ gaId, appVersion }: PageProps) {
     <Layout appVersion={appVersion} centerContent gaId={gaId}>
       <Meta />
 
-      <div className="flex flex-col items-center justify-center h-full text-gray-500 dark:text-gray-200 w-full md:w-3/5 md:m-auto p-8 md:p-0">
+      <div className="flex flex-col items-center justify-center h-full mersocarlin-text-gray w-full md:w-3/5 md:m-auto p-8 md:p-0">
         <div className="rounded-full shadow-md border-4 border-gray-500 overflow-hidden">
           <Image
             alt="mersocarlin"

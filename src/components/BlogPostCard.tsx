@@ -14,7 +14,7 @@ interface BlogPostCardProps {
 export default function BlogPostCard({ disabled, post }: BlogPostCardProps) {
   const blogContent = (
     <div
-      className={`group rounded shadow-md cursor-pointer hover:shadow-lg overflow-hidden bg-white dark:bg-gray-700 text-gray-500 dark:text-gray-200 ${
+      className={`group rounded shadow-md cursor-pointer hover:shadow-lg overflow-hidden mersocarlin-bg-white mersocarlin-text-gray ${
         Boolean(disabled) ? 'cursor-default' : 'cursor-pointer'
       }`}
     >
@@ -30,7 +30,7 @@ export default function BlogPostCard({ disabled, post }: BlogPostCardProps) {
           {post.excerpt}
         </p>
 
-        <div className="flex justify-between text-sm text-gray-500 dark:text-gray-200">
+        <div className="flex justify-between text-sm mersocarlin-text-gray">
           <span>{post.author.name}</span>
           <span>
             <BlogPostDate post={post} />
