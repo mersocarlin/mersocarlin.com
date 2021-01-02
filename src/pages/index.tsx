@@ -21,8 +21,10 @@ export default function Index({ gaId, appVersion }: PageProps) {
           />
         </div>
 
-        <h1 className="text-center text-3xl font-bold py-4">Hello there 👋🏼</h1>
-        <h2 className="text-center text-2xl">
+        <h1 className="text-center text-2xl md:text-3xl font-bold py-4">
+          Hello there 👋🏼
+        </h1>
+        <h2 className="text-center text-xl md:text-2xl">
           I'm Hemerson Carlin, also known as <em>mersocarlin</em>, and I'm a
           Full Stack JavaScript Developer from Brazil based in Dublin, Ireland.
         </h2>
