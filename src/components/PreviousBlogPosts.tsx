@@ -17,8 +17,23 @@ export default function PreviousBlogPosts({ posts }: PreviousBlogPostsProps) {
         <div className="mersocarlin-text-gray font-bold text-xl mb-4 md:mb-0">
           Previous Blog Posts
         </div>
-        <Link as="/blog" href="/blog">
-          View all blog posts ➡️
+        <Link
+          className="group inline-flex items-center"
+          as="/blog"
+          href="/blog"
+        >
+          View all blog posts{' '}
+          <svg
+            className="w-4 h-4 ml-2"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </Link>
       </div>
 
