@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import Image from 'next/image'
 
 import { Post } from '@mersocarlin.com/types'
@@ -11,94 +10,39 @@ interface BlogPostProps {
   post: Post
 }
 
-const Main = styled.article`
-  background: var(--background-main);
-  width: 100%;
-`
-const BlogImageWrapper = styled.div`
-  text-align: center;
-  width: 100%;
-
-  img {
-    border-radius: 0;
-    width: 100%;
-
-    @media (min-width: 768px) {
-      border-radius: 5px;
-    }
-  }
-`
-
-const BlogContainer = styled.div`
-  width: 100%;
-
-  @media (min-width: 768px) {
-    margin: 0 auto;
-    width: 70%;
-  }
-`
-
-const Title = styled.h1`
-  font-size: 1.5rem;
-  font-weight: bold;
-  line-height: 1.2;
-  margin: 0;
-  padding: 0 0 var(--padding-xlarge) 0;
-  text-align: center;
-`
-
-const AdditionalInfo = styled.div`
-  color: var(--gray-600);
-  font-size: 1rem;
-  padding-top: var(--padding-normal);
-  padding-bottom: var(--padding-xlarge);
-  text-align: center;
-
-  span:nth-child(3) {
-    display: none;
-
-    @media (min-width: 768px) {
-      display: inline-block;
-    }
-  }
-
-  span:nth-child(4) {
-    display: block;
-    margin-top: var(--padding-normal);
-
-    @media (min-width: 768px) {
-      display: inline-block;
-      margin-top: 0;
-    }
-  }
-`
-
 export default function BlogPost({ post }: BlogPostProps) {
   return (
-    <Main>
-      <Title>{post.title}</Title>
+    <article>
+      <h1 className="px-4 md:px-0 pb-8 text-2xl font-bold text-center text-gray-500 dark:text-gray-200">
+        {post.title}
+      </h1>
 
-      <BlogImageWrapper>
+      <div className="text-center">
         <Image
+          className="rounded-none md:rounded"
           key={post.date}
           src={post.images.coverUrl}
           height={500}
           width={1000}
         />
-      </BlogImageWrapper>
+      </div>
 
-      <BlogContainer>
-        <AdditionalInfo>
+      <div className="w-full md:w-3/4 m-auto">
+        <div className="py-6 text-center text-sm text-gray-500 dark:text-gray-200">
           <span>By {post.author.name}</span>
           <span>
             ・<BlogPostDate post={post} />
           </span>
-          <span>・</span>
-          <span>{post.timeToRead}</span>
-        </AdditionalInfo>
+          <span className="hidden md:inline-block">・</span>
+          <span className="block mt-4 md:inline-block md:mt-0">
+            {post.timeToRead}
+          </span>
+        </div>
 
-        <Content post={post} />
-      </BlogContainer>
-    </Main>
+        <div className="px-4 md:p-0">
+          <Content post={post} />
+        </div>
+      </div>
+    </article>
   )
 }
