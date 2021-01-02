@@ -8,7 +8,7 @@ Welcome to my very first blog post on my personal website 🎉.
 
 My name is Hemerson Carlin, also known as _mersocarlin_, and I'm a Software Engineer & Full Stack JavaScript Developer from Brazil based in Dublin, Ireland.
 
-I'm also the creator of the <a href="https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=hello-world" target="_blank">Atomic Money App</a>: an expense tracker completely free so you can monitor your money with excellence. Feel free to check it out!
+I'm also the creator of the [Atomic Money App](https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=hello-world): an expense tracker completely free so you can monitor your money with excellence. Feel free to check it out!
 
 This is going to be my space to share the things I like, a couple of ideas and some of my work.
 
@@ -20,7 +20,7 @@ Expect to see a bunch of JavaScript stuff here.
 
 ## Past blog posts
 
-I have already written blog posts in the past in other platforms (such as <a href="https://medium.com/@mersocarlin/debugging-net-core-inside-docker-container-on-a-mac-the-missing-tutorial-e85d7711dac9" target="_blank">here</a> and <a href="https://medium.com/@mersocarlin/continuous-delivery-with-bitbucket-pipelines-f15b829fda1b" target="_blank">here</a>) but never on a platform of my own.
+I have already written blog posts in the past in other platforms (such as [here](https://medium.com/@mersocarlin/debugging-net-core-inside-docker-container-on-a-mac-the-missing-tutorial-e85d7711dac9) and [here](https://medium.com/@mersocarlin/continuous-delivery-with-bitbucket-pipelines-f15b829fda1b)) but never on a platform of my own.
 
 In fact, I'm going to bring those to this blog just so I keep a better history (and control) of the things I've written.
 
@@ -31,11 +31,11 @@ Even though this is the actual "Hello World" blog post around here, this is defi
 I have a backlog of code snippets, interview tips, libs & repos of all sorts and some side projects I want to give some visibility.
 I was never sure where I should keep them and I'm happy I've finally found the perfect place to share all that.
 
-Stay tuned! They are coming <a href="https://github.com/mersocarlin/mersocarlin/issues?q=is%3Aopen+is%3Aissue+label%3A%22Blog+Post%22" target="_blank">very soon</a>.
+Stay tuned! They are coming [very soon](https://github.com/mersocarlin/mersocarlin/issues?q=is%3Aopen+is%3Aissue+label%3A%22Blog+Post%22).
 
 ## The current situation
 
-I'm writing this blog post while the entire world is in the middle of <a href="https://en.wikipedia.org/wiki/COVID-19_pandemic" target="_blank">COVID-19</a> and I'm sure this period will never be forgotten.
+I'm writing this blog post while the entire world is in the middle of [COVID-19](https://en.wikipedia.org/wiki/COVID-19_pandemic) and I'm sure this period will never be forgotten.
 
 In case you are reading this post while we are all are in the midst of this crisys too, I trully hope that you, your family and loved ones are hanging tight and safe.
 

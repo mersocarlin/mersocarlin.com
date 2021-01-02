@@ -6,7 +6,17 @@ import Header from './Header'
 import Image from './Image'
 
 const components = {
-  a: Link,
+  a: ({ href, ...rest }: any) => {
+    const isAnchorLink = href.startsWith('#')
+
+    return (
+      <Link
+        {...rest}
+        href={href}
+        target={isAnchorLink ? undefined : '_blank'}
+      />
+    )
+  },
   blockquote: (props: any) => (
     <blockquote
       className="border-l-4 mersocarlin-border-gray mb-4 p-4"

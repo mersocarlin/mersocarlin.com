@@ -11,7 +11,7 @@ Hey reader! I'm glad you're here.
 This blogpost was written back in 2016 when Bitbucket Pipelines were still in beta.
 Some of its steps _could_ be outdated although nothing much has changed in the way we setup a pipeline in a yaml file.
 
-I originally wrote this blogpost in <a href="https://medium.com/@mersocarlin/continuous-delivery-with-bitbucket-pipelines-f15b829fda1b" target="_blank">Medium</a> and I am now bringing it to my own blog/platform.
+I originally wrote this blogpost in [Medium](https://medium.com/@mersocarlin/continuous-delivery-with-bitbucket-pipelines-f15b829fda1b) and I am now bringing it to my own blog/platform.
 
 I might be a bit outdated but I'm happy to keep this on my private archive for future reference.
 
@@ -34,9 +34,9 @@ If you are still facing this situation, this tutorial is a start to get away wit
 
 ## Bitbucket Pipelines
 
-This is a great feature that Bitbucket came up with. If you had worked with <a href="https://travis-ci.org/" target="_blank">Travis CI</a>, the goal of <a href="https://bitbucket.org/product/features/pipelines" target="_blank">Bitbucket pipelines</a> is pretty much the same: after every commit your code is built, your tests are executed and, if that is the case, your application is deployed to production.
+This is a great feature that Bitbucket came up with. If you had worked with [Travis CI](https://travis-ci.org/), the goal of [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) is pretty much the same: after every commit your code is built, your tests are executed and, if that is the case, your application is deployed to production.
 
-You also need to be familiar with YAML syntax. It is easy and you can find out more about it in the <a href="https://yaml.org/start.html" target="_blank">yaml reference page</a>.
+You also need to be familiar with YAML syntax. It is easy and you can find out more about it in the [yaml reference page](https://yaml.org/start.html).
 
 The "hard work" relies on inform which commands are needed to run this step-by-step process.
 
@@ -48,7 +48,7 @@ First things first:
 
 <img alt="Activating Bitbucket Pipelines in your repository" height="670" src="/assets/blog/2016-09-26-continuous-delivery-with-bitbucket-pipelines/activating-bitbucket-pipelines.gif" title="Activating Bitbucket Pipelines in your repository" width="1228" />
 
-I'm using <a href="https://bitbucket.org/mersocarlin/bitbucket-pipelines/" target="_blank">this sample project</a> to demonstrate how it works.
+I'm using [this sample project](https://bitbucket.org/mersocarlin/bitbucket-pipelines/) to demonstrate how it works.
 
 ### Create the bitbucket-pipelines file
 
