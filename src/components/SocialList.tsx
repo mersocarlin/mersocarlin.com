@@ -1,6 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 
+import Link from './Link'
+
 const items = [
   {
     icon: 'twitter',
@@ -29,11 +31,10 @@ export default function SocialList() {
   return (
     <div className="flex">
       {items.map((item) => (
-        <a
+        <Link
           className="mx-2 flex items-center"
-          href={item.url}
           key={item.icon}
-          rel="noopener noreferrer"
+          href={item.url}
           target="_blank"
           title={item.name}
         >
@@ -44,7 +45,7 @@ export default function SocialList() {
             src={`/${item.icon}.svg`}
             width={40}
           />
-        </a>
+        </Link>
       ))}
     </div>
   )

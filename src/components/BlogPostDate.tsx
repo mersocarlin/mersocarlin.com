@@ -14,8 +14,8 @@ export default function BlogPostDate({ post }: BlogPostDateProps) {
   }
 
   return (
-    <React.Fragment>
+    <time dateTime={post.date}>
       {new Intl.DateTimeFormat('en-US', options).format(new Date(post.date))}
-    </React.Fragment>
+    </time>
   )
 }
