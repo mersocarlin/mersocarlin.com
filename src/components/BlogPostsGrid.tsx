@@ -1,19 +1,15 @@
-import styled from 'styled-components'
+import React from 'react'
 
-const BlogPostsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 30px;
-  padding: 0 var(--padding-large);
+interface Props {
+  children: React.ReactNode
+}
 
-  @media (min-width: 468px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0;
-  }
-`
+function BlogPostsGrid({ children }: Props) {
+  return (
+    <div className="px-4 md:px-0 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {children}
+    </div>
+  )
+}
 
 export default BlogPostsGrid

@@ -1,35 +1,22 @@
 import React from 'react'
 import NextLink from 'next/link'
-import styled from 'styled-components'
 
 interface Link {
   as?: string
   children: React.ReactNode
-  className?: string
+  colorStyles?: string
+  fontStyles?: string
+  hoverStyles?: string
   href: string
   target?: string
 }
 
-const StyledLink = styled.a`
-  color: var(--primary-main);
-  cursor: pointer;
-  font-size: 1rem;
-  text-decoration: none;
-
-  :visited {
-    color: var(--primary-main);
-  }
-
-  :hover {
-    color: var(--primary-dark);
-    text-decoration: underline;
-  }
-`
-
 export default function Link({
   as,
   children,
-  className = '',
+  colorStyles = 'text-red-600 hover:text-red-800 visited:text-red-800',
+  fontStyles = '',
+  hoverStyles = 'hover:underline',
   href,
   target,
 }: Link) {
@@ -38,14 +25,20 @@ export default function Link({
   if (isInternal) {
     return (
       <NextLink as={as} href={href}>
-        <StyledLink className={className}>{children}</StyledLink>
+        <a className={`${colorStyles} ${fontStyles} ${hoverStyles}`}>
+          {children}
+        </a>
       </NextLink>
     )
   }
 
   return (
-    <StyledLink className={className} href={href} target={target}>
+    <a
+      className={`${colorStyles} ${fontStyles} ${hoverStyles}`}
+      href={href}
+      target={target}
+    >
       {children}
-    </StyledLink>
+    </a>
   )
 }

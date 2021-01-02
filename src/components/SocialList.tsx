@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import Image from 'next/image'
 
 const items = [
@@ -26,25 +25,12 @@ const items = [
   },
 ]
 
-const Main = styled.div`
-  justify-content: center;
-  display: flex;
-
-  a {
-    margin: 0 var(--padding-normal);
-
-    img {
-      height: 2.5rem;
-      width: 2.5rem;
-    }
-  }
-`
-
 export default function SocialList() {
   return (
-    <Main>
+    <div className="flex">
       {items.map((item) => (
         <a
+          className="mx-2 flex items-center"
           href={item.url}
           key={item.icon}
           rel="noopener noreferrer"
@@ -60,6 +46,6 @@ export default function SocialList() {
           />
         </a>
       ))}
-    </Main>
+    </div>
   )
 }
