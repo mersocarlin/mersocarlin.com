@@ -82,11 +82,11 @@ Here's a sneak peak of the final result:
 
 Like everything you've seen so far? 
 
-You can either click <a href="https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=atomic-money-from-a-spreadsheet-to-a-side-project" target="_blank">here</a> or simply go to https://atomicmoney.app: It's completely FREE and you can start tracking your expenses right now!
+You can either click [here](https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=atomic-money-from-a-spreadsheet-to-a-side-project) or simply go to https://atomicmoney.app: It's completely FREE and you can start tracking your expenses right now!
 
 ## Conclusion
 
-<a href="https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=atomic-money-from-a-spreadsheet-to-a-side-project" target="_blank">Atomic Money</a>'s journey is just about to begin and I can see room for improvement as well as the addition of new features.
+[Atomic Money](https://atomicmoney.app/?utm_source=blog_mersocarlin&utm_medium=cpc&utm_campaign=atomic-money-from-a-spreadsheet-to-a-side-project)'s journey is just about to begin and I can see room for improvement as well as the addition of new features.
 But there's no way you can possibly know if your project works or if it is going into the right direction if you don't get feedback from your audience.
 
 And this is why I'm writing this blog post for.

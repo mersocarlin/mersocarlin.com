@@ -4,7 +4,7 @@ excerpt: 'With styled-components and CSS variables, you can create new themes fo
 date: '2020-06-11T00:00:00.000Z'
 ---
 
-[styled-components](https://styled-components.com/) is a great library for styling your React app.
+[styled-components](https://styled-components.com/) is a great library for styling React applications.
 What I like most about it is that I can keep both component and its styles in a "scoped" manner where I easily have access to the CSS rules being applied and I don't have to worry about [CSS Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) or even deleting styles that could break something else in an application.
 
 One might not struggle styling an app when development has just started, but in the long run having to maintain and "babysit" long stylesheet files is a complete nightmare.
@@ -63,9 +63,9 @@ const Button = styled.button`
 
 We can now create a `Button` component and apply styles as needed but also taking advantage of the two CSS variables for its background and color.
 
-I've prepared a simple example in this <a href="https://codesandbox.io/s/styled-components-css-variables-ojvmx" target="_blank">codesandbox</a> in case you want to have a look and see CSS variables in action.
+I've prepared a simple example in this [codesandbox](https://codesandbox.io/s/styled-components-css-variables-ojvmx) in case you want to have a look and see CSS variables in action.
 
-I'm heavily using CSS variables in this blog (_see for yourself and turn on/off the dark mode available at the top right corner of the page_) and also in my side project, <a href="https://atomicmoney.app" target="_blank">Atomic Money</a>.
+I'm heavily using CSS variables in this blog (_see for yourself and turn on/off the dark mode available at the top right corner of the page_) and also in my side project, [Atomic Money](https://atomicmoney.app).
 
 If you are new to my blog or don't know Atomic Money yet, it's an expense tracker I built a while ago where I currently use as my main playground for trying out new tech, improve some of my skills and level up my career.
 
@@ -73,4 +73,4 @@ Feel free to check it out and give me feedback! It's completely free!
 
 ## Edit
 
-I have recently migrated my blog to [tailwindcss](https://tailwindcss.com/) but the concept of tweaking CSS Variables stays the same.
+I have recently migrated my blog to [Tailwind CSS](https://tailwindcss.com/) but the concept of tweaking CSS Variables stays the same.

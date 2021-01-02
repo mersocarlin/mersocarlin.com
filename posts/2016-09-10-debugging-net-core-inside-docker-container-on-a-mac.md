@@ -11,9 +11,9 @@ Hey reader! I'm glad you're here.
 This blogpost was written back in 2016 when ASP.NET Core was still brand new and resources for Mac OS were very hard to find.
 These are my findings at the time on how to debug ASP.NET apps with Docker.
 
-I originally wrote this blogpost on <a href="https://medium.com/@mersocarlin/debugging-net-core-inside-docker-container-on-a-mac-the-missing-tutorial-e85d7711dac9" target="_blank">Medium</a> and I am now bringing it to my own blog/platform.
+I originally wrote this blogpost on [Medium](https://medium.com/@mersocarlin/debugging-net-core-inside-docker-container-on-a-mac-the-missing-tutorial-e85d7711dac9) and I am now bringing it to my own blog/platform.
 
-I'm sure things got better now (_especially in Mac OS land_) that Visual Studio is a <a href="https://visualstudio.microsoft.com/vs/mac/" target="_blank">native Mac application</a> and Docker on Mac have improve a lot!
+I'm sure things got better now (_especially in Mac OS land_) that Visual Studio is a [native Mac application](https://visualstudio.microsoft.com/vs/mac/) and Docker on Mac have improve a lot!
 
 Bear in mind that when I wrote this in Sep 2016 nothing of that really existed, but I'm happy to keep this on my private archive for future reference.
 
@@ -57,7 +57,9 @@ My step-by-step of this tutorial is as follows:
 I'm going to use Yo generator for it.
 
 It's simple and easy to use.
-For more info you can find by clicking <a href="https://github.com/OmniSharp/generator-aspnet" target="_blank">here</a>.
+For more info you can find by clicking [here](https://github.com/OmniSharp/generator-aspnet).
+
+
 
 <img alt="Creating the Web Api project with generator-aspnet" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/creating-web-api-with-generator.gif" title="Creating the Web Api project with generator-aspnet" width="921" />
 
@@ -66,7 +68,8 @@ From now on we are ready to run our project.
 ## Configuring our project to debug
 
 This used to be the not so easy part.
-At least it was before I discovered <a href="https://github.com/Microsoft/generator-docker" target="_blank">this project on GitHub</a>.
+At least it was before I discovered [this project on GitHub](https://github.com/Microsoft/generator-docker).
+
 
 <img alt="Adding Docker debug files" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-debug-files.gif" title="Adding Docker debug files" width="921" />
 
@@ -94,4 +97,4 @@ dockerTask.sh composeForDebug
 
 <img alt="Debug Process" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/debug-process.gif" title="Debug Process" width="921" />
 
-The sample code is hosted on my <a href="https://github.com/mersocarlin/aspnet-core-docker-debug" target="_blank">GitHub page</a>.
+The sample code is hosted on my [GitHub page](https://github.com/mersocarlin/aspnet-core-docker-debug).
