@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { initGA, trackPageView } from '@mersocarlin.com/utils/analytics'
 
@@ -14,98 +13,6 @@ interface LayouProps {
   gaId: string
 }
 
-const Main = styled.div`
-  min-height: 100vh; /* cover the 100% of viewport */
-  overflow: hidden;
-  display: block;
-  position: relative;
-  padding-bottom: 6.25rem; /* footer height */
-`
-
-const StyledHeader = styled.header`
-  align-items: center;
-  background: var(--background-main-level1);
-  box-shadow: var(--box-shadow-1);
-  display: flex;
-  font-size: 1rem;
-  height: 3.125rem;
-  justify-content: space-between;
-  padding: 0 var(--padding-large);
-
-  a {
-    color: var(--background-text);
-
-    :hover {
-      color: var(--background-text);
-      text-decoration: underline;
-    }
-  }
-`
-
-const Menu = styled.div`
-  display: flex;
-  align-items: center;
-
-  a {
-    margin-right: var(--padding-large);
-  }
-`
-
-const LayoutContent = styled.section`
-  margin: var(--padding-xlarge) 0;
-  width: auto;
-
-  @media (min-width: 768px) {
-    margin-left: auto;
-    margin-right: auto;
-    width: 768px;
-  }
-
-  @media (min-width: 1024px) {
-    margin-left: auto;
-    margin-right: auto;
-    width: 1024px;
-  }
-
-  &[data-centercontent='true'] {
-    @media (min-width: 468px) {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-`
-
-const StyledFooter = styled.footer`
-  align-items: center;
-  background: var(--background-main-level1);
-  box-shadow: var(--box-shadow-1);
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.875rem;
-  height: 6.25rem;
-  justify-content: center;
-  position: absolute;
-  width: 100%;
-  padding: 0;
-
-  .copyright {
-    margin-bottom: var(--padding-large);
-  }
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    padding: 0 2rem;
-    justify-content: space-between;
-
-    .copyright {
-      margin: 0;
-    }
-  }
-`
-
 export default function Layout({
   appVersion,
   centerContent,
@@ -118,27 +25,44 @@ export default function Layout({
   }, [])
 
   return (
-    <Main>
-      <StyledHeader>
-        <Link href="/">@mersocarlin</Link>
+    <div
+      className={`flex flex-col bg-gray-50 dark:bg-gray-800 ${
+        centerContent ? 'h-screen' : ''
+      }`}
+    >
+      <header className="mersocarlin-bg-white flex items-center justify-between p-3 shadow-md">
+        <Link
+          colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600"
+          href="/"
+        >
+          @mersocarlin
+        </Link>
 
-        <Menu>
-          <Link href="/blog">Blog</Link>
+        <div className="flex items-center">
+          <div className="mr-2">
+            <Link
+              colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600"
+              href="/blog"
+            >
+              Blog
+            </Link>
+          </div>
+
           <ThemeSwitcher />
-        </Menu>
-      </StyledHeader>
+        </div>
+      </header>
 
-      <LayoutContent data-centercontent={Boolean(centerContent)}>
+      <main className="flex-1 my-8 m-auto w-full lg:max-w-screen-lg md:max-w-screen-md">
         {children}
-      </LayoutContent>
+      </main>
 
-      <StyledFooter>
-        <div className="copyright">
+      <footer className="mersocarlin-bg-white mersocarlin-text-gray flex items-center justify-between flex-col md:flex-row text-sm p-3 border-t-2 dark:border-gray-500">
+        <div className="mb-4 md:mb-0">
           {`Hemerson Carlin © ${new Date().getFullYear()} - v${appVersion}`}
         </div>
 
         <SocialList />
-      </StyledFooter>
-    </Main>
+      </footer>
+    </div>
   )
 }

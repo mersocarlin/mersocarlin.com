@@ -1,12 +1,14 @@
 import React from 'react'
 
-import GlobalStyles from '@mersocarlin.com/theme/GlobalStyles'
+import 'tailwindcss/tailwind.css'
+
 import ThemeProvider from '@mersocarlin.com/theme/ThemeProvider'
+
+import '@mersocarlin.com/styles/globals.css'
 
 export default function MyApp({ Component, pageProps }: any) {
   return (
     <React.Fragment>
-      <GlobalStyles />
       <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>

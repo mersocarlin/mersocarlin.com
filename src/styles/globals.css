@@ -1,42 +1,46 @@
-import styled from 'styled-components'
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-const StyledPre = styled.pre`
-  code {
-    border-radius: 5px;
-
-    .line-number {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-
-      color: #abb2bf;
-      display: inline-block;
-      padding: 0 20px 0 10px;
-      min-width: 50px;
-      text-align: right;
-    }
+@layer components {
+  .mersocarlin-text-gray {
+    @apply text-gray-500 dark:text-gray-200
   }
 
-  font-size: 1rem;
-  /*
-  Atom One Dark by Daniel Gamage
-  Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
-  base:    #282c34
-  mono-1:  #abb2bf
-  mono-2:  #818896
-  mono-3:  #5c6370
-  hue-1:   #56b6c2
-  hue-2:   #61aeee
-  hue-3:   #c678dd
-  hue-4:   #98c379
-  hue-5:   #e06c75
-  hue-5-2: #be5046
-  hue-6:   #d19a66
-  hue-6-2: #e6c07b
-*/
+  .mersocarlin-bg-white {
+    @apply bg-white dark:bg-gray-700
+  }
+
+  .mersocarlin-border-gray {
+    @apply border-gray-500 dark:border-gray-200
+  }
+}
+
+@layer utilities {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Code syntax css */
+    /*
+    Atom One Dark by Daniel Gamage
+    Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+    base:    #282c34
+    mono-1:  #abb2bf
+    mono-2:  #818896
+    mono-3:  #5c6370
+    hue-1:   #56b6c2
+    hue-2:   #61aeee
+    hue-3:   #c678dd
+    hue-4:   #98c379
+    hue-5:   #e06c75
+    hue-5-2: #be5046
+    hue-6:   #d19a66
+    hue-6-2: #e6c07b
+  */
 
   .hljs {
     display: block;
@@ -114,6 +118,5 @@ const StyledPre = styled.pre`
   .hljs-link {
     text-decoration: underline;
   }
-`
+}
 
-export default StyledPre
