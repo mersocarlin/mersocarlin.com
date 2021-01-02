@@ -24,9 +24,9 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
     const body = document.querySelector('body')
     if (body && supportedThemes.includes(theme)) {
       supportedThemes.forEach((themeName) => {
-        body.classList.remove(`${themeName}-theme`)
+        body.classList.remove(themeName)
       })
-      body.classList.add(`${theme}-theme`)
+      body.classList.add(theme)
       setTheme(theme)
     }
   }, [])
