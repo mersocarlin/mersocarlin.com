@@ -1,7 +1,6 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
-import styled from 'styled-components'
 
 import { getPosts, getPostBySlug } from '@mersocarlin.com/api'
 import BlogPost from '@mersocarlin.com/components/BlogPost'
@@ -10,10 +9,6 @@ import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
 import PreviousBlogPosts from '@mersocarlin.com/components/PreviousBlogPosts'
 import { PageProps, Post } from '@mersocarlin.com/types'
-
-const Main = styled.div`
-  width: 100%;
-`
 
 interface PostPageProps extends PageProps {
   post?: Post
@@ -39,11 +34,9 @@ export default function PostPage({
         title={`${post.title} | Hemerson Carlin Blog`}
       />
 
-      <Main>
-        <BlogPost post={post} />
-        <Divider size={50} />
-        <PreviousBlogPosts posts={previousPosts} />
-      </Main>
+      <BlogPost post={post} />
+      <Divider size={50} />
+      <PreviousBlogPosts posts={previousPosts} />
     </Layout>
   )
 }
