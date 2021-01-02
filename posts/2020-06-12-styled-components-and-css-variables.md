@@ -1,10 +1,10 @@
 ---
-title: 'Styled Components and CSS Variables'
+title: 'styled-components and CSS Variables'
 excerpt: 'With styled-components and CSS variables, you can create new themes for your app with just a few lines of code.'
 date: '2020-06-11T00:00:00.000Z'
 ---
 
-[`styled-components`](https://styled-components.com/) is a great library for styling your React app.
+[styled-components](https://styled-components.com/) is a great library for styling your React app.
 What I like most about it is that I can keep both component and its styles in a "scoped" manner where I easily have access to the CSS rules being applied and I don't have to worry about [CSS Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) or even deleting styles that could break something else in an application.
 
 One might not struggle styling an app when development has just started, but in the long run having to maintain and "babysit" long stylesheet files is a complete nightmare.
@@ -19,7 +19,7 @@ The notation is usually something like `--primary-color: red;` and are accessed 
 
 From this point on, every CSS rule that makes use of `var(--primary-color)` will be parsed and assigned by the browser with its reference value, in this case `red`.
 
-## Creating global styles
+## Creating global styles with styled-components
 
 ```js
 import { createGlobalStyle, css } from 'styled-components'
@@ -70,3 +70,7 @@ I'm heavily using CSS variables in this blog (_see for yourself and turn on/off 
 If you are new to my blog or don't know Atomic Money yet, it's an expense tracker I built a while ago where I currently use as my main playground for trying out new tech, improve some of my skills and level up my career.
 
 Feel free to check it out and give me feedback! It's completely free!
+
+## Edit
+
+I have recently migrated my blog to [tailwindcss](https://tailwindcss.com/) but the concept of tweaking CSS Variables stays the same.
