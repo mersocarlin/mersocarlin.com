@@ -22,7 +22,7 @@ const items = [
   },
   {
     icon: 'github',
-    name: 'Github',
+    name: 'GitHub',
     url: 'https://github.com/mersocarlin',
   },
 ]
