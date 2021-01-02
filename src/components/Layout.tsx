@@ -56,7 +56,7 @@ export default function Layout({
         {children}
       </main>
 
-      <footer className="mersocarlin-bg-white mersocarlin-text-gray flex items-center justify-between flex-col md:flex-row text-sm p-3 border-t-2 dark:border-gray-700">
+      <footer className="mersocarlin-bg-white mersocarlin-text-gray flex items-center justify-between flex-col md:flex-row text-sm p-3 border-t-2 dark:border-gray-500">
         <div className="mb-4 md:mb-0">
           {`Hemerson Carlin © ${new Date().getFullYear()} - v${appVersion}`}
         </div>
