@@ -30,7 +30,7 @@ export default function BlogPostCard({ disabled, post }: BlogPostCardProps) {
           {post.excerpt}
         </p>
 
-        <div className="flex justify-between text-sm mersocarlin-text-gray">
+        <div className="flex justify-between text-sm mersocarlin-text-gray font-light">
           <span>{post.author.name}</span>
           <span>
             <BlogPostDate post={post} />
