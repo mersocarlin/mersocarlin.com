@@ -24,6 +24,7 @@ export type Post = {
   content: string
   date: string
   excerpt: string
+  fileName: string
   images: PostImage
   previousSlugs: string[]
   slug: string

@@ -42,6 +42,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     content: mdxSource,
     date: (data as PostMarkdown).date,
     excerpt: (data as PostMarkdown).excerpt,
+    fileName,
     images: getImages(fileName),
     previousSlugs: getPreviousSlugs(ALL_FILES, fileName),
     slug,
