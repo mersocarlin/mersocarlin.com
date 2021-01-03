@@ -21,13 +21,15 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useLocalStorage('mersocarlin:theme', 'light')
 
   const setBodyCssClass = React.useCallback((theme: string) => {
+    const appTheme = supportedThemes.includes(theme) ? theme : 'light'
     const body = document.querySelector('body')
-    if (body && supportedThemes.includes(theme)) {
+
+    if (body) {
       supportedThemes.forEach((themeName) => {
         body.classList.remove(themeName)
       })
-      body.classList.add(theme)
-      setTheme(theme)
+      body.classList.add(appTheme)
+      setTheme(appTheme)
     }
   }, [])
 
