@@ -55,7 +55,7 @@
     overflow-x: auto;
     padding: 0.5em;
     color: #abb2bf;
-    background: #282c34;
+    @apply bg-gray-700
   }
 
   .hljs-comment,

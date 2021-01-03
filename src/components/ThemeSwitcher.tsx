@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useTheme } from '@mersocarlin.com/theme/ThemeProvider'
 
@@ -41,16 +41,32 @@ function Moon() {
   )
 }
 
+function ThemeIcon() {
+  const { theme } = useTheme()
+
+  return theme === 'dark' ? <Sun /> : <Moon />
+}
+
 export default function ThemeSwitcher() {
   const { onUpdateTheme, theme } = useTheme()
+  const [clientLoaded, setClientLoaded] = useState(false)
+
+  useEffect(() => {
+    const body = document.querySelector('body')
+    if (!body) {
+      return
+    }
+
+    setClientLoaded(true)
+  }, [])
 
   return (
     <div
-      className="cursor-pointer"
+      className={clientLoaded ? 'cursor-pointer' : ''}
       onClick={() => onUpdateTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       <div className="rounded-full bg-gray-300 dark:bg-gray-600 h-8 w-8 flex items-center justify-center">
-        {theme === 'dark' ? <Sun /> : <Moon />}
+        {clientLoaded && <ThemeIcon />}
       </div>
     </div>
   )
