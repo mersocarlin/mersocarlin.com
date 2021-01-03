@@ -23,7 +23,7 @@ const components = {
       {...props}
     />
   ),
-  code: (props: any) => <code data-test-id="test" {...props} />,
+  code: (props: any) => <code {...props} />,
   del: (props: any) => <del className="italic" {...props} />,
   h2: (props: any) => <Header as="h2" {...props} />,
   h3: (props: any) => <Header as="h3" {...props} />,
