@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 
 import { initGA, trackPageView } from '@mersocarlin.com/utils/analytics'
 
@@ -19,10 +20,13 @@ export default function Layout({
   children,
   gaId,
 }: LayouProps) {
+  const router = useRouter()
   React.useEffect(() => {
     initGA(gaId)
     trackPageView(`${window.location.pathname}${window.location.search}`)
   }, [])
+
+  const isBlog = router.pathname === '/blog'
 
   return (
     <div
@@ -32,24 +36,21 @@ export default function Layout({
     >
       <header className="mersocarlin-bg-white flex items-center justify-between p-3 shadow-md">
         <Link
+          className={isBlog ? 'underline' : ''}
+          colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
+          href="/blog"
+        >
+          Blog
+        </Link>
+
+        <Link
           colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
           href="/"
         >
           @mersocarlin
         </Link>
 
-        <div className="flex items-center">
-          <div className="mr-2">
-            <Link
-              colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
-              href="/blog"
-            >
-              Blog
-            </Link>
-          </div>
-
-          <ThemeSwitcher />
-        </div>
+        <ThemeSwitcher />
       </header>
 
       <main className="flex-1 my-8 m-auto w-full lg:max-w-screen-lg md:max-w-screen-md">
