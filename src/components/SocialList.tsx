@@ -15,7 +15,6 @@ const items = [
     url: 'https://www.linkedin.com/in/mersocarlin/en',
   },
   {
-    className: 'orange',
     icon: 'stack-overflow',
     name: 'Stack Overflow',
     url: 'https://stackoverflow.com/users/1461131/mersocarlin',
@@ -40,10 +39,10 @@ export default function SocialList() {
         >
           <Image
             alt={item.name}
-            height={40}
+            height={30}
             role="img"
             src={`/${item.icon}.svg`}
-            width={40}
+            width={30}
           />
         </Link>
       ))}
