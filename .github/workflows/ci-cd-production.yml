@@ -1,6 +1,6 @@
 name: Production deployment
 
-on: 
+on:
   push:
     tags:
       - 'v*'
