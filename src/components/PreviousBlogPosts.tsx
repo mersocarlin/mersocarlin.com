@@ -39,11 +39,14 @@ export default function PreviousBlogPosts({ posts }: PreviousBlogPostsProps) {
 
       <BlogPostsGrid>
         {posts.map((post) => (
-          <BlogPostCard
-            disabled={post.content === ''}
+          <li
+            itemProp="blogPost"
+            itemScope={true}
+            itemType="https://schema.org/BlogPosting"
             key={post.slug}
-            post={post}
-          />
+          >
+            <BlogPostCard post={post} />
+          </li>
         ))}
       </BlogPostsGrid>
     </Fragment>

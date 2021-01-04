@@ -40,7 +40,14 @@ export default function Blog({ appVersion, posts, gaId }: IndexProps) {
 
         <BlogPostsGrid>
           {posts.map((post) => (
-            <BlogPostCard key={post.slug} post={post} />
+            <li
+              itemProp="blogPost"
+              itemScope={true}
+              itemType="https://schema.org/BlogPosting"
+              key={post.slug}
+            >
+              <BlogPostCard post={post} />
+            </li>
           ))}
         </BlogPostsGrid>
       </div>
