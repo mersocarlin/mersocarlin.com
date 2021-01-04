@@ -31,6 +31,7 @@ export default function Link({
       <NextLink as={as} href={href}>
         <a
           className={`${colorStyles} ${fontStyles} ${hoverStyles} ${className}`}
+          itemProp="url"
         >
           {children}
         </a>
@@ -42,6 +43,7 @@ export default function Link({
     <a
       className={`${colorStyles} ${fontStyles} ${hoverStyles} ${className}`}
       href={href}
+      itemProp="url"
       rel="noopener noreferrer"
       target={target}
       title={title}
