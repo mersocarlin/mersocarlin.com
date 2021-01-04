@@ -14,7 +14,7 @@ export default function BlogPostDate({ post }: BlogPostDateProps) {
   }
 
   return (
-    <time dateTime={post.date}>
+    <time dateTime={post.date} itemProp="datePublished">
       {new Intl.DateTimeFormat('en-US', options).format(new Date(post.date))}
     </time>
   )

@@ -33,9 +33,9 @@ export default function PostPage({
     '@type': 'BlogPosting',
     author: {
       '@type': 'Person',
-      name: post.author.imageUrl,
+      name: post.author.name,
     },
-    datePublished: post.date.substring(0, 10),
+    datePublished: post.date,
     description: post.excerpt,
     headline: post.title,
     image: `https://mersocarlin.com${post.images.coverUrl}`,
