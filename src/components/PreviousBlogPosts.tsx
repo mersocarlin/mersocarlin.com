@@ -42,7 +42,7 @@ export default function PreviousBlogPosts({ posts }: PreviousBlogPostsProps) {
           <li
             itemProp="blogPost"
             itemScope={true}
-            itemType="https://schema.org/LiveBlogPosting"
+            itemType="https://schema.org/BlogPosting"
             key={post.slug}
           >
             <BlogPostCard post={post} />
