@@ -30,6 +30,7 @@ export default function PostPage({
       <Meta
         description={post.excerpt}
         ogImageUrl={post.images.ogUrl}
+        ogType="article"
         path={`/blog/${post.slug}`}
         title={`${post.title} | Hemerson Carlin Blog`}
       />

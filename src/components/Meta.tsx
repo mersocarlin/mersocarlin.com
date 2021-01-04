@@ -6,6 +6,7 @@ const baseDescription = `Hi there! I'm Hemerson Carlin, also known as mersocarli
 interface MetaProps {
   description?: string
   ogImageUrl?: string
+  ogType?: string
   path?: string
   title?: string
 }
@@ -13,6 +14,7 @@ interface MetaProps {
 export default function Meta({
   description = baseDescription,
   ogImageUrl = '/hemerson-dark.jpg',
+  ogType = 'website',
   path = '',
   title = 'Hemerson Carlin | Full Stack Developer',
 }: MetaProps) {
@@ -40,7 +42,7 @@ export default function Meta({
       <meta property="og:image:width" content="200" />
       <meta property="og:image:height" content="200" />
       <meta property="og:title" content={title} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:url" content={`https://mersocarlin.com${path}`} />
 
       <meta name="twitter:card" content="summary" />
