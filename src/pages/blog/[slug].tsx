@@ -31,8 +31,7 @@ export default function PostPage({
         description={post.excerpt}
         ogImageUrl={post.images.ogUrl}
         ogType="article"
-        path={`/blog/${post.slug}`}
-        title={`${post.title} | Hemerson Carlin Blog`}
+        title={`${post.title} | Hemerson Carlin`}
       />
 
       <BlogPost post={post} />

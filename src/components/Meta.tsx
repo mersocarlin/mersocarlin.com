@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 const baseDescription = `Hi there! I'm Hemerson Carlin, also known as mersocarlin, and I'm a Software Engineer & Full Stack JavaScript Developer from Brazil based in Dublin, Ireland.`
 
@@ -7,7 +8,6 @@ interface MetaProps {
   description?: string
   ogImageUrl?: string
   ogType?: string
-  path?: string
   title?: string
 }
 
@@ -15,9 +15,10 @@ export default function Meta({
   description = baseDescription,
   ogImageUrl = '/hemerson-dark.jpg',
   ogType = 'website',
-  path = '',
   title = 'Hemerson Carlin | Full Stack Developer',
 }: MetaProps) {
+  const router = useRouter()
+
   return (
     <Head>
       <title>{title}</title>
@@ -43,7 +44,10 @@ export default function Meta({
       <meta property="og:image:height" content="200" />
       <meta property="og:title" content={title} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={`https://mersocarlin.com${path}`} />
+      <meta
+        property="og:url"
+        content={`https://mersocarlin.com${router.asPath}`}
+      />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content="@mersocarlin" />
