@@ -1,11 +1,10 @@
-name: CI
+name: Staging deployment
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
@@ -41,3 +40,12 @@ jobs:
         run: yarn build
         env:
           CI: true
+      
+      - name: Deploy to Vercel staging
+        run: |
+          NOW_ORG_ID=${{ secrets.NOW_ORG_ID }} \
+          NOW_PROJECT_ID=${{ secrets.NOW_PROJECT_ID_PRODUCTION }} \
+          npx vercel \
+            --local-config now.json \
+            --token ${{ secrets.NOW_TOKEN }} \
+            --env BUILD_DATE=$(date +%FT%T) \

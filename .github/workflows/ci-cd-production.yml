@@ -8,48 +8,8 @@ on:
     types: [published]
 
 jobs:
-  unit-tests:
+  build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    steps:
-      - name: Begin CI...
-        uses: actions/checkout@v2
-
-      - name: Use NodeJS ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Use cached node_modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            nodeModules-
-      
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-        env:
-          CI: true
-
-      - name: Lint
-        run: yarn lint
-        env:
-          CI: true
-
-      - name: Build
-        run: yarn build
-        env:
-          CI: true
-  
-  vercel-deploy:
-    runs-on: ubuntu-latest
-    needs: [unit-tests]
     strategy:
       matrix:
         node-version: [12.x]
@@ -90,7 +50,7 @@ jobs:
         run: |
           NOW_ORG_ID=${{ secrets.NOW_ORG_ID }} \
           NOW_PROJECT_ID=${{ secrets.NOW_PROJECT_ID_PRODUCTION }} \
-          npx now \
+          npx vercel \
             --local-config now.json \
             --token ${{ secrets.NOW_TOKEN }} \
             --env BUILD_DATE=$(date +%FT%T) \
