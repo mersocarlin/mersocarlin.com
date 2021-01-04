@@ -81,7 +81,7 @@ jobs:
         env:
           CI: true
       
-      - name: Deploy to Vercel production
+      - name: Deploy to Vercel staging
         run: |
           NOW_ORG_ID=${{ secrets.NOW_ORG_ID }} \
           NOW_PROJECT_ID=${{ secrets.NOW_PROJECT_ID_PRODUCTION }} \
