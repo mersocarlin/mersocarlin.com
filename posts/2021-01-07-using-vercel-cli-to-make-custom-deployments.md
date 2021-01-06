@@ -61,7 +61,7 @@ on:
     types: [published]
 ```
 
-## Main takeaways
+## Conclusion
 
 I wish Vercel had a custom option to deploy to production given certain constraints and not whenever the code is merged to the main branch.
 I also didn't lose much by turning off the Git integration and `npx vercel [options]` command helps a lot!
