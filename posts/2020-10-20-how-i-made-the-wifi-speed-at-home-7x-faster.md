@@ -1,7 +1,6 @@
 ---
 title: 'How I made the Wi-Fi speed at home 7x faster'
 excerpt: 'I have recently installed a Mesh Wi-Fi system at home and the results are really impressive.'
-date: '2020-10-20T00:00:00.000Z'
 ---
 
 I think we all have a similar setup in our homes:

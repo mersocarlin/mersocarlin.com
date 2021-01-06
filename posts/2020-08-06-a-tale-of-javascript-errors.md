@@ -1,7 +1,6 @@
 ---
 title: 'A tale of JavaScript errors'
 excerpt: 'Meet @mersocarlin/api-error. The lib that encapsulates API errors into named errors.'
-date: '2020-08-06T00:00:00.000Z'
 ---
 
 Handling errors is probably one the first things we (Software Engineers) should think of when working on new features.
