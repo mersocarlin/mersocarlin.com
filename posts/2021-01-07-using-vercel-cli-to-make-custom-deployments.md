@@ -1,0 +1,70 @@
+---
+title: 'Using Vercel CLI to make custom deployments'
+excerpt: 'In this blogpost I describe why I opted-out of Vercel''s Git integration and how I use their CLI with GitHub actions to deploy my website and blog to production.'
+---
+
+As a fellow Software Engineer, I have always been curious about what happens after a pull request is merged and how the deployment pipeline looks like behind the scenes so I can see my new code live in production.
+
+At some point, every company creates their own environment based on stack or infrastructure to make our life easier and I'd say we don't really think about it on a daily basis.
+
+A few examples of that scenario I can think of are:
+
+- The company you work for has a dedicated "ops", "devops", "infra", "solutions" (_your name it_) team that takes care of it for you and your team.
+- Your team is fully autonomous and you have a dedicated person (_devops Engineer?_) that deploys from time to time.
+- Your team is fully autonomous and anyone in the team is able to deploy to production whenever suits your needs.
+
+Regardless of the development lifecycle at your employer, the more abstract, generic or automatic it is the less you know about the specifics of it and the less you have contact with it.
+
+I'm reffering to deployment here, but beware that linting the code, type checking, i18n integration, running automated tests and many other steps all belong to the same process.
+
+If you just care about writing code and creating pull request after pull request that's probably the best for you. At the end of the day it's just a matter of getting stuff done, right?
+
+But if you're curious to ask how things work, have tried before, failed or even succeeded a few times or simply just want dive deep into this rabbit hole, you'd better learn how to create such a pipeline.
+
+Deploying a website to production nowadays is easy with the right tools and Vercel really shines in developer experience.
+
+A basic deployment pipeline as explained in their [docs](https://vercel.com/docs) is:
+
+- Git integration with Vercel.
+- Add/change files, commit and `git push`.
+- You get a preview URL (_bot included_) for free.
+- Website/app is live 🚀.
+
+Whenever your code is back to the main/master branch, Vercel runs a `production` build, makes a new deployment with the latest changes and a new version is live, ready to be used, 100% available to users and/or customers.
+
+## Making it custom for my needs
+
+But what if we'd want to keep pushing code to the main branch with a few pull requests and only after that release a new version of the site?
+
+That's exactly how I wanted to go with the deployment pipeline for my blog and some of my [personal projects](/blog/atomic-money-from-a-spreadsheet-to-a-side-project) but still would like to leverage preview and production deployments.
+
+Unfortunately, I had to turn off Git integration and take care of the deployments myself, but nothing that [Vercel CLI](https://vercel.com/docs/cli) and [GitHub actions](https://github.com/features/actions) couldn't get the job done.
+
+So to summarize my needs:
+
+1. I don't want to deploy to production everytime I merge a single pull request to the main branch.
+2. For every pull request I'd like to have a preview deployment available to me, so I can spot bugs, have a taste of new blog posts or even check UI updates beforehand.
+3. Once I'm satisfied with a new release, I'd create a new [git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) with one or more pull requests in it, build the app and deploy to production.
+
+And to summarize the steps I've taken:
+
+- Turning off Git integration solved item #1.
+- Solving #2 is just a matter of running `npx vercel` and wait for the preview URL.
+- #3 is solved by reading GitHub actions docs about how to run a specific action only when a new tag is created:
+
+```yaml
+on:
+  push:
+    tags:
+      - 'v*'
+  release:
+    types: [published]
+```
+
+## Main takeaways
+
+I wish Vercel had a custom option to deploy to production given certain constraints and not whenever the code is merged to the main branch.
+I also didn't lose much by turning off the Git integration and `npx vercel [options]` command helps a lot!
+
+The built-in CI via GitHub actions is very handy and we can get the same result if hosting the code in GitLab or BitBucket too.
+You'll need some basic yaml knowledge but nothing we couldn't handle ourselves.
