@@ -40,7 +40,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
       imageUrl: '/hemerson-dark.jpg',
     },
     content: mdxSource,
-    date: (data as PostMarkdown).date,
+    date: `${fileName.substring(0, 10)}T00:00:00.000Z`,
     excerpt: (data as PostMarkdown).excerpt,
     fileName,
     images: getImages(fileName),

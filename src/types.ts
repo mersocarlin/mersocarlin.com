@@ -4,7 +4,6 @@ export type PageProps = {
 }
 
 export type PostMarkdown = {
-  date: string
   excerpt: string
   title: string
 }
