@@ -53,7 +53,7 @@
   p > code,
   ol > li > code,
   ul > li > code {
-    @apply text-sm mersocarlin-text-gray bg-gray-200 dark:bg-gray-700 rounded px-2 py-1
+    @apply text-xs mersocarlin-text-gray bg-gray-200 dark:bg-gray-700 rounded p-1
   }
 
   .hljs {
