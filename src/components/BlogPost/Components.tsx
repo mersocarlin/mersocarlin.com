@@ -29,7 +29,7 @@ const components = {
   h3: (props: any) => <Header as="h3" {...props} />,
   hr: (props: any) => <Divider size={30} {...props} />,
   img: Image,
-  ol: (props: any) => <ol className="ml-8 mb-3 list-disc" {...props} />,
+  ol: (props: any) => <ol className="ml-8 mb-3 list-decimal" {...props} />,
   p: (props: any) => <p className="mb-3 leading-7" {...props} />,
   pre: (props: any) => (
     <pre className="rounded overflow-hidden mb-3 text-sm" {...props} />
