@@ -2,6 +2,7 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 import { getPosts, getPostBySlug } from '@mersocarlin.com/api'
 import BlogPost from '@mersocarlin.com/components/BlogPost'
@@ -57,14 +58,16 @@ export default function PostPage({
         ogImageUrl={post.images.ogUrl}
         ogType="article"
         title={`${post.title} | Hemerson Carlin`}
-      >
+      />
+
+      <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: `${JSON.stringify(structuredData)}`,
           }}
         />
-      </Meta>
+      </Head>
 
       <BlogPost post={post} />
       <Divider size={50} />
