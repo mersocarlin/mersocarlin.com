@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 const baseDescription = `Hi there! I'm Hemerson Carlin, also known as mersocarlin, and I'm a Software Engineer & Full Stack JavaScript Developer from Brazil based in Dublin, Ireland.`
 
 interface MetaProps {
-  children?: React.ReactNode
   description?: string
   ogImageUrl?: string
   ogType?: string
@@ -13,7 +12,6 @@ interface MetaProps {
 }
 
 export default function Meta({
-  children,
   description = baseDescription,
   ogImageUrl = '/hemerson-dark.jpg',
   ogType = 'website',
@@ -54,8 +52,6 @@ export default function Meta({
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content="@mersocarlin" />
       <meta name="twitter:site" content="@mersocarlin" />
-
-      {children}
     </Head>
   )
 }
