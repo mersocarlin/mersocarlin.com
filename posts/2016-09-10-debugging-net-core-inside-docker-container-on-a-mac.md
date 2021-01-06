@@ -1,7 +1,6 @@
 ---
 title: 'Debugging .NET Core inside Docker container on a Mac — The missing tutorial'
 excerpt: 'My findings on how to debug an ASP.NET Core app with Docker on a Mac.'
-date: '2016-09-10T00:00:00.000Z'
 ---
 
 ## Message from January 2021

@@ -1,7 +1,6 @@
 ---
 title: 'Atomic Money - from a spreadsheet to a side project'
 excerpt: 'After tracking my expenses in a spreadsheet for some time, I decided to take one step further and create my own expense tracking app: meet the Atomic Money App.'
-date: '2020-05-27T00:00:00.000Z'
 ---
 
 Tracking expenses is not an easy task.

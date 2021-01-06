@@ -1,7 +1,6 @@
 ---
 title: 'Continuous Delivery with Bitbucket Pipelines'
 excerpt: 'Having a pipeline in the codebase is definitely a must these days and Bitbucket Pipelines certainly help your team achieve that.'
-date: '2016-09-26T00:00:00.000Z'
 ---
 
 ## Message from January 2021

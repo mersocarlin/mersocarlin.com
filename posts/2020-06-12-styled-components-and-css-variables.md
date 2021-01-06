@@ -1,7 +1,6 @@
 ---
 title: 'styled-components and CSS Variables'
 excerpt: 'With styled-components and CSS variables, you can create new themes for your app with just a few lines of code.'
-date: '2020-06-11T00:00:00.000Z'
 ---
 
 [styled-components](https://styled-components.com/) is a great library for styling React applications.

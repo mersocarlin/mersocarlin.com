@@ -1,7 +1,6 @@
 ---
 title: 'Hello World 👋🏼'
 excerpt: "I'm Hemerson Carlin, Full Stack Developer based in Dublin, Ireland. Welcome to my Blog!"
-date: '2020-05-24T00:00:00.000Z'
 ---
 
 Welcome to my very first blog post on my personal website 🎉.
