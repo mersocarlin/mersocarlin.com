@@ -22,6 +22,7 @@ export type MdxSource<MdxScopeType> = {
 
 export type PostMdxScope = {
   coverImage?: PostImage
+  date?: string
   excerpt: string
   title: string
 }
@@ -30,7 +31,7 @@ export type Post = {
   author: Author
   content: MdxSource<PostMdxScope>
   coverImage: PostImage
-  date?: string
+  date: string
   excerpt?: string
   ogImage: PostImage
   path: string
