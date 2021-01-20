@@ -22,10 +22,10 @@ export default function BlogPost({ post }: BlogPostProps) {
       <div className="text-center">
         <Image
           className="rounded-none md:rounded"
-          key={post.date}
-          src={post.images.coverUrl}
-          height={500}
-          width={1000}
+          key={post.title}
+          src={post.coverImage.url}
+          height={post.coverImage.height}
+          width={post.coverImage.width}
         />
       </div>
 
@@ -33,9 +33,11 @@ export default function BlogPost({ post }: BlogPostProps) {
         <div className="py-6 text-center text-sm mersocarlin-text-gray">
           <div>
             <span>By {post.author.name}</span>
-            <span>
-              ・<BlogPostDate post={post} />
-            </span>
+            {post.date && (
+              <span>
+                ・<BlogPostDate post={post} />
+              </span>
+            )}
           </div>
 
           <div className="pt-2">
@@ -46,10 +48,10 @@ export default function BlogPost({ post }: BlogPostProps) {
         </div>
 
         <div className="px-4 md:p-0">
-          <Content post={post} />
+          <Content mdxSource={post.content} />
         </div>
 
-        <div className="px-4 md:p-0">
+        <div className="px-4 md:p-0 mt-8">
           <ContributionBox post={post} />
         </div>
       </div>

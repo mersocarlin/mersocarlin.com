@@ -1,7 +1,10 @@
-import { Post, PostImage } from '@mersocarlin.com/types'
+import { Post } from '@mersocarlin.com/types'
 
 export function sortByDateDesc(post1: Post, post2: Post) {
-  return post1.date > post2.date ? -1 : 1
+  if (post1.date && post2.date) {
+    return post1.date > post2.date ? -1 : 1
+  }
+  return 1
 }
 
 export function removeExtension(fileName: string) {
@@ -40,14 +43,5 @@ export function getPreviousSlugs(allFiles: string[], fileName: string) {
       getSlugByFileName(allFiles[indexOfSlug - 2]),
       getSlugByFileName(allFiles[indexOfSlug - 3]),
     ]
-  }
-}
-
-export function getImages(fileName: string): PostImage {
-  const folderName = removeExtension(fileName)
-
-  return {
-    coverUrl: `/assets/blog/${folderName}/cover.jpg`,
-    ogUrl: `/assets/blog/${folderName}/og.jpg`,
   }
 }
