@@ -39,7 +39,7 @@ export default function PostPage({
     datePublished: post.date,
     description: post.excerpt,
     headline: post.title,
-    image: `https://mersocarlin.com${post.images.coverUrl}`,
+    image: `https://mersocarlin.com${post.coverImage.url}`,
     publisher: {
       '@type': 'Organization',
       name: 'mersocarlin.com',
@@ -55,7 +55,7 @@ export default function PostPage({
     <Layout appVersion={appVersion} gaId={gaId}>
       <Meta
         description={post.excerpt}
-        ogImageUrl={post.images.ogUrl}
+        ogImageUrl={post.ogImage.url}
         ogType="article"
         title={`${post.title} | Hemerson Carlin`}
       />
@@ -91,7 +91,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const post = await getBlogPostBySlug(`${params.slug}`)
   const previousPosts = await Promise.all(
-    post.previousSlugs.map(getBlogPostBySlug),
+    (post.previousSlugs || []).map(getBlogPostBySlug),
   )
 
   return {

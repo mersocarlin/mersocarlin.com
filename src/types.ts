@@ -3,29 +3,38 @@ export type PageProps = {
   gaId: string
 }
 
-export type PostMarkdown = {
-  excerpt: string
-  title: string
-}
-
 export type Author = {
   name: string
   imageUrl: string
 }
 
 export type PostImage = {
-  coverUrl: string
-  ogUrl: string
+  height: number
+  url: string
+  width: number
+}
+
+export type MdxSource<MdxScopeType> = {
+  compiledSources: string
+  renderedOutput: string
+  scope: MdxScopeType
+}
+
+export type PostMdxScope = {
+  coverImage?: PostImage
+  excerpt: string
+  title: string
 }
 
 export type Post = {
   author: Author
-  content: string
-  date: string
-  excerpt: string
-  fileName: string
-  images: PostImage
-  previousSlugs: string[]
+  content: MdxSource<PostMdxScope>
+  coverImage: PostImage
+  date?: string
+  excerpt?: string
+  ogImage: PostImage
+  path: string
+  previousSlugs?: string[]
   slug: string
   timeToRead: string
   title: string

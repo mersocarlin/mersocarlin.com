@@ -4,6 +4,7 @@ import Image from 'next/image'
 interface Props {
   alt: string
   height: string
+  priority?: boolean
   src: string
   title: string
   width: string
@@ -12,6 +13,7 @@ interface Props {
 export default function BlogPostImage({
   alt,
   height,
+  priority,
   src,
   title,
   width,
@@ -21,10 +23,11 @@ export default function BlogPostImage({
       <Image
         alt={alt}
         className="rounded-md shadow-md mb-2"
+        height={height}
+        priority={priority}
         src={src}
         title={title}
         width={width}
-        height={height}
       />
       <p className="text-sm">{title}</p>
     </div>

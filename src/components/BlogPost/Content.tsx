@@ -1,16 +1,15 @@
 import React from 'react'
 import hydrate from 'next-mdx-remote/hydrate'
 
-import { Post } from '@mersocarlin.com/types'
-
 import Components from './Components'
+import { MdxSource, PostMdxScope } from '@mersocarlin.com/types'
 
 interface Props {
-  post: Post
+  mdxSource: MdxSource<PostMdxScope>
 }
 
-export default function BlogContent({ post }: Props) {
-  const content = hydrate(post.content, { components: Components })
+export default function Content({ mdxSource }: Props) {
+  const content = hydrate(mdxSource, { components: Components })
 
   return (
     <div className="mersocarlin-text-gray text-lg font-light">{content}</div>

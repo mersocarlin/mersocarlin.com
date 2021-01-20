@@ -20,9 +20,9 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
       <div className="group rounded shadow-md cursor-pointer hover:shadow-lg overflow-hidden mersocarlin-bg-white mersocarlin-text-gray">
         <Image
           itemProp="image"
-          src={post.images.coverUrl}
-          height={500}
-          width={1000}
+          src={post.coverImage.url}
+          height={post.coverImage.height}
+          width={post.coverImage.width}
         />
         <div className="flex justify-center flex-col justify-between p-3 h-48">
           <div
@@ -47,7 +47,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
             >
               <span itemProp="name">{post.author.name}</span>
             </div>
-            <BlogPostDate post={post} />
+            {post.date && <BlogPostDate date={post.date} />}
           </div>
         </div>
       </div>

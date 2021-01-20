@@ -5,9 +5,8 @@ import highlight from 'remark-highlight.js'
 import renderToString from 'next-mdx-remote/render-to-string'
 
 import Components from '@mersocarlin.com/components/BlogPost/Components'
-import { Post, PostMarkdown } from '@mersocarlin.com/types'
+import { Author, MdxSource, Post, PostMdxScope } from '@mersocarlin.com/types'
 import {
-  getImages,
   getPreviousSlugs,
   getSlugByFileName,
   removeExtension,
@@ -19,8 +18,12 @@ const root = process.cwd()
 
 const POSTS_DIRECTORY = join(root, 'data/posts')
 const ALL_BLOG_POSTS: string[] = fs.readdirSync(POSTS_DIRECTORY)
+const AUTHOR: Author = {
+  name: 'Hemerson Carlin',
+  imageUrl: '/hemerson-dark.jpg',
+}
 
-export async function getFileContentsBySlug(
+async function getFileContentsBySlug<MdxScopeType>(
   fileOrFolderName: string,
   slug: string = '',
 ) {
@@ -32,7 +35,7 @@ export async function getFileContentsBySlug(
   const { data, content } = matter(fileContents)
 
   const { timeToRead, wordCount } = calculateTimeToRead(content)
-  const mdxSource: string = await renderToString(content, {
+  const mdxSource: MdxSource<MdxScopeType> = await renderToString(content, {
     components: Components,
     mdxOptions: {
       remarkPlugins: [highlight],
@@ -42,7 +45,6 @@ export async function getFileContentsBySlug(
   })
 
   return {
-    data,
     mdxSource,
     timeToRead,
     wordCount,
@@ -56,26 +58,31 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
   const fileName = removeExtension(fileNameWithExtension)
 
   const {
-    data,
     mdxSource,
     timeToRead,
     wordCount,
-  } = await getFileContentsBySlug('posts', fileName)
+  } = await getFileContentsBySlug<PostMdxScope>('posts', fileName)
 
   return {
-    author: {
-      name: 'Hemerson Carlin',
-      imageUrl: '/hemerson-dark.jpg',
-    },
+    author: AUTHOR,
     content: mdxSource,
     date: `${fileName.substring(0, 10)}T00:00:00.000Z`,
-    excerpt: (data as PostMarkdown).excerpt,
-    fileName,
-    images: getImages(fileName),
+    excerpt: mdxSource.scope.excerpt,
+    coverImage: {
+      height: 500,
+      url: `/assets/blog/${fileName}/cover.jpg`,
+      width: 1000,
+    },
+    ogImage: {
+      url: `/assets/blog/${fileName}/og.jpg`,
+      height: 200,
+      width: 200,
+    },
+    path: `data/posts/${fileNameWithExtension}`,
     previousSlugs: getPreviousSlugs(ALL_BLOG_POSTS, fileNameWithExtension),
     slug,
     timeToRead,
-    title: (data as PostMarkdown).title,
+    title: mdxSource.scope.title,
     wordCount,
   }
 }

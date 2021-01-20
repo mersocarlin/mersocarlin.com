@@ -1,12 +1,10 @@
 import React from 'react'
 
-import { Post } from '@mersocarlin.com/types'
-
 interface BlogPostDateProps {
-  post: Post
+  date: string
 }
 
-export default function BlogPostDate({ post }: BlogPostDateProps) {
+export default function BlogPostDate({ date }: BlogPostDateProps) {
   const options = {
     year: 'numeric',
     month: 'long',
@@ -14,8 +12,8 @@ export default function BlogPostDate({ post }: BlogPostDateProps) {
   }
 
   return (
-    <time dateTime={post.date} itemProp="datePublished">
-      {new Intl.DateTimeFormat('en-US', options).format(new Date(post.date))}
+    <time dateTime={date} itemProp="datePublished">
+      {new Intl.DateTimeFormat('en-US', options).format(new Date(date))}
     </time>
   )
 }

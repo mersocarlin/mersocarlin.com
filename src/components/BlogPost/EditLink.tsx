@@ -10,7 +10,7 @@ type Props = {
 function EditLink({ post }: Props) {
   return (
     <Link
-      href={`https://github.com/mersocarlin/mersocarlin.com/tree/master/posts/${post.fileName}`}
+      href={`https://github.com/mersocarlin/mersocarlin.com/tree/master/${post.path}`}
       target="_blank"
     >
       Edit on GitHub
