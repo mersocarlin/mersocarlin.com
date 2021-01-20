@@ -14,7 +14,7 @@ import {
 } from '@mersocarlin.com/utils/posts'
 import calculateTimeToRead from '@mersocarlin.com/utils/timeToRead'
 
-const POSTS_DIRECTORY = join(process.cwd(), 'posts')
+const POSTS_DIRECTORY = join(process.cwd(), 'data/posts')
 const ALL_FILES: string[] = fs.readdirSync(POSTS_DIRECTORY)
 
 export async function getPostBySlug(slug: string): Promise<Post> {
