@@ -57,7 +57,7 @@ export default function PostPage({
         description={post.excerpt}
         ogImageUrl={post.ogImage.url}
         ogType="article"
-        title={`${post.title} | Hemerson Carlin`}
+        title={`${post.title} - Hemerson Carlin`}
       />
 
       <Head>
