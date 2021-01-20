@@ -35,7 +35,7 @@ function ContributionBox({ post }: Props) {
           <p>
             If you see something wrong, think this page needs clarification, you
             found a typo or any other suggestion you might have feel free to
-            contribute and I would take care of the rest.
+            open a PR and I will take care of the rest.
           </p>
 
           <p>
