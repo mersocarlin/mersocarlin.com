@@ -1,7 +1,7 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
 
-import { getPosts } from '@mersocarlin.com/api'
+import { getAllBlogPosts } from '@mersocarlin.com/api'
 import BlogPostCard from '@mersocarlin.com/components/BlogPostCard'
 import BlogPostsGrid from '@mersocarlin.com/components/BlogPostsGrid'
 import Divider from '@mersocarlin.com/components/Divider'
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       appVersion: pkg.version,
-      posts: await getPosts(),
+      posts: await getAllBlogPosts(),
       gaId: process.env.GOOGLE_ANALYTICS_ID,
     },
   }

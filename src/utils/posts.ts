@@ -4,12 +4,16 @@ export function sortByDateDesc(post1: Post, post2: Post) {
   return post1.date > post2.date ? -1 : 1
 }
 
+export function removeExtension(fileName: string) {
+  return fileName.replace(/\.mdx$/, '')
+}
+
 /**
  * Remove date and extension from @fileName
  * @param fileName
  */
 export function getSlugByFileName(fileName: string) {
-  return fileName.substring(11).replace(/\.md$/, '')
+  return removeExtension(fileName.substring(11))
 }
 
 /**
@@ -40,7 +44,7 @@ export function getPreviousSlugs(allFiles: string[], fileName: string) {
 }
 
 export function getImages(fileName: string): PostImage {
-  const folderName = fileName.replace(/\.md$/, '')
+  const folderName = removeExtension(fileName)
 
   return {
     coverUrl: `/assets/blog/${folderName}/cover.jpg`,

@@ -9,7 +9,7 @@
 
 ## Adding blog posts
 
-1. Copy [YYYY-MM-DD-blog-post-template.md](https://github.com/mersocarlin/mersocarlin.com/blob/master/data/YYYY-MM-DD-blog-post-template.md) file and paste it in the [posts](https://github.com/mersocarlin/mersocarlin.com/tree/master/data/posts) folder.
+1. Copy [YYYY-MM-DD-blog-post-template.mdx](https://github.com/mersocarlin/mersocarlin.com/blob/master/data/YYYY-MM-DD-blog-post-template.mdx) file and paste it in the [posts](https://github.com/mersocarlin/mersocarlin.com/tree/master/data/posts) folder.
 2. Rename the file accordingly by replacing the blog post date and slug.
 
 ### In the template file
