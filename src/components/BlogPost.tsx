@@ -68,11 +68,9 @@ export default function BlogPost({ post }: BlogPostProps) {
         <div className="py-6 text-center text-sm mersocarlin-text-gray">
           <div>
             <span>By {post.author.name}</span>
-            {
-              <span>
-                ・<BlogPostDate date={post.date} />
-              </span>
-            }
+            <span>
+              ・<BlogPostDate date={post.date} />
+            </span>
           </div>
 
           <div className="pt-2">
