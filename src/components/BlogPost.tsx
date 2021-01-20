@@ -1,5 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 import { Post } from '@mersocarlin.com/types'
 
@@ -13,8 +15,41 @@ interface BlogPostProps {
 }
 
 export default function BlogPost({ post }: BlogPostProps) {
+  const router = useRouter()
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    author: {
+      '@type': 'Person',
+      name: post.author.name,
+    },
+    datePublished: post.date,
+    description: post.excerpt,
+    headline: post.title,
+    image: `https://mersocarlin.com${post.coverImage.url}`,
+    publisher: {
+      '@type': 'Organization',
+      name: 'mersocarlin.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://mersocarlin.com/hemerson-dark.jpg',
+      },
+    },
+    url: `https://mersocarlin.com${router.asPath}`,
+  }
+
   return (
     <article>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: `${JSON.stringify(structuredData)}`,
+          }}
+        />
+      </Head>
+
       <h1 className="px-4 md:px-0 pb-8 text-2xl font-bold text-center mersocarlin-text-gray">
         {post.title}
       </h1>
@@ -33,11 +68,11 @@ export default function BlogPost({ post }: BlogPostProps) {
         <div className="py-6 text-center text-sm mersocarlin-text-gray">
           <div>
             <span>By {post.author.name}</span>
-            {post.date && (
+            {
               <span>
                 ・<BlogPostDate date={post.date} />
               </span>
-            )}
+            }
           </div>
 
           <div className="pt-2">

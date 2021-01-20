@@ -1,8 +1,6 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
-import { useRouter } from 'next/router'
-import Head from 'next/head'
 
 import { getAllBlogPosts, getBlogPostBySlug } from '@mersocarlin.com/api'
 import BlogPost from '@mersocarlin.com/components/BlogPost'
@@ -23,32 +21,8 @@ export default function PostPage({
   post,
   previousPosts,
 }: PostPageProps) {
-  const router = useRouter()
-
   if (!post || !post.slug) {
     return <ErrorPage statusCode={404} />
-  }
-
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    author: {
-      '@type': 'Person',
-      name: post.author.name,
-    },
-    datePublished: post.date,
-    description: post.excerpt,
-    headline: post.title,
-    image: `https://mersocarlin.com${post.coverImage.url}`,
-    publisher: {
-      '@type': 'Organization',
-      name: 'mersocarlin.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://mersocarlin.com/hemerson-dark.jpg',
-      },
-    },
-    url: `https://mersocarlin.com${router.asPath}`,
   }
 
   return (
@@ -59,15 +33,6 @@ export default function PostPage({
         ogType="article"
         title={`${post.title} - Hemerson Carlin`}
       />
-
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: `${JSON.stringify(structuredData)}`,
-          }}
-        />
-      </Head>
 
       <BlogPost post={post} />
       <Divider size={50} />
