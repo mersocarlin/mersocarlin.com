@@ -9,17 +9,16 @@
 
 ## Adding blog posts
 
-1. Copy `YYYY-MM-DD-blog-post-template.md` file and paste it in [posts](https://github.com/mersocarlin/mersocarlin.com/tree/master/posts) folder.
+1. Copy [YYYY-MM-DD-blog-post-template.md](https://github.com/mersocarlin/mersocarlin.com/blob/master/data/YYYY-MM-DD-blog-post-template.md) file and paste it in the [posts](https://github.com/mersocarlin/mersocarlin.com/tree/master/data/posts) folder.
 2. Rename the file accordingly by replacing the blog post date and slug.
 
 ### In the template file
 
 1. Update the blog post title
-2. Add a sample `excerpt` on what's the blog post about
-3. Update the blog post date
-4. Use [Markdown syntax](https://daringfireball.net/projects/markdown/syntax)
+2. Add a sample `excerpt` on what the blog post is about
+3. Use [Markdown syntax](https://daringfireball.net/projects/markdown/syntax)
 
-The template has some mocked text as well as an embedded image for you to get started.
+The template has some mocked text as well as an embedded image for you to get started with.
 
 - All external links will open in a new tab by default.
 - All internal links will open in the same tab.
