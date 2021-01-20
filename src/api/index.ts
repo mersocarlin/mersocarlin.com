@@ -10,21 +10,28 @@ import {
   getImages,
   getPreviousSlugs,
   getSlugByFileName,
+  removeExtension,
   sortByDateDesc,
 } from '@mersocarlin.com/utils/posts'
 import calculateTimeToRead from '@mersocarlin.com/utils/timeToRead'
 
-const POSTS_DIRECTORY = join(process.cwd(), 'data/posts')
-const ALL_FILES: string[] = fs.readdirSync(POSTS_DIRECTORY)
+const root = process.cwd()
 
-export async function getPostBySlug(slug: string): Promise<Post> {
-  const fileName = ALL_FILES.find((file) => file.includes(slug)) as string
-  const fullPath = join(POSTS_DIRECTORY, `${fileName}`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
+const POSTS_DIRECTORY = join(root, 'data/posts')
+const ALL_BLOG_POSTS: string[] = fs.readdirSync(POSTS_DIRECTORY)
+
+export async function getFileContentsBySlug(
+  fileOrFolderName: string,
+  slug: string = '',
+) {
+  const filePath = slug
+    ? join(root, 'data', fileOrFolderName, `${slug}.mdx`)
+    : join(root, 'data', `${fileOrFolderName}.mdx`)
+
+  const fileContents = fs.readFileSync(filePath, 'utf-8')
   const { data, content } = matter(fileContents)
 
   const { timeToRead, wordCount } = calculateTimeToRead(content)
-
   const mdxSource: string = await renderToString(content, {
     components: Components,
     mdxOptions: {
@@ -33,6 +40,27 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     },
     scope: data,
   })
+
+  return {
+    data,
+    mdxSource,
+    timeToRead,
+    wordCount,
+  }
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<Post> {
+  const fileNameWithExtension = ALL_BLOG_POSTS.find((file) =>
+    file.includes(slug),
+  ) as string
+  const fileName = removeExtension(fileNameWithExtension)
+
+  const {
+    data,
+    mdxSource,
+    timeToRead,
+    wordCount,
+  } = await getFileContentsBySlug('posts', fileName)
 
   return {
     author: {
@@ -44,7 +72,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     excerpt: (data as PostMarkdown).excerpt,
     fileName,
     images: getImages(fileName),
-    previousSlugs: getPreviousSlugs(ALL_FILES, fileName),
+    previousSlugs: getPreviousSlugs(ALL_BLOG_POSTS, fileNameWithExtension),
     slug,
     timeToRead,
     title: (data as PostMarkdown).title,
@@ -52,9 +80,9 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   }
 }
 
-export async function getPosts(): Promise<Post[]> {
-  const postsPromises = ALL_FILES.map((fileName) =>
-    getPostBySlug(getSlugByFileName(fileName)),
+export async function getAllBlogPosts(): Promise<Post[]> {
+  const postsPromises = ALL_BLOG_POSTS.map((fileName) =>
+    getBlogPostBySlug(getSlugByFileName(fileName)),
   )
 
   const posts = await Promise.all(postsPromises)
