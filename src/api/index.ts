@@ -87,6 +87,41 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
   }
 }
 
+export async function getPageContentBySlug(
+  fileOrFolderName: string,
+  slug: string = '',
+): Promise<Post> {
+  const {
+    mdxSource,
+    timeToRead,
+    wordCount,
+  } = await getFileContentsBySlug<PostMdxScope>(fileOrFolderName, slug)
+
+  return {
+    author: AUTHOR,
+    content: mdxSource,
+    excerpt: mdxSource.scope.excerpt,
+    coverImage: {
+      height: mdxSource.scope.coverImage?.height || 0,
+      url: mdxSource.scope.coverImage?.url || '',
+      width: mdxSource.scope.coverImage?.width || 0,
+    },
+    date: mdxSource.scope.date || new Date().toISOString(),
+    ogImage: {
+      height: mdxSource.scope.coverImage?.height || 0,
+      url: mdxSource.scope.coverImage?.url || '',
+      width: mdxSource.scope.coverImage?.width || 0,
+    },
+    path: slug
+      ? `data/${fileOrFolderName}/${slug}.mdx`
+      : `data/${fileOrFolderName}.mdx`,
+    slug,
+    timeToRead,
+    title: mdxSource.scope.title,
+    wordCount,
+  }
+}
+
 export async function getAllBlogPosts(): Promise<Post[]> {
   const postsPromises = ALL_BLOG_POSTS.map((fileName) =>
     getBlogPostBySlug(getSlugByFileName(fileName)),
