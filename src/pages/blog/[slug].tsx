@@ -4,7 +4,7 @@ import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { getPosts, getPostBySlug } from '@mersocarlin.com/api'
+import { getAllBlogPosts, getBlogPostBySlug } from '@mersocarlin.com/api'
 import BlogPost from '@mersocarlin.com/components/BlogPost'
 import Divider from '@mersocarlin.com/components/Divider'
 import Layout from '@mersocarlin.com/components/Layout'
@@ -89,8 +89,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 
-  const post = await getPostBySlug(`${params.slug}`)
-  const previousPosts = await Promise.all(post.previousSlugs.map(getPostBySlug))
+  const post = await getBlogPostBySlug(`${params.slug}`)
+  const previousPosts = await Promise.all(
+    post.previousSlugs.map(getBlogPostBySlug),
+  )
 
   return {
     props: {
@@ -103,7 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getPosts()
+  const posts = await getAllBlogPosts()
 
   return {
     paths: posts.map((post) => {
