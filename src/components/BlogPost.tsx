@@ -35,7 +35,7 @@ export default function BlogPost({ post }: BlogPostProps) {
             <span>By {post.author.name}</span>
             {post.date && (
               <span>
-                ・<BlogPostDate post={post} />
+                ・<BlogPostDate date={post.date} />
               </span>
             )}
           </div>
