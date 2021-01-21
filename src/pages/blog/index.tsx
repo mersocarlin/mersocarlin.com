@@ -16,7 +16,7 @@ interface IndexProps extends PageProps {
 export default function Blog({ appVersion, posts, gaId }: IndexProps) {
   return (
     <Layout appVersion={appVersion} gaId={gaId}>
-      <Meta title="Hemerson Carlin | Blog" />
+      <Meta title="Blog - Hemerson Carlin" />
 
       <div className="flex flex-col mersocarlin-text-gray">
         <div className="px-4 md:px-0">

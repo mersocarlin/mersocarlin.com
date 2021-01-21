@@ -15,7 +15,7 @@ export default function Meta({
   description = baseDescription,
   ogImageUrl = '/hemerson-dark.jpg',
   ogType = 'website',
-  title = 'Hemerson Carlin | Full Stack Developer',
+  title = 'Hemerson Carlin - Full Stack Developer',
 }: MetaProps) {
   const router = useRouter()
 

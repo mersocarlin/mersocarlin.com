@@ -14,6 +14,28 @@ interface LayouProps {
   gaId: string
 }
 
+type HeaderLinkProps = {
+  children: React.ReactNode
+  path: string
+}
+
+function HeaderLink({ children, path }: HeaderLinkProps) {
+  const router = useRouter()
+
+  // do not highlight home
+  const isActive = path !== '/' && router.pathname === path
+
+  return (
+    <Link
+      className={isActive ? 'underline' : ''}
+      colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
+      href={path}
+    >
+      {children}
+    </Link>
+  )
+}
+
 export default function Layout({
   appVersion,
   centerContent,
@@ -21,12 +43,11 @@ export default function Layout({
   gaId,
 }: LayouProps) {
   const router = useRouter()
+
   React.useEffect(() => {
     initGA(gaId)
-    trackPageView(`${window.location.pathname}${window.location.search}`)
+    trackPageView(router.asPath)
   }, [])
-
-  const isBlog = router.pathname === '/blog'
 
   return (
     <div
@@ -34,23 +55,16 @@ export default function Layout({
         centerContent ? 'h-screen' : ''
       }`}
     >
-      <header className="mersocarlin-bg-white flex items-center justify-between p-3 shadow-md">
-        <Link
-          className={isBlog ? 'underline' : ''}
-          colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
-          href="/blog"
-        >
-          Blog
-        </Link>
+      <header className="mersocarlin-bg-white p-3 shadow-md">
+        <div className="flex items-center justify-between">
+          <HeaderLink path="/">@mersocarlin</HeaderLink>
 
-        <Link
-          colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
-          href="/"
-        >
-          @mersocarlin
-        </Link>
-
-        <ThemeSwitcher />
+          <div className="flex items-center space-x-4">
+            <HeaderLink path="/blog">Blog</HeaderLink>
+            <HeaderLink path="/uses">Uses</HeaderLink>
+            <ThemeSwitcher />
+          </div>
+        </div>
       </header>
 
       <main className="flex-1 my-8 m-auto w-full lg:max-w-screen-lg md:max-w-screen-md">

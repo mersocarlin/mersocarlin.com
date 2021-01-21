@@ -47,7 +47,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
             >
               <span itemProp="name">{post.author.name}</span>
             </div>
-            {post.date && <BlogPostDate date={post.date} />}
+            <BlogPostDate date={post.date} />
           </div>
         </div>
       </div>
