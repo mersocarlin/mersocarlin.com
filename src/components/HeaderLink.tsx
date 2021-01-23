@@ -4,12 +4,14 @@ import Link from './Link'
 
 type Props = {
   children: React.ReactNode
+  className?: string
   fontStyles?: string
   path: string
 }
 
 function HeaderLink({
   children,
+  className = '',
   fontStyles = 'text-sm md:text-base',
   path,
 }: Props) {
@@ -20,7 +22,7 @@ function HeaderLink({
 
   return (
     <Link
-      className={isActive ? 'underline' : ''}
+      className={`${className} ${isActive ? 'underline' : ''}`}
       fontStyles={fontStyles}
       colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
       href={path}
