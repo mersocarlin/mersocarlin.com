@@ -5,7 +5,7 @@ import { useTheme } from '@mersocarlin.com/theme/ThemeProvider'
 function Sun() {
   return (
     <svg
-      className="w-4 h-4 mersocarlin-text-gray"
+      className="w-4 h-4 mersocarlin-text-gray mx-auto"
       fill="currentColor"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -25,7 +25,7 @@ function Sun() {
 function Moon() {
   return (
     <svg
-      className="w-4 h-4 mersocarlin-text-gray"
+      className="w-4 h-4 mersocarlin-text-gray mx-auto"
       fill="currentColor"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -61,13 +61,13 @@ export default function ThemeSwitcher() {
   }, [])
 
   return (
-    <div
-      className={clientLoaded ? 'cursor-pointer' : ''}
+    <button
+      className={`rounded-full bg-gray-300 dark:bg-gray-600 h-8 w-8 focus:outline-none inline-block ${
+        clientLoaded ? 'cursor-pointer' : ''
+      }`}
       onClick={() => onUpdateTheme(theme === 'dark' ? 'light' : 'dark')}
     >
-      <div className="rounded-full bg-gray-300 dark:bg-gray-600 h-8 w-8 flex items-center justify-center">
-        {clientLoaded && <ThemeIcon />}
-      </div>
-    </div>
+      {clientLoaded ? <ThemeIcon /> : <div className="h-4" />}
+    </button>
   )
 }
