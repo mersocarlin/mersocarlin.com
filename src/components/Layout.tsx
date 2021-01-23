@@ -3,37 +3,15 @@ import { useRouter } from 'next/router'
 
 import { initGA, trackPageView } from '@mersocarlin.com/utils/analytics'
 
-import Link from './Link'
 import SocialList from './SocialList'
-import ThemeSwitcher from './ThemeSwitcher'
+import Menu from './Menu'
+import HeaderLink from './HeaderLink'
 
 interface LayouProps {
   appVersion: string
   centerContent?: boolean
   children: React.ReactNode
   gaId: string
-}
-
-type HeaderLinkProps = {
-  children: React.ReactNode
-  path: string
-}
-
-function HeaderLink({ children, path }: HeaderLinkProps) {
-  const router = useRouter()
-
-  // do not highlight home
-  const isActive = path !== '/' && router.pathname === path
-
-  return (
-    <Link
-      className={isActive ? 'underline' : ''}
-      colorStyles="mersocarlin-text-gray hover:text-gray-600 visited:text-gray-600 dark:hover:text-gray-100 dark:visited:text-gray-100"
-      href={path}
-    >
-      {children}
-    </Link>
-  )
 }
 
 export default function Layout({
@@ -57,13 +35,12 @@ export default function Layout({
     >
       <header className="mersocarlin-bg-white p-3 shadow-md">
         <div className="flex items-center justify-between">
-          <HeaderLink path="/">@mersocarlin</HeaderLink>
+          <HeaderLink path="/">
+            <span className="font-light uppercase">Hemerson</span>
+            <span className="font-semibold uppercase">Carlin</span>
+          </HeaderLink>
 
-          <div className="flex items-center space-x-4">
-            <HeaderLink path="/blog">Blog</HeaderLink>
-            <HeaderLink path="/uses">Uses</HeaderLink>
-            <ThemeSwitcher />
-          </div>
+          <Menu />
         </div>
       </header>
 
