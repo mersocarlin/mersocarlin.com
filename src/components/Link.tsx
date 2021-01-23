@@ -9,7 +9,7 @@ interface Link {
   fontStyles?: string
   hoverStyles?: string
   href: string
-  target?: string
+  target?: '_blank'
   title?: string
 }
 

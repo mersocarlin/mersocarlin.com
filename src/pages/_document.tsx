@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
               __html: `
                 WebFontConfig = {
                   google: {
-                    families: [ 'Josefin+Sans:300,400,700&display=swap']
+                    families: [ 'Josefin+Sans:300,400,600,700&display=swap']
                   }
                 };
 
