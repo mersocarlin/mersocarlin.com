@@ -35,7 +35,7 @@ export default function Layout({
     >
       <header className="mersocarlin-bg-white p-3 shadow-md">
         <div className="flex items-center justify-between">
-          <HeaderLink path="/">
+          <HeaderLink fontStyles="text-base" path="/">
             <span className="font-light uppercase">Hemerson</span>
             <span className="font-semibold uppercase">Carlin</span>
           </HeaderLink>
