@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { createPortal } from 'react-dom'
 import HeaderLink from './HeaderLink'
 import { menuItems } from './Menu'
+import SocialList from './SocialList'
 
 type ModalProps = {
   children: React.ReactNode
@@ -39,7 +40,7 @@ function MobileMenu() {
             }}
           >
             <div
-              className="w-full max-w-lg p-4 m-0 mx-auto bg-transparent"
+              className="h-full w-full max-w-lg p-4 m-0 mx-auto bg-transparent flex flex-col justify-between"
               role="dialog"
               tabIndex={-1}
             >
@@ -69,6 +70,8 @@ function MobileMenu() {
                   </div>
                 ))}
               </div>
+
+              <SocialList size={50} />
             </div>
           </div>
         </Modal>
