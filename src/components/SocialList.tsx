@@ -26,9 +26,13 @@ const items = [
   },
 ]
 
-export default function SocialList() {
+type Props = {
+  size?: number
+}
+
+export default function SocialList({ size = 30 }: Props) {
   return (
-    <div className="flex">
+    <div className="flex justify-between">
       {items.map((item) => (
         <Link
           className="mx-2 flex items-center"
@@ -39,10 +43,10 @@ export default function SocialList() {
         >
           <Image
             alt={item.name}
-            height={30}
+            height={size}
             role="img"
             src={`/${item.icon}.svg`}
-            width={30}
+            width={size}
           />
         </Link>
       ))}
