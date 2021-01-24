@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
 import { PageProps, Post } from '@mersocarlin.com/types'
-import { getPageContentBySlug } from '@mersocarlin.com/api'
+import { getPageContentBySlug } from '@mersocarlin.com/api/blog'
 import BlogPost from '@mersocarlin.com/components/BlogPost'
 
 interface Props extends PageProps {

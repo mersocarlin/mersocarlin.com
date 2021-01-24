@@ -2,7 +2,7 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 
-import { getAllBlogPosts, getBlogPostBySlug } from '@mersocarlin.com/api'
+import { getAllBlogPosts, getBlogPostBySlug } from '@mersocarlin.com/api/blog'
 import BlogPost from '@mersocarlin.com/components/BlogPost'
 import Divider from '@mersocarlin.com/components/Divider'
 import Layout from '@mersocarlin.com/components/Layout'
