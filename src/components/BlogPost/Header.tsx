@@ -18,6 +18,7 @@ function BlogPostHeader({ as = 'h2', children }: Props) {
         id={idAttr}
         style={{
           scrollMarginTop: 70,
+          scrollSnapMarginTop: 70,
         }}
       >
         {children}
@@ -31,6 +32,7 @@ function BlogPostHeader({ as = 'h2', children }: Props) {
       id={idAttr}
       style={{
         scrollMarginTop: 70,
+        scrollSnapMarginTop: 70,
       }}
     >
       {children}
