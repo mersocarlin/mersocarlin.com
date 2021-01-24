@@ -13,14 +13,26 @@ function BlogPostHeader({ as = 'h2', children }: Props) {
 
   if (as === 'h2') {
     return (
-      <h2 className="my-4 text-2xl font-bold" id={idAttr}>
+      <h2
+        className="my-4 text-2xl font-bold"
+        id={idAttr}
+        style={{
+          scrollMarginTop: 70,
+        }}
+      >
         {children}
       </h2>
     )
   }
 
   return (
-    <h3 className="my-4 text-xl font-bold" id={idAttr}>
+    <h3
+      className="my-4 text-xl font-bold"
+      id={idAttr}
+      style={{
+        scrollMarginTop: 70,
+      }}
+    >
       {children}
     </h3>
   )
