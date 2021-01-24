@@ -18,7 +18,7 @@ function MobileMenu() {
     <Fragment>
       <button
         className="p-2 mersocarlin-text-gray focus:outline-none"
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => setIsModalOpen((prevValue) => !prevValue)}
       >
         <svg className="block w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
@@ -28,7 +28,7 @@ function MobileMenu() {
       {isModalOpen && (
         <Modal>
           <div
-            className="fixed inset-0"
+            className="fixed inset-0 z-20"
             data-backdrop={true}
             onClick={() => {
               setIsModalOpen(false)
