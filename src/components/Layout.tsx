@@ -30,10 +30,10 @@ export default function Layout({
   return (
     <div
       className={`flex flex-col bg-gray-50 dark:bg-gray-800 ${
-        centerContent ? 'h-screen' : ''
+        centerContent ? 'h-full' : ''
       }`}
     >
-      <header className="mersocarlin-bg-white p-3 shadow-md">
+      <header className="mersocarlin-bg-white p-3 shadow-md fixed top-0 left-0 right-0 z-10">
         <div className="flex items-center justify-between">
           <HeaderLink fontStyles="text-base" path="/">
             <span className="font-light uppercase">Hemerson</span>
@@ -44,7 +44,7 @@ export default function Layout({
         </div>
       </header>
 
-      <main className="flex-1 my-8 m-auto w-full lg:max-w-screen-lg md:max-w-screen-md">
+      <main className="flex-1 my-8 m-auto w-full lg:max-w-screen-lg md:max-w-screen-md mt-20">
         {children}
       </main>
 
