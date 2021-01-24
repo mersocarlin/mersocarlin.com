@@ -34,14 +34,14 @@ export default function Layout({
       }`}
     >
       <header className="mersocarlin-bg-white p-3 shadow-md fixed top-0 left-0 right-0 z-10">
-        <div className="flex items-center justify-between">
+        <nav className="flex items-center justify-between">
           <HeaderLink fontStyles="text-base" path="/">
             <span className="font-light uppercase">Hemerson</span>
             <span className="font-semibold uppercase">Carlin</span>
           </HeaderLink>
 
           <Menu />
-        </div>
+        </nav>
       </header>
 
       <main className="flex-1 my-8 m-auto w-full lg:max-w-screen-lg md:max-w-screen-md mt-20">
