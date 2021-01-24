@@ -1,7 +1,7 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
 
-import { getAllBlogPosts } from '@mersocarlin.com/api'
+import { getAllBlogPosts } from '@mersocarlin.com/api/blog'
 import BlogPostCard from '@mersocarlin.com/components/BlogPostCard'
 import BlogPostsGrid from '@mersocarlin.com/components/BlogPostsGrid'
 import Divider from '@mersocarlin.com/components/Divider'
