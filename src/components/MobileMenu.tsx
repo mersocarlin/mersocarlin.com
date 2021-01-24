@@ -29,14 +29,10 @@ function MobileMenu() {
       {isModalOpen && (
         <Modal>
           <div
-            className="fixed inset-0 z-20"
+            className="bg-gray-200 dark:bg-gray-700 fixed inset-0 z-20"
             data-backdrop={true}
             onClick={() => {
               setIsModalOpen(false)
-            }}
-            style={{
-              background: 'rgba(120, 120, 120, 0.3)',
-              backdropFilter: 'blur(25px)',
             }}
           >
             <div
@@ -47,7 +43,7 @@ function MobileMenu() {
               <div className="flex flex-wrap">
                 <div className="flex items-center justify-center w-full mt-6">
                   <HeaderLink
-                    className="w-full py-6 rounded bg-gray-50 dark:bg-gray-800 shadow-md mx-2 text-center"
+                    className="w-full py-6 rounded bg-gray-50 dark:bg-gray-500 shadow-md mx-2 text-center"
                     fontStyles="text-xl"
                     path="/"
                   >
@@ -61,7 +57,7 @@ function MobileMenu() {
                     className="flex items-center justify-center w-1/2 mt-4"
                   >
                     <HeaderLink
-                      className="w-full py-6 rounded bg-gray-50 dark:bg-gray-800 shadow-md mx-2 text-center"
+                      className="w-full py-6 rounded bg-gray-50 dark:bg-gray-500 shadow-md mx-2 text-center"
                       fontStyles="text-xl"
                       path={menuItem.path}
                     >
