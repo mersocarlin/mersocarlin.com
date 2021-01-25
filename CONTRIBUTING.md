@@ -27,6 +27,7 @@ I made it easy for me to create images in a specific folder so I don't have to m
 1. Create a folder matching the blog post mdx file name in [assets/blog](https://github.com/mersocarlin/mersocarlin.com/tree/master/public/assets/blog).
 2. Cover image should be 1000px width and 500px height and name it `cover.jpg`.
 3. Open graph image should be 200px width and 200px height and name it `og.jpg`.
+4. Make sure to give credit to the person/company you took the post cover image from. 
 
 ### Links inside the blog post
 

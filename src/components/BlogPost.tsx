@@ -9,6 +9,18 @@ import Content from './BlogPost/Content'
 import EditLink from './BlogPost/EditLink'
 import BlogPostDate from './BlogPostDate'
 import ContributionBox from './BlogPost/ContributionBox'
+import Link from './Link'
+
+function extractString(initialChar: string, endChar: string) {
+  return (str: string) => {
+    const intialIdx = str.indexOf(initialChar)
+    const endIdx = str.indexOf(endChar)
+    return str.substring(intialIdx + 1, endIdx)
+  }
+}
+
+const extractCoverAuthorName = extractString('[', ']')
+const extractCoverAuthorUrl = extractString('(', ')')
 
 interface BlogPostProps {
   post: Post
@@ -62,6 +74,18 @@ export default function BlogPost({ post }: BlogPostProps) {
           height={post.coverImage.height}
           width={post.coverImage.width}
         />
+
+        {post.coverImage.credit && (
+          <span className="mersocarlin-text-gray italic text-sm">
+            Photo by{' '}
+            <Link
+              href={extractCoverAuthorUrl(post.coverImage.credit)}
+              target="_blank"
+            >
+              {extractCoverAuthorName(post.coverImage.credit)}
+            </Link>
+          </span>
+        )}
       </div>
 
       <div className="w-full md:w-3/4 m-auto">

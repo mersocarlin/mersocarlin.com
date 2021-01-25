@@ -63,20 +63,23 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
     wordCount,
   } = await getFileContentsBySlug<PostMdxScope>('posts', fileName)
 
+  const { coverImage, ogImage } = mdxSource.scope
+
   return {
     author: AUTHOR,
     content: mdxSource,
     date: `${fileName.substring(0, 10)}T00:00:00.000Z`,
     excerpt: mdxSource.scope.excerpt,
     coverImage: {
-      height: 500,
-      url: `/assets/blog/${fileName}/cover.jpg`,
-      width: 1000,
+      credit: coverImage?.credit || '',
+      height: coverImage?.height || 500,
+      url: coverImage?.url || `/assets/blog/${fileName}/cover.jpg`,
+      width: coverImage?.width || 1000,
     },
     ogImage: {
-      url: `/assets/blog/${fileName}/og.jpg`,
-      height: 200,
-      width: 200,
+      height: ogImage?.height || 200,
+      url: ogImage?.url || `/assets/blog/${fileName}/og.jpg`,
+      width: ogImage?.width || 200,
     },
     path: `data/posts/${fileNameWithExtension}`,
     previousSlugs: getPreviousSlugs(ALL_BLOG_POSTS, fileNameWithExtension),

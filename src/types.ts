@@ -9,6 +9,7 @@ export type Author = {
 }
 
 export type PostImage = {
+  credit?: string
   height: number
   url: string
   width: number
@@ -24,6 +25,7 @@ export type PostMdxScope = {
   coverImage?: PostImage
   date?: string
   excerpt: string
+  ogImage?: PostImage
   title: string
 }
 
