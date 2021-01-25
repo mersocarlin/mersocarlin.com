@@ -1,0 +1,48 @@
+---
+title: 'Code Snippets - uniqueId'
+excerpt: 'Series of small code snippets I eventually use when working in some of my projects. The first one of them is the uniqueId.'
+coverImage:
+  credit: '[Kevin Ku](https://unsplash.com/photos/w7ZyuGYNpRQ)'
+---
+
+I recently had to remove `underscore` from a repository I was working on and I end up using some small tweaks with plain JS syntax instead.
+I have to say this is not the first time I do a similar job and I always use the same utility methods here and there.
+
+For that reason, I'm gonna share some of those in my blog for future reference whenever I need one of them again.
+
+It could be you came here for the same reason as me. We'd better share that knowledge 😉
+
+## uniqueId
+
+Generates a unique global id for elements that need one. 
+
+Examples:
+
+- Setting `key` property when looping an array in ReactJS (_watchout for potential performance issues if going this path!_).
+- Setting `id` attribute to DOM elements.
+- Cache response from endpoints that don't provide you with an identifier.
+
+As a [curried function](https://en.wikipedia.org/wiki/Currying), it keeps a local `counter` variable and for every new `uniqueId` generated `counter`'s value is incremented.
+An optional `prefix` can also be sent in case you want some extra information alongside with the id.
+
+
+```js
+function createUniqueId() {
+  let counter = 0
+
+  return (prefix = '') => {
+    if (prefix) {
+      return `${prefix}_${++counter}`
+    }
+
+    return `${++counter}`
+  }
+}
+
+const uniqueId = createUniqueId()
+
+console.log(uniqueId()) // 1
+console.log(uniqueId()) // 2
+console.log(uniqueId()) // 3
+console.log(uniqueId('testing')) // testing_4
+```
