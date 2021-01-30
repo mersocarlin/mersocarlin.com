@@ -16,7 +16,7 @@ import calculateTimeToRead from '@mersocarlin.com/utils/timeToRead'
 
 const root = process.cwd()
 
-const POSTS_DIRECTORY = join(root, 'data/posts')
+const POSTS_DIRECTORY = join(root, 'data/blog')
 const ALL_BLOG_POSTS: string[] = fs.readdirSync(POSTS_DIRECTORY)
 const AUTHOR: Author = {
   name: 'Hemerson Carlin',
@@ -61,7 +61,7 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
     mdxSource,
     timeToRead,
     wordCount,
-  } = await getFileContentsBySlug<PostMdxScope>('posts', fileName)
+  } = await getFileContentsBySlug<PostMdxScope>('blog', fileName)
 
   const { coverImage, ogImage } = mdxSource.scope
 
@@ -81,7 +81,7 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
       url: ogImage?.url || `/assets/blog/${fileName}/og.jpg`,
       width: ogImage?.width || 200,
     },
-    path: `data/posts/${fileNameWithExtension}`,
+    path: `data/blog/${fileNameWithExtension}`,
     previousSlugs: getPreviousSlugs(ALL_BLOG_POSTS, fileNameWithExtension),
     slug,
     timeToRead,
@@ -131,5 +131,6 @@ export async function getAllBlogPosts(): Promise<Post[]> {
   )
 
   const posts = await Promise.all(postsPromises)
+
   return posts.sort(sortByDateDesc)
 }
