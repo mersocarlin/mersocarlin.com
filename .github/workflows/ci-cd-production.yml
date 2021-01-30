@@ -51,7 +51,6 @@ jobs:
           NOW_ORG_ID=${{ secrets.NOW_ORG_ID }} \
           NOW_PROJECT_ID=${{ secrets.NOW_PROJECT_ID_PRODUCTION }} \
           npx vercel \
-            --local-config now.json \
+            --local-config vercel.json \
             --token ${{ secrets.NOW_TOKEN }} \
-            --env BUILD_DATE=$(date +%FT%T) \
             --prod

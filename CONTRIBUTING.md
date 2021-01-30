@@ -9,7 +9,7 @@
 
 ## Adding blog posts
 
-1. Copy [YYYY-MM-DD-blog-post-template.mdx](https://github.com/mersocarlin/mersocarlin.com/blob/master/data/YYYY-MM-DD-blog-post-template.mdx) file and paste it in the [posts](https://github.com/mersocarlin/mersocarlin.com/tree/master/data/posts) folder.
+1. Copy [YYYY-MM-DD-blog-post-template.mdx](https://github.com/mersocarlin/mersocarlin.com/blob/master/data/YYYY-MM-DD-blog-post-template.mdx) file and paste it in the [blog](https://github.com/mersocarlin/mersocarlin.com/tree/master/data/blog) folder.
 2. Rename the file accordingly by replacing the blog post date and slug.
 
 ### In the template file
@@ -20,9 +20,7 @@
 
 The template has some mocked text as well as an embedded image for you to get started with.
 
-### Adding cover and open graph images
-
-I made it easy for me to create images in a specific folder so I don't have to manually set urls in the mdx file definition for every blog post.
+### Blog post images
 
 1. Create a folder matching the blog post mdx file name in [assets/blog](https://github.com/mersocarlin/mersocarlin.com/tree/master/public/assets/blog).
 2. Cover image should be 1000px width and 500px height and name it `cover.jpg`.
