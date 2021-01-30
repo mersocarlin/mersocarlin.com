@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://mersocarlin.com/sitemap.xml

@@ -11,3 +11,4 @@
 .DS_Store
 .env.local
 *.log
+public/sitemap.xml
