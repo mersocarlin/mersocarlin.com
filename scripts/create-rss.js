@@ -14,6 +14,9 @@ async function getBlogPostData(blogPost) {
 
 async function createRSS() {
   const feed = new RSS({
+    copyright: `${new Date().getFullYear()} Hemerson Carlin`,
+    description:
+      "Hi there! I'm Hemerson Carlin, also known as mersocarlin, and I'm a Software Engineer & Full Stack JavaScript Developer from Brazil based in Dublin, Ireland. Welcome to my blog!",
     feed_url: 'https://mersocarlin.com/feed.xml',
     site_url: 'https://mersocarlin.com',
     title: 'Hemerson Carlin',
