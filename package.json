@@ -30,6 +30,7 @@
     "next-mdx-remote": "^1.0.0",
     "remark-highlight.js": "^6.0.0",
     "rimraf": "^3.0.2",
+    "rss": "^1.2.2",
     "typescript": "^3.9.3"
   }
 }
