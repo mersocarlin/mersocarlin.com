@@ -9,6 +9,7 @@ interface Link {
   fontStyles?: string
   hoverStyles?: string
   href: string
+  onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void
   target?: '_blank'
   title?: string
 }
@@ -21,6 +22,7 @@ export default function Link({
   fontStyles = '',
   hoverStyles = 'hover:underline',
   href,
+  onClick,
   target,
   title,
 }: Link) {
@@ -31,6 +33,7 @@ export default function Link({
       <NextLink as={as} href={href}>
         <a
           className={`${colorStyles} ${fontStyles} ${hoverStyles} ${className}`}
+          onClick={onClick}
           itemProp="url"
         >
           {children}
@@ -44,6 +47,7 @@ export default function Link({
       className={`${colorStyles} ${fontStyles} ${hoverStyles} ${className}`}
       href={href}
       itemProp="url"
+      onClick={onClick}
       rel="noopener noreferrer"
       target={target}
       title={title}

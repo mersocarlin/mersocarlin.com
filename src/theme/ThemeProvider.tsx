@@ -1,6 +1,7 @@
 import React from 'react'
 
 import useLocalStorage from '@mersocarlin.com/hooks/useLocalStorage'
+import { trackChangeTheme } from '@mersocarlin.com/utils/events'
 
 interface ThemeContextProps {
   onUpdateTheme: (theme: string) => void
@@ -34,6 +35,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   }, [])
 
   const onUpdateTheme = React.useCallback((newTheme: string) => {
+    trackChangeTheme(newTheme)
     setBodyCssClass(newTheme)
   }, [])
 

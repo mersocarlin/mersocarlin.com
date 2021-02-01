@@ -10,6 +10,7 @@ import EditLink from './BlogPost/EditLink'
 import BlogPostDate from './BlogPostDate'
 import ContributionBox from './BlogPost/ContributionBox'
 import Link from './Link'
+import { trackClickEditLink } from '@mersocarlin.com/utils/events'
 
 function extractString(initialChar: string, endChar: string) {
   return (str: string) => {
@@ -100,7 +101,10 @@ export default function BlogPost({ post }: BlogPostProps) {
           <div className="pt-2">
             <span>{post.timeToRead}</span>
             <span>・</span>
-            <EditLink post={post} />
+            <EditLink
+              onClick={() => trackClickEditLink('BlogPostHeader')}
+              post={post}
+            />
           </div>
         </div>
 

@@ -1,5 +1,8 @@
-import { Post } from '@mersocarlin.com/types'
 import React from 'react'
+
+import { Post } from '@mersocarlin.com/types'
+import { trackClickEditLink } from '@mersocarlin.com/utils/events'
+
 import Link from '../Link'
 import EditLink from './EditLink'
 
@@ -50,7 +53,10 @@ function ContributionBox({ post }: Props) {
           </p>
 
           <p className="mt-3 font-normal">
-            <EditLink post={post} />
+            <EditLink
+              onClick={() => trackClickEditLink('ContributionBox')}
+              post={post}
+            />
           </p>
         </div>
       </div>
