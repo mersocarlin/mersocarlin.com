@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import { initGA, trackPageView } from '@mersocarlin.com/utils/analytics'
+import {
+  initGA,
+  trackPageView as trackPageViewGA,
+} from '@mersocarlin.com/utils/analytics'
+import { trackPageView } from '@mersocarlin.com/utils/events'
 
 import SocialList from './SocialList'
 import Menu from './Menu'
@@ -14,18 +18,23 @@ interface LayouProps {
   gaId: string
 }
 
+function useAnalytics(gaId: string) {
+  const router = useRouter()
+
+  useEffect(() => {
+    initGA(gaId)
+    trackPageViewGA(router.asPath)
+    trackPageView(router.asPath)
+  }, [router.asPath])
+}
+
 export default function Layout({
   appVersion,
   centerContent,
   children,
   gaId,
 }: LayouProps) {
-  const router = useRouter()
-
-  React.useEffect(() => {
-    initGA(gaId)
-    trackPageView(router.asPath)
-  }, [])
+  useAnalytics(gaId)
 
   return (
     <div
