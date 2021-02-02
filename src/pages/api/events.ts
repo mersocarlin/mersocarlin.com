@@ -79,7 +79,10 @@ function isClickEditLinkEvent(event: any) {
   )
 }
 
-export default function events(req: NextApiRequest, res: NextApiResponse) {
+export default async function events(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   if (req.method !== 'POST' || !req.body || !process.env.AMPLITUDE_API_KEY) {
     return res.status(404).end()
   }
@@ -100,7 +103,7 @@ export default function events(req: NextApiRequest, res: NextApiResponse) {
     isPageViewEvent(parsedBody) ||
     isClickEditLinkEvent(parsedBody)
   ) {
-    client.logEvent({
+    const response = await client.logEvent({
       event_properties: {
         category: parsedBody.category,
         configEnv: process.env.CONFIG_ENV || 'local',
@@ -113,12 +116,12 @@ export default function events(req: NextApiRequest, res: NextApiResponse) {
       user_id: 'mersocarlin@mersocarlin.com',
     })
 
-    return res.status(200).json({
-      success: true,
+    return res.status(response.statusCode).json({
+      status: response.status,
     })
   }
 
   return res.status(400).json({
-    success: false,
+    status: 'wrong-payload',
   })
 }
