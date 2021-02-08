@@ -98,19 +98,23 @@ export default function BlogPost({ post }: BlogPostProps) {
             </span>
           </div>
 
-          <div className="pt-2">
-            <span>{post.timeToRead}</span>
-            <span>・</span>
-            <EditLink
-              onClick={() => trackClickEditLink('BlogPostHeader')}
-              post={post}
-            />
-          </div>
+          {post.type === 'blogpost' && (
+            <div className="pt-2">
+              <span>{post.timeToRead}</span>
+              <span>・</span>
+              <EditLink
+                onClick={() => trackClickEditLink('BlogPostHeader')}
+                post={post}
+              />
+            </div>
+          )}
         </div>
 
-        <div className="px-4 md:p-0">
-          <Content mdxSource={post.content} />
-        </div>
+        {post.type === 'blogpost' && (
+          <div className="px-4 md:p-0">
+            <Content mdxSource={post.content} />
+          </div>
+        )}
 
         <div className="px-4 md:p-0 mt-8">
           <ContributionBox post={post} />

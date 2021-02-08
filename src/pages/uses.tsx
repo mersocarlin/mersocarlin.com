@@ -17,7 +17,9 @@ export default function Uses({ post, gaId, appVersion }: Props) {
       <Meta
         description={post.excerpt}
         ogType="article"
-        ogImageUrl={post.ogImage.url}
+        ogImageUrl={
+          post.type === 'blogpost' ? post.ogImage.url : post.coverImage.url
+        }
         title="Uses - Hemerson Carlin"
       />
 

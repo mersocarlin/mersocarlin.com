@@ -31,18 +31,25 @@ export type PostMdxScope = {
 
 export type Post = {
   author: Author
-  content: MdxSource<PostMdxScope>
   coverImage: PostImage
   date: string
-  excerpt?: string
-  ogImage: PostImage
-  path: string
-  previousSlugs?: string[]
+  excerpt: string
   slug: string
-  timeToRead: string
   title: string
-  wordCount: number
-}
+} & (
+  | {
+      type: 'preview'
+    }
+  | {
+      content: MdxSource<PostMdxScope>
+      ogImage: PostImage
+      path: string
+      previousSlugs?: string[]
+      timeToRead: string
+      type: 'blogpost'
+      wordCount: number
+    }
+)
 
 /** Twitter types  */
 export type TweetAuthor = {

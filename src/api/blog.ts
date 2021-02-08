@@ -51,12 +51,44 @@ async function getFileContentsBySlug<MdxScopeType>(
   }
 }
 
-export async function getBlogPostBySlug(slug: string): Promise<Post> {
+function getBlogPostFileName(slug: string) {
   const fileNameWithExtension = ALL_BLOG_POSTS.find((file) =>
     file.includes(slug),
   ) as string
   const fileName = removeExtension(fileNameWithExtension)
 
+  return {
+    fileName,
+    fileNameWithExtension,
+  }
+}
+
+export async function getBlogPostPreviewBySlug(slug: string): Promise<Post> {
+  const { fileName } = getBlogPostFileName(slug)
+  const { mdxSource } = await getFileContentsBySlug<PostMdxScope>(
+    'blog',
+    fileName,
+  )
+  const { coverImage } = mdxSource.scope
+
+  return {
+    author: AUTHOR,
+    coverImage: {
+      credit: coverImage?.credit || '',
+      height: coverImage?.height || 500,
+      url: coverImage?.url || `/assets/blog/${fileName}/cover.jpg`,
+      width: coverImage?.width || 1000,
+    },
+    date: `${fileName.substring(0, 10)}T00:00:00.000Z`,
+    excerpt: mdxSource.scope.excerpt,
+    slug,
+    title: mdxSource.scope.title,
+    type: 'preview',
+  }
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<Post> {
+  const { fileName, fileNameWithExtension } = getBlogPostFileName(slug)
   const {
     mdxSource,
     timeToRead,
@@ -86,6 +118,7 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
     slug,
     timeToRead,
     title: mdxSource.scope.title,
+    type: 'blogpost',
     wordCount,
   }
 }
@@ -121,13 +154,14 @@ export async function getPageContentBySlug(
     slug,
     timeToRead,
     title: mdxSource.scope.title,
+    type: 'blogpost',
     wordCount,
   }
 }
 
-export async function getAllBlogPosts(): Promise<Post[]> {
+export async function getAllBlogPostsPreview(): Promise<Post[]> {
   const postsPromises = ALL_BLOG_POSTS.map((fileName) =>
-    getBlogPostBySlug(getSlugByFileName(fileName)),
+    getBlogPostPreviewBySlug(getSlugByFileName(fileName)),
   )
 
   const posts = await Promise.all(postsPromises)
