@@ -2,7 +2,11 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 
-import { getAllBlogPosts, getBlogPostBySlug } from '@mersocarlin.com/api/blog'
+import {
+  getAllBlogPostsPreview,
+  getBlogPostBySlug,
+  getBlogPostPreviewBySlug,
+} from '@mersocarlin.com/api/blog'
 import BlogPost from '@mersocarlin.com/components/BlogPost'
 import Divider from '@mersocarlin.com/components/Divider'
 import Layout from '@mersocarlin.com/components/Layout'
@@ -29,7 +33,9 @@ export default function PostPage({
     <Layout appVersion={appVersion} gaId={gaId}>
       <Meta
         description={post.excerpt}
-        ogImageUrl={post.ogImage.url}
+        ogImageUrl={
+          post.type === 'blogpost' ? post.ogImage.url : post.coverImage.url
+        }
         ogType="article"
         title={`${post.title} - Hemerson Carlin`}
       />
@@ -56,7 +62,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const post = await getBlogPostBySlug(`${params.slug}`)
   const previousPosts = await Promise.all(
-    (post.previousSlugs || []).map(getBlogPostBySlug),
+    (post.type === 'blogpost' ? post.previousSlugs || [] : []).map(
+      getBlogPostPreviewBySlug,
+    ),
   )
 
   return {
@@ -70,7 +78,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllBlogPosts()
+  const posts = await getAllBlogPostsPreview()
 
   return {
     paths: posts.map((post) => {
