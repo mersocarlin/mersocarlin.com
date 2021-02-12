@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { Post } from '@mersocarlin.com/types'
 
@@ -12,7 +12,7 @@ interface PreviousBlogPostsProps {
 
 export default function PreviousBlogPosts({ posts }: PreviousBlogPostsProps) {
   return (
-    <Fragment>
+    <section>
       <div className="flex items-center flex-col md:flex-row justify-between mb-8">
         <div className="mersocarlin-text-gray font-bold text-xl mb-4 md:mb-0">
           Previous Blog Posts
@@ -37,18 +37,20 @@ export default function PreviousBlogPosts({ posts }: PreviousBlogPostsProps) {
         </Link>
       </div>
 
-      <BlogPostsGrid>
-        {posts.map((post) => (
-          <li
-            itemProp="blogPost"
-            itemScope={true}
-            itemType="https://schema.org/BlogPosting"
-            key={post.slug}
-          >
-            <BlogPostCard post={post} />
-          </li>
-        ))}
-      </BlogPostsGrid>
-    </Fragment>
+      <div className="px-4 md:px-0">
+        <BlogPostsGrid>
+          {posts.map((post) => (
+            <li
+              itemProp="blogPost"
+              itemScope={true}
+              itemType="https://schema.org/BlogPosting"
+              key={post.slug}
+            >
+              <BlogPostCard post={post} />
+            </li>
+          ))}
+        </BlogPostsGrid>
+      </div>
+    </section>
   )
 }
