@@ -13,7 +13,6 @@ import HeaderLink from './HeaderLink'
 
 interface LayouProps {
   appVersion: string
-  centerContent?: boolean
   children: React.ReactNode
   gaId: string
 }
@@ -28,20 +27,11 @@ function useAnalytics(gaId: string) {
   }, [router.asPath])
 }
 
-export default function Layout({
-  appVersion,
-  centerContent,
-  children,
-  gaId,
-}: LayouProps) {
+export default function Layout({ appVersion, children, gaId }: LayouProps) {
   useAnalytics(gaId)
 
   return (
-    <div
-      className={`flex flex-col bg-gray-50 dark:bg-gray-800 ${
-        centerContent ? 'h-full' : ''
-      }`}
-    >
+    <div className="flex flex-col min-h-full bg-gray-50 dark:bg-gray-800">
       <header className="mersocarlin-bg-white p-3 shadow-md fixed top-0 left-0 right-0 z-10">
         <nav className="flex items-center justify-between">
           <HeaderLink fontStyles="text-base" path="/">

@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const baseDescription = `Hi there! I'm Hemerson Carlin, also known as mersocarlin, and I'm a Software Engineer & Full Stack JavaScript Developer from Brazil based in Dublin, Ireland.`
+const baseDescription = `Hi there! I'm Hemerson Carlin, also known as mersocarlin, a passionate and resourceful full-stack Software Engineer with 10+ years of experience focused on agile development, architecture and team building. I have experience in designing and developing web applications using microservices architecture alongside with JavaScript, Node.js and React.`
 
 interface MetaProps {
   description?: string
@@ -15,7 +15,7 @@ export default function Meta({
   description = baseDescription,
   ogImageUrl = '/hemerson-dark.jpg',
   ogType = 'website',
-  title = 'Hemerson Carlin - Full Stack Developer',
+  title = 'Hemerson Carlin - Tech Lead / Software Engineer',
 }: MetaProps) {
   const router = useRouter()
 

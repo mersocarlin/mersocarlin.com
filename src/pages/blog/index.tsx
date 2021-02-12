@@ -18,26 +18,28 @@ export default function Blog({ appVersion, posts, gaId }: IndexProps) {
     <Layout appVersion={appVersion} gaId={gaId}>
       <Meta title="Blog - Hemerson Carlin" />
 
-      <div className="flex flex-col mersocarlin-text-gray">
-        <div className="px-4 md:px-0">
-          <h1 className="text-2xl md:text-4xl font-bold mb-4">
-            Thoughts, ideas, tech and stuff!
-          </h1>
-          <p>Welcome to my personal Blog!</p>
-          <p>
-            My name is Hemerson Carlin (a.k.a. <em>mersocarlin</em>) and I'm a
-            Full Stack JavaScript Developer from Brazil based in Dublin,
-            Ireland.
-          </p>
+      <section className="flex flex-col space-y-4 px-4 md:px-0 mersocarlin-text-gray">
+        <h1 className="text-2xl md:text-4xl font-bold mb-4">
+          Thoughts & ideas!
+        </h1>
+        <p className="text-lg">Welcome to my personal Blog!</p>
 
-          <p>
-            This is going to be my space to share the things I like, a couple of
-            ideas and some of my work.
-          </p>
-        </div>
+        <p className="text-lg">
+          I'm Hemerson Carlin, also known as <em>mersocarlin</em>, a passionate
+          and resourceful full-stack Software Engineer with 10+ years of
+          experience focused on agile development, architecture and team
+          building.
+        </p>
 
-        <Divider size={30} />
+        <p className="text-lg">
+          This is my space to share the things I like, a couple of ideas and
+          some of my work.
+        </p>
+      </section>
 
+      <Divider size={30} />
+
+      <section className="px-4 md:px-0">
         <BlogPostsGrid>
           {posts.map((post) => (
             <li
@@ -50,7 +52,7 @@ export default function Blog({ appVersion, posts, gaId }: IndexProps) {
             </li>
           ))}
         </BlogPostsGrid>
-      </div>
+      </section>
     </Layout>
   )
 }
