@@ -13,9 +13,9 @@ interface IndexProps extends PageProps {
   posts: Post[]
 }
 
-export default function Blog({ appVersion, posts, gaId }: IndexProps) {
+export default function Blog({ appVersion, posts }: IndexProps) {
   return (
-    <Layout appVersion={appVersion} gaId={gaId}>
+    <Layout appVersion={appVersion}>
       <Meta title="Blog - Hemerson Carlin" />
 
       <section className="flex flex-col space-y-4 px-4 md:px-0 mersocarlin-text-gray">
@@ -64,7 +64,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       appVersion: pkg.version,
       posts: await getAllBlogPostsPreview(),
-      gaId: process.env.GOOGLE_ANALYTICS_ID,
     },
   }
 }

@@ -1,6 +1,5 @@
 export type PageProps = {
   appVersion: string
-  gaId: string
 }
 
 export type Author = {
