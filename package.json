@@ -19,7 +19,6 @@
     "postcss": "^8.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-ga": "^2.7.0",
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
