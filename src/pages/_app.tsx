@@ -7,7 +7,7 @@ import ThemeProvider from '@mersocarlin.com/theme/ThemeProvider'
 import useAnalytics from '@mersocarlin.com/hooks/useAnalytics'
 import { trackPageLoad } from '@mersocarlin.com/utils/events'
 
-export default function MApp({ Component, pageProps }: any) {
+export default function MyApp({ Component, pageProps }: any) {
   useAnalytics()
 
   useEffect(() => {

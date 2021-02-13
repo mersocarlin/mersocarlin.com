@@ -26,6 +26,12 @@ export function trackPageLoad(time: number) {
 }
 
 export function trackPageView(routerPath: URL | string) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('config', 'UA-17163651-1', {
+      page_path: routerPath,
+    })
+  }
+
   return sendEvent({
     id: 'dd15ce5f-540d-4173-ba80-bb0d0b4b2f94',
     path: routerPath,

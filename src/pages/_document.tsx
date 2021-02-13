@@ -3,6 +3,8 @@ import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
   render() {
+    const isProd = process.env.CONFIG_ENV === 'production'
+
     return (
       <Html lang="en">
         <Head>
@@ -58,6 +60,27 @@ export default class MyDocument extends Document {
               `,
             }}
           />
+
+          {isProd && (
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=UA-17163651-1"
+            />
+          )}
+          {isProd && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-17163651-1', {
+                page_path: window.location.pathname + window.location.hash + window.location.search,
+              });
+          `,
+              }}
+            />
+          )}
         </Head>
         <body>
           <Main />
