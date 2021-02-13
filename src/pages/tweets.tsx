@@ -14,9 +14,9 @@ interface Props extends PageProps {
   tweets: Tweet[]
 }
 
-export default function Tweets({ gaId, appVersion, tweets }: Props) {
+export default function Tweets({ appVersion, tweets }: Props) {
   return (
-    <Layout appVersion={appVersion} gaId={gaId}>
+    <Layout appVersion={appVersion}>
       <Meta title="Tweets - Hemerson Carlin" />
 
       <h1 className="px-4 md:px-0 pb-8 text-2xl font-bold text-center mersocarlin-text-gray">
@@ -82,7 +82,6 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       appVersion: pkg.version,
-      gaId: process.env.GOOGLE_ANALYTICS_ID,
       tweets,
     },
   }

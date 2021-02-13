@@ -14,9 +14,9 @@ interface Props extends PageProps {
   posts: Post[]
 }
 
-export default function Index({ appVersion, gaId, posts }: Props) {
+export default function Index({ appVersion, posts }: Props) {
   return (
-    <Layout appVersion={appVersion} gaId={gaId}>
+    <Layout appVersion={appVersion}>
       <Meta />
 
       <div className="flex flex-col mersocarlin-text-gray px-8 md:p-0">
@@ -102,7 +102,6 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       appVersion: pkg.version,
-      gaId: process.env.GOOGLE_ANALYTICS_ID,
       posts: posts.slice(0, 3),
     },
   }

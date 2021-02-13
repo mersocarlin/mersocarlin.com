@@ -11,9 +11,9 @@ interface Props extends PageProps {
   post: Post
 }
 
-export default function Uses({ post, gaId, appVersion }: Props) {
+export default function Uses({ post, appVersion }: Props) {
   return (
-    <Layout appVersion={appVersion} gaId={gaId}>
+    <Layout appVersion={appVersion}>
       <Meta
         description={post.excerpt}
         ogType="article"
@@ -36,7 +36,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       appVersion: pkg.version,
       post,
-      gaId: process.env.GOOGLE_ANALYTICS_ID,
     },
   }
 }

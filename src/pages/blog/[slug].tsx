@@ -21,7 +21,6 @@ interface PostPageProps extends PageProps {
 
 export default function PostPage({
   appVersion,
-  gaId,
   post,
   previousPosts,
 }: PostPageProps) {
@@ -30,7 +29,7 @@ export default function PostPage({
   }
 
   return (
-    <Layout appVersion={appVersion} gaId={gaId}>
+    <Layout appVersion={appVersion}>
       <Meta
         description={post.excerpt}
         ogImageUrl={
@@ -48,14 +47,12 @@ export default function PostPage({
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const gaId = process.env.GOOGLE_ANALYTICS_ID
   const pkg = require('../../../package.json')
 
   if (!params) {
     return {
       props: {
         appVersion: pkg.version,
-        gaId,
       },
     }
   }
@@ -70,7 +67,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       appVersion: pkg.version,
-      gaId,
       post,
       previousPosts,
     },

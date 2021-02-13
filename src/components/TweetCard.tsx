@@ -50,8 +50,6 @@ function TweetHeader({ tweet }: Props) {
           </span>
           <span className="text-gray-400">@{tweet.author.username}</span>
         </div>
-
-        <div></div>
       </div>
     </Link>
   )
