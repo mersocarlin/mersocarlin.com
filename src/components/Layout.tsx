@@ -1,11 +1,4 @@
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
-
-import {
-  initGA,
-  trackPageView as trackPageViewGA,
-} from '@mersocarlin.com/utils/analytics'
-import { trackPageView } from '@mersocarlin.com/utils/events'
+import React from 'react'
 
 import SocialList from './SocialList'
 import Menu from './Menu'
@@ -14,22 +7,9 @@ import HeaderLink from './HeaderLink'
 interface LayouProps {
   appVersion: string
   children: React.ReactNode
-  gaId: string
 }
 
-function useAnalytics(gaId: string) {
-  const router = useRouter()
-
-  useEffect(() => {
-    initGA(gaId)
-    trackPageViewGA(router.asPath)
-    trackPageView(router.asPath)
-  }, [router.asPath])
-}
-
-export default function Layout({ appVersion, children, gaId }: LayouProps) {
-  useAnalytics(gaId)
-
+export default function Layout({ appVersion, children }: LayouProps) {
   return (
     <div className="flex flex-col min-h-full bg-gray-50 dark:bg-gray-800">
       <header className="mersocarlin-bg-white p-3 shadow-md fixed top-0 left-0 right-0 z-10">
