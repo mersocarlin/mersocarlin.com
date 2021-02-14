@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import highlight from 'remark-highlight.js'
 import renderToString from 'next-mdx-remote/render-to-string'
 
-import Components from '@mersocarlin.com/components/BlogPost/Components'
+import Components from '@blog/components/Components'
 import { Author, MdxSource, Post, PostMdxScope } from '@mersocarlin.com/types'
 import {
   getPreviousSlugs,

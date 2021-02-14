@@ -20,7 +20,7 @@ function slugify(text: string) {
   )
 }
 
-function BlogPostHeader({ as = 'h2', children }: Props) {
+function Header({ as = 'h2', children }: Props) {
   const slug = slugify(children)
 
   if (as === 'h2') {
@@ -38,4 +38,4 @@ function BlogPostHeader({ as = 'h2', children }: Props) {
   )
 }
 
-export default BlogPostHeader
+export default Header

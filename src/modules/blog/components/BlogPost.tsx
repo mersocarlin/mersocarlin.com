@@ -4,13 +4,13 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import { Post } from '@mersocarlin.com/types'
-
-import Content from './BlogPost/Content'
-import EditLink from './BlogPost/EditLink'
-import BlogPostDate from './BlogPostDate'
-import ContributionBox from './BlogPost/ContributionBox'
-import Link from './Link'
 import { trackClickEditLink } from '@mersocarlin.com/utils/events'
+
+import BlogPostContent from './BlogPostContent'
+import EditLink from './EditLink'
+import BlogPostDate from './BlogPostDate'
+import ContributionBox from './ContributionBox'
+import Link from '../../../components/Link'
 
 function extractString(initialChar: string, endChar: string) {
   return (str: string) => {
@@ -112,7 +112,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 
         {post.type === 'blogpost' && (
           <div className="px-4 md:p-0">
-            <Content mdxSource={post.content} />
+            <BlogPostContent mdxSource={post.content} />
           </div>
         )}
 

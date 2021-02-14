@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Post } from '@mersocarlin.com/types'
 
 import BlogPostDate from './BlogPostDate'
-import Link from './Link'
+import Link from '../../../components/Link'
 
 interface BlogPostCardProps {
   post: Post

@@ -20,6 +20,7 @@
     "jsx": "preserve",
     "paths": {
       "@mersocarlin.com/*": ["src/*"],
+      "@blog/*": ["src/modules/blog/*"],
     }
   },
   "exclude": [

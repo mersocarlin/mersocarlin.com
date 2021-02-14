@@ -2,8 +2,8 @@ import React from 'react'
 
 import { Post } from '@mersocarlin.com/types'
 import { trackClickEditLink } from '@mersocarlin.com/utils/events'
+import Link from '@mersocarlin.com/components/Link'
 
-import Link from '../Link'
 import EditLink from './EditLink'
 
 type Props = {
