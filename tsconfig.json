@@ -22,6 +22,7 @@
       "@mersocarlin.com/*": ["src/*"],
       "@blog/*": ["src/modules/blog/*"],
       "@common/*": ["src/modules/common/*"],
+      "@twitter/*": ["src/modules/twitter/*"],
     }
   },
   "exclude": [

@@ -1,14 +1,14 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
 
-import { getTweets } from '@mersocarlin.com/api/twitter'
 import { PageProps, Tweet } from '@mersocarlin.com/types'
 import Divider from '@common/components/Divider'
 import Header from '@common/components/Header'
 import Link from '@common/components/Link'
+import { getTweets } from '@twitter/api/twitter'
+import TweetCard from '@twitter/components/TweetCard'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
-import TweetCard from '@mersocarlin.com/components/TweetCard'
 
 interface Props extends PageProps {
   tweets: Tweet[]
