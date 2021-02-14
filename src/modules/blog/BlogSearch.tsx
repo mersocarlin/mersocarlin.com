@@ -1,25 +1,21 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 import { useRouter } from 'next/router'
 
-function BlogSearch() {
-  const { query, replace } = useRouter()
-  const [searchTerm, setSearchTerm] = useState('')
+type Props = {
+  searchTerm: string
+}
 
-  useEffect(() => {
-    if (query.q && typeof query.q === 'string') {
-      setSearchTerm(query.q)
-    }
-  }, [query.q])
+function BlogSearch({ searchTerm }: Props) {
+  const { replace } = useRouter()
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value: _searchTerm } = event.target
-      setSearchTerm(_searchTerm)
       replace(_searchTerm ? `/blog?q=${_searchTerm}` : '/blog', undefined, {
         shallow: true,
       })
     },
-    [],
+    [replace],
   )
 
   const handleSubmit = useCallback(

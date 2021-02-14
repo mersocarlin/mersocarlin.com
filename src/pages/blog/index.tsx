@@ -27,7 +27,9 @@ export default function Blog({ appVersion, posts }: IndexProps) {
     () => (query.q && typeof query.q === 'string' ? query.q : ''),
     [query],
   )
-  const regSearch = new RegExp(searchTerm, 'i')
+
+  const regSearch = useMemo(() => new RegExp(searchTerm, 'i'), [searchTerm])
+
   const filteredPosts = posts.filter((post) => {
     if (!searchTerm) {
       return true
@@ -62,7 +64,7 @@ export default function Blog({ appVersion, posts }: IndexProps) {
       <Divider size={30} />
 
       <section className="px-4 md:px-0">
-        <BlogSearch />
+        <BlogSearch searchTerm={searchTerm} />
       </section>
 
       <section className="px-4 md:px-0 mt-8">
