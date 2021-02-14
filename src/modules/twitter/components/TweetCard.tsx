@@ -2,7 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 
 import { Tweet } from '@mersocarlin.com/types'
-import Link from './Link'
+import Link from '@common/components/Link'
+
 type Props = {
   tweet: Tweet
 }

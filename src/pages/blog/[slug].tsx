@@ -2,16 +2,16 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 
+import BlogPost from '@blog/components/BlogPost'
+import PreviousBlogPosts from '@blog/components/PreviousBlogPosts'
 import {
   getAllBlogPostsPreview,
   getBlogPostBySlug,
   getBlogPostPreviewBySlug,
-} from '@mersocarlin.com/api/blog'
-import BlogPost from '@mersocarlin.com/components/BlogPost'
-import Divider from '@mersocarlin.com/components/Divider'
+} from '@blog/api/blog'
+import Divider from '@common/components/Divider'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
-import PreviousBlogPosts from '@mersocarlin.com/components/PreviousBlogPosts'
 import { PageProps, Post } from '@mersocarlin.com/types'
 
 interface PostPageProps extends PageProps {

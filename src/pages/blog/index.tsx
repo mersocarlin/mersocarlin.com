@@ -3,18 +3,17 @@ import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 
-import { getAllBlogPostsPreview } from '@mersocarlin.com/api/blog'
-import BlogPostCard from '@mersocarlin.com/components/BlogPostCard'
-import BlogPostsGrid from '@mersocarlin.com/components/BlogPostsGrid'
-import Divider from '@mersocarlin.com/components/Divider'
+import { getAllBlogPostsPreview } from '@blog/api/blog'
+import BlogPostCard from '@blog/components/BlogPostCard'
+import BlogPostsGrid from '@blog/components/BlogPostsGrid'
+import BlogSearch from '@blog/components/BlogSearch'
+import Divider from '@common/components/Divider'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
 import { PageProps, Post } from '@mersocarlin.com/types'
 
-import BlogSearch from '@mersocarlin.com/modules/blog/BlogSearch'
-
 const AsyncBlogSearchEmptyState = dynamic(
-  () => import('@mersocarlin.com/modules/blog/BlogSearchEmptyState'),
+  () => import('@blog/components/BlogSearchEmptyState'),
 )
 interface IndexProps extends PageProps {
   posts: Post[]

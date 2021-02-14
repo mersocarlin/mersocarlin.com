@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import Link from './Link'
+
+import Link from '@common/components/Link'
 
 type Props = {
   children: React.ReactNode

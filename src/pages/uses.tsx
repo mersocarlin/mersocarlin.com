@@ -1,11 +1,11 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
 
+import BlogPost from '@blog/components/BlogPost'
+import { getPageContentBySlug } from '@blog/api/blog'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
 import { PageProps, Post } from '@mersocarlin.com/types'
-import { getPageContentBySlug } from '@mersocarlin.com/api/blog'
-import BlogPost from '@mersocarlin.com/components/BlogPost'
 
 interface Props extends PageProps {
   post: Post

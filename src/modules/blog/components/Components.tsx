@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Divider from '../Divider'
-import Link from '../Link'
-import Header from './Header'
-import Image from './Image'
+import Divider from '@common/components/Divider'
+import Header from '@common/components/Header'
+import Link from '@common/components/Link'
+import BlogPostImage from './BlogPostImage'
 
 const components = {
   a: ({ href, ...rest }: any) => {
@@ -28,7 +28,7 @@ const components = {
   h2: (props: any) => <Header as="h2" {...props} />,
   h3: (props: any) => <Header as="h3" {...props} />,
   hr: (props: any) => <Divider size={30} {...props} />,
-  img: Image,
+  img: BlogPostImage,
   ol: (props: any) => <ol className="ml-8 mb-3 list-decimal" {...props} />,
   p: (props: any) => <p className="mb-3 leading-7" {...props} />,
   pre: (props: any) => (

@@ -2,9 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 
 import { Post } from '@mersocarlin.com/types'
+import Link from '@common/components/Link'
 
 import BlogPostDate from './BlogPostDate'
-import Link from './Link'
 
 interface BlogPostCardProps {
   post: Post
