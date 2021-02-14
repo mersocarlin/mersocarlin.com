@@ -1,0 +1,31 @@
+---
+title: 'Code Snippets - Pre-populate an array in JavaScript'
+excerpt: "Series of small code snippets I eventually use when working in some of my projects. And today's code snippet is how to pre-populate an array in JavaScript."
+coverImage:
+  credit: '[Kevin Ku](https://unsplash.com/photos/w7ZyuGYNpRQ)'
+---
+
+This is the second post I write about code snippets I find useful (you can check the first one [here](/blog/code-snippets-uniqueid)).
+And today's code snippet is how to pre-populate an array in JavaScript.
+
+The `for` loop is probably one of the first choices that comes to mind when dealing with arrays or collections.
+But instead, I prefer to create an array with [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
+
+If you've never heard of `Array.from` before, it accepts and array-like or an iteratable object as its first argument so we can map into it.
+Once the array is created, `map` gives us each element in the newly created array so we can populate it with, for example, the index of each element.
+
+
+```js
+function createArray(size) {
+  return Array.from({ length: size }).map((_, index) => index + 1)
+}
+```
+
+or using the Array constructor:
+
+
+```js
+function createArray(size) {
+  return Array.from(Array(size)).map((_, index) => index + 1)
+}
+```
