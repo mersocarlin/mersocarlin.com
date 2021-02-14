@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { GetStaticProps } from 'next'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 
 import { getAllBlogPostsPreview } from '@mersocarlin.com/api/blog'
 import BlogPostCard from '@mersocarlin.com/components/BlogPostCard'
@@ -9,11 +11,33 @@ import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
 import { PageProps, Post } from '@mersocarlin.com/types'
 
+import BlogSearch from '@mersocarlin.com/modules/blog/BlogSearch'
+
+const AsyncBlogSearchEmptyState = dynamic(
+  () => import('@mersocarlin.com/modules/blog/BlogSearchEmptyState'),
+)
 interface IndexProps extends PageProps {
   posts: Post[]
 }
 
 export default function Blog({ appVersion, posts }: IndexProps) {
+  const { query } = useRouter()
+
+  const searchTerm = useMemo(
+    () => (query.q && typeof query.q === 'string' ? query.q : ''),
+    [query],
+  )
+
+  const regSearch = useMemo(() => new RegExp(searchTerm, 'i'), [searchTerm])
+
+  const filteredPosts = posts.filter((post) => {
+    if (!searchTerm) {
+      return true
+    }
+
+    return regSearch.test(post.title)
+  })
+
   return (
     <Layout appVersion={appVersion}>
       <Meta title="Blog - Hemerson Carlin" />
@@ -40,18 +64,26 @@ export default function Blog({ appVersion, posts }: IndexProps) {
       <Divider size={30} />
 
       <section className="px-4 md:px-0">
-        <BlogPostsGrid>
-          {posts.map((post) => (
-            <li
-              itemProp="blogPost"
-              itemScope={true}
-              itemType="https://schema.org/BlogPosting"
-              key={post.slug}
-            >
-              <BlogPostCard post={post} />
-            </li>
-          ))}
-        </BlogPostsGrid>
+        <BlogSearch searchTerm={searchTerm} />
+      </section>
+
+      <section className="px-4 md:px-0 mt-8">
+        {filteredPosts.length ? (
+          <BlogPostsGrid>
+            {filteredPosts.map((post) => (
+              <li
+                itemProp="blogPost"
+                itemScope={true}
+                itemType="https://schema.org/BlogPosting"
+                key={post.slug}
+              >
+                <BlogPostCard post={post} />
+              </li>
+            ))}
+          </BlogPostsGrid>
+        ) : (
+          <AsyncBlogSearchEmptyState searchTerm={searchTerm} />
+        )}
       </section>
     </Layout>
   )

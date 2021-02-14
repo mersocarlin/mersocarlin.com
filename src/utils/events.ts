@@ -32,6 +32,10 @@ export function trackPageView(routerPath: URL | string) {
     })
   }
 
+  if (process.env.NODE_ENV === 'development') {
+    console.log('[Page view]', routerPath)
+  }
+
   return sendEvent({
     id: 'dd15ce5f-540d-4173-ba80-bb0d0b4b2f94',
     path: routerPath,
