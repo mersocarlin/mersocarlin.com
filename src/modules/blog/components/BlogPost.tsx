@@ -5,12 +5,12 @@ import Head from 'next/head'
 
 import { Post } from '@mersocarlin.com/types'
 import { trackClickEditLink } from '@mersocarlin.com/utils/events'
+import Link from '@common/components/Link'
 
 import BlogPostContent from './BlogPostContent'
 import EditLink from './EditLink'
 import BlogPostDate from './BlogPostDate'
 import ContributionBox from './ContributionBox'
-import Link from '../../../components/Link'
 
 function extractString(initialChar: string, endChar: string) {
   return (str: string) => {

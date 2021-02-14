@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Link from '@mersocarlin.com/components/Link'
+import Link from '@common/components/Link'
 import { Post } from '@mersocarlin.com/types'
 
 type Props = {

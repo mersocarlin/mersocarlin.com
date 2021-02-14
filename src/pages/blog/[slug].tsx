@@ -9,7 +9,7 @@ import {
   getBlogPostBySlug,
   getBlogPostPreviewBySlug,
 } from '@blog/api/blog'
-import Divider from '@mersocarlin.com/components/Divider'
+import Divider from '@common/components/Divider'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
 import { PageProps, Post } from '@mersocarlin.com/types'

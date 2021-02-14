@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import Link from './Link'
+import Link from '@common/components/Link'
 
 const items = [
   {

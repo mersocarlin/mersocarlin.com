@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { Post } from '@mersocarlin.com/types'
+import Link from '@common/components/Link'
 
-import Link from '../../../components/Link'
 import BlogPostCard from './BlogPostCard'
 import BlogPostsGrid from './BlogPostsGrid'
 

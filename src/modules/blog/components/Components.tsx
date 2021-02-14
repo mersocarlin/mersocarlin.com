@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Divider from '../../../components/Divider'
-import Link from '../../../components/Link'
-import Header from '../../../components/Header'
+import Divider from '@common/components/Divider'
+import Header from '@common/components/Header'
+import Link from '@common/components/Link'
 import BlogPostImage from './BlogPostImage'
 
 const components = {

@@ -3,10 +3,10 @@ import { GetStaticProps } from 'next'
 
 import { getTweets } from '@mersocarlin.com/api/twitter'
 import { PageProps, Tweet } from '@mersocarlin.com/types'
-import Divider from '@mersocarlin.com/components/Divider'
-import Header from '@mersocarlin.com/components/Header'
+import Divider from '@common/components/Divider'
+import Header from '@common/components/Header'
+import Link from '@common/components/Link'
 import Layout from '@mersocarlin.com/components/Layout'
-import Link from '@mersocarlin.com/components/Link'
 import Meta from '@mersocarlin.com/components/Meta'
 import TweetCard from '@mersocarlin.com/components/TweetCard'
 

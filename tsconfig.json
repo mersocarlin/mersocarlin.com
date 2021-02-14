@@ -21,6 +21,7 @@
     "paths": {
       "@mersocarlin.com/*": ["src/*"],
       "@blog/*": ["src/modules/blog/*"],
+      "@common/*": ["src/modules/common/*"],
     }
   },
   "exclude": [

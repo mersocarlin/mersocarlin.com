@@ -5,9 +5,9 @@ import Image from 'next/image'
 import BlogPostCard from '@blog/components/BlogPostCard'
 import BlogPostsGrid from '@blog/components/BlogPostsGrid'
 import { getAllBlogPostsPreview } from '@blog/api/blog'
+import Link from '@common/components/Link'
 import { PageProps, Post } from '@mersocarlin.com/types'
 import Layout from '@mersocarlin.com/components/Layout'
-import Link from '@mersocarlin.com/components/Link'
 import Meta from '@mersocarlin.com/components/Meta'
 
 interface Props extends PageProps {
