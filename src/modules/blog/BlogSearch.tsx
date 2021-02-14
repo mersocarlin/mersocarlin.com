@@ -28,7 +28,7 @@ function BlogSearch({ searchTerm }: Props) {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        className="w-full h-12 px-3 rounded focus:outline-none focus:shadow-outline text-xl px-4 shadow mersocarlin-text-gray"
+        className="block w-full px-4 py-3 border rounded focus:outline-none border-gray-200 focus:border-gray-300 appearance-none"
         onChange={handleChange}
         placeholder="Search for blog posts"
         type="search"
