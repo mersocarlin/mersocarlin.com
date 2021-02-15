@@ -6,11 +6,13 @@ import Head from 'next/head'
 import { Post } from '@mersocarlin.com/types'
 import { trackClickEditLink } from '@mersocarlin.com/utils/events'
 import Link from '@common/components/Link'
+import Divider from '@common/components/Divider'
 
 import BlogPostContent from './BlogPostContent'
 import EditLink from './EditLink'
 import BlogPostDate from './BlogPostDate'
 import ContributionBox from './ContributionBox'
+import BlogPostAuthor from './BlogPostAuthor'
 
 function extractString(initialChar: string, endChar: string) {
   return (str: string) => {
@@ -67,7 +69,7 @@ export default function BlogPost({ post }: BlogPostProps) {
         {post.title}
       </h1>
 
-      <div className="text-center">
+      <section className="text-center">
         <Image
           className="rounded-none md:rounded"
           key={post.title}
@@ -87,10 +89,10 @@ export default function BlogPost({ post }: BlogPostProps) {
             </Link>
           </span>
         )}
-      </div>
+      </section>
 
-      <div className="w-full md:w-3/4 m-auto">
-        <div className="py-6 text-center text-sm mersocarlin-text-gray">
+      <section className="w-full md:w-3/4 m-auto">
+        <section className="py-6 text-center text-sm mersocarlin-text-gray">
           <div>
             <span>By {post.author.name}</span>
             <span>
@@ -108,18 +110,24 @@ export default function BlogPost({ post }: BlogPostProps) {
               />
             </div>
           )}
-        </div>
+        </section>
 
         {post.type === 'blogpost' && (
-          <div className="px-4 md:p-0">
+          <section className="px-4 md:p-0">
             <BlogPostContent mdxSource={post.content} />
-          </div>
+          </section>
         )}
 
-        <div className="px-4 md:p-0 mt-8">
+        <section className="px-4 md:p-0 mt-8">
           <ContributionBox post={post} />
-        </div>
-      </div>
+        </section>
+
+        <Divider size={30} />
+
+        <section className="px-4 md:p-0 mt-8">
+          <BlogPostAuthor />
+        </section>
+      </section>
     </article>
   )
 }

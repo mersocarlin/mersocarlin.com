@@ -1,11 +1,11 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
-import Image from 'next/image'
 
 import BlogPostCard from '@blog/components/BlogPostCard'
 import BlogPostsGrid from '@blog/components/BlogPostsGrid'
 import { getAllBlogPostsPreview } from '@blog/api/blog'
 import Link from '@common/components/Link'
+import Avatar from '@common/components/Avatar'
 import { PageProps, Post } from '@mersocarlin.com/types'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
@@ -21,20 +21,7 @@ export default function Index({ appVersion, posts }: Props) {
 
       <div className="flex flex-col mersocarlin-text-gray px-8 md:p-0">
         <section>
-          <div
-            className="rounded-full shadow-md overflow-hidden mx-auto"
-            style={{
-              height: 150,
-              width: 150,
-            }}
-          >
-            <Image
-              alt="mersocarlin"
-              height={150}
-              src="/hemerson-dark.jpg"
-              width={150}
-            />
-          </div>
+          <Avatar size={150} />
 
           <h1 className="text-center text-3xl font-bold pt-4">
             Hemerson Carlin
