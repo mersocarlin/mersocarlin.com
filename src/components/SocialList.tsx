@@ -2,29 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 import Link from '@common/components/Link'
-
-const items = [
-  {
-    icon: 'twitter',
-    name: 'Twitter',
-    url: 'https://twitter.com/mersocarlin',
-  },
-  {
-    icon: 'linkedin',
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/mersocarlin/en',
-  },
-  {
-    icon: 'stack-overflow',
-    name: 'Stack Overflow',
-    url: 'https://stackoverflow.com/users/1461131/mersocarlin',
-  },
-  {
-    icon: 'github',
-    name: 'GitHub',
-    url: 'https://github.com/mersocarlin',
-  },
-]
+import { socialListItems } from '@mersocarlin.com/utils/social'
 
 type Props = {
   size?: number
@@ -33,7 +11,7 @@ type Props = {
 export default function SocialList({ size = 30 }: Props) {
   return (
     <div className="flex justify-between">
-      {items.map((item) => (
+      {socialListItems.map((item) => (
         <Link
           className="mx-2 flex items-center"
           key={item.icon}
