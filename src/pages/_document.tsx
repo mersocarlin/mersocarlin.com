@@ -1,6 +1,8 @@
 import React from 'react'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
+import { socialListItems } from '@mersocarlin.com/utils/social'
+
 export default class MyDocument extends Document {
   render() {
     const isProd = process.env.CONFIG_ENV === 'production'
@@ -76,11 +78,32 @@ export default class MyDocument extends Document {
               gtag('js', new Date());
               gtag('config', 'UA-17163651-1', {
                 page_path: window.location.pathname + window.location.hash + window.location.search,
-              });
-          `,
+              });`,
               }}
             />
           )}
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              console.log(
+                '\\n\\n\\n\\n',
+                'Diving deep into my code? Everything you see here is hosted on GitHub :)',
+                '\\n',
+                'You can also reach out to me in any of the following links:',
+                '\\n\\n',
+                '${socialListItems
+                  .sort((a, b) => (a.name > b.name ? 1 : -1))
+                  .map((item) => `- ${item.name}: ${item.url}`)
+                  .join('\\n ')}',
+                '\\n\\n',
+                'Hemerson Carlin 👋🏼',
+                '\\n\\n\\n\\n\\n',
+              )
+              `,
+            }}
+            type="text/javascript"
+          />
         </Head>
         <body>
           <Main />
