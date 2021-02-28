@@ -16,10 +16,11 @@ async function createRSS() {
   const feed = new RSS({
     copyright: `${new Date().getFullYear()} Hemerson Carlin`,
     description:
-      "Hi there! I'm Hemerson Carlin, also known as mersocarlin, and I'm a Software Engineer & Full Stack JavaScript Developer from Brazil based in Dublin, Ireland. Welcome to my blog!",
+      "Personal blog by Hemerson Carlin. I'm a passionate and resourceful full-stack Software Engineer with 10+ years of experience focused on agile development, architecture and team building. I have experience in designing and developing web applications using microservices architecture alongside with JavaScript, Node.js and React.",
     feed_url: 'https://mersocarlin.com/feed.xml',
     site_url: 'https://mersocarlin.com',
-    title: 'Hemerson Carlin',
+    title: 'Hemerson Carlin Blog RSS Feed',
+    image_url: 'https://mersocarlin.com/hemerson-dark.jpg',
   })
 
   for (const blogPost of ALL_BLOG_POSTS) {
