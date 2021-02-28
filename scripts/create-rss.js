@@ -13,19 +13,19 @@ async function getBlogPostData(blogPost) {
 }
 
 async function createRSS() {
-  const feed = new RSS({
+  const rss = new RSS({
     copyright: `${new Date().getFullYear()} Hemerson Carlin`,
-    description:
-      "Hi there! I'm Hemerson Carlin, also known as mersocarlin, and I'm a Software Engineer & Full Stack JavaScript Developer from Brazil based in Dublin, Ireland. Welcome to my blog!",
-    feed_url: 'https://mersocarlin.com/feed.xml',
+    description: 'Personal blog by Hemerson Carlin.',
+    feed_url: 'https://mersocarlin.com/rss.xml',
+    image_url: 'https://mersocarlin.com/hemerson-dark.jpg',
     site_url: 'https://mersocarlin.com',
-    title: 'Hemerson Carlin',
+    title: 'Hemerson Carlin Blog RSS Feed',
   })
 
   for (const blogPost of ALL_BLOG_POSTS) {
     const { title, excerpt } = await getBlogPostData(blogPost)
 
-    feed.item({
+    rss.item({
       author: 'Hemerson Carlin',
       date: `${blogPost.substring(0, 10)}T00:00:00.000Z`,
       description: excerpt,
@@ -36,7 +36,7 @@ async function createRSS() {
     })
   }
 
-  fs.writeFileSync('public/feed.xml', feed.xml({ indent: true }))
+  fs.writeFileSync('public/rss.xml', rss.xml({ indent: true }))
 }
 
 createRSS()
