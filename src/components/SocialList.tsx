@@ -21,6 +21,7 @@ export default function SocialList({ size = 30 }: Props) {
         >
           <Image
             alt={item.name}
+            key={item.icon}
             height={size}
             role="img"
             src={`/${item.icon}.svg`}

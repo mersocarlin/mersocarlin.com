@@ -19,7 +19,7 @@ const components = {
   },
   blockquote: (props: any) => (
     <blockquote
-      className="border-l-4 mersocarlin-border-gray mb-4 p-4"
+      className="border-l-4 mersocarlin-border-gray mb-4 p-4 text-gray-400 dark:text-gray-400"
       {...props}
     />
   ),
