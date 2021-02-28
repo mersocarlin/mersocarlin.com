@@ -166,5 +166,13 @@ export async function getAllBlogPostsPreview(): Promise<Post[]> {
 
   const posts = await Promise.all(postsPromises)
 
-  return posts.sort(sortByDateDesc)
+  const today = new Date().getTime()
+  const isProduction = process.env.NODE_ENV === 'production'
+
+  // Omit future blog posts if running in production
+  return posts
+    .filter((post) =>
+      isProduction ? new Date(post.date).getTime() <= today : true,
+    )
+    .sort(sortByDateDesc)
 }
