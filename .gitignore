@@ -11,5 +11,5 @@
 .DS_Store
 .env.local
 *.log
-public/feed.xml
+public/rss.xml
 public/sitemap.xml
