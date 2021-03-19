@@ -28,6 +28,15 @@ export default class MyDocument extends Document {
             sizes="16x16"
           />
 
+          <link
+            href="/rss.xml"
+            rel="alternate"
+            title="Hemerson Carlin Blog RSS Feed"
+            type="application/rss+xml"
+          />
+
+          <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
           {/* Load Google fonts asynchronously */}
           <script
             dangerouslySetInnerHTML={{
