@@ -24,15 +24,15 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
           height={post.coverImage.height}
           width={post.coverImage.width}
         />
-        <div className="flex justify-center flex-col justify-between p-3 h-48">
+        <div className="flex flex-col justify-between p-3 h-48">
           <div
-            className="text-center mb-2 text-xl font-bold group-hover:underline"
+            className="text-center text-xl font-bold group-hover:underline"
             itemProp="headline"
           >
             {post.title}
           </div>
           <p
-            className="overflow-ellipsis overflow-hidden my-2 text-sm line-clamp-3"
+            className="overflow-ellipsis overflow-hidden text-sm line-clamp-3"
             itemProp="description"
             title={post.excerpt}
           >

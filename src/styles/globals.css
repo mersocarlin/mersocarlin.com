@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input[type='search'] {
+    @apply block w-full rounded px-4 py-3 border-gray-200 focus:border-gray-300 focus:ring-1 focus:ring-gray-300 appearance-none
+  }
+}
+
 @layer components {
   .mersocarlin-text-gray {
     @apply text-gray-500 dark:text-gray-200
@@ -25,13 +31,6 @@
 }
 
 @layer utilities {
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
   /* Code syntax css */
     /*
     Atom One Dark by Daniel Gamage
