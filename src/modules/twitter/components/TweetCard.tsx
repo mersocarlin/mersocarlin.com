@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 
 import { Tweet } from '@mersocarlin.com/types'
@@ -73,9 +73,10 @@ function TweetText({ tweet }: Props) {
               <p
                 key={index}
                 className="text-gray-700 dark:text-gray-200 text-lg"
-              >
-                {paragraph}
-              </p>
+                dangerouslySetInnerHTML={{
+                  __html: paragraph,
+                }}
+              />
             )
           } else if (index !== lines.length - 1) {
             return <br key={index} />
@@ -157,6 +158,11 @@ function TweetText({ tweet }: Props) {
 }
 
 function TweetImage({ tweet }: Props) {
+  /**
+   * Some of the URLs are broken (404 status code).
+   * I'm manually hiding those in case that happens.
+   */
+  const [visible, setVisible] = useState(true)
   let image
 
   /**
@@ -185,6 +191,7 @@ function TweetImage({ tweet }: Props) {
           height={firstImage.height}
           src={firstImage.url}
           width={firstImage.width}
+          onError={() => setVisible(false)}
         />
 
         <div className="py-2 px-4">
@@ -197,7 +204,7 @@ function TweetImage({ tweet }: Props) {
     )
   }
 
-  if (!image) {
+  if (!image || !visible) {
     return null
   }
 
