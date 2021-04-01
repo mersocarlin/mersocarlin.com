@@ -1,0 +1,140 @@
+---
+title: 'Pub-Sub in a React Application'
+excerpt: "I implemented the Pub-Sub pattern in a React application and I'm going to walk you through my learnings."
+coverImage:
+  credit: '[Mika Baumeister](https://unsplash.com/photos/Y_LgXwQEx2c)'
+---
+
+> TL;DR: I implemented the Pub-Sub pattern in a React application.
+> Full sample code can be found [here](https://codesandbox.io/s/react-with-observer-pattern-resv0).
+
+I was recently working on a React application and hit a scenario I thought it could be a dead end:
+
+1. `<Parent />` renders `<Child />` but both live in separate repositories. This is not a problem per-se and even if they live in the same repository, I would have hit the same scenario.
+2. `<Child />` is fully autonomous and knows how to fetch data, but doesn't know how to [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). 
+3. `<Parent />` knows how to CRUD and needs to tell `<Child />` to update itself when something has been created, deleted or updated.
+
+The reason `<Child />` doesn’t know how to CRUD is because it can be reused by other parent components where CRUD flows are specific for each one of them and such flows can’t be shared.
+
+The main design decision is that `<Child />` should hold the knowledge on how to get data and we can't send it as a `prop` via `<Parent />`.
+Needless to say that fetching data on `<Child />`'s side is a very expensive and complex process to be replicated everywhere.
+
+For that reason, I’ve decided to implement the [Publish-subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) pattern.
+
+## Publish-subscribe Pattern
+
+Publish-subscribe (pub-sub) is a messaging pattern where _publishers_ broadcast messages to its _subscribers_ that are listening to specific events that happen over time. 
+
+Think of an e-commerce website with a mini shopping-cart widget in the header: when a customer clicks to buy a product, the shopping cart is automatically updated with the amount of items and price updates so customers have a fast feedback on how much they are going to pay for their purchase.
+
+<img alt="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)" height="173" src="/assets/blog/2021-04-06-pub-sub-in-a-react-application/shopping-cart.png" title="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)" width="323" />
+
+In some cases, both header and the product page are completely different applications that neither can’t communicate directly with each other nor share the same `<Parent />` component. Thus the reason they need some sort of messaging communication to start sharing data back and forth between them.
+
+Another example is a chat application where events (messages) don’t come very often. So we also need to put a _listener_ in place that notifies us when a new message comes in.
+
+This messaging pattern is also widely used by the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern): a subject keeps a list of dependents (_also known as observers_) and notifies them of any changes or events. 
+Each observer will then use the streamed data and act accordingly by making API calls, database calls, changes in the UI, etc. 
+
+You might also find the above described as Event Bus: an event-driven system that implements the pub-sub pattern.
+
+[React Query](https://react-query.tanstack.com/), one of the most popular data fetching libraries for React (by the time of this writing), [uses this pattern](https://github.com/tannerlinsley/react-query/search?l=TypeScript&q=observer) in its codebase to notify changes in queries, mutations and cache too.
+
+## The Observer class
+
+Now that the overall concept is known, it’s time to code! 
+
+My initial approach is to create an `Observer` class with tree methods: `on`, `off` and `notify`.
+
+- `on`: method used to subscribe an observer or, in this case, an event `<Child />` is going to be listening to.
+- `off`: method to unsubscribe an observer. This is going to be used when an observer is no longer needed or if you [think in React](https://reactjs.org/docs/thinking-in-react.html), to be used in the cleanup method inside a [useEffect](https://reactjs.org/docs/hooks-effect.html) hook.
+- `notify`: method that is going to broadcast events to all listeners in the app.
+
+```ts
+type EventObserverType = {
+  [event: string]: Function[]
+}
+
+class EventObserver {
+  private observers: EventObserverType = {}
+
+  on(event: string, observer: Function) {
+    if (!this.observers[event]) {
+      this.observers[event] = []
+    }
+
+    this.observers[event].push(observer)
+  }
+
+  off(event: string, observer: Function) {
+    if (!this.observers[event]) {
+      return
+    }
+
+    this.observers[event] = this.observers[event].filter(
+      (ob) => ob !== observer,
+    )
+  }
+
+  notify(event: string, ...args: string[]) {
+    if (!this.observers[event]) {
+      return
+    }
+
+    this.observers[event].forEach((observer) => observer(...args))
+  }
+}
+```
+
+## Using the Observer
+
+We’ve got two next steps: set up the observer in `<Child />` so it can listen to events and notify/trigger those events from `<Parent />`:
+
+```ts
+function Child() {
+  
+  /**
+   * subscribes to @ACTION_NAME event to execute "runsSomeComplexCode" method
+   */
+  useEffect(() => {
+    function runsSomeComplexCode() {
+      // ...
+    }
+
+    eventObserver.on("@ACTION_NAME", runsSomeComplexCode)
+    return () => {
+      eventObserver.off("@ACTION_NAME", runsSomeComplexCode)
+    }
+  }, [])
+
+  // ...
+}
+
+function Parent() {
+  const sendUpdates = () => eventObserver.notify("@ACTION_NAME")
+
+  return (
+    <div>
+      <Child />
+
+      <button onClick={sendUpdates}>
+        Trigger updates in Child component
+      </button>
+    </div>
+  )
+}
+```
+
+## Conclusion
+
+Propagating props top-down in React is definitely a better approach. 
+`<Parent />` should probably own the data while `<Child />` would act as a “dumb” component.
+
+As I have explained at the start of this post I was unable to follow that path and [lifting state up](https://reactjs.org/docs/lifting-state-up.html) could not help me this time.
+So I had to improvise.
+
+All things considered, I’m pretty happy with this approach and what I initially thought would be a dead end turned out to become a blog post for me to share some of my learnings.
+
+You can find a full example in this [codesandbox](https://codesandbox.io/s/react-with-observer-pattern-resv0).
+
+I hope that's helpful and interesting to you. 👋🏼
