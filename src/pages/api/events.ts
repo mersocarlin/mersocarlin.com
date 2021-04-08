@@ -5,7 +5,7 @@ const client = Amplitude.init(process.env.AMPLITUDE_API_KEY || '')
 
 import pkg from '../../../package.json'
 
-const checkString = (val: any) => val && typeof val === 'string'
+const checkString = (val: any) => typeof val === 'string'
 const checkNumber = (val: any) => typeof val === 'number'
 
 type SiteEvent = {
