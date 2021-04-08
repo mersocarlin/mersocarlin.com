@@ -8,23 +8,38 @@ import pkg from '../../../package.json'
 const checkString = (val: any) => val && typeof val === 'string'
 const checkNumber = (val: any) => typeof val === 'number'
 
-const eventMap: any = {
+type SiteEvent = {
+  category: 'TIMING' | 'USER'
+  label: 'page load' | 'change theme' | 'page view' | 'click edit link'
+  path: string
+  value?: string | number
+  referrer?: string
+}
+
+type EventMap = {
+  [eventId: string]: SiteEvent
+}
+
+const eventMap: EventMap = {
   // page load
   '3eb866d5-6139-42c8-8968-6a3abb257119': {
     category: 'TIMING',
     label: 'page load',
+    path: '',
   },
 
   // change theme
   '580bf852-f5ff-48a4-a3cb-422b764eb232': {
     category: 'USER',
     label: 'change theme',
+    path: '',
   },
 
   // page view
   'dd15ce5f-540d-4173-ba80-bb0d0b4b2f94': {
     category: 'USER',
     label: 'page view',
+    path: '',
     value: undefined,
   },
 
@@ -32,10 +47,11 @@ const eventMap: any = {
   '30f6fbe3-db8d-4882-9fa3-c76d9c738595': {
     category: 'USER',
     label: 'click edit link',
+    path: '',
   },
 }
 
-function isPageLoadEvent(event: any) {
+function isPageLoadEvent(event: SiteEvent) {
   return Boolean(
     checkString(event.category) &&
       checkString(event.label) &&
@@ -46,7 +62,7 @@ function isPageLoadEvent(event: any) {
   )
 }
 
-function isChangeThemeEvent(event: any) {
+function isChangeThemeEvent(event: SiteEvent) {
   return Boolean(
     checkString(event.category) &&
       checkString(event.label) &&
@@ -57,18 +73,19 @@ function isChangeThemeEvent(event: any) {
   )
 }
 
-function isPageViewEvent(event: any) {
+function isPageViewEvent(event: SiteEvent) {
   return Boolean(
     checkString(event.category) &&
       checkString(event.label) &&
       checkString(event.path) &&
+      checkString(event.referrer) &&
       event.value === undefined &&
       event.category === 'USER' &&
       event.label === 'page view',
   )
 }
 
-function isClickEditLinkEvent(event: any) {
+function isClickEditLinkEvent(event: SiteEvent) {
   return Boolean(
     checkString(event.category) &&
       checkString(event.label) &&
@@ -92,27 +109,28 @@ export default async function events(
     return res.status(400).end()
   }
 
-  parsedBody = {
-    ...parsedBody,
+  const siteEvent: SiteEvent = {
     ...eventMap[parsedBody.id],
+    ...parsedBody,
   }
 
   if (
-    isPageLoadEvent(parsedBody) ||
-    isChangeThemeEvent(parsedBody) ||
-    isPageViewEvent(parsedBody) ||
-    isClickEditLinkEvent(parsedBody)
+    isPageLoadEvent(siteEvent) ||
+    isChangeThemeEvent(siteEvent) ||
+    isPageViewEvent(siteEvent) ||
+    isClickEditLinkEvent(siteEvent)
   ) {
     const response = await client.logEvent({
       event_properties: {
-        category: parsedBody.category,
+        category: siteEvent.category,
         configEnv: process.env.CONFIG_ENV || 'local',
-        label: parsedBody.label,
-        path: parsedBody.path,
-        value: parsedBody.value,
+        label: siteEvent.label,
+        path: siteEvent.path,
+        referrer: siteEvent.referrer || '',
+        value: siteEvent.value,
         version: pkg.version,
       },
-      event_type: parsedBody.category,
+      event_type: siteEvent.category,
       user_id: 'mersocarlin@mersocarlin.com',
     })
 
