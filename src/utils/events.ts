@@ -39,7 +39,7 @@ export function trackPageView(routerPath: URL | string) {
   return sendEvent({
     id: 'dd15ce5f-540d-4173-ba80-bb0d0b4b2f94',
     path: routerPath,
-    referrer: document.referrer || '',
+    referrer: typeof document === 'object' ? document.referrer : '',
   })
 }
 
