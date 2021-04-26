@@ -1,0 +1,63 @@
+---
+title: 'Treat Test Code as Production Code'
+excerpt: 'SMALL_SUMMARY'
+coverImage:
+  credit: '[Artem Sapegin](https://unsplash.com/photos/DErxVSSQNdM)'
+---
+
+Testing an application has become an essential part of the software development lifecycle and I don’t know how life is without tests as I believe they contribute with a healthy and stable development process.
+
+I also see tests as the go to when working on a new code for the first time. 
+Perhaps the code itself is not self explanatory, it’s very coupled to external dependencies, it’s very complex or even not mature enough to a point where one could understand what the heck is going on and that’s where a simple unit test can save your bacon.
+
+Although test code is not deployed to production, it should not be an excuse to write _“hacky”_  or _“dirty”_ code. 
+Instead, it should be as readable & maintainable as the code we write the test against.
+
+So here are the 5 things I value the most and look for when writing tests I’d like to share in this blog post.
+
+## Don’t depend too much on the test runner
+
+Tech is constantly evolving and so the tools we use on a daily basis. 
+Should our test infrastructure depend too much on the test runner, most likely we’ll have to rewrite everything from scratch when migrating from one framework to another or spend days/months trying to understand what has to be migrated. 
+
+Worst case scenario, we end up working with _“legacy code”_ that is impossible to be migrated due to the amount of work that has to be done.
+
+Think of Enzyme by Airbnb and React Testing Library to test React components for example.
+If you have written tests with Enzyme before, you’ll soon realise that the way we write tests converge to the same similar boilerplate code over and over: mounting a component (via either shallow or mount methods), finding an element, clicking an element, changing the text of an input and later asserting whether the thing you are expecting to happen actually has happened.
+
+Not much would really change when migrating from Enzyme to React Testing Library in terms of the test itself.
+What I mean by that is if we are testing that a Form component is going to render a loading spinner once a button is clicked, Enzyme or React Testing Library should still guarantee that a loading spinner is going to be rendered once a button is clicked.
+
+Focusing on the test is more important than focusing on the tools we are using.
+
+## Invest in Dependency Injection
+
+This is by far one of the techniques I used the most until today when writing tests.
+
+I like to call [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) as a contract I create between the method and the injected object. 
+With that, I can spin up a test really fast and [Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) becomes so easy to understand and reason about that I don’t really mind writing the test before the actual code.
+I don’t always follow TDD but I can see its benefit when testing components that use some sort of injected dependency. 
+
+## Make sure External Dependencies / 3rd party libraries won’t break your app
+
+The last thing we want is a broken application due to something we're restricted/blocked to make changes.
+So it's important to stay ahead of possible failures given that 3rd party libraries are the things we can’t control from the outside.
+Running blind with 3rd party dependencies and waiting for a bug in production to happen once they introduce a breaking change is far from being acceptable.
+
+In my experience, running an end-to-end test overperforms a unit test just because we can’t be 100% certain we are stubbing dependencies the right way.
+
+## Reusable code
+
+I strongly advocate for reusable code in tests.
+Needless to say why I chose “Treat test code as production code” to be the title of this blog post.
+
+My suggestion here is to look for patterns that are constantly repeated test after test: initial test setups, common API calls, common assertions and actions...
+If you care about reusability and maintainability in a codebase, bring that same concern to your tests and thank me later.
+
+## Confidence
+
+This is not a strict recipe and I’m sure there are some exceptions.
+I also think that this is how you show new joiners on your team how much everyone cares about shipping code with confidence. 
+And having any sort of test in place is much better than having no tests at all.
+
+I hope that's helpful and interesting to you. 👋🏼
