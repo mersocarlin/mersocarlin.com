@@ -7,8 +7,8 @@ const POSTS_DIRECTORY = path.join(__dirname, '../data/blog')
 const ALL_BLOG_POSTS = fs.readdirSync(POSTS_DIRECTORY)
 
 async function getBlogPostData(blogPost) {
-  const contet = fs.readFileSync(path.join(POSTS_DIRECTORY, blogPost))
-  const { data, content } = matter(contet)
+  const fileContent = fs.readFileSync(path.join(POSTS_DIRECTORY, blogPost))
+  const { data } = matter(fileContent)
   return data
 }
 
@@ -22,7 +22,19 @@ async function createRSS() {
     title: 'Hemerson Carlin Blog RSS Feed',
   })
 
+  const today = new Date().getTime()
+
   for (const blogPost of ALL_BLOG_POSTS) {
+    /**
+     * Omit blog posts from the future
+     */
+    const dateStr = `${blogPost.substring(0, 10)}T00:00:00.000Z`
+    const isBefore = new Date(dateStr).getTime() < today
+
+    if (!isBefore) {
+      continue
+    }
+
     const { title, excerpt } = await getBlogPostData(blogPost)
 
     rss.item({
