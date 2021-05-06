@@ -2,10 +2,10 @@ import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 import highlight from 'remark-highlight.js'
-import renderToString from 'next-mdx-remote/render-to-string'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
 
-import Components from '@blog/components/Components'
-import { Author, MdxSource, Post, PostMdxScope } from '@mersocarlin.com/types'
+import { Author, Post, PostMdxScope } from '@mersocarlin.com/types'
 import {
   getPreviousSlugs,
   getSlugByFileName,
@@ -35,14 +35,17 @@ async function getFileContentsBySlug<MdxScopeType>(
   const { data, content } = matter(fileContents)
 
   const { timeToRead, wordCount } = calculateTimeToRead(content)
-  const mdxSource: MdxSource<MdxScopeType> = await renderToString(content, {
-    components: Components,
-    mdxOptions: {
-      remarkPlugins: [highlight],
-      rehypePlugins: [],
+
+  const mdxSource: MDXRemoteSerializeResult<MdxScopeType> = (await serialize(
+    content,
+    {
+      mdxOptions: {
+        remarkPlugins: [highlight],
+        rehypePlugins: [],
+      },
+      scope: data,
     },
-    scope: data,
-  })
+  )) as MDXRemoteSerializeResult<MdxScopeType>
 
   return {
     mdxSource,
@@ -69,7 +72,9 @@ export async function getBlogPostPreviewBySlug(slug: string): Promise<Post> {
     'blog',
     fileName,
   )
-  const { coverImage } = mdxSource.scope
+
+  const scope = mdxSource.scope || { excerpt: '', title: '' }
+  const { coverImage } = scope
 
   return {
     author: AUTHOR,
@@ -80,9 +85,9 @@ export async function getBlogPostPreviewBySlug(slug: string): Promise<Post> {
       width: coverImage?.width || 1000,
     },
     date: `${fileName.substring(0, 10)}T00:00:00.000Z`,
-    excerpt: mdxSource.scope.excerpt,
+    excerpt: scope.excerpt,
     slug,
-    title: mdxSource.scope.title,
+    title: scope.title,
     type: 'preview',
   }
 }
@@ -95,13 +100,14 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
     wordCount,
   } = await getFileContentsBySlug<PostMdxScope>('blog', fileName)
 
-  const { coverImage, ogImage } = mdxSource.scope
+  const scope = mdxSource.scope || { excerpt: '', title: '' }
+  const { coverImage, ogImage } = scope
 
   return {
     author: AUTHOR,
     content: mdxSource,
     date: `${fileName.substring(0, 10)}T00:00:00.000Z`,
-    excerpt: mdxSource.scope.excerpt,
+    excerpt: scope.excerpt,
     coverImage: {
       credit: coverImage?.credit || '',
       height: coverImage?.height || 500,
@@ -117,7 +123,7 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
     previousSlugs: getPreviousSlugs(ALL_BLOG_POSTS, fileNameWithExtension),
     slug,
     timeToRead,
-    title: mdxSource.scope.title,
+    title: scope.title,
     type: 'blogpost',
     wordCount,
   }
@@ -133,27 +139,29 @@ export async function getPageContentBySlug(
     wordCount,
   } = await getFileContentsBySlug<PostMdxScope>(fileOrFolderName, slug)
 
+  const scope = mdxSource.scope || { excerpt: '', title: '' }
+
   return {
     author: AUTHOR,
     content: mdxSource,
-    excerpt: mdxSource.scope.excerpt,
+    excerpt: scope.excerpt,
     coverImage: {
-      height: mdxSource.scope.coverImage?.height || 0,
-      url: mdxSource.scope.coverImage?.url || '',
-      width: mdxSource.scope.coverImage?.width || 0,
+      height: scope.coverImage?.height || 0,
+      url: scope.coverImage?.url || '',
+      width: scope.coverImage?.width || 0,
     },
-    date: mdxSource.scope.date || new Date().toISOString(),
+    date: scope.date || new Date().toISOString(),
     ogImage: {
-      height: mdxSource.scope.coverImage?.height || 0,
-      url: mdxSource.scope.coverImage?.url || '',
-      width: mdxSource.scope.coverImage?.width || 0,
+      height: scope.coverImage?.height || 0,
+      url: scope.coverImage?.url || '',
+      width: scope.coverImage?.width || 0,
     },
     path: slug
       ? `data/${fileOrFolderName}/${slug}.mdx`
       : `data/${fileOrFolderName}.mdx`,
     slug,
     timeToRead,
-    title: mdxSource.scope.title,
+    title: scope.title,
     type: 'blogpost',
     wordCount,
   }

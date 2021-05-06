@@ -1,3 +1,5 @@
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+
 export type PageProps = {
   appVersion: string
 }
@@ -12,12 +14,6 @@ export type PostImage = {
   height: number
   url: string
   width: number
-}
-
-export type MdxSource<MdxScopeType> = {
-  compiledSources: string
-  renderedOutput: string
-  scope: MdxScopeType
 }
 
 export type PostMdxScope = {
@@ -40,7 +36,7 @@ export type Post = {
       type: 'preview'
     }
   | {
-      content: MdxSource<PostMdxScope>
+      content: MDXRemoteSerializeResult<PostMdxScope>
       ogImage: PostImage
       path: string
       previousSlugs?: string[]
