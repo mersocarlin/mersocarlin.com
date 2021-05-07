@@ -62,6 +62,7 @@ export default function ThemeSwitcher() {
 
   return (
     <button
+      aria-label="Toggle light/dark theme"
       className={`rounded-full bg-gray-300 dark:bg-gray-600 h-8 w-8 focus:outline-none inline-block ${
         clientLoaded ? 'cursor-pointer' : ''
       }`}
