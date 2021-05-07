@@ -26,6 +26,7 @@ function TweetHeader({ tweet }: Props) {
     >
       <div className="flex">
         <Image
+          alt={tweet.author.name}
           className="rounded-full"
           height={50}
           src={tweet.author.profileImageUrl}
@@ -188,6 +189,7 @@ function TweetImage({ tweet }: Props) {
         title={entity.title}
       >
         <Image
+          alt={entity.title}
           height={firstImage.height}
           src={firstImage.url}
           width={firstImage.width}

@@ -71,6 +71,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 
       <section className="text-center">
         <Image
+          alt={post.title}
           className="rounded-none md:rounded"
           key={post.title}
           src={post.coverImage.url}

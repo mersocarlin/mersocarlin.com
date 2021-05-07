@@ -19,6 +19,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
     >
       <div className="group rounded shadow-md cursor-pointer hover:shadow-lg overflow-hidden mersocarlin-bg-white mersocarlin-text-gray">
         <Image
+          alt={post.title}
           itemProp="image"
           src={post.coverImage.url}
           height={post.coverImage.height}
