@@ -10,7 +10,7 @@ type Props = {
 export default function BlogPostTagLink({ tag }: Props) {
   return (
     <Link
-      className="mb-1 mr-1"
+      className="mb-2 mr-1"
       hoverStyles="hover:no-underline"
       href={`/blog?tag=${tag}`}
     >
