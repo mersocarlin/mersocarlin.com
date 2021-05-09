@@ -7,6 +7,7 @@ import { getAllBlogPostsPreview } from '@blog/api/blog'
 import BlogPostCard from '@blog/components/BlogPostCard'
 import BlogPostsGrid from '@blog/components/BlogPostsGrid'
 import BlogSearch from '@blog/components/BlogSearch'
+import searchBlogPosts from '@blog/utils/searchBlogPosts'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
 import { PageProps, Post } from '@mersocarlin.com/types'
@@ -26,15 +27,13 @@ export default function Blog({ appVersion, posts }: IndexProps) {
     [query],
   )
 
-  const regSearch = useMemo(() => new RegExp(searchTerm, 'i'), [searchTerm])
-
-  const filteredPosts = posts.filter((post) => {
-    if (!searchTerm) {
-      return true
-    }
-
-    return regSearch.test(post.title)
-  })
+  const filteredPosts = useMemo(
+    () =>
+      searchBlogPosts(posts, {
+        query: searchTerm,
+      }),
+    [searchTerm],
+  )
 
   return (
     <Layout appVersion={appVersion}>
