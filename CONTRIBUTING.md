@@ -17,8 +17,9 @@
 1. Update the blog post title.
 2. Add a sample `excerpt` on what the blog post is about.
 3. Use [Markdown syntax](https://daringfireball.net/projects/markdown/syntax).
+4. Pick one or more tags that best categorise the blog post.
 
-The template has some mocked text as well as an embedded image for you to get started with.
+The template has some mocked text as well as an embedded image for you to get started.
 
 ### Blog post images
 
