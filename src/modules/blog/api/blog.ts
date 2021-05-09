@@ -73,7 +73,7 @@ export async function getBlogPostPreviewBySlug(slug: string): Promise<Post> {
     fileName,
   )
 
-  const scope = mdxSource.scope || { excerpt: '', title: '' }
+  const scope = mdxSource.scope || { excerpt: '', title: '', tags: [] }
   const { coverImage } = scope
 
   return {
@@ -87,6 +87,7 @@ export async function getBlogPostPreviewBySlug(slug: string): Promise<Post> {
     date: `${fileName.substring(0, 10)}T00:00:00.000Z`,
     excerpt: scope.excerpt,
     slug,
+    tags: scope.tags || [],
     title: scope.title,
     type: 'preview',
   }
@@ -100,7 +101,7 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
     wordCount,
   } = await getFileContentsBySlug<PostMdxScope>('blog', fileName)
 
-  const scope = mdxSource.scope || { excerpt: '', title: '' }
+  const scope = mdxSource.scope || { excerpt: '', title: '', tags: [] }
   const { coverImage, ogImage } = scope
 
   return {
@@ -122,6 +123,7 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
     path: `data/blog/${fileNameWithExtension}`,
     previousSlugs: getPreviousSlugs(ALL_BLOG_POSTS, fileNameWithExtension),
     slug,
+    tags: scope.tags || [],
     timeToRead,
     title: scope.title,
     type: 'blogpost',
@@ -139,7 +141,7 @@ export async function getPageContentBySlug(
     wordCount,
   } = await getFileContentsBySlug<PostMdxScope>(fileOrFolderName, slug)
 
-  const scope = mdxSource.scope || { excerpt: '', title: '' }
+  const scope = mdxSource.scope || { excerpt: '', title: '', tags: [] }
 
   return {
     author: AUTHOR,
@@ -160,6 +162,7 @@ export async function getPageContentBySlug(
       ? `data/${fileOrFolderName}/${slug}.mdx`
       : `data/${fileOrFolderName}.mdx`,
     slug,
+    tags: scope.tags || [],
     timeToRead,
     title: scope.title,
     type: 'blogpost',
