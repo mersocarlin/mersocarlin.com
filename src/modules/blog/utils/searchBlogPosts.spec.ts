@@ -15,7 +15,7 @@ const atomicMoneyPost: Post = {
   date: new Date().toISOString(),
   excerpt: '',
   slug: 'atomic-money-from-a-spreadsheet-to-a-side-project',
-  tags: [],
+  tags: ['javascript', 'typescript'],
   title: 'Atomic Money - from a spreadsheet to a side project',
   type: 'preview',
 }
@@ -33,7 +33,7 @@ const uniqueIdPost: Post = {
   date: new Date().toISOString(),
   excerpt: '',
   slug: 'code-snippets-uniqueid',
-  tags: [],
+  tags: ['docker', 'nodejs'],
   title: 'Code Snippets - uniqueId',
   type: 'preview',
 }
@@ -42,22 +42,45 @@ const posts: Post[] = [atomicMoneyPost, uniqueIdPost]
 
 describe('searchBlogPosts', () => {
   it('should return all blog posts', () => {
-    const result = searchBlogPosts(posts, { query: '' })
+    const result = searchBlogPosts(posts, { q: '' })
 
     expect(result).toEqual(posts)
   })
 
-  describe('text search', () => {
+  describe('query search', () => {
     it('should filter blogposts by query search', () => {
-      const result = searchBlogPosts(posts, { query: 'money' })
+      const result = searchBlogPosts(posts, { q: 'money' })
 
       expect(result).toEqual([atomicMoneyPost])
     })
 
     it('should return no results', () => {
-      const result = searchBlogPosts(posts, { query: 'empty' })
+      const result = searchBlogPosts(posts, { q: 'empty' })
 
       expect(result).toEqual([])
     })
+  })
+
+  describe('tag search', () => {
+    it('should filter blogposts by tag', () => {
+      const result = searchBlogPosts(posts, { tag: 'javascript' })
+
+      expect(result).toEqual([atomicMoneyPost])
+    })
+
+    it('should return no results', () => {
+      const result = searchBlogPosts(posts, { tag: 'leadership' })
+
+      expect(result).toEqual([])
+    })
+  })
+
+  it('should filter posts by query and tag', () => {
+    const result = searchBlogPosts(posts, {
+      q: 'money',
+      tag: 'javascript',
+    })
+
+    expect(result).toEqual([atomicMoneyPost])
   })
 })
