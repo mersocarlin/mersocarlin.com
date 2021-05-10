@@ -11,8 +11,8 @@ type QueryOptions = {
 export default function useBlogQuery() {
   const { query, replace } = useRouter()
 
-  const q = useMemo(
-    () => (query.q && typeof query.q === 'string' ? query.q : ''),
+  const q: string | undefined = useMemo(
+    () => (query.q && typeof query.q === 'string' ? query.q : undefined),
     [query],
   )
 
