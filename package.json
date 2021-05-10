@@ -26,6 +26,8 @@
   },
   "devDependencies": {
     "@tailwindcss/jit": "^0.1.14",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/react-hooks": "^5.1.2",
     "@types/gtag.js": "^0.0.4",
     "@types/jest": "^26.0.23",
     "@types/node": "^14.0.13",
@@ -38,6 +40,7 @@
     "remark-highlight.js": "^6.0.0",
     "rimraf": "^3.0.2",
     "rss": "^1.2.2",
+    "ts-node": "^9.1.1",
     "typescript": "^3.9.3"
   }
 }
