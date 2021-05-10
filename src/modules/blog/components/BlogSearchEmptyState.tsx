@@ -1,10 +1,6 @@
-import React from 'react'
+import { QueryOptions } from '@mersocarlin.com/types'
 
-type Props = {
-  searchTerm: string
-}
-
-function BlogSearchEmptyState({ searchTerm }: Props) {
+function BlogSearchEmptyState({ q, tag }: QueryOptions) {
   return (
     <div className="flex flex-col space-y-4 text-center mersocarlin-text-gray">
       <svg
@@ -22,10 +18,22 @@ function BlogSearchEmptyState({ searchTerm }: Props) {
         />
       </svg>
 
-      <p className="text-2xl break-words">
-        No blog posts matching{' '}
-        <span className="underline font-bold">{searchTerm}</span>.
-      </p>
+      {q && (
+        <p className="text-2xl break-words">
+          No blog posts matching{' '}
+          <span className="underline font-bold">{q}</span>.
+        </p>
+      )}
+      {tag && (
+        <p className="text-2xl break-words">
+          No blog posts matching tag{' '}
+          <span
+            className={`bg-gray-200 mersocarlin-text-gray dark:bg-gray-900 py-1 px-2 rounded text-sm`}
+          >
+            {tag}
+          </span>
+        </p>
+      )}
       <p className="text-lg">Please try using another term</p>
     </div>
   )

@@ -10,7 +10,7 @@ import Divider from '@common/components/Divider'
 import BlogPostAuthor from './BlogPostAuthor'
 import BlogPostContent from './BlogPostContent'
 import BlogPostDate from './BlogPostDate'
-import BlogPostTag from './BlogPostTag'
+import BlogPostTagLink from './BlogPostTagLink'
 import ContributionBox from './ContributionBox'
 import EditLink from './EditLink'
 
@@ -104,9 +104,7 @@ export default function BlogPost({ post }: BlogPostProps) {
           {post.tags.length > 0 && (
             <div className="flex flex-wrap justify-center">
               {post.tags.map((tag) => (
-                <span className="mb-2 mr-1" key={tag}>
-                  <BlogPostTag tag={tag} variant="color" />
-                </span>
+                <BlogPostTagLink key={tag} tag={tag} />
               ))}
             </div>
           )}

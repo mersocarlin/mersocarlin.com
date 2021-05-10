@@ -1,21 +1,35 @@
 import React, { useCallback } from 'react'
-import { useRouter } from 'next/router'
+
+import { QueryOptions, TagT } from '@mersocarlin.com/types'
+import { tagMap } from '@blog/components/BlogPostTag'
+import BlogPostTag from '@blog/components/BlogPostTag'
 
 type Props = {
-  searchTerm: string
+  onChange: (newValue: QueryOptions) => void
+  value: QueryOptions
 }
 
-function BlogSearch({ searchTerm }: Props) {
-  const { replace } = useRouter()
-
+function BlogSearch({ onChange, value }: Props) {
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value: _searchTerm } = event.target
-      replace(_searchTerm ? `/blog?q=${_searchTerm}` : '/blog', undefined, {
-        shallow: true,
+
+      onChange({
+        q: _searchTerm,
+        tag: value.tag,
       })
     },
-    [replace],
+    [onChange, value],
+  )
+
+  const handleTagClick = useCallback(
+    (tag: TagT) => () => {
+      onChange({
+        q: value.q,
+        tag: tag === value.tag ? undefined : tag,
+      })
+    },
+    [onChange, value],
   )
 
   const handleSubmit = useCallback(
@@ -28,11 +42,28 @@ function BlogSearch({ searchTerm }: Props) {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        data-test-id="blog-search-input"
         onChange={handleChange}
         placeholder="Search for blog posts"
         type="search"
-        value={searchTerm}
+        value={value.q}
       />
+
+      <div className="flex flex-wrap justify-center mt-2">
+        {Object.keys(tagMap).map((key) => (
+          <button
+            className="mb-1 mr-1 focus:outline-none"
+            data-test-id={`blog-search-tag-${key}`}
+            key={key}
+            onClick={handleTagClick(key as TagT)}
+          >
+            <BlogPostTag
+              tag={key as TagT}
+              variant={value.tag === key ? 'color' : 'bw'}
+            />
+          </button>
+        ))}
+      </div>
     </form>
   )
 }
