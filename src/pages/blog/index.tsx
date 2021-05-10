@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
 
 import { getAllBlogPostsPreview } from '@blog/api/blog'
 import BlogPostCard from '@blog/components/BlogPostCard'
 import BlogPostsGrid from '@blog/components/BlogPostsGrid'
 import BlogSearch from '@blog/components/BlogSearch'
 import searchBlogPosts from '@blog/utils/searchBlogPosts'
+import useBlogQuery from '@blog/hooks/useBlogQuery'
+import Divider from '@common/components/Divider'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
 import { PageProps, Post } from '@mersocarlin.com/types'
@@ -20,19 +21,15 @@ interface IndexProps extends PageProps {
 }
 
 export default function Blog({ appVersion, posts }: IndexProps) {
-  const { query } = useRouter()
-
-  const searchTerm = useMemo(
-    () => (query.q && typeof query.q === 'string' ? query.q : ''),
-    [query],
-  )
+  const { query, updateQuery } = useBlogQuery()
 
   const filteredPosts = useMemo(
     () =>
       searchBlogPosts(posts, {
-        query: searchTerm,
+        q: query.q,
+        tag: query.tag,
       }),
-    [searchTerm],
+    [query],
   )
 
   return (
@@ -40,10 +37,12 @@ export default function Blog({ appVersion, posts }: IndexProps) {
       <Meta title="Blog - Hemerson Carlin" />
 
       <section className="px-4 md:px-0">
-        <BlogSearch searchTerm={searchTerm} />
+        <BlogSearch onChange={updateQuery} value={query} />
       </section>
 
-      <section className="px-4 md:px-0 mt-8">
+      <Divider size={20} />
+
+      <section className="px-4 md:px-0">
         {filteredPosts.length ? (
           <BlogPostsGrid>
             {filteredPosts.map((post) => (
@@ -58,7 +57,7 @@ export default function Blog({ appVersion, posts }: IndexProps) {
             ))}
           </BlogPostsGrid>
         ) : (
-          <AsyncBlogSearchEmptyState searchTerm={searchTerm} />
+          <AsyncBlogSearchEmptyState q={query.q} tag={query.tag} />
         )}
       </section>
     </Layout>
