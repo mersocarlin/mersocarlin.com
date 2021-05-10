@@ -10,7 +10,12 @@ const checkNumber = (val: any) => typeof val === 'number'
 
 type SiteEvent = {
   category: 'TIMING' | 'USER'
-  label: 'page load' | 'change theme' | 'page view' | 'click edit link'
+  label:
+    | 'page load'
+    | 'change theme'
+    | 'page view'
+    | 'click edit link'
+    | 'click tag'
   path: string
   value?: string | number
   referrer?: string
@@ -49,6 +54,17 @@ const eventMap: EventMap = {
     label: 'click edit link',
     path: '',
   },
+
+  // click tag
+  '62c31286-cd0b-4d24-b94b-b7f5a6d096ab': {
+    category: 'USER',
+    label: 'click tag',
+    path: '',
+  },
+}
+
+function isUserEvent(event: SiteEvent) {
+  return checkString(event.category) || event.category === 'USER'
 }
 
 function isPageLoadEvent(event: SiteEvent) {
@@ -64,35 +80,42 @@ function isPageLoadEvent(event: SiteEvent) {
 
 function isChangeThemeEvent(event: SiteEvent) {
   return Boolean(
-    checkString(event.category) &&
+    isUserEvent(event) &&
       checkString(event.label) &&
       checkString(event.path) &&
       checkString(event.value) &&
-      event.category === 'USER' &&
       event.label === 'change theme',
   )
 }
 
 function isPageViewEvent(event: SiteEvent) {
   return Boolean(
-    checkString(event.category) &&
+    isUserEvent(event) &&
       checkString(event.label) &&
       checkString(event.path) &&
       checkString(event.referrer) &&
       event.value === undefined &&
-      event.category === 'USER' &&
       event.label === 'page view',
   )
 }
 
 function isClickEditLinkEvent(event: SiteEvent) {
   return Boolean(
-    checkString(event.category) &&
+    isUserEvent(event) &&
       checkString(event.label) &&
       checkString(event.path) &&
       checkString(event.value) &&
-      event.category === 'USER' &&
       event.label === 'click edit link',
+  )
+}
+
+function isClickTagEvent(event: SiteEvent) {
+  return Boolean(
+    isUserEvent(event) &&
+      checkString(event.label) &&
+      checkString(event.path) &&
+      checkString(event.value) &&
+      event.label === 'click tag',
   )
 }
 
@@ -118,7 +141,8 @@ export default async function events(
     isPageLoadEvent(siteEvent) ||
     isChangeThemeEvent(siteEvent) ||
     isPageViewEvent(siteEvent) ||
-    isClickEditLinkEvent(siteEvent)
+    isClickEditLinkEvent(siteEvent) ||
+    isClickTagEvent(siteEvent)
   ) {
     const response = await client.logEvent({
       event_properties: {

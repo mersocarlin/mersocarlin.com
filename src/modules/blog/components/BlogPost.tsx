@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -8,11 +7,12 @@ import { trackClickEditLink } from '@mersocarlin.com/utils/events'
 import Link from '@common/components/Link'
 import Divider from '@common/components/Divider'
 
-import BlogPostContent from './BlogPostContent'
-import EditLink from './EditLink'
-import BlogPostDate from './BlogPostDate'
-import ContributionBox from './ContributionBox'
 import BlogPostAuthor from './BlogPostAuthor'
+import BlogPostContent from './BlogPostContent'
+import BlogPostDate from './BlogPostDate'
+import BlogPostTag from './BlogPostTag'
+import ContributionBox from './ContributionBox'
+import EditLink from './EditLink'
 
 function extractString(initialChar: string, endChar: string) {
   return (str: string) => {
@@ -93,7 +93,7 @@ export default function BlogPost({ post }: BlogPostProps) {
       </section>
 
       <section className="w-full md:w-3/4 m-auto">
-        <section className="py-6 text-center text-sm mersocarlin-text-gray">
+        <section className="flex flex-col space-y-2 py-6 text-center text-sm mersocarlin-text-gray">
           <div>
             <span>By {post.author.name}</span>
             <span>
@@ -101,8 +101,18 @@ export default function BlogPost({ post }: BlogPostProps) {
             </span>
           </div>
 
+          {post.tags.length > 0 && (
+            <div className="flex flex-wrap justify-center">
+              {post.tags.map((tag) => (
+                <span className="mb-2 mr-1" key={tag}>
+                  <BlogPostTag tag={tag} variant="color" />
+                </span>
+              ))}
+            </div>
+          )}
+
           {post.type === 'blogpost' && (
-            <div className="pt-2">
+            <div>
               <span>{post.timeToRead}</span>
               <span>・</span>
               <EditLink
