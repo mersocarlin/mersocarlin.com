@@ -2,27 +2,25 @@ import { configure, fireEvent, render, screen } from '@testing-library/react'
 
 import BlogSearch from './BlogSearch'
 
-const useBlogQuerySpy = jest.spyOn(
-  require('@common/hooks/useBlogQuery'),
-  'default',
-)
-
 configure({
   testIdAttribute: 'data-test-id',
 })
 
 describe('BlogSearch', () => {
-  it('should update query on text change', () => {
-    const mockUpdateQuery = jest.fn()
-    useBlogQuerySpy.mockImplementationOnce(() => ({
-      query: {
-        q: undefined,
-        tag: undefined,
-      },
-      updateQuery: mockUpdateQuery,
-    }))
+  let mockOnChange: jest.Mock
 
-    render(<BlogSearch />)
+  function renderComponent(props = {}) {
+    render(<BlogSearch onChange={() => {}} value={{ q: '' }} {...props} />)
+  }
+
+  beforeEach(() => {
+    mockOnChange = jest.fn()
+  })
+
+  it('should update query on text change', () => {
+    renderComponent({
+      onChange: mockOnChange,
+    })
 
     fireEvent.change(screen.getByTestId('blog-search-input'), {
       target: {
@@ -30,48 +28,35 @@ describe('BlogSearch', () => {
       },
     })
 
-    expect(mockUpdateQuery).toHaveBeenCalledWith({
+    expect(mockOnChange).toHaveBeenCalledWith({
       q: 'new search',
       tag: undefined,
     })
   })
 
   it('should update query on tag click', () => {
-    const mockUpdateQuery = jest.fn()
-    useBlogQuerySpy.mockImplementationOnce(() => ({
-      query: {
-        q: undefined,
-        tag: undefined,
-      },
-      updateQuery: mockUpdateQuery,
-    }))
-
-    render(<BlogSearch />)
+    renderComponent({
+      onChange: mockOnChange,
+    })
 
     fireEvent.click(screen.getByTestId('blog-search-tag-javascript'))
 
-    expect(mockUpdateQuery).toHaveBeenCalledWith({
-      q: undefined,
+    expect(mockOnChange).toHaveBeenCalledWith({
+      q: '',
       tag: 'javascript',
     })
   })
 
   it('should remove tag from query if already selected', () => {
-    const mockUpdateQuery = jest.fn()
-    useBlogQuerySpy.mockImplementationOnce(() => ({
-      query: {
-        q: undefined,
-        tag: 'javascript',
-      },
-      updateQuery: mockUpdateQuery,
-    }))
-
-    render(<BlogSearch />)
+    renderComponent({
+      onChange: mockOnChange,
+      value: { q: '', tag: 'javascript' },
+    })
 
     fireEvent.click(screen.getByTestId('blog-search-tag-javascript'))
 
-    expect(mockUpdateQuery).toHaveBeenCalledWith({
-      q: undefined,
+    expect(mockOnChange).toHaveBeenCalledWith({
+      q: '',
       tag: undefined,
     })
   })

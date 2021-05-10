@@ -18,7 +18,7 @@ describe('useBlogQuery', () => {
     const { result } = renderHook(() => useBlogQuery())
     expect(result.current).toEqual({
       query: {
-        q: undefined,
+        q: '',
         tag: undefined,
       },
       updateQuery: expect.any(Function),

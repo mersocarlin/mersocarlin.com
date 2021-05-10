@@ -66,6 +66,11 @@ export type Post = {
     }
 )
 
+export type QueryOptions = {
+  q?: string
+  tag?: TagT
+}
+
 /** Twitter types  */
 export type TweetAuthor = {
   name: string

@@ -1,33 +1,35 @@
 import React, { useCallback } from 'react'
 
-import { TagT } from '@mersocarlin.com/types'
+import { QueryOptions, TagT } from '@mersocarlin.com/types'
 import { tagMap } from '@blog/components/BlogPostTag'
 import BlogPostTag from '@blog/components/BlogPostTag'
-import useBlogQuery from '@common/hooks/useBlogQuery'
 
-function BlogSearch() {
-  const { query, updateQuery } = useBlogQuery()
+type Props = {
+  onChange: (newValue: QueryOptions) => void
+  value: QueryOptions
+}
 
+function BlogSearch({ onChange, value }: Props) {
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value: _searchTerm } = event.target
 
-      updateQuery({
+      onChange({
         q: _searchTerm,
-        tag: query.tag,
+        tag: value.tag,
       })
     },
-    [updateQuery, query],
+    [onChange, value],
   )
 
   const handleTagClick = useCallback(
     (tag: TagT) => () => {
-      updateQuery({
-        q: query.q,
-        tag: tag === query.tag ? undefined : tag,
+      onChange({
+        q: value.q,
+        tag: tag === value.tag ? undefined : tag,
       })
     },
-    [query, updateQuery],
+    [onChange, value],
   )
 
   const handleSubmit = useCallback(
@@ -44,7 +46,7 @@ function BlogSearch() {
         onChange={handleChange}
         placeholder="Search for blog posts"
         type="search"
-        value={query.q}
+        value={value.q}
       />
 
       <div className="flex flex-wrap justify-center mt-2">
@@ -57,7 +59,7 @@ function BlogSearch() {
           >
             <BlogPostTag
               tag={key as TagT}
-              variant={query.tag === key ? 'color' : 'bw'}
+              variant={value.tag === key ? 'color' : 'bw'}
             />
           </button>
         ))}

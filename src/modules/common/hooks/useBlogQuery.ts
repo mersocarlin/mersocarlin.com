@@ -1,18 +1,13 @@
 import { useCallback, useMemo } from 'react'
 
 import { useRouter } from 'next/router'
-import { TagT } from '@mersocarlin.com/types'
-
-type QueryOptions = {
-  q?: string
-  tag?: TagT
-}
+import { QueryOptions, TagT } from '@mersocarlin.com/types'
 
 export default function useBlogQuery() {
   const { query, replace } = useRouter()
 
-  const q: string | undefined = useMemo(
-    () => (query.q && typeof query.q === 'string' ? query.q : undefined),
+  const q: string = useMemo(
+    () => (query.q && typeof query.q === 'string' ? query.q : ''),
     [query],
   )
 

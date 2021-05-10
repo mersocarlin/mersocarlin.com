@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 
@@ -11,7 +11,7 @@ import Divider from '@common/components/Divider'
 import useBlogQuery from '@common/hooks/useBlogQuery'
 import Layout from '@mersocarlin.com/components/Layout'
 import Meta from '@mersocarlin.com/components/Meta'
-import { PageProps, Post } from '@mersocarlin.com/types'
+import { PageProps, Post, QueryOptions } from '@mersocarlin.com/types'
 
 const AsyncBlogSearchEmptyState = dynamic(
   () => import('@blog/components/BlogSearchEmptyState'),
@@ -21,7 +21,7 @@ interface IndexProps extends PageProps {
 }
 
 export default function Blog({ appVersion, posts }: IndexProps) {
-  const { query } = useBlogQuery()
+  const { query, updateQuery } = useBlogQuery()
 
   const filteredPosts = useMemo(
     () =>
@@ -37,7 +37,7 @@ export default function Blog({ appVersion, posts }: IndexProps) {
       <Meta title="Blog - Hemerson Carlin" />
 
       <section className="px-4 md:px-0">
-        <BlogSearch />
+        <BlogSearch onChange={updateQuery} value={query} />
       </section>
 
       <Divider size={20} />
