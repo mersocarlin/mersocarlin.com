@@ -15,6 +15,7 @@ const atomicMoneyPost: Post = {
   date: new Date().toISOString(),
   excerpt: '',
   slug: 'atomic-money-from-a-spreadsheet-to-a-side-project',
+  tags: [],
   title: 'Atomic Money - from a spreadsheet to a side project',
   type: 'preview',
 }
@@ -32,6 +33,7 @@ const uniqueIdPost: Post = {
   date: new Date().toISOString(),
   excerpt: '',
   slug: 'code-snippets-uniqueid',
+  tags: [],
   title: 'Code Snippets - uniqueId',
   type: 'preview',
 }
