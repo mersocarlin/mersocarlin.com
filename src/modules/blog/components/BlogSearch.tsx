@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 import { TagT } from '@mersocarlin.com/types'
 import { tagMap } from '@blog/components/BlogPostTag'
 import BlogPostTag from '@blog/components/BlogPostTag'
-import useBlogQuery from '@mersocarlin.com/modules/common/hooks/useBlogQuery'
+import useBlogQuery from '@common/hooks/useBlogQuery'
 
 function BlogSearch() {
   const { query, updateQuery } = useBlogQuery()
@@ -40,6 +40,7 @@ function BlogSearch() {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        data-test-id="blog-search-input"
         onChange={handleChange}
         placeholder="Search for blog posts"
         type="search"
@@ -50,6 +51,7 @@ function BlogSearch() {
         {Object.keys(tagMap).map((key) => (
           <button
             className="mb-1 mr-1 focus:outline-none"
+            data-test-id={`blog-search-tag-${key}`}
             key={key}
             onClick={handleTagClick(key as TagT)}
           >
