@@ -16,11 +16,30 @@ export type PostImage = {
   width: number
 }
 
+export type TagT =
+  | 'aspnet'
+  | 'career'
+  | 'ci/cd'
+  | 'css'
+  | 'docker'
+  | 'heroku'
+  | 'javascript'
+  | 'leadership'
+  | 'nodejs'
+  | 'personal'
+  | 'reactjs'
+  | 'styled-components'
+  | 'tailwindcss'
+  | 'testing'
+  | 'typescript'
+  | 'vercel'
+
 export type PostMdxScope = {
   coverImage?: PostImage
   date?: string
   excerpt: string
   ogImage?: PostImage
+  tags: TagT[]
   title: string
 }
 
@@ -30,6 +49,7 @@ export type Post = {
   date: string
   excerpt: string
   slug: string
+  tags: TagT[]
   title: string
 } & (
   | {

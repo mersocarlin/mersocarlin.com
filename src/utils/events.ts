@@ -1,3 +1,5 @@
+import { TagT } from '@mersocarlin.com/types'
+
 function sendEvent(event: any) {
   return fetch('/api/events', {
     body: JSON.stringify(event),
@@ -48,5 +50,13 @@ export function trackClickEditLink(component: string) {
     id: '30f6fbe3-db8d-4882-9fa3-c76d9c738595',
     path: getClientPath(),
     value: component,
+  })
+}
+
+export function trackTagClick(tag: TagT) {
+  return sendEvent({
+    id: '62c31286-cd0b-4d24-b94b-b7f5a6d096ab',
+    path: getClientPath(),
+    value: tag,
   })
 }
