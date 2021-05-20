@@ -3,6 +3,9 @@ import { TagT } from '@mersocarlin.com/types'
 function sendEvent(event: any) {
   return fetch('/api/events', {
     body: JSON.stringify(event),
+    headers: {
+      'Content-Type': 'application/json',
+    },
     method: 'POST',
   })
 }

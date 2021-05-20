@@ -127,14 +127,13 @@ export default async function events(
     return res.status(404).end()
   }
 
-  let parsedBody = JSON.parse(req.body)
-  if (!(parsedBody.id in eventMap)) {
+  if (!(req.body.id in eventMap)) {
     return res.status(400).end()
   }
 
   const siteEvent: SiteEvent = {
-    ...eventMap[parsedBody.id],
-    ...parsedBody,
+    ...eventMap[req.body.id],
+    ...req.body,
   }
 
   if (
