@@ -1,0 +1,126 @@
+---
+title: 'Code Snippets - Sort array of objects by a property in JavaScript'
+excerpt: "Series of small code snippets I eventually use when working in some of my projects. And today's code snippet is about how to sort an array of objects by a property in JavaScript."
+coverImage:
+  credit: '[Kevin Ku](https://unsplash.com/photos/w7ZyuGYNpRQ)'
+tags:
+  - javascript
+  - typescript
+---
+
+This is another blog post I write about code snippets I find useful. 
+Below is the list of the previous code snippets I have written about:
+
+- [Unique array in JavaScript](/blog/code-snippets-unique-array) 
+- [Pre-populate an array in JavaScript](/blog/code-snippets-pre-populate-an-array-in-javascript)
+- [uniqueId](/blog/code-snippets-uniqueid)
+
+Today's code snippet is about how to sort and array of objects by a property in JavaScript.
+
+Arrays in JavaScript have a built-in [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method to sort items in ascending order.
+However, that quite doesn't work out of the box if we'd like to sort an array of integers or objects:
+
+```ts
+const strArray = ["typescript", "javascript", "reactjs", "nodejs"]
+strArray.sort()
+console.log(strArray) // ["javascript", "nodejs", "reactjs", "typescript"] ✅
+
+
+const numberArray = [1, 10, 2, 100, 3, 1000]
+numberArray.sort()
+console.log(numberArray) // [1, 10, 100, 1000, 2, 3] ❌
+
+const objectArray = [
+  {
+    date: new Date(2021, 3, 28),
+    title: 'Treat Test Code as Production Code',
+  },
+  {
+    date: new Date(2021, 4, 10),
+    title: 'To-do lists, checkboxes and the definition of done',
+  },
+  {
+    date: new Date(2021, 4, 17),
+    title: 'Planning the integration of tags in my blog posts',
+  },
+]
+objectArray.sort()
+console.log(objectArray)
+/**
+ [
+  {
+     date: Wed Apr 28 2021 00:00:00,
+     title: 'Treat Test Code as Production Code'
+  }, 
+  {
+    date: Mon May 10 2021 00:00:00, 
+    title: 'To-do lists, checkboxes and the definition of done'
+  }, 
+  {
+    date: Mon May 17 2021 00:00:00, 
+    title: 'Planning the integration of tags in my blog posts'
+  }
+] ❌
+*/
+```
+
+The reason why `numberArray` and `objectArray` are not property sorted is because the `sort` method converts elements to strings and then compares the elements in the array.
+
+This is why all items that start with `1` come first in `numberArray`.
+
+The good news is that we can still sort items in the array the way we want.
+Especially for `objectArray` where we can sort it by either `title` or `date` properties.
+I actually use this to sort blog posts in my blog and you can see the code [right here](https://github.com/mersocarlin/mersocarlin.com/blob/43c3dd6bfbea91a2da613be8b471b3da9932bb97/src/utils/posts.ts#L5).
+
+The `sort` method takes a callback function with 2 arguments we can use to create our custom comparison.
+The rule of thumb I use is: 
+
+- return `1` if I want to sort items ascending
+- return `-1` if I want to sort items descending
+
+We can also extract the compare function for reusability:
+
+```ts
+const numberArray = [1, 10, 2, 100, 3, 1000]
+numberArray.sort((itemA, itemB) => itemA > itemB ? 1 : -1)
+console.log(numberArray) // [1, 2, 3, 10, 100, 1000] ✅
+
+const objectArray = [
+  {
+    date: new Date(2021, 3, 28),
+    title: 'Treat Test Code as Production Code',
+  },
+  {
+    date: new Date(2021, 4, 10),
+    title: 'To-do lists, checkboxes and the definition of done',
+  },
+  {
+    date: new Date(2021, 4, 17),
+    title: 'Planning the integration of tags in my blog posts',
+  },
+]
+
+function sortByName(blogPostA, blogPostB) {
+  return blogPostA.title > blogPostB.title ? 1 : -1
+}
+
+objectArray.sort(sortByName)
+/**
+ [
+   {
+     date: Mon May 17 2021 00:00:00, 
+     title: 'Planning the integration of tags in my blog posts'
+   }
+   {
+     date: Mon May 10 2021 00:00:00, 
+     title: 'To-do lists, checkboxes and the definition of done'
+    }, 
+    {
+       date: Wed Apr 28 2021 00:00:00,
+       title: 'Treat Test Code as Production Code'
+    }, 
+] ✅
+*/
+```
+
+I hope that's helpful and interesting to you. 👋🏼
