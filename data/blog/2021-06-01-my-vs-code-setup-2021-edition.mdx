@@ -1,0 +1,132 @@
+---
+title: 'My VS Code Setup - 2021 Edition'
+excerpt: 'Sharing my top Visual Studio Code extensions in 2021.'
+coverImage:
+  credit: '[Hemerson Carlin](https://mersocarlin.com)'
+tags:
+  - personal
+---
+
+Sharing my top Visual Studio Code extensions in 2021.
+
+## Theme
+
+- Color Theme: [Atom One Dark](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark)
+- Icons: [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+- Font family: "Monaco, Menlo, 'Courier New', monospace" (_not a big fan of Font Ligatures but I can see its value_).
+
+I have also setup custom colors in `workbench.colorCustomizations`: 
+
+```json
+"workbench.colorCustomizations": {
+  "activityBarBadge.background": "#4CAF81",
+  "breadcrumb.activeSelectionForeground": "#4CAF81",
+  "editor.findMatchBorder": "#4CAF81",
+  "editorSuggestWidget.highlightForeground": "#4CAF81",
+  "editorWidget.border": "#4CAF81",
+  "editorWidget.resizeBorder": "#4CAF81",
+  "list.activeSelectionForeground": "#4CAF81",
+  "list.highlightForeground": "#4CAF81",
+  "list.inactiveSelectionForeground": "#4CAF81",
+  "menu.selectionForeground": "#4CAF81",
+  "menubar.selectionForeground": "#4CAF81",
+  "notificationLink.foreground": "#4CAF81",
+  "panelTitle.activeBorder": "#4CAF81",
+  "pickerGroup.foreground": "#4CAF81",
+  "progressBar.background": "#4CAF81",
+  "scrollbarSlider.activeBackground": "#4CAF8150",
+  "selection.background": "#4CAF8140",
+  "settings.headerForeground": "#4CAF81",
+  "settings.modifiedItemIndicator": "#4CAF81",
+  "tab.activeBorder": "#4CAF81",
+  "terminal.background": "#232628",
+  "textLink.foreground": "#4CAF81"
+},
+```
+
+## Extensions
+
+### Prettier
+
+[Prettier in Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+Opinionated code formatter that automatically formats code for you.
+
+I have a setting on in my VS code to always format a file when I save it so I don't have to worry about formatting the code myself which is a bit of pain and time consuming.
+
+It's really helpful if you're learning to code as it forces you into good coding practices.
+
+This is the setting I use that autoformats a file on save:
+
+```json
+"[javascript]": {
+  "editor.formatOnSave": true
+},
+"[javascriptreact]": {
+  "editor.formatOnSave": true
+},
+"[typescript]": {
+  "editor.formatOnSave": true
+},
+"[typescriptreact]": {
+  "editor.formatOnSave": true
+},
+```
+
+### GitLens
+
+[GitLens in Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+
+Git features in VS Code.
+The feature I use every day is the ability to see a live blame on the line I'm currently in.
+
+Super useful when working with other people on the team as you can quickly see who has changed the code, when that line was changed/added as well as the commit message.
+
+<img alt="GitLens" height="179" src="/assets/blog/2021-06-01-my-vs-code-setup-2021-edition/gitlens.png" title="GitLens" width="1000" />
+
+### Live Share
+
+[Live Share in Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)
+
+> It's like Google Docs, but for code.
+>
+> **Kyle Cook**
+
+Great extension to do pair programming.
+Everyone on the session can modify, see the same file and work on the same project side by side.
+
+I've been using this extension a lot lately with my team members.
+Zoom call + VS Code Live Share and we're ready for a virtual pair programming 🙌🏼.
+
+### Quokka
+
+[Quokka in Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)
+
+Fast JS/TS prototyping tool.
+I'm constantly looking for quick code validations to test methods, check its output, `console.log`...
+
+What I like most about it is that I don't have to leave VS Code in order to validate whether a JS snippet I'm about to write is going to work or not.
+
+### Auto Close Tag
+
+[Auto Close Tag in Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
+
+Very handy for HTML or JSX/TSX syntax.
+It became so automatic that I rarely need to close a `div`, `p`, `a` or `span` tags.
+
+### Better Comments
+
+[Better Comments in Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments)
+
+Highlights various types of comments in the code.
+
+<img alt="Better comments" height="414" src="/assets/blog/2021-06-01-my-vs-code-setup-2021-edition/better-comments.png" title="Better comments" width="459" />
+
+### Settings Sync
+
+[Settings Sync in Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+
+Keep the same VS Code configuration (themes, colors, extensions, snippets...) across multiple machines.
+I can easily save & update my settings with a single command in VS Code.
+
+I hope that's helpful and interesting to you. 👋🏼
