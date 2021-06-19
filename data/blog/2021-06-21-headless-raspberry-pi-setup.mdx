@@ -1,0 +1,96 @@
+---
+title: 'Headless Raspberry Pi Setup'
+excerpt: 'Documenting the headless setup of my Raspberry Pi.'
+coverImage:
+  credit: '[Benjamin Nelan](https://pixabay.com/photos/raspberry-pi-pi-electronics-1719219/)'
+tags:
+  - personal
+---
+
+I have recently bought a Raspberry Pi 4 Model B and decided I should document the basic steps for future reference given I have never setup a Pi before.
+
+In case you happen to be at the same spot as myself, I hope you find this article helpful too.
+
+## Installing the Operating System to a microSD card 
+
+I used [Raspberry Pi Imager](https://www.raspberrypi.org/software/) to install the operating system on the SD card (_it has a variety of Operating Systems for you to choose_) and I also had to enable SSH as I didn't have a spare monitor nor an external keyboard to set it up afterwards.
+
+<img alt="Raspberry Pi Imager" height="416" src="/assets/blog/2021-06-21-headless-raspberry-pi-setup/raspberry-pi-imager.png" title="Raspberry Pi Imager" width="678" />
+
+Raspberry Pi OS Lite was my choice as I knew in advance I was not going to need a desktop environment to access to my Pi.
+
+## Enabling SSH
+
+After installing the OS on the SD card, we need to add an empty `ssh` file in it in order to have remote access via SSH.
+
+SSH is disabled by default and creating this file is enough to turn on this option.
+
+Running `diskutil list` should give us the location of the SSD card: 
+
+```bash
+$ diskutil list
+
+/dev/disk0 (internal, physical):
+
+/dev/disk1 (synthesized):
+
+/dev/disk2 (external, physical):  =====>>>>> this is the SSD card
+```
+
+I ran this step a few times and depending on your OS the SD card is umounted automatically. 
+My recommentation is to check whether you can access `/Volumes/boot` first.
+This is where the empty `ssh` file should be created.
+
+Should you have access to `/Volumes/boot`, happy days!
+If not, try mounting and/or unmounting `/dev/disk2` and check if you have access to `/Volumes/boot` again.
+
+```bash
+$ diskutil unmount /dev/disk2 # unmount the SSD card
+$ diskutil mountDisk /dev/disk2  # mount the SSD card
+```
+
+Once you are sorted with that, simply run the following command to create the empty `ssh` file:
+
+```bash
+$ touch /Volumes/boot/ssh # creates the empty ssh file: this automatically enables SSH in the Raspberry Pi after booting it up.
+```
+
+Last but not least, eject the disk:
+
+```bash
+$ diskutil eject /dev/disk2
+```
+
+## Connecting to the Raspberry Pi via SSH
+
+`raspberrypi.local` should be Pi's default host on your local network. 
+If that's not the case, you'll need access to your router in order to identify the Pi's IP address.
+I'm not gonna deep dive on how to do that since every router is different. 
+
+As I'm running a [mesh Wi-Fi system at home](/blog/how-i-made-the-wifi-speed-at-home-7x-faster) I didn't have to dig much to find the Pi's IP address.
+
+The default username and password for the Raspberry Pi are `pi` and `raspberry`. 
+Needless to say you should definitely change those after setting up your Raspberry Pi.
+
+```bash
+# Connect to the Raspberry Pi via SSH
+$ ssh pi@raspberrypi.local
+# when asked to enter the password: raspberry
+```
+
+## Setting up the Raspberry Pi
+
+Once you're in, run `sudo raspi-config` to start the configuration. 
+
+<img alt="raspi-config's configuration interface" height="350" src="/assets/blog/2021-06-21-headless-raspberry-pi-setup/raspi-config.png" title="raspi-config's configuration interface" width="869" />
+
+I didn't do much here.
+A few things I'd say are important to update are:
+
+- 🔐 Password.
+- 🌎 Localisation options (check `Locale`, `Timezone` and `WLAN Country`).
+- 🚀 Update this tool to the latest version.
+
+Done! Your Raspberry Pi is ready to be used. 
+
+I hope that's helpful and interesting to you. 👋🏼
