@@ -5,15 +5,13 @@ interface BlogPostDateProps {
 }
 
 export default function BlogPostDate({ date }: BlogPostDateProps) {
-  const options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-
   return (
     <time dateTime={date} itemProp="datePublished">
-      {new Intl.DateTimeFormat('en-US', options).format(new Date(date))}
+      {new Intl.DateTimeFormat('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date(date))}
     </time>
   )
 }
