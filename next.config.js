@@ -1,9 +1,9 @@
 // next.config.js
 module.exports = {
-  webpack5: true,
   images: {
     domains: ['pbs.twimg.com'],
   },
+  swcMinify: true,
   webpack: (config, { isServer }) => {
     if (isServer) {
       require('./scripts/create-rss')
