@@ -53,6 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
       props: {
         appVersion: pkg.version,
+        loadGA: process.env.CONFIG_ENV === 'production',
       },
     }
   }
@@ -67,6 +68,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       appVersion: pkg.version,
+      loadGA: process.env.CONFIG_ENV === 'production',
       post,
       previousPosts,
     },

@@ -35,6 +35,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       appVersion: pkg.version,
+      loadGA: process.env.CONFIG_ENV === 'production',
       post,
     },
   }
