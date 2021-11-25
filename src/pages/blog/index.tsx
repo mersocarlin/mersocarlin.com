@@ -29,7 +29,7 @@ export default function Blog({ appVersion, posts }: IndexProps) {
         q: query.q,
         tag: query.tag,
       }),
-    [query],
+    [posts, query.q, query.tag],
   )
 
   return (
@@ -70,6 +70,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       appVersion: pkg.version,
+      loadGA: process.env.CONFIG_ENV === 'production',
       posts: await getAllBlogPostsPreview(),
     },
   }

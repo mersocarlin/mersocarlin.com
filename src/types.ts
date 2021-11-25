@@ -2,6 +2,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 export type PageProps = {
   appVersion: string
+  loadGA: boolean
 }
 
 export type Author = {

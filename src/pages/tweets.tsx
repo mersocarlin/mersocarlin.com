@@ -25,7 +25,7 @@ export default function Tweets({ appVersion, tweets }: Props) {
 
       <div className="px-4 md:p-0">
         <section className="w-full md:w-3/4 m-auto mersocarlin-text-gray text-lg">
-          <p className="mb-3 leading-7">Collection of tweets I've liked.</p>
+          <p className="mb-3 leading-7">{`Collection of tweets I've liked.`}</p>
 
           <p className="mb-3 leading-7">
             Mostly tech related but you can find one or two that also make me
@@ -35,13 +35,14 @@ export default function Tweets({ appVersion, tweets }: Props) {
           <Header as="h2">🚀 How do I generate this page?</Header>
 
           <p className="mb-3 leading-7">
-            I'm using Static Generation (SSG) so every tweet you see here is
-            created when I release a new version of my site.
+            {`I'm using Static Generation (SSG) so every tweet you see here is
+            created when I release a new version of my site.`}
           </p>
 
           <p className="mb-3 leading-7">
-            Which means I don't have to fetch tweets from Twitter API everytime
-            someone visits <Link href="/tweets">/tweets</Link> on my site.
+            {`Which means I don't have to fetch tweets from Twitter API everytime
+            someone visits `}
+            <Link href="/tweets">/tweets</Link> on my site.
           </p>
 
           <p className="mb-3 leading-7">
@@ -83,6 +84,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       appVersion: pkg.version,
+      loadGA: process.env.CONFIG_ENV === 'production',
       tweets,
     },
   }

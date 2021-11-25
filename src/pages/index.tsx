@@ -32,10 +32,10 @@ export default function Index({ appVersion, posts }: Props) {
         <section className="flex flex-col space-y-4 mt-12">
           <p className="text-lg">Hello there 👋🏼</p>
           <p className="text-lg">
-            I'm Hemerson Carlin, also known as <em>mersocarlin</em>, a
-            passionate and resourceful full-stack Software Engineer with 10+
-            years of experience focused on agile development, architecture and
-            team building.
+            {`I'm Hemerson Carlin, also know as `}
+            <em>mersocarlin</em>, a passionate and resourceful full-stack
+            Software Engineer with 10+ years of experience focused on agile
+            development, architecture and team building.
           </p>
           <p className="text-lg">
             I have experience in designing and developing web applications using
@@ -43,7 +43,7 @@ export default function Index({ appVersion, posts }: Props) {
             React.
           </p>
           <p className="text-lg">
-            I'm Technical Lead at{' '}
+            {`I'm Technical Lead at `}
             <Link href="https://www.hubspot.com/" target="_blank">
               HubSpot
             </Link>{' '}
@@ -89,6 +89,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       appVersion: pkg.version,
+      loadGA: process.env.CONFIG_ENV === 'production',
       posts: posts.slice(0, 3),
     },
   }
