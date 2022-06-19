@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [16.x]
 
     steps:
       - name: Begin CI...
@@ -30,7 +30,7 @@ jobs:
           key: nodeModules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             nodeModules-
-      
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
         env:
@@ -50,12 +50,12 @@ jobs:
         run: yarn build
         env:
           CI: true
-      
+
       - name: Deploy to Vercel production
         run: |
-          NOW_ORG_ID=${{ secrets.NOW_ORG_ID }} \
-          NOW_PROJECT_ID=${{ secrets.NOW_PROJECT_ID_PRODUCTION }} \
+          VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }} \
+          VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID }} \
           npx vercel \
             --local-config vercel.json \
-            --token ${{ secrets.NOW_TOKEN }} \
+            --token ${{ secrets.VERCEL_TOKEN }} \
             --prod

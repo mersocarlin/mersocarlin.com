@@ -1,0 +1,98 @@
+---
+title: 'Remote SSH with Visual Studio Code'
+excerpt: 'Documenting a simple set up for remote access with SSH and Visual Studio Code.'
+coverImage:
+  credit: '[Towfiqu barbhuiya](https://unsplash.com/photos/FnA5pAzqhMM)'
+tags:
+  - personal
+---
+
+It’s been exactly one year since [I set up my Raspberry Pi](/blog/headless-raspberry-pi-setup) and I couldn’t be more happy with that!
+
+Not only pretty much my entire house is running on [Home Assistant](https://www.home-assistant.io) now but also [Pi-hole](https://pi-hole.net) plays an important part on my network infrastructure.
+
+But over the last year there's one task I've been doing repetitive times over and over: accessing the Raspberry Pi remotely with SSH.
+
+It becomes super boring having to run `ssh username@ip-address-of-rasberry-pi` all the time to access the Pi, not to mention I need to enter my password too.
+And so a simple “one liner” command is actually translated into 8 steps:
+
+1. Open the terminal
+2. Enter the ssh command (`ssh username@ip-address-of-rasberry-pi`)
+3. I’m prompt to enter the password
+4. I don’t know any of my passwords and so I need to open the password manager tool
+5. Find the password for the Pi
+6. Copy the password
+7. Go back to the terminal and paste the password
+8. I’m in!
+
+Don’t get me wrong, the terminal is great but I also like some “easy to use” environments too.
+
+## Enter SSH key + Visual Studio code
+
+> An SSH key is an access credential in the [SSH protocol](https://www.ssh.com/academy/ssh/protocol). Its function is similar to that of user names and passwords, but the keys are primarily used for automated processes and for implementing single sign-on by system administrators and power users.
+>
+> -- <cite>https://www.ssh.com/academy/ssh/key</cite>
+
+Combined with Visual Studio code, I get the best of both worlds: remote access made easy + the visual environment I was looking for.
+
+There are a few things that need to be set up and that’s what this blog post is about.
+
+Firstly, make sure you have [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension installed in your Visual Studio code.
+This is what makes everything possible once SSH is set up.
+
+Secondly, we need an SSH key.
+I usually follow GitHub’s documentation for these, so make sure to follow [this guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key) before proceeding.
+
+Third (and optional), you can save the SSH config in a custom `config` file inside the `.ssh` folder.
+This is useful if you work with multiple SSH logins such as GitHub, GitLab, enterprise git (like the one  from your employer), Raspberry Pi (such as the one described in this blog post) and more.
+
+My config file looks something like this:
+
+```bash
+# GitHub
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/<name_of_ssh_file_for_github>
+
+# GitLab
+Host gitlab.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/<name_of_ssh_file_for_gitlab>
+
+# Raspberry Pi
+Host <ip-address-of-raspberry-pi>
+  AddKeysToAgent yes
+  UseKeychain yes
+  User <username>
+  IdentityFile ~/.ssh/<name_of_ssh_file_for_accesing_raspberry_pi>
+
+# Enterprise git
+Host <host_of_enterprise_git>
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/<name_of_ssh_file_for_enterprise_git>
+```
+
+Lastly, it’s time to install the SSH key on Raspberry Pi so the key becomes an authorized key.
+For that, we’re going to be using the [ssh-copy-id](https://www.ssh.com/academy/ssh/copy-id) command like so:
+
+```bash
+ssh-copy-id -i ~/.ssh/<name_of_ssh_file_for_accesing_raspberry_pi> <username>@<ip-address-of-raspberry-pi>
+```
+
+Assuming the ssh key name is `id_raspberry_pi`, the username is `pi` and the ip address of the Raspberry Pi is 192.168.30.9, the `ssh-copy-id` command would be:
+
+```bash
+ssh-copy-id -i ~/.ssh/id_raspberry_pi pi@192.168.30.9
+```
+
+That’s it! You should be good to access the Pi or any other remote machine.
+And the 8 and yet painful steps have been narrowed down by only 3:
+
+1. Open Visual Studio Code
+2. Click to access the Pi with SSH
+3. I’m in!
+
+I hope that's helpful and interesting to you. 👋🏼
