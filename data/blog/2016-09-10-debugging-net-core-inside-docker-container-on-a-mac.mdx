@@ -39,7 +39,7 @@ The second motivation is that .NET Core is yet new for non Windows users and mos
 
 If you are a Visual Studio user, that hard work is already done. Only right click on your project, select Add -> Docker Support and it should work.
 
-<img alt="Adding Docker Support in Visual Studio" height="609" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-support-in-visual-studio.jpg" title="Adding Docker Support in Visual Studio" width="701" />
+<Img alt="Adding Docker Support in Visual Studio" height="609" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-support-in-visual-studio.jpg" title="Adding Docker Support in Visual Studio" width="701" />
 
 ## Getting your hands dirty
 
@@ -65,7 +65,7 @@ For more info you can find by clicking [here](https://github.com/OmniSharp/gener
 
 
 
-<img alt="Creating the Web Api project with generator-aspnet" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/creating-web-api-with-generator.gif" title="Creating the Web Api project with generator-aspnet" width="921" />
+<Img alt="Creating the Web Api project with generator-aspnet" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/creating-web-api-with-generator.gif" title="Creating the Web Api project with generator-aspnet" width="921" />
 
 From now on we are ready to run our project.
 
@@ -75,7 +75,7 @@ This used to be the not so easy part.
 At least it was before I discovered [this project on GitHub](https://github.com/Microsoft/generator-docker).
 
 
-<img alt="Adding Docker debug files" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-debug-files.gif" title="Adding Docker debug files" width="921" />
+<Img alt="Adding Docker debug files" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-debug-files.gif" title="Adding Docker debug files" width="921" />
 
 It takes care of what sort of images you need to use to run or debug your project.
 
@@ -99,6 +99,6 @@ Start the container:
 dockerTask.sh composeForDebug
 ```
 
-<img alt="Debug Process" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/debug-process.gif" title="Debug Process" width="921" />
+<Img alt="Debug Process" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/debug-process.gif" title="Debug Process" width="921" />
 
 The sample code is hosted on my [GitHub page](https://github.com/mersocarlin/aspnet-core-docker-debug).

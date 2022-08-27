@@ -15,7 +15,7 @@ tags:
 I was recently working on a React application and hit a scenario I thought it could be a dead end:
 
 1. `<Parent />` renders `<Child />` but both live in separate repositories. This is not a problem per-se and even if they live in the same repository, I would have hit the same scenario.
-2. `<Child />` is fully autonomous and knows how to fetch data, but doesn't know how to [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). 
+2. `<Child />` is fully autonomous and knows how to fetch data, but doesn't know how to [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete).
 3. `<Parent />` knows how to CRUD and needs to tell `<Child />` to update itself when something has been created, deleted or updated.
 
 The reason `<Child />` doesn’t know how to CRUD is because it can be reused by other parent components where CRUD flows are specific for each one of them and such flows can’t be shared.
@@ -27,18 +27,18 @@ For that reason, I’ve decided to implement the [Publish-subscribe](https://en.
 
 ## Publish-subscribe Pattern
 
-Publish-subscribe (pub-sub) is a messaging pattern where _publishers_ broadcast messages to its _subscribers_ that are listening to specific events that happen over time. 
+Publish-subscribe (pub-sub) is a messaging pattern where _publishers_ broadcast messages to its _subscribers_ that are listening to specific events that happen over time.
 
 Think of an e-commerce website with a mini shopping-cart widget in the header: when a customer clicks to buy a product, the shopping cart is automatically updated with the amount of items and price updates so customers have a fast feedback on how much they are going to pay for their purchase.
 
-<img alt="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)" height="173" src="/assets/blog/2021-04-06-pub-sub-in-a-react-application/shopping-cart.png" title="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)" width="323" />
+<Img alt="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)" height="173" src="/assets/blog/2021-04-06-pub-sub-in-a-react-application/shopping-cart.png" title="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)" width="323" />
 
 In some cases, both header and the product page are completely different applications that neither can’t communicate directly with each other nor share the same `<Parent />` component. Thus the reason they need some sort of messaging communication to start sharing data back and forth between them.
 
 Another example is a chat application where events (messages) don’t come very often. So we also need to put a _listener_ in place that notifies us when a new message comes in.
 
-This messaging pattern is also widely used by the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern): a subject keeps a list of dependents (_also known as observers_) and notifies them of any changes or events. 
-Each observer will then use the streamed data and act accordingly by making API calls, database calls, changes in the UI, etc. 
+This messaging pattern is also widely used by the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern): a subject keeps a list of dependents (_also known as observers_) and notifies them of any changes or events.
+Each observer will then use the streamed data and act accordingly by making API calls, database calls, changes in the UI, etc.
 
 You might also find the above described as Event Bus: an event-driven system that implements the pub-sub pattern.
 
@@ -46,7 +46,7 @@ You might also find the above described as Event Bus: an event-driven system tha
 
 ## The Observer class
 
-Now that the overall concept is known, it’s time to code! 
+Now that the overall concept is known, it’s time to code!
 
 My initial approach is to create an `Observer` class with tree methods: `on`, `off` and `notify`.
 
@@ -96,7 +96,7 @@ We’ve got two next steps: set up the observer in `<Child />` so it can listen 
 
 ```ts
 function Child() {
-  
+
   /**
    * subscribes to @ACTION_NAME event to execute "runsSomeComplexCode" method
    */
@@ -131,7 +131,7 @@ function Parent() {
 
 ## Conclusion
 
-Propagating props top-down in React is definitely a better approach. 
+Propagating props top-down in React is definitely a better approach.
 `<Parent />` should probably own the data while `<Child />` would act as a “dumb” component.
 
 As I have explained at the start of this post I was unable to follow that path and [lifting state up](https://reactjs.org/docs/lifting-state-up.html) could not help me this time.

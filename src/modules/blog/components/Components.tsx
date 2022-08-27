@@ -28,7 +28,7 @@ const components = {
   h2: (props: any) => <Header as="h2" {...props} />,
   h3: (props: any) => <Header as="h3" {...props} />,
   hr: (props: any) => <Divider size={30} {...props} />,
-  img: BlogPostImage,
+  Img: BlogPostImage,
   ol: (props: any) => <ol className="ml-8 mb-3 list-decimal" {...props} />,
   p: (props: any) => <p className="mb-3 leading-7" {...props} />,
   pre: (props: any) => (
