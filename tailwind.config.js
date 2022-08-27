@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [
+  content: [
     './src/components/**/*.tsx',
     './src/modules/**/*.tsx',
     './src/pages/**/*.tsx',
@@ -22,9 +22,6 @@ module.exports = {
     fontFamily: {
       sans: ['Josefin Sans', 'Helvetica', 'Arial'],
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
 }

@@ -33,7 +33,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
             {post.title}
           </div>
           <p
-            className="overflow-ellipsis overflow-hidden text-sm line-clamp-3"
+            className="text-ellipsis overflow-hidden text-sm line-clamp-3"
             itemProp="description"
             title={post.excerpt}
           >
