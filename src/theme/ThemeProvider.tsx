@@ -32,16 +32,16 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       body.classList.add(appTheme)
       setTheme(appTheme)
     }
-  }, [])
+  }, [setTheme])
 
   const onUpdateTheme = React.useCallback((newTheme: string) => {
     trackChangeTheme(newTheme)
     setBodyCssClass(newTheme)
-  }, [])
+  }, [setBodyCssClass])
 
   React.useEffect(() => {
     setBodyCssClass(theme)
-  }, [])
+  }, [setBodyCssClass, theme])
 
   return (
     <ThemeContext.Provider

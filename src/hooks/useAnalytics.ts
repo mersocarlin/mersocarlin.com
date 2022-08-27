@@ -22,7 +22,7 @@ function useAnalytics() {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
-  }, [])
+  }, [router.asPath, router.events])
 }
 
 export default useAnalytics
