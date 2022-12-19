@@ -8,7 +8,7 @@ export default function useBlogQuery() {
 
   const q: string = useMemo(
     () => (query.q && typeof query.q === 'string' ? query.q : ''),
-    [query],
+    [query]
   )
 
   const tag: TagT | undefined = useMemo(
@@ -16,7 +16,7 @@ export default function useBlogQuery() {
       (query.tag && typeof query.tag === 'string'
         ? query.tag
         : undefined) as TagT,
-    [query],
+    [query]
   )
 
   const updateQuery = useCallback(
@@ -32,7 +32,7 @@ export default function useBlogQuery() {
         shallow: true,
       })
     },
-    [replace],
+    [replace]
   )
 
   return {

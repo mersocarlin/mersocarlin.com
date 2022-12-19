@@ -19,7 +19,7 @@ function BlogSearch({ onChange, value }: Props) {
         tag: value.tag,
       })
     },
-    [onChange, value],
+    [onChange, value]
   )
 
   const handleTagClick = useCallback(
@@ -29,14 +29,14 @@ function BlogSearch({ onChange, value }: Props) {
         tag: tag === value.tag ? undefined : tag,
       })
     },
-    [onChange, value],
+    [onChange, value]
   )
 
   const handleSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
     },
-    [],
+    []
   )
 
   return (

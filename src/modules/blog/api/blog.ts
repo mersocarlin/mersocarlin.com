@@ -25,7 +25,7 @@ const AUTHOR: Author = {
 
 async function getFileContentsBySlug<MdxScopeType>(
   fileOrFolderName: string,
-  slug: string = '',
+  slug: string = ''
 ) {
   const filePath = slug
     ? join(root, 'data', fileOrFolderName, `${slug}.mdx`)
@@ -44,7 +44,7 @@ async function getFileContentsBySlug<MdxScopeType>(
         rehypePlugins: [],
       },
       scope: data,
-    },
+    }
   )) as MDXRemoteSerializeResult<MdxScopeType>
 
   return {
@@ -56,7 +56,7 @@ async function getFileContentsBySlug<MdxScopeType>(
 
 function getBlogPostFileName(slug: string) {
   const fileNameWithExtension = ALL_BLOG_POSTS.find((file) =>
-    file.includes(slug),
+    file.includes(slug)
   ) as string
   const fileName = removeExtension(fileNameWithExtension)
 
@@ -70,7 +70,7 @@ export async function getBlogPostPreviewBySlug(slug: string): Promise<Post> {
   const { fileName } = getBlogPostFileName(slug)
   const { mdxSource } = await getFileContentsBySlug<PostMdxScope>(
     'blog',
-    fileName,
+    fileName
   )
 
   const scope = mdxSource.scope || { excerpt: '', title: '', tags: [] }
@@ -95,11 +95,8 @@ export async function getBlogPostPreviewBySlug(slug: string): Promise<Post> {
 
 export async function getBlogPostBySlug(slug: string): Promise<Post> {
   const { fileName, fileNameWithExtension } = getBlogPostFileName(slug)
-  const {
-    mdxSource,
-    timeToRead,
-    wordCount,
-  } = await getFileContentsBySlug<PostMdxScope>('blog', fileName)
+  const { mdxSource, timeToRead, wordCount } =
+    await getFileContentsBySlug<PostMdxScope>('blog', fileName)
 
   const scope = mdxSource.scope || { excerpt: '', title: '', tags: [] }
   const { coverImage, ogImage } = scope
@@ -133,13 +130,10 @@ export async function getBlogPostBySlug(slug: string): Promise<Post> {
 
 export async function getPageContentBySlug(
   fileOrFolderName: string,
-  slug: string = '',
+  slug: string = ''
 ): Promise<Post> {
-  const {
-    mdxSource,
-    timeToRead,
-    wordCount,
-  } = await getFileContentsBySlug<PostMdxScope>(fileOrFolderName, slug)
+  const { mdxSource, timeToRead, wordCount } =
+    await getFileContentsBySlug<PostMdxScope>(fileOrFolderName, slug)
 
   const scope = mdxSource.scope || { excerpt: '', title: '', tags: [] }
 
@@ -172,7 +166,7 @@ export async function getPageContentBySlug(
 
 export async function getAllBlogPostsPreview(): Promise<Post[]> {
   const postsPromises = ALL_BLOG_POSTS.map((fileName) =>
-    getBlogPostPreviewBySlug(getSlugByFileName(fileName)),
+    getBlogPostPreviewBySlug(getSlugByFileName(fileName))
   )
 
   const posts = await Promise.all(postsPromises)
@@ -183,7 +177,7 @@ export async function getAllBlogPostsPreview(): Promise<Post[]> {
   // Omit future blog posts if running in production
   return posts
     .filter((post) =>
-      isProduction ? new Date(post.date).getTime() <= today : true,
+      isProduction ? new Date(post.date).getTime() <= today : true
     )
     .sort(sortByDateDesc)
 }

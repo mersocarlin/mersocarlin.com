@@ -9,7 +9,7 @@ interface ThemeContextProps {
 }
 
 const ThemeContext = React.createContext<ThemeContextProps | undefined>(
-  undefined,
+  undefined
 )
 
 interface ThemeProviderProps {
@@ -21,23 +21,29 @@ const supportedThemes = ['dark', 'light']
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useLocalStorage('mersocarlin:theme', 'light')
 
-  const setBodyCssClass = React.useCallback((theme: string) => {
-    const appTheme = supportedThemes.includes(theme) ? theme : 'light'
-    const body = document.querySelector('body')
+  const setBodyCssClass = React.useCallback(
+    (theme: string) => {
+      const appTheme = supportedThemes.includes(theme) ? theme : 'light'
+      const body = document.querySelector('body')
 
-    if (body) {
-      supportedThemes.forEach((themeName) => {
-        body.classList.remove(themeName)
-      })
-      body.classList.add(appTheme)
-      setTheme(appTheme)
-    }
-  }, [setTheme])
+      if (body) {
+        supportedThemes.forEach((themeName) => {
+          body.classList.remove(themeName)
+        })
+        body.classList.add(appTheme)
+        setTheme(appTheme)
+      }
+    },
+    [setTheme]
+  )
 
-  const onUpdateTheme = React.useCallback((newTheme: string) => {
-    trackChangeTheme(newTheme)
-    setBodyCssClass(newTheme)
-  }, [setBodyCssClass])
+  const onUpdateTheme = React.useCallback(
+    (newTheme: string) => {
+      trackChangeTheme(newTheme)
+      setBodyCssClass(newTheme)
+    },
+    [setBodyCssClass]
+  )
 
   React.useEffect(() => {
     setBodyCssClass(theme)

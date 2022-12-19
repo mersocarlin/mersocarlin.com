@@ -21,7 +21,7 @@ export async function getTweets(ids: string[]): Promise<Tweet[]> {
       headers: {
         Authorization: `Bearer ${process.env.TWITTER_TOKEN}`,
       },
-    },
+    }
   )
 
   const tweetsResponse = await response.json()
@@ -30,7 +30,7 @@ export async function getTweets(ids: string[]): Promise<Tweet[]> {
 
   function getAuthor(authorId: string): TweetAuthor {
     const authorResponse = includes.users.find(
-      (author: any) => author.id === authorId,
+      (author: any) => author.id === authorId
     )
 
     return {
@@ -72,7 +72,7 @@ export async function getTweets(ids: string[]): Promise<Tweet[]> {
     .sort((a: any, b: any) =>
       new Date(a.created_at).getTime() > new Date(b.created_at).getTime()
         ? -1
-        : 1,
+        : 1
     )
     .map((tweetResponse: any) => {
       const tweet: Tweet = {
@@ -82,7 +82,7 @@ export async function getTweets(ids: string[]): Promise<Tweet[]> {
           ...mapUrls(tweetResponse),
           ...mapMentions(tweetResponse),
         ].sort((a: TweetEntity, b: TweetEntity) =>
-          a.start > b.start ? 1 : -1,
+          a.start > b.start ? 1 : -1
         ),
         id: tweetResponse.id,
         likes: tweetResponse.public_metrics.like_count,

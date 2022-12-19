@@ -17,29 +17,29 @@
 
 @layer components {
   .mersocarlin-text-gray {
-    @apply text-gray-500 dark:text-gray-200
+    @apply text-gray-500 dark:text-gray-200;
   }
 
   .mersocarlin-text-primary {
-    @apply text-red-600 dark:text-red-400
+    @apply text-red-600 dark:text-red-400;
   }
 
   .mersocarlin-border-primary {
-    @apply border-red-600 dark:border-red-400
+    @apply border-red-600 dark:border-red-400;
   }
 
   .mersocarlin-bg-white {
-    @apply bg-white dark:bg-gray-700
+    @apply bg-white dark:bg-gray-700;
   }
 
   .mersocarlin-border-gray {
-    @apply border-gray-500 dark:border-gray-200
+    @apply border-gray-500 dark:border-gray-200;
   }
 }
 
 @layer utilities {
   /* Code syntax css */
-    /*
+  /*
     Atom One Dark by Daniel Gamage
     Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
     base:    #282c34
@@ -59,7 +59,7 @@
   p > code,
   ol > li > code,
   ul > li > code {
-    @apply text-xs mersocarlin-text-gray bg-gray-200 dark:bg-gray-700 rounded p-1
+    @apply text-xs mersocarlin-text-gray bg-gray-200 dark:bg-gray-700 rounded p-1;
   }
 }
 
@@ -139,4 +139,3 @@
 .hljs-link {
   text-decoration: underline;
 }
-
