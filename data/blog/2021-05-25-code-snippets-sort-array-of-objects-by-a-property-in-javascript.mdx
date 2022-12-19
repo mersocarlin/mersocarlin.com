@@ -8,10 +8,10 @@ tags:
   - typescript
 ---
 
-This is another blog post I write about code snippets I find useful. 
+This is another blog post I write about code snippets I find useful.
 Below is the list of the previous code snippets I have written about:
 
-- [Unique array in JavaScript](/blog/code-snippets-unique-array) 
+- [Unique array in JavaScript](/blog/code-snippets-unique-array)
 - [Pre-populate an array in JavaScript](/blog/code-snippets-pre-populate-an-array-in-javascript)
 - [uniqueId](/blog/code-snippets-uniqueid)
 
@@ -21,10 +21,9 @@ Arrays in JavaScript have a built-in [sort](https://developer.mozilla.org/en-US/
 However, that quite doesn't work out of the box if we'd like to sort an array of integers or objects:
 
 ```ts
-const strArray = ["typescript", "javascript", "reactjs", "nodejs"]
+const strArray = ['typescript', 'javascript', 'reactjs', 'nodejs']
 strArray.sort()
 console.log(strArray) // ["javascript", "nodejs", "reactjs", "typescript"] ✅
-
 
 const numberArray = [1, 10, 2, 100, 3, 1000]
 numberArray.sort()
@@ -73,7 +72,7 @@ Especially for `objectArray` where we can sort it by either `title` or `date` pr
 I actually use this to sort blog posts in my blog and you can see the code [right here](https://github.com/mersocarlin/mersocarlin.com/blob/43c3dd6bfbea91a2da613be8b471b3da9932bb97/src/utils/posts.ts#L5).
 
 The `sort` method takes a callback function with 2 arguments we can use to create our custom comparison.
-The rule of thumb I use is: 
+The rule of thumb I use is:
 
 - return `1` if I want to sort items ascending
 - return `-1` if I want to sort items descending
@@ -82,7 +81,7 @@ We can also extract the compare function for reusability:
 
 ```ts
 const numberArray = [1, 10, 2, 100, 3, 1000]
-numberArray.sort((itemA, itemB) => itemA > itemB ? 1 : -1)
+numberArray.sort((itemA, itemB) => (itemA > itemB ? 1 : -1))
 console.log(numberArray) // [1, 2, 3, 10, 100, 1000] ✅
 
 const objectArray = [

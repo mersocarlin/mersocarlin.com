@@ -20,13 +20,11 @@ I might be a bit outdated but I'm happy to keep this on my private archive for f
 
 Happy reading!
 
---------------------------
-
+---
 
 > The most powerful tool we have as developers is automation.
 >
 > **Scott Hanselman**
-
 
 That being said, how many times have you had to wait until your code being pushed to production because your company didn’t have any automation to do so?
 
@@ -49,7 +47,13 @@ First things first:
 
 ### Enable Bitbucket Pipelines in your repository
 
-<Img alt="Activating Bitbucket Pipelines in your repository" height="670" src="/assets/blog/2016-09-26-continuous-delivery-with-bitbucket-pipelines/activating-bitbucket-pipelines.gif" title="Activating Bitbucket Pipelines in your repository" width="1228" />
+<Img
+  alt="Activating Bitbucket Pipelines in your repository"
+  height="670"
+  src="/assets/blog/2016-09-26-continuous-delivery-with-bitbucket-pipelines/activating-bitbucket-pipelines.gif"
+  title="Activating Bitbucket Pipelines in your repository"
+  width="1228"
+/>
 
 I'm using [this sample project](https://bitbucket.org/mersocarlin/bitbucket-pipelines/) to demonstrate how it works.
 
@@ -70,7 +74,13 @@ pipelines:
 That's it! From now on, every new commit you push to your repository the pipeline is automatically triggered.
 It is also easy and intuitive to identify whether your most recent code is successful or not.
 
-<Img alt="Pipeline output" height="734" src="/assets/blog/2016-09-26-continuous-delivery-with-bitbucket-pipelines/bitbucket-pipeline-status.gif" title="Pipeline output" width="1287" />
+<Img
+  alt="Pipeline output"
+  height="734"
+  src="/assets/blog/2016-09-26-continuous-delivery-with-bitbucket-pipelines/bitbucket-pipeline-status.gif"
+  title="Pipeline output"
+  width="1287"
+/>
 
 Having a pipeline in the codebase is definitely a must these days.
 Not to mention it helps us to ship with confidence regardless of the size of the project and I can't imagine the hassle to work in a codebase without such features.

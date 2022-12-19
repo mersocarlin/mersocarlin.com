@@ -22,7 +22,7 @@ I usually go for this snippet in two main scenarios:
 
 - When prototyping a UI without an endpoint: I like to randomize stats so I don't always get to see the same results over and over.
 - Unit tests so I don't create biased tests: this is how I ensure reliability for tests that need some sort of number input.
-It's also helpful when I need to quickly create an array and its size doesn't really matter much.
+  It's also helpful when I need to quickly create an array and its size doesn't really matter much.
 
 [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) gets us halfway through there: it returns a floating-point number between 0 and 1 (exclusive).
 
@@ -32,7 +32,7 @@ The next step is to use `Math.random` so it returns the number within the desire
 /**
  * Generates a random number between @min (inclusive) and @max (exclusive)
  */
- function generateRandomNumber(min: number, max: number) {
+function generateRandomNumber(min: number, max: number) {
   Math.floor(Math.random() * (max - min) + min)
 }
 ```
@@ -43,10 +43,9 @@ Should you need to a random number that could also be equal to `max` we'd have t
 /**
  * Generates a random number between @min (inclusive) and @max (inclusive)
  */
- function generateRandomNumber(min: number, max: number) {
+function generateRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 ```
-
 
 I hope that's helpful and interesting to you. 👋🏼

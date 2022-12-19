@@ -27,7 +27,8 @@ From this point on, every CSS rule that makes use of `var(--primary-color)` will
 import { createGlobalStyle, css } from 'styled-components'
 
 const theme = css`
-  :root, .light-theme {
+  :root,
+  .light-theme {
     --primary-color: #ff0000;
     --primary-bg: #fff;
   }

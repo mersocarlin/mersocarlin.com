@@ -15,7 +15,13 @@ In case you happen to be at the same spot as myself, I hope you find this articl
 
 I used [Raspberry Pi Imager](https://www.raspberrypi.org/software/) to install the operating system on the SD card (_it has a variety of Operating Systems for you to choose_) and I also had to enable SSH as I didn't have a spare monitor nor an external keyboard to set it up afterwards.
 
-<Img alt="Raspberry Pi Imager" height="416" src="/assets/blog/2021-06-21-headless-raspberry-pi-setup/raspberry-pi-imager.png" title="Raspberry Pi Imager" width="678" />
+<Img
+  alt="Raspberry Pi Imager"
+  height="416"
+  src="/assets/blog/2021-06-21-headless-raspberry-pi-setup/raspberry-pi-imager.png"
+  title="Raspberry Pi Imager"
+  width="678"
+/>
 
 Raspberry Pi OS Lite was my choice as I knew in advance I was not going to need a desktop environment to access to my Pi.
 
@@ -82,7 +88,13 @@ $ ssh pi@raspberrypi.local
 
 Once you're in, run `sudo raspi-config` to start the configuration.
 
-<Img alt="raspi-config's configuration interface" height="350" src="/assets/blog/2021-06-21-headless-raspberry-pi-setup/raspi-config.png" title="raspi-config's configuration interface" width="869" />
+<Img
+  alt="raspi-config's configuration interface"
+  height="350"
+  src="/assets/blog/2021-06-21-headless-raspberry-pi-setup/raspi-config.png"
+  title="raspi-config's configuration interface"
+  width="869"
+/>
 
 I didn't do much here.
 A few things I'd say are important to update are:

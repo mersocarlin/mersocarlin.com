@@ -42,12 +42,12 @@ function fetchUserProfile(profileId: string) {
       case 401:
         throw new CustomError(
           'Invalid or expired access token',
-          error.statusCode,
+          error.statusCode
         )
       case 403:
         throw new CustomError(
           'You do not have permission to access this profile',
-          error.statusCode,
+          error.statusCode
         )
       case 404:
         throw new CustomError('Profile not found', error.statusCode)
@@ -58,7 +58,7 @@ function fetchUserProfile(profileId: string) {
 }
 ```
 
-`CustomError` object gets the job done: it encapsulates the custom message and status code into an [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) object which is then thrown back to the client. 
+`CustomError` object gets the job done: it encapsulates the custom message and status code into an [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) object which is then thrown back to the client.
 
 After doing this so many times, i.e., copy + paste of the same `CustomError` object throughout all of my repositories and projects over and over, I realised I could extract it into a simple and reusable lib.
 
@@ -89,7 +89,7 @@ function fetchUserProfile(profileId: string) {
       case 403:
         throw new ForbiddenError(
           'You do not have permission to access this profile',
-          error,
+          error
         )
       case 404:
         throw new NotFoundError('Profile not found', error)
@@ -102,7 +102,7 @@ function fetchUserProfile(profileId: string) {
 
 The original error as well as stack trace are all still available should you need them as all of the error types derive from the same [api-error](https://github.com/mersocarlin/api-error/blob/master/src/api-error.ts) object.
 
-Did you like the idea? Would like to contribute? 
+Did you like the idea? Would like to contribute?
 
 You can find everything you need to know in [api-error](https://github.com/mersocarlin/api-error)'s repository.
 

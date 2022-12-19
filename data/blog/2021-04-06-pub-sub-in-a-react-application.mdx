@@ -31,7 +31,13 @@ Publish-subscribe (pub-sub) is a messaging pattern where _publishers_ broadcast 
 
 Think of an e-commerce website with a mini shopping-cart widget in the header: when a customer clicks to buy a product, the shopping cart is automatically updated with the amount of items and price updates so customers have a fast feedback on how much they are going to pay for their purchase.
 
-<Img alt="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)" height="173" src="/assets/blog/2021-04-06-pub-sub-in-a-react-application/shopping-cart.png" title="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)" width="323" />
+<Img
+  alt="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)"
+  height="173"
+  src="/assets/blog/2021-04-06-pub-sub-in-a-react-application/shopping-cart.png"
+  title="Shopping cart updates in e-commerce websites (Amazon, Zalando and ASOS)"
+  width="323"
+/>
 
 In some cases, both header and the product page are completely different applications that neither can’t communicate directly with each other nor share the same `<Parent />` component. Thus the reason they need some sort of messaging communication to start sharing data back and forth between them.
 
@@ -76,7 +82,7 @@ class EventObserver {
     }
 
     this.observers[event] = this.observers[event].filter(
-      (ob) => ob !== observer,
+      (ob) => ob !== observer
     )
   }
 
@@ -96,7 +102,6 @@ We’ve got two next steps: set up the observer in `<Child />` so it can listen 
 
 ```ts
 function Child() {
-
   /**
    * subscribes to @ACTION_NAME event to execute "runsSomeComplexCode" method
    */
@@ -105,9 +110,9 @@ function Child() {
       // ...
     }
 
-    eventObserver.on("@ACTION_NAME", runsSomeComplexCode)
+    eventObserver.on('@ACTION_NAME', runsSomeComplexCode)
     return () => {
-      eventObserver.off("@ACTION_NAME", runsSomeComplexCode)
+      eventObserver.off('@ACTION_NAME', runsSomeComplexCode)
     }
   }, [])
 
@@ -115,15 +120,13 @@ function Child() {
 }
 
 function Parent() {
-  const sendUpdates = () => eventObserver.notify("@ACTION_NAME")
+  const sendUpdates = () => eventObserver.notify('@ACTION_NAME')
 
   return (
     <div>
       <Child />
 
-      <button onClick={sendUpdates}>
-        Trigger updates in Child component
-      </button>
+      <button onClick={sendUpdates}>Trigger updates in Child component</button>
     </div>
   )
 }

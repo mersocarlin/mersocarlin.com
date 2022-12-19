@@ -15,9 +15,8 @@ I have seen some versions of this snippet before, but the one I like to recommen
 
 By default, a `Set` is meant to store unique values and spreading it into an array is enough to give us the desired result.
 
-
 ```ts
-const uniqueArray = arr => [...new Set(arr)]
+const uniqueArray = (arr) => [...new Set(arr)]
 
 uniqueArray(['ReactJS', 'NextJS', 'NodeJS', 'ReactJS']) // ['ReactJS', 'NextJS', 'NodeJS']
 

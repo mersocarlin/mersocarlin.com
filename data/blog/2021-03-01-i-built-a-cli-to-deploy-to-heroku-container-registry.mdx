@@ -12,10 +12,10 @@ tags:
 > TL;DR: After copying and pasting the same bash script over and over, I decided to build a simple CLI to deploy my back-end services to Heroku Container Registry.
 > The codebase is hosted on Github and you can find more details [here](https://github.com/mersocarlin/deployer).
 
-As Software Engineers we try to automate as much as possible in order to remove repetitive tasks out of our way and be more productive. 
+As Software Engineers we try to automate as much as possible in order to remove repetitive tasks out of our way and be more productive.
 And deploying an application to production is certainly one of them.
 
-Heroku deployment is rather easy once a repository is hosted on GitHub. 
+Heroku deployment is rather easy once a repository is hosted on GitHub.
 But as most of my apps were kept in GitLab I lost that ease of deployment and had to build things myself.
 
 When building a back-end service, my go-to is to encapsulate it in a Dockerfile so I can abstract infrastructure code while having the ability to run it in the same environment as I’d run once it is live.
@@ -45,7 +45,7 @@ As I have mentioned in the beginning of this blog post:
 I would be lying if I say I’m no different.
 In fact, I actually like to build tools and libs that make my life easier :)
 
-And for that reason, I created a simple CLI script that takes care of deploying any application contained in a Dockerfile to Heroku Container Registry. 
+And for that reason, I created a simple CLI script that takes care of deploying any application contained in a Dockerfile to Heroku Container Registry.
 
 The steps are relatively simple and I only need to set configuration variables:
 
@@ -60,6 +60,6 @@ npx mersocarlin-deployer \
   --heroku-api-key <heroku-api-key>
 ```
 
-The code is hosted on [GitHub](https://github.com/mersocarlin/deployer), feel free to check it out! 
+The code is hosted on [GitHub](https://github.com/mersocarlin/deployer), feel free to check it out!
 
 I hope that's helpful and interesting to you. 👋🏼
