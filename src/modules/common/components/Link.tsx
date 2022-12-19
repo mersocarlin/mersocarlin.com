@@ -30,14 +30,15 @@ export default function Link({
 
   if (isInternal) {
     return (
-      <NextLink as={as} href={href} prefetch={false}>
-        <a
-          className={`${colorStyles} ${fontStyles} ${hoverStyles} ${className}`}
-          onClick={onClick}
-          itemProp="url"
-        >
-          {children}
-        </a>
+      <NextLink
+        as={as}
+        href={href}
+        prefetch={false}
+        className={`${colorStyles} ${fontStyles} ${hoverStyles} ${className}`}
+        onClick={onClick}
+        itemProp="url"
+      >
+        {children}
       </NextLink>
     )
   }
