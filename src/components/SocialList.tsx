@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 import Link from '@common/components/Link'
 import { socialListItems } from '@mersocarlin.com/utils/social'
