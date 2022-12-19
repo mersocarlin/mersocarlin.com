@@ -61,8 +61,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = await getBlogPostBySlug(`${params.slug}`)
   const previousPosts = await Promise.all(
     (post.type === 'blogpost' ? post.previousSlugs || [] : []).map(
-      getBlogPostPreviewBySlug,
-    ),
+      getBlogPostPreviewBySlug
+    )
   )
 
   return {

@@ -74,7 +74,7 @@ function isPageLoadEvent(event: SiteEvent) {
       checkString(event.path) &&
       checkNumber(event.value) &&
       event.category === 'TIMING' &&
-      event.label === 'page load',
+      event.label === 'page load'
   )
 }
 
@@ -84,7 +84,7 @@ function isChangeThemeEvent(event: SiteEvent) {
       checkString(event.label) &&
       checkString(event.path) &&
       checkString(event.value) &&
-      event.label === 'change theme',
+      event.label === 'change theme'
   )
 }
 
@@ -95,7 +95,7 @@ function isPageViewEvent(event: SiteEvent) {
       checkString(event.path) &&
       checkString(event.referrer) &&
       event.value === undefined &&
-      event.label === 'page view',
+      event.label === 'page view'
   )
 }
 
@@ -105,7 +105,7 @@ function isClickEditLinkEvent(event: SiteEvent) {
       checkString(event.label) &&
       checkString(event.path) &&
       checkString(event.value) &&
-      event.label === 'click edit link',
+      event.label === 'click edit link'
   )
 }
 
@@ -115,13 +115,13 @@ function isClickTagEvent(event: SiteEvent) {
       checkString(event.label) &&
       checkString(event.path) &&
       checkString(event.value) &&
-      event.label === 'click tag',
+      event.label === 'click tag'
   )
 }
 
 export default async function events(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   if (req.method !== 'POST' || !req.body || !process.env.AMPLITUDE_API_KEY) {
     return res.status(404).end()

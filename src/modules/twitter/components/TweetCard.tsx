@@ -114,7 +114,7 @@ function TweetText({ tweet }: Props) {
   tweet.entities.forEach((entity) => {
     if (entity.type === 'url') {
       tweetContent.push(
-        ...makeSpan(tweet.text.substring(startPosition, entity.start)),
+        ...makeSpan(tweet.text.substring(startPosition, entity.start))
       )
 
       if (entity.images.length === 0) {
@@ -126,12 +126,12 @@ function TweetText({ tweet }: Props) {
             target="_blank"
           >
             {entity.url}
-          </Link>,
+          </Link>
         )
       }
     } else if (entity.type === 'mention') {
       tweetContent.push(
-        ...makeSpan(tweet.text.substring(startPosition, entity.start)),
+        ...makeSpan(tweet.text.substring(startPosition, entity.start))
       )
 
       tweetContent.push(
@@ -142,7 +142,7 @@ function TweetText({ tweet }: Props) {
           target="_blank"
         >
           @{entity.username}
-        </Link>,
+        </Link>
       )
     }
 

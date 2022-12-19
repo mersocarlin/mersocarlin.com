@@ -23,7 +23,7 @@ Bear in mind that when I wrote this in Sep 2016 nothing of that really existed, 
 
 Happy reading!
 
---------------------------
+---
 
 I am a big fan of how some projects are setup to run (NodeJS, Go, Ruby..).
 Not only because most of the times they don't need Windows (no, I'm not a hater), but also because you are forced somehow to understand your command lines.
@@ -39,7 +39,13 @@ The second motivation is that .NET Core is yet new for non Windows users and mos
 
 If you are a Visual Studio user, that hard work is already done. Only right click on your project, select Add -> Docker Support and it should work.
 
-<Img alt="Adding Docker Support in Visual Studio" height="609" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-support-in-visual-studio.jpg" title="Adding Docker Support in Visual Studio" width="701" />
+<Img
+  alt="Adding Docker Support in Visual Studio"
+  height="609"
+  src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-support-in-visual-studio.jpg"
+  title="Adding Docker Support in Visual Studio"
+  width="701"
+/>
 
 ## Getting your hands dirty
 
@@ -63,9 +69,13 @@ I'm going to use Yo generator for it.
 It's simple and easy to use.
 For more info you can find by clicking [here](https://github.com/OmniSharp/generator-aspnet).
 
-
-
-<Img alt="Creating the Web Api project with generator-aspnet" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/creating-web-api-with-generator.gif" title="Creating the Web Api project with generator-aspnet" width="921" />
+<Img
+  alt="Creating the Web Api project with generator-aspnet"
+  height="593"
+  src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/creating-web-api-with-generator.gif"
+  title="Creating the Web Api project with generator-aspnet"
+  width="921"
+/>
 
 From now on we are ready to run our project.
 
@@ -74,8 +84,13 @@ From now on we are ready to run our project.
 This used to be the not so easy part.
 At least it was before I discovered [this project on GitHub](https://github.com/Microsoft/generator-docker).
 
-
-<Img alt="Adding Docker debug files" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-debug-files.gif" title="Adding Docker debug files" width="921" />
+<Img
+  alt="Adding Docker debug files"
+  height="593"
+  src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/adding-docker-debug-files.gif"
+  title="Adding Docker debug files"
+  width="921"
+/>
 
 It takes care of what sort of images you need to use to run or debug your project.
 
@@ -85,20 +100,29 @@ It takes care of what sort of images you need to use to run or debug your projec
 ## Debugging our project
 
 Install/restore your project dependencies:
+
 ```bash
 dotnet restore
 ```
 
 Build the debug image:
+
 ```bash
 dockerTask.sh build debug
 ```
 
 Start the container:
+
 ```bash
 dockerTask.sh composeForDebug
 ```
 
-<Img alt="Debug Process" height="593" src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/debug-process.gif" title="Debug Process" width="921" />
+<Img
+  alt="Debug Process"
+  height="593"
+  src="/assets/blog/2016-09-10-debugging-net-core-inside-docker-container-on-a-mac/debug-process.gif"
+  title="Debug Process"
+  width="921"
+/>
 
 The sample code is hosted on my [GitHub page](https://github.com/mersocarlin/aspnet-core-docker-debug).

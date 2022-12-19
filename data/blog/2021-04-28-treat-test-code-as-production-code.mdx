@@ -9,18 +9,18 @@ tags:
 
 Testing an application has become an essential part of the software development lifecycle and I don’t know how life is without tests as I believe they contribute with a healthy and stable development process.
 
-I also see tests as the go to when working on a new code for the first time. 
+I also see tests as the go to when working on a new code for the first time.
 Perhaps the code itself is not self explanatory, it’s very coupled to external dependencies, it’s very complex or even not mature enough to a point where one could understand what the heck is going on and that’s where a simple unit test can save your bacon.
 
-Although test code is not deployed to production, it should not be an excuse to write _“hacky”_  or _“dirty”_ code. 
+Although test code is not deployed to production, it should not be an excuse to write _“hacky”_ or _“dirty”_ code.
 Instead, it should be as readable & maintainable as the code we write the test against.
 
 So here are the 5 things I value the most and look for when writing tests I’d like to share in this blog post.
 
 ## Don’t depend too much on the test runner
 
-Tech is constantly evolving and so the tools we use on a daily basis. 
-Should our test infrastructure depend too much on the test runner, most likely we’ll have to rewrite everything from scratch when migrating from one framework to another or spend days/months trying to understand what has to be migrated. 
+Tech is constantly evolving and so the tools we use on a daily basis.
+Should our test infrastructure depend too much on the test runner, most likely we’ll have to rewrite everything from scratch when migrating from one framework to another or spend days/months trying to understand what has to be migrated.
 
 Worst case scenario, we end up working with _“legacy code”_ that is impossible to be migrated due to the amount of work that has to be done.
 
@@ -36,9 +36,9 @@ Focusing on the test is more important than focusing on the tools we are using.
 
 This is by far one of the techniques I used the most until today when writing tests.
 
-I like to call [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) as a contract I create between the method and the injected object. 
+I like to call [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) as a contract I create between the method and the injected object.
 With that, I can spin up a test really fast and [Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) becomes so easy to understand and reason about that I don’t really mind writing the test before the actual code.
-I don’t always follow TDD but I can see its benefit when testing components that use some sort of injected dependency. 
+I don’t always follow TDD but I can see its benefit when testing components that use some sort of injected dependency.
 
 ## Make sure External Dependencies / 3rd party libraries won’t break your app
 
@@ -59,7 +59,7 @@ If you care about reusability and maintainability in a codebase, bring that same
 ## Confidence
 
 This is not a strict recipe and I’m sure there are some exceptions.
-I also think that this is how you show new joiners on your team how much everyone cares about shipping code with confidence. 
+I also think that this is how you show new joiners on your team how much everyone cares about shipping code with confidence.
 And having any sort of test in place is much better than having no tests at all.
 
 I hope that's helpful and interesting to you. 👋🏼

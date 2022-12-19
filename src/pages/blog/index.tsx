@@ -14,7 +14,7 @@ import Meta from '@mersocarlin.com/components/Meta'
 import { PageProps, Post } from '@mersocarlin.com/types'
 
 const AsyncBlogSearchEmptyState = dynamic(
-  () => import('@blog/components/BlogSearchEmptyState'),
+  () => import('@blog/components/BlogSearchEmptyState')
 )
 interface IndexProps extends PageProps {
   posts: Post[]
@@ -29,7 +29,7 @@ export default function Blog({ appVersion, posts }: IndexProps) {
         q: query.q,
         tag: query.tag,
       }),
-    [posts, query.q, query.tag],
+    [posts, query.q, query.tag]
   )
 
   return (

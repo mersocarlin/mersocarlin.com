@@ -66,7 +66,7 @@ describe('useBlogQuery', () => {
       undefined,
       {
         shallow: true,
-      },
+      }
     )
   })
 })
