@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 import { Tweet } from '@mersocarlin.com/types'
 import Link from '@common/components/Link'
