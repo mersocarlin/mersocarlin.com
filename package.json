@@ -1,0 +1,37 @@
+{
+  "name": "mersocarlin.com",
+  "version": "0.39.0",
+  "description": "My personal website's source.",
+  "author": "Hemerson Carlin",
+  "license": "MIT",
+  "homepage": "https://mersocarlin.com",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "build": "remix build",
+    "dev": "remix dev",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@remix-run/node": "^1.10.0",
+    "@remix-run/react": "^1.10.0",
+    "@remix-run/vercel": "^1.10.0",
+    "@vercel/node": "^2.6.2",
+    "marked": "^4.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.10.0",
+    "@remix-run/eslint-config": "^1.10.0",
+    "@remix-run/serve": "^1.10.0",
+    "@types/marked": "^4.0.8",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "eslint": "^8.27.0",
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

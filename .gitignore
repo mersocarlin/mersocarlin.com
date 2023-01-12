@@ -1,10 +1,14 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+node_modules
 
-# folders
-**/coverage
-**/node_modules
-.next
+.cache
+.env
 .vercel
+.output
+
+/build/
+/public/build
+/api/index.js
+/api/index.js.map
 
 # files
 .idea
