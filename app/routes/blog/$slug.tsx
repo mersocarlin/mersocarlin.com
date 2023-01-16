@@ -1,20 +1,30 @@
 import type { DataFunctionArgs } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import { getPostBySlug } from '~/models/post.server'
+
+import BlogPost from '~/components/BlogPost'
+import Divider from '~/components/Divider'
+import { getPostBySlug } from '~/utils/post.server'
 
 export async function loader({ params }: DataFunctionArgs) {
-  const postContents = getPostBySlug(params.slug || '')
-  return { postContents, slug: params.slug }
+  const post = await getPostBySlug(params.slug || '')
+
+  if (!post) {
+    throw new Response('Post not found', { status: 404 })
+  }
+
+  return { post }
 }
 
-export default function BlogPost() {
-  const { postContents, slug } = useLoaderData<typeof loader>()
+export default function BlogPostSlug() {
+  const { post } = useLoaderData<typeof loader>()
 
   return (
-    <div>
-      <div>Blog Post: {`${slug}`}</div>
+    <>
+      <BlogPost post={post} />
 
-      <div dangerouslySetInnerHTML={{ __html: postContents || '' }} />
-    </div>
+      <Divider size={50} />
+
+      <div>TODO: previous blog posts</div>
+    </>
   )
 }
