@@ -65,8 +65,8 @@ export default function BlogPost({ post }: { post: Post }) {
           className="rounded-none md:rounded mx-auto"
           key={post.title}
           src={post.coverImage.url}
-          height={500}
-          width={1000}
+          height={post.coverImage.height}
+          width={post.coverImage.width}
         />
 
         {post.coverImage.credit && (

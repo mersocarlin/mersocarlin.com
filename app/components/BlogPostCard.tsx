@@ -8,10 +8,10 @@ export default function BlogPostCard({ post }: { post: Post }) {
       <div className="group rounded shadow-md cursor-pointer hover:shadow-lg overflow-hidden mersocarlin-bg-white mersocarlin-text-gray">
         <img
           alt={post.title}
-          height={500}
+          height={post.coverImage.height}
           itemProp="image"
           src={post.coverImage.url}
-          width={1000}
+          width={post.coverImage.width}
         />
         <div className="flex flex-col justify-between p-3 h-48">
           <div
