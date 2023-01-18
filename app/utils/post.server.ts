@@ -24,14 +24,17 @@ function getPostFilename(slug: string): string | null {
   return slugMap[slug]
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const dataDirectory = `${__dirname}/../data/blog`
-  const filename = getPostFilename(slug)
-
-  if (!filename) {
-    return null
-  }
-
+async function parseMdxAsBlogPost({
+  dataDirectory,
+  filename,
+  ghPath,
+  slug,
+}: {
+  dataDirectory: string
+  filename: string
+  ghPath: string
+  slug: string
+}): Promise<Post | null> {
   const postContents = fs.readFileSync(`${dataDirectory}/${filename}`, {
     encoding: 'utf-8',
   })
@@ -55,8 +58,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     },
   })
 
-  const { title, excerpt, coverImage, tags } = frontmatter
-
+  const { date, title, excerpt, coverImage, tags } = frontmatter
   const assetsPath = `/assets/blog/${filename.substring(
     0,
     filename.length - 4
@@ -67,11 +69,13 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     author: AUTHOR,
     coverImage: {
       credit: coverImage.credit,
-      url: `${assetsPath}/cover.jpg`,
+      height: coverImage.height || 500,
+      url: coverImage.url || `${assetsPath}/cover.jpg`,
+      width: coverImage.width || 1000,
     },
-    date: `${filename.substring(0, 10)}T00:00:00.000Z`,
+    date: date || `${filename.substring(0, 10)}T00:00:00.000Z`,
     excerpt,
-    ghPath: `data/blog/${filename}`,
+    ghPath: `${ghPath}/${filename}`,
     mdxContent: code,
     readTime,
     slug,
@@ -79,6 +83,34 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     title,
     type: 'blogpost',
   }
+}
+
+export async function getUses(): Promise<Post | null> {
+  const dataDirectory = `${__dirname}/../data`
+  const filename = 'uses.mdx'
+
+  return parseMdxAsBlogPost({
+    dataDirectory,
+    ghPath: 'data',
+    filename,
+    slug: 'uses',
+  })
+}
+
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+  const dataDirectory = `${__dirname}/../data/blog`
+  const filename = getPostFilename(slug)
+
+  if (!filename) {
+    return null
+  }
+
+  return parseMdxAsBlogPost({
+    dataDirectory,
+    filename,
+    ghPath: '/data/blog',
+    slug,
+  })
 }
 
 export async function getLatestBlogPosts(): Promise<Post[]> {

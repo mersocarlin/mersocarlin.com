@@ -6,6 +6,8 @@ export type Post = {
   coverImage: {
     credit: string
     url: string
+    height: number
+    width: number
   }
   date: string
   excerpt: string
