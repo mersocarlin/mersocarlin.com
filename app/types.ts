@@ -21,3 +21,8 @@ export type Post = {
   title: string
   type: 'blogpost' | 'preview'
 }
+
+export type QueryOptions = {
+  q: string
+  tag: string
+}
