@@ -58,7 +58,7 @@ async function parseMdxAsBlogPost({
     },
   })
 
-  const { date, title, excerpt, coverImage, tags } = frontmatter
+  const { date, title, excerpt, coverImage = {}, tags } = frontmatter
   const assetsPath = `/assets/blog/${filename.substring(
     0,
     filename.length - 4
@@ -161,4 +161,24 @@ export async function getPreviousBlogPosts(currentSlug: string) {
   ])
 
   return postsPromise.filter(Boolean) as Post[]
+}
+
+export async function getAllBlogPosts() {
+  const slugMap = getSlugMap()
+  const dataDirectory = `${__dirname}/../data/blog`
+
+  return Promise.all(
+    Object.keys(slugMap)
+      .reverse()
+      .map((slug) => {
+        const filename = slugMap[slug]
+
+        return parseMdxAsBlogPost({
+          dataDirectory,
+          filename,
+          ghPath: '/data/blog',
+          slug,
+        })
+      })
+  ).then((posts) => posts.filter(Boolean) as Post[])
 }
