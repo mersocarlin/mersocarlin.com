@@ -21,7 +21,33 @@ import ThemeProvider, { useTheme } from './providers/ThemeProvider'
 import { getThemeSession } from './utils/theme.server'
 import { getSocialMeta } from './utils/seo'
 
-export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
+export const links: LinksFunction = () => [
+  {
+    rel: 'apple-touch-icon',
+    sizes: '180x180',
+    href: '/favicons/apple-touch-icon.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '32x32',
+    href: '/favicons/favicon-32x32.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '16x16',
+    href: '/favicons/favicon-16x16.png',
+  },
+  {
+    rel: 'manifest',
+    href: '/site.webmanifest',
+  },
+  {
+    rel: 'stylesheet',
+    href: styles,
+  },
+]
 
 export const meta: MetaFunction = () => {
   return {
