@@ -1,7 +1,9 @@
+import type { MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import BlogPost from '~/components/BlogPost'
 
 import { getUses } from '~/utils/post.server'
+import { getSocialMeta } from '~/utils/seo'
 
 export async function loader() {
   const post = await getUses()
@@ -11,6 +13,18 @@ export async function loader() {
   }
 
   return { post }
+}
+
+export const meta: MetaFunction = ({ data, parentsData }) => {
+  return {
+    ...getSocialMeta({
+      description: data.post.excerpt,
+      imageUrl: data.post.coverImage.url,
+      ogType: 'article',
+      title: 'Uses - Hemerson Carlin',
+      url: parentsData.root.path,
+    }),
+  }
 }
 
 export default function Uses() {

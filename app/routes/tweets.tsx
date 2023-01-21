@@ -1,6 +1,8 @@
+import type { MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import Divider from '~/components/Divider'
 import TweetCard from '~/components/TweetCard'
+import { getSocialMeta } from '~/utils/seo'
 
 import { getTweets } from '~/utils/twitter.server'
 
@@ -20,6 +22,15 @@ export async function loader() {
   ])
 
   return { tweets }
+}
+
+export const meta: MetaFunction = ({ parentsData }) => {
+  return {
+    ...getSocialMeta({
+      title: 'Tweets - Hemerson Carlin',
+      url: parentsData.root.path,
+    }),
+  }
 }
 
 export default function Tweets() {
