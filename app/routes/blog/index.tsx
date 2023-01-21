@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 
 import { useLoaderData, useSearchParams } from '@remix-run/react'
+import type { MetaFunction } from '@remix-run/node'
 
 import { getAllBlogPosts } from '~/utils/post.server'
 import BlogPostsGrid from '~/components/BlogPostsGrid'
@@ -10,6 +11,7 @@ import type { Post, QueryOptions } from '~/types'
 import Divider from '~/components/Divider'
 import BlogSearch from '~/components/BlogSearch'
 import useUpdateQueryStringValueWithoutNavigation from '~/hooks/useUpdateQueryStringValueWithoutNavigation'
+import { getSocialMeta } from '~/utils/seo'
 
 const PAGE_SIZE = 12
 
@@ -17,6 +19,15 @@ export async function loader() {
   const posts = await getAllBlogPosts()
 
   return { posts }
+}
+
+export const meta: MetaFunction = ({ parentsData }) => {
+  return {
+    ...getSocialMeta({
+      title: 'Blog - Hemerson Carlin',
+      url: parentsData.root.path,
+    }),
+  }
 }
 
 export default function Blog() {
