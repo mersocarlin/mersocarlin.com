@@ -16,6 +16,12 @@ module.exports = {
         tailwindcss: '#06B6D4',
       },
     },
+    fontFamily: {
+      sans: ['Josefin Sans', 'Helvetica', 'Arial'],
+    },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+  ],
 }

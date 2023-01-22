@@ -8,8 +8,10 @@ const mdxComponents = {
 function PostImage(props: JSX.IntrinsicElements['img']) {
   return (
     <figure>
-      <img alt="" className="w-full rounded-lg object-cover py-8" {...props} />
-      <figcaption className="text-center">{props.alt}</figcaption>
+      <img alt="" className="w-full rounded-lg object-cover" {...props} />
+      <figcaption className="text-center mersocarlin-text-gray">
+        {props.alt}
+      </figcaption>
     </figure>
   )
 }

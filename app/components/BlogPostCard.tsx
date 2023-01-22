@@ -28,7 +28,7 @@ export default function BlogPostCard({ post }: { post: Post }) {
             {post.excerpt}
           </p>
 
-          <div className="flex justify-between text-sm mersocarlin-text-gray font-light">
+          <div className="flex justify-between text-md mersocarlin-text-gray font-light">
             <div
               itemProp="author"
               itemScope={true}

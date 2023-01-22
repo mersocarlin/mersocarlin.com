@@ -62,7 +62,7 @@ export default function BlogPost({ post }: { post: Post }) {
       <section className="text-center">
         <img
           alt={post.title}
-          className="rounded-none md:rounded mx-auto"
+          className="rounded-none md:rounded mx-auto pb-4"
           key={post.title}
           src={post.coverImage.url}
           height={post.coverImage.height}
@@ -70,7 +70,7 @@ export default function BlogPost({ post }: { post: Post }) {
         />
 
         {post.coverImage.credit && (
-          <span className="mersocarlin-text-gray italic text-sm">
+          <span className="mersocarlin-text-gray italic">
             Photo by{' '}
             <AppLink
               href={extractCoverAuthorUrl(post.coverImage.credit)}
@@ -83,7 +83,7 @@ export default function BlogPost({ post }: { post: Post }) {
       </section>
 
       <section className="w-full md:w-3/4 m-auto">
-        <section className="flex flex-col space-y-2 py-6 text-center text-sm mersocarlin-text-gray">
+        <section className="flex flex-col space-y-2 py-6 text-center mersocarlin-text-gray">
           <div>
             <span>By {post.author.name}</span>
             <span>
@@ -112,7 +112,7 @@ export default function BlogPost({ post }: { post: Post }) {
         </section>
 
         {post.type === 'blogpost' && (
-          <section className="px-4 md:p-0 prose dark:prose-invert break-words">
+          <section className="px-4 md:p-0 prose dark:prose-invert break-words mersocarlin-text-gray min-w-full text-lg">
             <Component />
           </section>
         )}
