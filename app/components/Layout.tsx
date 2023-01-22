@@ -23,7 +23,7 @@ export default function Layout({
         </nav>
       </header>
 
-      <main className="flex-1 my-8 m-auto w-full lg:max-w-screen-lg md:max-w-screen-md mt-20">
+      <main className="flex-1 my-8 m-auto w-full lg:max-w-screen-lg md:max-w-screen-md mt-20 font-light text-lg">
         {children}
       </main>
 

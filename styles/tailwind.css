@@ -56,10 +56,9 @@
     @apply appearance-none;
     @apply block w-full rounded px-4 py-3;
     @apply mersocarlin-bg-white mersocarlin-text-gray;
-    @apply focus:ring-1;
-    @apply focus:ring-gray-300;
-    @apply dark:focus:ring-gray-400;
-    @apply border-gray-200 focus:border-gray-300;
+    @apply focus:outline-none focus:ring-1 focus:ring-gray-300;
+    @apply dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-400;
+    @apply border border-gray-300 focus:border-gray-400;
     @apply dark:border-gray-500 dark:focus:border-gray-400;
   }
 }
@@ -87,6 +86,35 @@
 }
 
 @layer utilities {
+  .prose a {
+    @apply mersocarlin-text-primary no-underline hover:underline;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 mersocarlin-border-gray p-4 text-gray-400 dark:text-gray-400;
+  }
+
+  .prose hr {
+    @apply mersocarlin-border-gray;
+  }
+
+  .prose ul {
+    @apply ml-8 mb-3 list-disc;
+  }
+
+  .prose pre {
+    @apply rounded overflow-hidden mb-3 text-sm;
+  }
+
+  .prose code::before,
+  .prose code::after {
+    content: none;
+  }
+
+  .prose code {
+    @apply text-sm;
+  }
+
   /* Code syntax css */
   /*
     Atom One Dark by Daniel Gamage
