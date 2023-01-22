@@ -23,6 +23,20 @@ import { getSocialMeta } from './utils/seo'
 
 export const links: LinksFunction = () => [
   {
+    rel: 'preload',
+    as: 'font',
+    href: '/fonts/JosefinSans_Italic.woff2',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous',
+  },
+  {
+    rel: 'preload',
+    as: 'font',
+    href: '/fonts/JosefinSans_Regular.woff2',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous',
+  },
+  {
     rel: 'apple-touch-icon',
     sizes: '180x180',
     href: '/favicons/apple-touch-icon.png',

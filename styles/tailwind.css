@@ -2,6 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(/fonts/JosefinSans_Italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/JosefinSans_Italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/JosefinSans_Italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(/fonts/JosefinSans_Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/JosefinSans_Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/JosefinSans_Regular.woff2) format('woff2');
+}
+
 @layer base {
   input[type='search'] {
     @apply appearance-none;
