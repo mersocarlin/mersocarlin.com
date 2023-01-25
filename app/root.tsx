@@ -106,7 +106,7 @@ function App() {
               '\\n',
               'You can also reach out to me in any of the following links:',
               '\\n\\n',
-              '${socialListItems
+              '${[...socialListItems]
                 .sort((a, b) => (a.name > b.name ? 1 : -1))
                 .map((item) => `- ${item.name}: ${item.url}`)
                 .join('\\n ')}',
