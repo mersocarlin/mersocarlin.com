@@ -2,7 +2,12 @@
 .vscode
 .git
 .github
+.cache
+.env
+.vercel
+.output
 
-# files
-jest.config.js
-jest.setup.js
+/build/
+/public/build
+/api/index.js
+/app/tailwind.css
