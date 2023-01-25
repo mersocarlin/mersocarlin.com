@@ -39,19 +39,20 @@ async function parseMdxAsBlogPost({
     encoding: 'utf-8',
   })
 
-  const { default: rehypeSlug } = await import('rehype-slug')
-
   const { default: rehypeAutolinkHeadings } = await import(
     'rehype-autolink-headings'
   )
+  const { default: rehypeHighlight } = await import('rehype-highlight')
+  const { default: rehypeSlug } = await import('rehype-slug')
 
   const { code, frontmatter, matter } = await bundleMDX({
     source: postContents,
     mdxOptions(options) {
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
-        rehypeSlug,
         rehypeAutolinkHeadings,
+        rehypeHighlight,
+        rehypeSlug,
       ]
 
       return options
