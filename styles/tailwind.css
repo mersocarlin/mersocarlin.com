@@ -87,7 +87,7 @@
 
 @layer utilities {
   .prose a {
-    @apply mersocarlin-text-primary no-underline hover:underline;
+    @apply mersocarlin-text-primary font-light no-underline hover:underline;
   }
 
   .prose blockquote {
