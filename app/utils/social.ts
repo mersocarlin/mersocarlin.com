@@ -19,4 +19,4 @@ export const socialListItems = [
     name: 'GitHub',
     url: 'https://github.com/mersocarlin',
   },
-]
+] as const
