@@ -103,7 +103,7 @@
   }
 
   .prose pre {
-    @apply rounded overflow-hidden mb-3 text-sm;
+    @apply p-0;
   }
 
   .prose code::before,
