@@ -1,3 +1,4 @@
+import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import AppLink from '~/components/AppLink'
 import Avatar from '~/components/Avatar'
@@ -8,7 +9,15 @@ import { getLatestBlogPosts } from '~/utils/post.server'
 export async function loader() {
   const posts = await getLatestBlogPosts()
 
-  return { posts }
+  return json(
+    { posts },
+    {
+      headers: {
+        'Cache-Control': 'max-age=3600',
+      },
+      status: 200,
+    }
+  )
 }
 
 export default function Index() {

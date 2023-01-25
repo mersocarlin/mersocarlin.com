@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 
 import { useLoaderData, useSearchParams } from '@remix-run/react'
+import { json } from '@remix-run/node'
 import type { MetaFunction } from '@remix-run/node'
 
 import { getAllBlogPosts } from '~/utils/post.server'
@@ -18,7 +19,15 @@ const PAGE_SIZE = 12
 export async function loader() {
   const posts = await getAllBlogPosts()
 
-  return { posts }
+  return json(
+    { posts },
+    {
+      headers: {
+        'Cache-Control': 'max-age=3600',
+      },
+      status: 200,
+    }
+  )
 }
 
 export const meta: MetaFunction = ({ parentsData }) => {

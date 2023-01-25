@@ -1,3 +1,4 @@
+import { json } from '@remix-run/node'
 import type { MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import Divider from '~/components/Divider'
@@ -21,7 +22,15 @@ export async function loader() {
     '1375481247544266752',
   ])
 
-  return { tweets }
+  return json(
+    { tweets },
+    {
+      headers: {
+        'Cache-Control': 'max-age=3600',
+      },
+      status: 200,
+    }
+  )
 }
 
 export const meta: MetaFunction = ({ parentsData }) => {
