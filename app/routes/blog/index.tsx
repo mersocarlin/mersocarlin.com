@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 
 import { useLoaderData, useSearchParams } from '@remix-run/react'
 import { json } from '@remix-run/node'
-import type { MetaFunction } from '@remix-run/node'
+import type { MetaFunction, LinksFunction } from '@remix-run/node'
 
 import { getAllBlogPosts } from '~/utils/post.server'
 import BlogPostsGrid from '~/components/BlogPostsGrid'
@@ -15,6 +15,17 @@ import useUpdateQueryStringValueWithoutNavigation from '~/hooks/useUpdateQuerySt
 import { getSocialMeta } from '~/utils/seo'
 
 const PAGE_SIZE = 12
+
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: 'alternate',
+      type: 'application/rss+xml',
+      title: 'Hemerson Carlin Blog',
+      href: '/blog/rss.xml',
+    },
+  ]
+}
 
 export async function loader() {
   const posts = await getAllBlogPosts()

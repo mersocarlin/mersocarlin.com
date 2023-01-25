@@ -20,6 +20,7 @@ import styles from './tailwind.css'
 import ThemeProvider, { useTheme } from './providers/ThemeProvider'
 import { getThemeSession } from './utils/theme.server'
 import { getSocialMeta } from './utils/seo'
+import { socialListItems } from './utils/social'
 
 export const links: LinksFunction = () => [
   {
@@ -96,6 +97,27 @@ function App() {
       <head>
         <Meta />
         <Links />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            console.log(
+              '\\n\\n\\n\\n',
+              'Diving deep into my code? Everything you see here is hosted on GitHub :)',
+              '\\n',
+              'You can also reach out to me in any of the following links:',
+              '\\n\\n',
+              '${socialListItems
+                .sort((a, b) => (a.name > b.name ? 1 : -1))
+                .map((item) => `- ${item.name}: ${item.url}`)
+                .join('\\n ')}',
+              '\\n\\n',
+              'Hemerson Carlin 👋🏼',
+              '\\n\\n\\n\\n\\n',
+            )
+            `,
+          }}
+          type="text/javascript"
+        />
       </head>
       <body className={clsx('h-full', theme)}>
         <Layout appVersion={appVersion}>
