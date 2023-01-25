@@ -1,3 +1,4 @@
+import { json } from '@remix-run/node'
 import type { DataFunctionArgs, MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
@@ -19,7 +20,18 @@ export async function loader({ params }: DataFunctionArgs) {
     throw new Response('Post not found', { status: 404 })
   }
 
-  return { post, previousBlogPosts }
+  return json(
+    {
+      post,
+      previousBlogPosts,
+    },
+    {
+      headers: {
+        'Cache-Control': 'max-age=3600',
+      },
+      status: 200,
+    }
+  )
 }
 
 export const meta: MetaFunction = ({ data, parentsData }) => {
