@@ -1,9 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/components/**/*.tsx',
-    './src/modules/**/*.tsx',
-    './src/pages/**/*.tsx',
-  ],
+  content: ['./app/**/*.{ts,tsx,jsx,js}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -23,5 +20,8 @@ module.exports = {
       sans: ['Josefin Sans', 'Helvetica', 'Arial'],
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+  ],
 }
