@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import type {
   DataFunctionArgs,
   LinksFunction,
@@ -22,8 +23,8 @@ import ThemeProvider, { useTheme } from './providers/ThemeProvider'
 import { getThemeSession } from './utils/theme.server'
 import { getSocialMeta } from './utils/seo'
 import { socialListItems } from './utils/social'
-import { useEffect, useRef } from 'react'
 import useUserInteraction from './hooks/useUserInteraction'
+import { pageview } from './utils/gtags.client'
 
 export const links: LinksFunction = () => [
   {
@@ -81,13 +82,15 @@ export const meta: MetaFunction = () => {
 export async function loader({ request }: DataFunctionArgs) {
   const themeSession = await getThemeSession(request)
 
-  const data = {
+  return {
     appVersion: pkg.version,
-    theme: themeSession.getTheme(),
+    gaTrackingId:
+      process.env.CONFIG_ENV === 'production'
+        ? process.env.GA_TRACKING_ID || ''
+        : '',
     path: new URL(request.url).pathname,
+    theme: themeSession.getTheme(),
   }
-
-  return data
 }
 
 function useTrackPageLoad() {
@@ -106,24 +109,36 @@ function useTrackPageLoad() {
   }, [trackPageLoad])
 }
 
-function useTrackPageView() {
+function useTrackPageView(gaTrackingId?: string) {
   const location = useLocation()
   const { trackPageView } = useUserInteraction()
   const currentPage = useRef('')
 
+  /**
+   * Amplitude tracking
+   */
   useEffect(() => {
     if (currentPage.current !== location.pathname) {
       currentPage.current = location.pathname
       trackPageView()
     }
   }, [location.pathname, trackPageView])
+
+  /**
+   * GA tracking
+   */
+  useEffect(() => {
+    if (gaTrackingId?.length) {
+      pageview(location.pathname, gaTrackingId)
+    }
+  }, [location, gaTrackingId])
 }
 
 function App() {
-  const { appVersion } = useLoaderData<typeof loader>()
+  const { appVersion, gaTrackingId } = useLoaderData<typeof loader>()
   const [theme] = useTheme()
   useTrackPageLoad()
-  useTrackPageView()
+  useTrackPageView(gaTrackingId)
 
   return (
     <html className="h-full" lang="en">
@@ -153,6 +168,28 @@ function App() {
         />
       </head>
       <body className={clsx('h-full', theme)}>
+        {gaTrackingId ? (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+            />
+            <script
+              async
+              id="gtag-init"
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaTrackingId}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+              }}
+            />
+          </>
+        ) : null}
         <Layout appVersion={appVersion}>
           <Outlet />
         </Layout>
