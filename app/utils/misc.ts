@@ -24,3 +24,44 @@ export function formatDate(dateString: string | Date, format = 'PPP') {
   }
   return dateFns.format(parseDate(dateString), format)
 }
+
+export function debounce(fn: Function, delay: number) {
+  let timeout: ReturnType<typeof setTimeout> | null = null
+
+  return (...args: string[]) => {
+    if (timeout) {
+      clearTimeout(timeout)
+    }
+
+    timeout = setTimeout(() => {
+      fn(...args)
+    }, delay)
+  }
+}
+
+export function safeParseJSON<T>(
+  json: string | undefined | null,
+  defaultValue: T
+): T {
+  if (!json) {
+    return defaultValue
+  }
+
+  try {
+    return JSON.parse(json)
+  } catch {
+    return defaultValue
+  }
+}
+
+export function getItem(key: string) {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+export function setItem(key: string, value: string) {
+  localStorage.setItem(key, value)
+}
