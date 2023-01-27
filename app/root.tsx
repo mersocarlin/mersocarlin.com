@@ -11,6 +11,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
 } from '@remix-run/react'
 import clsx from 'clsx'
 
@@ -21,6 +22,8 @@ import ThemeProvider, { useTheme } from './providers/ThemeProvider'
 import { getThemeSession } from './utils/theme.server'
 import { getSocialMeta } from './utils/seo'
 import { socialListItems } from './utils/social'
+import { useEffect, useRef } from 'react'
+import useUserInteraction from './hooks/useUserInteraction'
 
 export const links: LinksFunction = () => [
   {
@@ -87,10 +90,40 @@ export async function loader({ request }: DataFunctionArgs) {
   return data
 }
 
+function useTrackPageLoad() {
+  const hasTrackedPageLoad = useRef(false)
+  const { trackPageLoad } = useUserInteraction()
+
+  useEffect(() => {
+    if (
+      !hasTrackedPageLoad.current &&
+      typeof window !== 'undefined' &&
+      window.performance
+    ) {
+      hasTrackedPageLoad.current = true
+      trackPageLoad(Math.round(performance.now()))
+    }
+  }, [trackPageLoad])
+}
+
+function useTrackPageView() {
+  const location = useLocation()
+  const { trackPageView } = useUserInteraction()
+  const currentPage = useRef('')
+
+  useEffect(() => {
+    if (currentPage.current !== location.pathname) {
+      currentPage.current = location.pathname
+      trackPageView()
+    }
+  }, [location.pathname, trackPageView])
+}
+
 function App() {
   const { appVersion } = useLoaderData<typeof loader>()
-
   const [theme] = useTheme()
+  useTrackPageLoad()
+  useTrackPageView()
 
   return (
     <html className="h-full" lang="en">

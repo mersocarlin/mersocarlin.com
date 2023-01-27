@@ -67,3 +67,23 @@ export type Tweet = {
   retweets: number
   text: string
 }
+
+export type UserInteractionEvent = {
+  hash: string
+  id: string
+  path: string
+  pathname: string
+  referrer: string
+  search: string
+  value?: string | number
+}
+
+export type AmplitudeEvent = Omit<UserInteractionEvent, 'id'> & {
+  category: 'TIMING' | 'USER'
+  label:
+    | 'page load'
+    | 'change theme'
+    | 'page view'
+    | 'click edit link'
+    | 'click tag'
+}
