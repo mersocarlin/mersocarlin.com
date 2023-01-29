@@ -1,8 +1,10 @@
 import { getMDXComponent } from 'mdx-bundler/client'
 import { useMemo } from 'react'
+import AppLink from '~/components/AppLink'
 
 const mdxComponents = {
   Img: PostImage,
+  a: AppLink,
 }
 
 function PostImage(props: JSX.IntrinsicElements['img']) {

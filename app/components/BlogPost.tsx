@@ -62,7 +62,7 @@ export default function BlogPost({ post }: { post: Post }) {
       <section className="text-center">
         <img
           alt={post.title}
-          className="rounded-none md:rounded mx-auto pb-4"
+          className="rounded-none md:rounded mx-auto mb-4"
           key={post.title}
           src={post.coverImage.url}
           height={post.coverImage.height}
