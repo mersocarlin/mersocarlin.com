@@ -64,6 +64,11 @@ export const tagMap: TagMapT = {
     textColor: 'text-react',
     children: 'React',
   },
+  remix: {
+    bgColor: 'bg-gray-900 dark:bg-gray-600',
+    textColor: 'text-white',
+    children: 'Remix',
+  },
   'styled-components': {
     bgColor: 'bg-styledComponents',
     textColor: 'text-white',
@@ -107,6 +112,7 @@ export default function BlogPostTag({
   }
 
   const { bgColor, children, textColor } = tagMap[tag]
+
   const tagStyles =
     variant === 'color'
       ? `${bgColor} ${textColor}`
@@ -114,7 +120,7 @@ export default function BlogPostTag({
 
   return (
     <span
-      className={`${tagStyles} py-1 px-2 rounded text-sm`}
+      className={`${tagStyles} py-1 px-2 rounded text-[16px]`}
       onClick={() => trackTagClick(tag)}
     >
       {children}

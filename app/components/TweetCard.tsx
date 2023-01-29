@@ -72,7 +72,7 @@ function TweetText({ tweet }: Props) {
             return (
               <p
                 key={index}
-                className="text-gray-700 dark:text-gray-200 text-lg"
+                className="text-gray-700 dark:text-gray-200"
                 dangerouslySetInnerHTML={{
                   __html: paragraph,
                 }}
@@ -89,7 +89,7 @@ function TweetText({ tweet }: Props) {
     return [
       <span
         key={new Date().getTime() + content.length}
-        className="text-gray-700 dark:text-gray-200 text-lg"
+        className="text-gray-700 dark:text-gray-200"
       >
         {content}
       </span>,

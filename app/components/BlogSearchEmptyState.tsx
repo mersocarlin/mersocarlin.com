@@ -28,7 +28,7 @@ export default function BlogSearchEmptyState({ q, tag }: QueryOptions) {
         <p className="text-2xl break-words">
           No blog posts matching tag{' '}
           <span
-            className={`bg-gray-200 mersocarlin-text-gray dark:bg-gray-900 py-1 px-2 rounded text-sm`}
+            className={`bg-gray-200 mersocarlin-text-gray dark:bg-gray-900 py-1 px-2 rounded`}
           >
             {tag}
           </span>

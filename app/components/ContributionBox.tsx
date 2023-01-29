@@ -25,7 +25,7 @@ export default function ContributionBox({ post }: { post: Post }) {
         </svg>
       </div>
       <div className="flex-grow pl-6">
-        <h2 className="text-gray-900 dark:text-white text-lg font-bold mb-2">
+        <h2 className="text-gray-900 dark:text-white font-bold mb-2">
           Did you know you can help me with this page?
         </h2>
 
