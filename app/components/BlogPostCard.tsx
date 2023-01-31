@@ -1,42 +1,47 @@
+import clsx from 'clsx'
+
 import type { Post } from '~/types'
 import AppLink from './AppLink'
 import BlogPostDate from './BlogPostDate'
+import { CalendarIcon } from './Icons'
 
 export default function BlogPostCard({ post }: { post: Post }) {
   return (
     <AppLink hoverStyles="hover:no-underline" href={`/blog/${post.slug}`}>
-      <div className="group rounded shadow-md cursor-pointer hover:shadow-lg overflow-hidden mersocarlin-bg-white mersocarlin-text-gray">
-        <img
-          alt={post.title}
-          height={post.coverImage.height}
-          itemProp="image"
-          src={post.coverImage.url}
-          width={post.coverImage.width}
-        />
-        <div className="flex flex-col justify-between p-3 h-48">
-          <div
-            className="text-center text-xl font-bold group-hover:underline"
-            itemProp="headline"
-          >
-            {post.title}
+      <div className="group overflow-hidden shadow-md hover:shadow-2xl rounded-lg cursor-pointer m-auto relative h-[344px]">
+        <div className="h-40 overflow-hidden group-hover:blur-sm transition duration-300 group-hover:scale-110">
+          <img
+            alt={post.title}
+            height={post.coverImage.height}
+            itemProp="image"
+            src={post.coverImage.url}
+            width={post.coverImage.width}
+          />
+        </div>
+
+        <div
+          className={clsx(
+            'h-56 mersocarlin-bg-white mersocarlin-text-gray w-full p-4 absolute bottom-14',
+            // animation classes
+            'translate-y-24 group-hover:translate-y-0 transition duration-300'
+          )}
+        >
+          <div className="h-24 mb-4 flex items-center">
+            <p className="text-2xl font-medium" itemProp="headline">
+              {post.title}
+            </p>
           </div>
-          <p
-            className="text-ellipsis overflow-hidden text-sm line-clamp-3"
-            itemProp="description"
-            title={post.excerpt}
-          >
+          <p className="mersocarlin-text-gray font-light text-md line-clamp-3">
             {post.excerpt}
           </p>
+        </div>
 
-          <div className="flex justify-between text-md mersocarlin-text-gray font-light">
-            <div
-              itemProp="author"
-              itemScope={true}
-              itemType="https://schema.org/Person"
-            >
-              <span itemProp="name">{post.author.name}</span>
-            </div>
-            <BlogPostDate date={post.date} />
+        <div className="absolute bottom-0 w-full mersocarlin-bg-white mersocarlin-text-gray h-14 p-4">
+          <div className="inline-flex">
+            <CalendarIcon className="w-4 h-4 mr-2" />
+            <p className="text-sm font-medium">
+              <BlogPostDate date={post.date} />
+            </p>
           </div>
         </div>
       </div>

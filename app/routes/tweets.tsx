@@ -52,7 +52,7 @@ export default function Tweets() {
       </h1>
 
       <div className="px-4 md:p-0">
-        <section className="w-full md:w-3/4 m-auto mersocarlin-text-gray text-lg">
+        <section className="w-full md:w-3/4 m-auto mersocarlin-text-gray">
           <p className="mb-3 leading-7">{`Collection of tweets I've liked.`}</p>
 
           <p className="mb-3 leading-7">

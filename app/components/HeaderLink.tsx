@@ -6,7 +6,7 @@ import AppLink from './AppLink'
 function HeaderLink({
   children,
   className = '',
-  fontStyles = 'text-sm md:text-base',
+  fontStyles = 'md:text-base',
   to,
 }: PropsWithChildren & {
   className?: string

@@ -29,30 +29,30 @@ export default function Index() {
         <Avatar size={150} />
 
         <h1 className="text-center text-3xl font-bold pt-4">Hemerson Carlin</h1>
-        <h2 className="text-center text-lg">Tech Lead / Software Engineer</h2>
+        <h2 className="text-center">Tech Lead / Software Engineer</h2>
       </section>
 
       <section className="flex flex-col space-y-4 mt-12">
-        <p className="text-lg">Hello there 👋🏼</p>
-        <p className="text-lg">
+        <p>Hello there 👋🏼</p>
+        <p>
           {`I'm Hemerson Carlin, also know as `}
           <em>mersocarlin</em>, a passionate and resourceful full-stack Software
           Engineer with 10+ years of experience focused on agile development,
           architecture and team building.
         </p>
-        <p className="text-lg">
+        <p>
           I have experience in designing and developing web applications using
           microservices architecture alongside with JavaScript, Node.js and
           React.
         </p>
-        <p className="text-lg">
+        <p>
           {`I'm Technical Lead at `}
           <AppLink href="https://www.hubspot.com/" target="_blank">
             HubSpot
           </AppLink>{' '}
           and based in Dublin, Ireland.
         </p>
-        <p className="text-lg">
+        <p>
           I also created{' '}
           <AppLink href="https://atomicmoney.app" target="_blank">
             Atomic Money
