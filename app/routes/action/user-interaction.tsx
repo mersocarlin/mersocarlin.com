@@ -45,6 +45,12 @@ export const action: ActionFunction = async ({ request }) => {
             category: EVENT_CATEGORIES.USER,
             label: 'page view',
           }
+        case EVENT_IDS.PAGE_LOAD:
+          return {
+            ...commonProps,
+            category: EVENT_CATEGORIES.USER,
+            label: 'page load',
+          }
       }
     })
     .filter(Boolean) as AmplitudeEvent[]
