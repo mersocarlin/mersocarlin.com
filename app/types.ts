@@ -27,47 +27,6 @@ export type QueryOptions = {
   tag: string
 }
 
-/** Twitter types  */
-export type TweetAuthor = {
-  name: string
-  profileImageUrl: string
-  username: string
-  verified: boolean
-}
-
-export type TweetImage = {
-  height: number
-  url: string
-  width: number
-}
-
-export type TweetEntity = {
-  end: number
-  start: number
-} & (
-  | {
-      description: string
-      images: TweetImage[]
-      title: string
-      type: 'url'
-      url: string
-    }
-  | {
-      type: 'mention'
-      username: string
-    }
-)
-
-export type Tweet = {
-  author: TweetAuthor
-  createdAt: string
-  entities: TweetEntity[]
-  id: string
-  likes: number
-  retweets: number
-  text: string
-}
-
 export type UserInteractionEvent = {
   hash: string
   id: string

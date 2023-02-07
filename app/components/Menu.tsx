@@ -8,10 +8,6 @@ export const menuItems = [
     path: '/blog',
   },
   {
-    name: 'Tweets',
-    path: '/tweets',
-  },
-  {
     name: 'Uses',
     path: '/uses',
   },

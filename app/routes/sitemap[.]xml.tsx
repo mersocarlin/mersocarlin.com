@@ -26,7 +26,6 @@ export const loader: LoaderFunction = async ({ request, context }) => {
     ${createUrl(host)}
     ${createUrl(blogUrl)}
     ${createUrl(`${host}/uses`)}
-    ${createUrl(`${host}/tweets`)}
     ${posts.map((post) => createUrl(`${blogUrl}/${post.slug}`)).join('\n')}
   </urlset>
   `.trim()
