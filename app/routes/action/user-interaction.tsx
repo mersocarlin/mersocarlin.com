@@ -10,6 +10,7 @@ export const action: ActionFunction = async ({ request }) => {
   const amplitudeEvents: AmplitudeEvent[] = events
     .map<AmplitudeEvent | null>((event) => {
       const commonProps = {
+        category: EVENT_CATEGORIES.USER,
         hash: event.hash,
         path: event.path,
         pathname: event.pathname,
@@ -24,26 +25,27 @@ export const action: ActionFunction = async ({ request }) => {
         case EVENT_IDS.CHANGE_THEME:
           return {
             ...commonProps,
-            category: EVENT_CATEGORIES.USER,
             label: 'change theme',
           }
         case EVENT_IDS.CLICK_EDIT_LINK:
           return {
             ...commonProps,
-            category: EVENT_CATEGORIES.USER,
             label: 'click edit link',
           }
         case EVENT_IDS.CLICK_TAG:
           return {
             ...commonProps,
-            category: EVENT_CATEGORIES.USER,
             label: 'click tag',
           }
         case EVENT_IDS.PAGE_VIEW:
           return {
             ...commonProps,
-            category: EVENT_CATEGORIES.USER,
             label: 'page view',
+          }
+        case EVENT_IDS.PAGE_LOAD:
+          return {
+            ...commonProps,
+            label: 'page load',
           }
       }
     })
