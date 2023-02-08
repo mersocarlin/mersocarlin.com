@@ -45,6 +45,7 @@ export const action: ActionFunction = async ({ request }) => {
         case EVENT_IDS.PAGE_LOAD:
           return {
             ...commonProps,
+            category: EVENT_CATEGORIES.TIMING,
             label: 'page load',
           }
       }

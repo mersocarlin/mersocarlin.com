@@ -10,6 +10,7 @@ export const EVENT_IDS = {
 } as const
 
 export const EVENT_CATEGORIES = {
+  TIMING: 'TIMING',
   USER: 'USER',
 } as const
 
