@@ -69,14 +69,26 @@ export const links: LinksFunction = () => [
 ]
 
 export const meta: MetaFunction = () => {
-  return {
-    author: 'Hemerson Carlin',
-    charset: 'utf-8',
-    robots: 'follow, index',
-    viewport:
-      'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no',
+  return [
+    {
+      name: 'author',
+      content: 'Hemerson Carlin',
+    },
+    {
+      name: 'charset',
+      content: 'utf-8',
+    },
+    {
+      name: 'robots',
+      content: 'follow, index',
+    },
+    {
+      name: 'viewport',
+      content:
+        'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no',
+    },
     ...getSocialMeta(),
-  }
+  ]
 }
 
 export async function loader({ request }: DataFunctionArgs) {

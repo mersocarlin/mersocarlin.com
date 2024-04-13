@@ -20,35 +20,38 @@ export function getSocialMeta({
   ogType?: 'article' | 'website'
   imageUrl?: string
 } = {}) {
-  return {
+  return [
     /**
      * Misc
      */
-    title,
-    description,
-    keywords,
-    image: imageUrl,
+    { name: 'title', content: title },
+    { name: 'description', content: description },
+    { name: 'keywords', content: keywords },
+    { name: 'image', content: imageUrl },
 
     /**
      * OG
      */
-    'og:description': description,
-    'og:image': `https://mersocarlin.com${imageUrl}`,
-    'og:image:type': 'image/png',
-    'og:image:height': '200',
-    'og:image:width': '200',
-    'og:title': title,
-    'og:type': ogType,
-    'og:url': removeTrailingSlash(`https://mersocarlin.com${url}`),
+    { name: 'og:description', content: description },
+    { name: 'og:image', content: `https://mersocarlin.com${imageUrl}` },
+    { name: 'og:image:type', content: 'image/png' },
+    { name: 'og:image:height', content: '200' },
+    { name: 'og:image:width', content: '200' },
+    { name: 'og:title', content: title },
+    { name: 'og:type', content: ogType },
+    {
+      name: 'og:url',
+      content: removeTrailingSlash(`https://mersocarlin.com${url}`),
+    },
 
     /**
      * Twitter
      */
-    'twitter:alt': title,
-    'twitter:card': 'summary',
-    'twitter:creator': '@mersocarlin',
-    'twitter:description': description,
-    'twitter:site': '@mersocarlin',
-    'twitter:title': title,
-  }
+    { name: 'twitter:alt', content: title },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:creator', content: '@mersocarlin' },
+    { name: 'twitter:description', content: description },
+    { name: 'twitter:site', content: '@mersocarlin' },
+    { name: 'twitter:title', content: title },
+  ]
 }
