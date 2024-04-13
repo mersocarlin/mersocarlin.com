@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 import { bundleMDX } from 'mdx-bundler'
 import calculateReadingTime from 'reading-time'
 import type { Post } from '~/types'
@@ -9,7 +10,7 @@ const AUTHOR = {
 }
 
 function getSlugMap() {
-  const dataDirectory = `${__dirname}/../data/blog`
+  const dataDirectory = `${process.cwd()}/data/blog`
 
   const slugMapContents = fs.readFileSync(`${dataDirectory}/slugMap.json`, {
     encoding: 'utf-8',
@@ -87,7 +88,7 @@ async function parseMdxAsBlogPost({
 }
 
 export async function getUses(): Promise<Post | null> {
-  const dataDirectory = `${__dirname}/../data`
+  const dataDirectory = `${process.cwd()}/data`
   const filename = 'uses.mdx'
 
   return parseMdxAsBlogPost({
@@ -99,7 +100,7 @@ export async function getUses(): Promise<Post | null> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const dataDirectory = `${__dirname}/../data/blog`
+  const dataDirectory = `${process.cwd()}/data/blog`
   const filename = getPostFilename(slug)
 
   if (!filename) {
@@ -166,7 +167,7 @@ export async function getPreviousBlogPosts(currentSlug: string) {
 
 export async function getAllBlogPosts() {
   const slugMap = getSlugMap()
-  const dataDirectory = `${__dirname}/../data/blog`
+  const dataDirectory = `${process.cwd()}/data/blog`
 
   return Promise.all(
     Object.keys(slugMap)
