@@ -34,18 +34,16 @@ export async function loader({ params }: DataFunctionArgs) {
   )
 }
 
-export const meta: MetaFunction = ({ data, parentsData }) => {
+export const meta: MetaFunction = ({ data, location }) => {
   const { post } = data
 
-  return {
-    ...getSocialMeta({
-      description: post.excerpt,
-      imageUrl: post.coverImage.url,
-      ogType: 'article',
-      title: `${post.title} - Hemerson Carlin`,
-      url: parentsData.root.path,
-    }),
-  }
+  return getSocialMeta({
+    description: post.excerpt,
+    imageUrl: post.coverImage.url,
+    ogType: 'article',
+    title: `${post.title} - Hemerson Carlin`,
+    url: location.pathname,
+  })
 }
 
 export default function BlogPostSlug() {
