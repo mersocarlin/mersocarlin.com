@@ -1,5 +1,4 @@
 import fs from 'fs'
-import path from 'path'
 import { bundleMDX } from 'mdx-bundler'
 import calculateReadingTime from 'reading-time'
 import type { Post } from '~/types'
@@ -51,9 +50,9 @@ async function parseMdxAsBlogPost({
     mdxOptions(options) {
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
-        rehypeAutolinkHeadings,
-        rehypeHighlight,
-        rehypeSlug,
+        rehypeAutolinkHeadings as any,
+        rehypeHighlight as any,
+        rehypeSlug as any,
       ]
 
       return options

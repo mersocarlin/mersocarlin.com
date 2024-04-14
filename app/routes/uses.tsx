@@ -24,7 +24,15 @@ export async function loader() {
   )
 }
 
-export const meta: MetaFunction = ({ data, location }) => {
+export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
+  if (!data) {
+    return getSocialMeta({
+      ogType: 'article',
+      title: 'Uses - Hemerson Carlin',
+      url: location.pathname,
+    })
+  }
+
   const { post } = data
 
   return getSocialMeta({

@@ -34,7 +34,15 @@ export async function loader({ params }: DataFunctionArgs) {
   )
 }
 
-export const meta: MetaFunction = ({ data, location }) => {
+export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
+  if (!data) {
+    return getSocialMeta({
+      ogType: 'article',
+      title: `Hemerson Carlin`,
+      url: location.pathname,
+    })
+  }
+
   const { post } = data
 
   return getSocialMeta({
