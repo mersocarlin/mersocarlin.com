@@ -38,7 +38,6 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
   if (!data) {
     return getSocialMeta({
       ogType: 'article',
-      title: `Hemerson Carlin`,
       url: location.pathname,
     })
   }
