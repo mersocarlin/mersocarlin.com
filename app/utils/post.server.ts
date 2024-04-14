@@ -47,7 +47,7 @@ async function parseMdxAsBlogPost({
 
   const { code, frontmatter, matter } = await bundleMDX({
     source: postContents,
-    mdxOptions(options) {
+    mdxOptions(options: any) {
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypeAutolinkHeadings as any,
