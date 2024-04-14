@@ -41,13 +41,11 @@ export async function loader() {
   )
 }
 
-export const meta: MetaFunction = ({ parentsData }) => {
-  return {
-    ...getSocialMeta({
-      title: 'Blog - Hemerson Carlin',
-      url: parentsData.root.path,
-    }),
-  }
+export const meta: MetaFunction = ({ location }) => {
+  return getSocialMeta({
+    title: 'Blog - Hemerson Carlin',
+    url: location.pathname,
+  })
 }
 
 export default function Blog() {

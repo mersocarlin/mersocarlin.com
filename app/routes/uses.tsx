@@ -24,16 +24,24 @@ export async function loader() {
   )
 }
 
-export const meta: MetaFunction = ({ data, parentsData }) => {
-  return {
-    ...getSocialMeta({
-      description: data.post.excerpt,
-      imageUrl: data.post.coverImage.url,
+export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
+  if (!data) {
+    return getSocialMeta({
       ogType: 'article',
       title: 'Uses - Hemerson Carlin',
-      url: parentsData.root.path,
-    }),
+      url: location.pathname,
+    })
   }
+
+  const { post } = data
+
+  return getSocialMeta({
+    description: post.excerpt,
+    imageUrl: post.coverImage.url,
+    ogType: 'article',
+    title: 'Uses - Hemerson Carlin',
+    url: location.pathname,
+  })
 }
 
 export default function Uses() {

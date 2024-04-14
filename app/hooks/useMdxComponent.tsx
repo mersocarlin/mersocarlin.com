@@ -1,4 +1,4 @@
-import { getMDXComponent } from 'mdx-bundler/client'
+import { getMDXComponent } from 'mdx-bundler/client/index.js'
 import { useMemo } from 'react'
 import AppLink from '~/components/AppLink'
 
