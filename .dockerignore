@@ -1,0 +1,12 @@
+.git
+.next
+.github
+.idea
+.cache
+
+api
+build
+coverage
+databases
+integration
+node_modules

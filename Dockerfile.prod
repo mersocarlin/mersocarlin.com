@@ -1,0 +1,54 @@
+# base node image
+FROM mersocarlin/docker-node as base
+
+# set for base and all layer that inherit from it
+ENV NODE_ENV production
+
+# Install all node_modules, including dev dependencies
+FROM base as deps
+
+WORKDIR /usr/src/app
+
+# set for base and all layer that inherit from it
+ENV NODE_ENV production
+
+COPY package.json package-lock.json ./
+RUN npm install --include=dev
+
+# Setup production node_modules
+FROM base as production-deps
+
+WORKDIR /usr/src/app
+
+COPY --from=deps /usr/src/app/node_modules /usr/src/app/node_modules
+COPY package.json package-lock.json ./
+RUN npm prune --omit=dev
+
+# Build the app
+FROM base as build
+
+WORKDIR /usr/src/app
+
+COPY --from=deps /usr/src/app/node_modules /usr/src/app/node_modules
+
+ADD . .
+RUN npm run build
+RUN ls
+
+# Finally, build the production image with minimal footprint
+FROM base
+
+ENV NODE_ENV="production"
+
+WORKDIR /usr/src/app
+
+COPY --from=production-deps /usr/src/app/node_modules /usr/src/app/node_modules
+COPY --from=build /usr/src/app/build /usr/src/app/build
+COPY --from=build /usr/src/app/public /usr/src/app/public
+COPY --from=build /usr/src/app/styles /usr/src/app/styles
+COPY --from=build /usr/src/app/data /usr/src/app/data
+COPY --from=build /usr/src/app/package.json /usr/src/app/package.json
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
