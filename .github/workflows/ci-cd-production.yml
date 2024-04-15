@@ -69,3 +69,25 @@ jobs:
           npx vercel \
             --token ${{ secrets.VERCEL_TOKEN }} \
             --prod
+
+  docker-hub-deploy:
+    runs-on: ubuntu-latest
+    needs: [test-and-lint]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Docker Hub production
+        env:
+          CI_CONTAINER_REGISTRY: ${{ secrets.CI_CONTAINER_REGISTRY }}
+          CI_CONTAINER_REGISTRY_PASSWORD: ${{ secrets.CI_CONTAINER_REGISTRY_PASSWORD }}
+          CI_CONTAINER_REGISTRY_USERNAME: ${{ secrets.CI_CONTAINER_REGISTRY_USERNAME }}
+        run: |
+          npx mersocarlin-deployer \
+            --provider dockerHub \
+            --container-registry-host $CI_CONTAINER_REGISTRY \
+            --container-registry-username $CI_CONTAINER_REGISTRY_USERNAME \
+            --container-registry-password $CI_CONTAINER_REGISTRY_PASSWORD \
+            --dockerfile-path Dockerfile.prod \
+            --repository-name micro-services \
+            --repository-tag mersocarlin \
+            --verbose
