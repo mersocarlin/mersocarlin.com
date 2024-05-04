@@ -1,5 +1,5 @@
-import { json } from '@remix-run/node'
-import type { DataFunctionArgs, MetaFunction } from '@remix-run/node'
+import { json, redirect } from '@remix-run/node'
+import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
 import BlogPost from '~/components/BlogPost'
@@ -8,8 +8,14 @@ import PreviousBlogPosts from '~/components/PreviousBlogPosts'
 import { getPostBySlug, getPreviousBlogPosts } from '~/utils/post.server'
 import { getSocialMeta } from '~/utils/seo'
 
-export async function loader({ params }: DataFunctionArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const currentSlug = params.slug || ''
+  // redirect urls as /blog/some-slug.md to /blog/some-slug
+  const [actualSlug, extension] = currentSlug.split('.')
+
+  if (extension) {
+    return redirect(`/blog/${actualSlug}`)
+  }
 
   const [post, previousBlogPosts] = await Promise.all([
     getPostBySlug(currentSlug),
