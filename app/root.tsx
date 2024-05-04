@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import type {
-  DataFunctionArgs,
   LinksFunction,
+  LoaderFunctionArgs,
   MetaFunction,
 } from '@remix-run/node'
 import {
@@ -91,7 +91,7 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-export async function loader({ request }: DataFunctionArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const themeSession = await getThemeSession(request)
 
   return {
