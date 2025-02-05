@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - '*'
-    tags:
-      - '!v*'
+      - 'mersocarlin/*'
+      - '!v*' # ignore tags
+  workflow_dispatch:
 
 jobs:
   test-and-lint:
