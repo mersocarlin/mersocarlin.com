@@ -33,7 +33,7 @@ export const loader: LoaderFunction = async ({ request }) => {
             <item>
               <title>${cdata(post.title)}</title>
               <description>${cdata(post.excerpt)}</description>
-              <pubDate>${formatDate(post.date, 'yyyy-MM-ii')}</pubDate>
+              <pubDate>${formatDate(post.date, 'yyyy-MM-dd')}</pubDate>
               <link>${blogUrl}/${post.slug}</link>
               <guid>${blogUrl}/${post.slug}</guid>
             </item>
