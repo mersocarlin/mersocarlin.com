@@ -1,0 +1,51 @@
+import { json } from '@remix-run/node'
+import type { MetaFunction } from '@remix-run/node'
+import { useLoaderData } from '@remix-run/react'
+
+import BlogPost from '~/components/BlogPost'
+import { getPrivacy } from '~/utils/post.server'
+import { getSocialMeta } from '~/utils/seo'
+
+export async function loader() {
+	const post = await getPrivacy()
+
+	if (!post) {
+		throw new Response('Page not found', { status: 404 })
+	}
+
+	return json(
+		{ post },
+		{
+			headers: {
+				'Cache-Control': 'max-age=3600',
+			},
+			status: 200,
+		}
+	)
+}
+
+export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
+	if (!data) {
+		return getSocialMeta({
+			ogType: 'article',
+			title: 'Privacy - Hemerson Carlin',
+			url: location.pathname,
+		})
+	}
+
+	const { post } = data
+
+	return getSocialMeta({
+		description: post.excerpt,
+		imageUrl: post.coverImage.url,
+		ogType: 'article',
+		title: 'Privacy - Hemerson Carlin',
+		url: location.pathname,
+	})
+}
+
+export default function Privacy() {
+	const { post } = useLoaderData<typeof loader>()
+
+	return <BlogPost post={post} />
+}
