@@ -98,6 +98,18 @@ export async function getUses(): Promise<Post | null> {
   })
 }
 
+export async function getPrivacy(): Promise<Post | null> {
+  const dataDirectory = `${process.cwd()}/data`
+  const filename = 'privacy.mdx'
+
+  return parseMdxAsBlogPost({
+    dataDirectory,
+    ghPath: 'data',
+    filename,
+    slug: 'privacy',
+  })
+}
+
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const dataDirectory = `${process.cwd()}/data/blog`
   const filename = getPostFilename(slug)
