@@ -46,20 +46,21 @@ export default function Index() {
           React.
         </p>
         <p>
-          {`I'm Technical Lead at `}
+          {`I'm a Staff Technical Lead at `}
           <AppLink href="https://www.hubspot.com/" target="_blank">
             HubSpot
           </AppLink>{' '}
           and based in Dublin, Ireland.
         </p>
-        <p>
-          I also created{' '}
-          <AppLink href="https://atomicmoney.app" target="_blank">
-            Atomic Money
-          </AppLink>
-          : an expense tracker completely free for you to monitor your income
-          and expenses.
-        </p>
+	<p>
+	  {`I'm working on `}
+	  <AppLink href="https://atomicmoney.app" target="_blank">
+	  Atomic Money
+	  </AppLink>
+	  , a free expense tracker that helps you monitor income and expenses, and my
+	  own Jarvis, a personal AI assistant that helps me organize information and
+	  get things done.
+</p>
       </section>
 
       <section className="mt-12">
